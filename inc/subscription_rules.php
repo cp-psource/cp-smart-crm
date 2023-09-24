@@ -33,7 +33,7 @@ $num=$wpdb->num_rows;
 
 </script>
 <div class="wrap" style="height:100%!important">
-    <h1 style="text-align:center">WP Smart CRM & INVOICES <?php if(! isset($_GET['p'])){ ?><?php } ?></h1>
+    <h1 style="text-align:center">CP Smart CRM & INVOICES <?php if(! isset($_GET['p'])){ ?><?php } ?></h1>
     <?php include($inc_dir."/crm/c_menu.php")?>
     
     <div class="page-header" style="background-color:gainsboro;margin: 10px 0 20px;"><span class="crmHelp" data-help="subscription-rules" style="margin-top:8px"></span>

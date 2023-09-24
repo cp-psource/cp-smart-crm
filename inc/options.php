@@ -40,17 +40,17 @@ class CRM_Options_Settings{
 		add_action( 'admin_menu', array( &$this, 'WPsCRM_add_admin_menus' ) );
 	}
 	function check_woo_addon(){
-		$wooPlugin='wp-smart-crm-woocommerce/wp-smart-crm-woocommerce.php' ;
+		$wooPlugin='cp-smart-crm-woocommerce/cp-smart-crm-woocommerce.php' ;
 		if (is_plugin_active( $wooPlugin ) ) 
 			add_action( 'admin_init', array( &$this, 'register_woo_settings'),11 );
 	}
 	function check_accountability_addon(){
-		$accPlugin='wp-smart-crm-accountability/wp-smart-crm-accountability.php' ;
+		$accPlugin='cp-smart-crm-accountability/cp-smart-crm-accountability.php' ;
 		if (is_plugin_active( $accPlugin ) ) 
 			add_action( 'admin_init', array( &$this, 'register_acc_settings'),11 );
 	}
 	function check_advanced_addon(){
-		$advPlugin='wp-smart-crm-advanced/wp-smart-crm-advanced.php' ;
+		$advPlugin='cp-smart-crm-advanced/cp-smart-crm-advanced.php' ;
 		if (is_plugin_active( $advPlugin ) ) 
 			add_action( 'admin_init', array( &$this, 'register_adv_settings'),11 );
 	}
@@ -104,13 +104,13 @@ class CRM_Options_Settings{
 	function header(){
 ?>
         <div class="wrap">
-            <h1 style="text-align:center">WP Smart CRM & INVOICES<?php if(! isset($_GET['p'])){ ?><!--<span class="crmHelp" data-help="main"></span>--><?php } ?></h1>
+            <h1 style="text-align:center">CP Smart CRM & INVOICES<?php if(! isset($_GET['p'])){ ?><!--<span class="crmHelp" data-help="main"></span>--><?php } ?></h1>
 		    <?php include(WPsCRM_DIR."/inc/crm/c_menu.php")?> 
         <?php
 		echo '<h1>'.__('WP smart CRM options and Settings','cpsmartcrm').'</h1>';
 	}
 	function footer(){
-		echo '<small style="text-align:center;top:30px;position:relative">Developed by SoftradeWEB snc <a href="https://softrade.it">https://softrade.it</a> [WP italian coders]</small></div>';
+		echo '<small style="text-align:center;top:30px;position:relative">Developed by Webmaster-Community N3rds@Work <a href="https://n3rds.work">https://n3rds.work</a></small></div>';
 	}
 	
 	/*

@@ -1363,7 +1363,7 @@ class CRM_mail{
 	public function setQueue($e_from,$e_to,$e_subject,$e_body, $e_date, $ID_agenda,$ID_doc,$ID_docRow, $customerID=0, $attachments=array()){
 		global $wpdb;
 		is_multisite() ? $filter=get_blog_option(get_current_blog_id(), 'active_plugins' ) : $filter=get_option('active_plugins' );
-		if ( in_array( 'wp-smart-crm-advanced/wp-smart-crm-advanced.php', apply_filters( 'active_plugins', $filter) ) ) {
+		if ( in_array( 'cp-smart-crm-advanced/cp-smart-crm-advanced.php', apply_filters( 'active_plugins', $filter) ) ) {
 			$url = admin_url();
 			$link="admin.php?page=smart-crm&event=".$ID_agenda;
 			$e_body.="\r\n".$url.$link;
@@ -1396,7 +1396,7 @@ class CRM_mail{
 	public function sendMailNow($e_from,$e_to,$e_subject,$e_body, $e_date, $ID_agenda,$ID_doc,$ID_docRow){
 		global $wpdb;
 		is_multisite() ? $filter=get_blog_option(get_current_blog_id(), 'active_plugins' ) : $filter=get_option('active_plugins' );
-		if ( in_array( 'wp-smart-crm-advanced/wp-smart-crm-advanced.php', apply_filters( 'active_plugins', $filter) ) ) {
+		if ( in_array( 'cp-smart-crm-advanced/cp-smart-crm-advanced.php', apply_filters( 'active_plugins', $filter) ) ) {
 			$url = admin_url();
 			$link="admin.php?page=smart-crm&event=".$ID_agenda;
 			$e_body.="\r\n".$url.$link;

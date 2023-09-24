@@ -50,7 +50,7 @@ All the records in grids are powered with filtering/grouping/sorting functions f
 
 All the grids information are visually enhanced with icon/colors to always guarantee a quick overview
 
-Official site and support : [WP Smart CRM free plugin](http://softrade.it/wordpress-crm-invoices-plugin/ "Plugin  Wordpress per CRM e fatturazione") 
+Official site and support : [CP Smart CRM free plugin](http://softrade.it/wordpress-crm-invoices-plugin/ "Plugin  Wordpress per CRM e fatturazione") 
 The plugin has been designed conforming to the Italian fiscal rules but we're open to feedbacks to address specific country-based issues in EU, USA and ASIA.
 NOTE: the italian fiscal law system is worldwide recognized as (probably) the most tricky and confused..so it will  an easy task to adapt it to any system, just ask !
 

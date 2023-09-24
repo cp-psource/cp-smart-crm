@@ -51,7 +51,7 @@ $delete_nonce= wp_create_nonce( "delete_activity" );
 </ul>
 	
 </div>
-<h3 style="text-align:center">WP Smart CRM SCHEDULER</h3>
+<h3 style="text-align:center">CP Smart CRM SCHEDULER</h3>
 <div id="kscheduler"></div>
 
 <div id="schedulerWindow" style="text-align:center"><button onclick='onCopy()' class="btn btn-sm _flat"><i class="glyphicon glyphicon-copy"></i> <?php _e('Copy Event','cpsmartcrm')?></button> <?php _e('OR','cpsmartcrm')?> <button class="btn btn-sm _flat" onclick='onEdit()'><i class="glyphicon glyphicon-pencil"></i> <?php _e('Edit Event','cpsmartcrm')?></button></div>

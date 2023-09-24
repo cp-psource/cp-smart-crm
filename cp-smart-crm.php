@@ -38,13 +38,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  **/
 
-function cpsmartcrm_l10n(){
-
-    load_plugin_textdomain( 'cpsmartcrm', false, dirname(plugin_basename( __FILE__ )).'/languages/' );
-	load_plugin_textdomain( 'wp-smart-crm-accountability', false, ABSPATH . 'wp-content/plugins/wp-smart-crm-accountability/languages/' );
-	//load_plugin_textdomain( 'wp-smart-crm-accountability', false, dirname(plugin_basename( __FILE__ )).'/languages/' );
+ function load_cpsmartcrm_l10n() {
+    load_plugin_textdomain( 'cpsmartcrm', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+	//load_plugin_textdomain( 'cp-smart-crm-accountability', false, ABSPATH . 'wp-content/plugins/cp-smart-crm-accountability/languages/' );
 }
-add_action('init','cpsmartcrm_l10n',99);
+add_action( 'init', 'load_cpsmartcrm_l10n' );
+
 
 /**
  * @@@@@@@@@@@@@@@@@ MAIN SETUP @@@@@@@@@@@
@@ -302,7 +301,7 @@ function WPsCRM_notify_CRM_SETTINGS(){
 		<a href="<?php echo admin_url("admin.php?page=smartcrm_settings&tab=CRM_business_settings" )?>">
 			<?php _e('on this page','cpsmartcrm');?>
 		</a>
-		<?php _e('to use WP Smart CRM ','cpsmartcrm')?>!
+		<?php _e('to use CP Smart CRM ','cpsmartcrm')?>!
 	</p>
 </div>
 <?php

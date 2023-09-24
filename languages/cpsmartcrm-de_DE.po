@@ -1,0 +1,4432 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: CP Smart CRM\n"
+"POT-Creation-Date: 2023-09-24 17:38+0200\n"
+"PO-Revision-Date: 2023-09-24 17:40+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.3.2\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: cp-smart-crm.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+
+#: cp-smart-crm.php:183
+#, fuzzy
+msgid "CRM Client"
+msgstr "CRM-Kunde"
+
+#: cp-smart-crm.php:188
+msgid "CRM Agent"
+msgstr "CRM-Betreuer"
+
+#: cp-smart-crm.php:300
+msgid "Warning:  some basic settings are required"
+msgstr "Warnung: Grundeinstellungen sind erforderlich"
+
+#: cp-smart-crm.php:302
+msgid "on this page"
+msgstr "auf dieser Seite"
+
+#: cp-smart-crm.php:304
+#, fuzzy
+msgid "to use CP Smart CRM "
+msgstr "cP Smart CRM zu verwenden"
+
+#: inc/__plugin-installer.class.php:161 inc/dependencies.php:38
+#: inc/plugin-installer.class.php:334
+msgid "Install Required Plugins"
+msgstr "Erforderliche Plugins installieren"
+
+#: inc/__plugin-installer.class.php:162 inc/dependencies.php:39
+#: inc/plugin-installer.class.php:335
+msgid "Install Plugins"
+msgstr "Plugins installieren"
+
+#. translators: %s: plugin name.
+#: inc/__plugin-installer.class.php:163 inc/dependencies.php:40
+#: inc/plugin-installer.class.php:337
+#, php-format
+msgid "Installing Plugin: %s"
+msgstr "Installiere Plugin: %s"
+
+#: inc/__plugin-installer.class.php:164
+msgid "Something went wrong."
+msgstr "Etwas ist schief gelaufen."
+
+#. translators: 1: plugin name(s).
+#: inc/__plugin-installer.class.php:165 inc/plugin-installer.class.php:343
+#, php-format
+msgid "This theme requires the following plugin: %1$s."
+msgid_plural "This theme requires the following plugins: %1$s."
+msgstr[0] "Dieses Theme erfordert das folgende Plugin: %1$s."
+msgstr[1] "Dieses Theme erfordert die folgenden Plugins: %1$s."
+
+#. translators: 1: plugin name(s).
+#: inc/__plugin-installer.class.php:166 inc/plugin-installer.class.php:349
+#, php-format
+msgid "This theme recommends the following plugin: %1$s."
+msgid_plural "This theme recommends the following plugins: %1$s."
+msgstr[0] "Dieses Theme empfiehlt das folgende Plugin: %1$s."
+msgstr[1] "Dieses Theme empfiehlt die folgenden Plugins: %1$s."
+
+#: inc/__plugin-installer.class.php:167 inc/dependencies.php:44
+#, php-format
+msgid ""
+"Sorry, but you do not have the correct permissions to install the %s plugin. "
+"Contact the administrator of this site for help on getting the plugin "
+"installed."
+msgid_plural ""
+"Sorry, but you do not have the correct permissions to install the %s "
+"plugins. Contact the administrator of this site for help on getting the "
+"plugins installed."
+msgstr[0] ""
+"Entschuldigung, aber Du hast nicht die korrekten Berechtigungen zum "
+"Installieren des %s Plugin. Kontaktiere den Admin dieser Seite zur Hilfe "
+"beim Installieren des Plugin."
+msgstr[1] ""
+"Entschuldigung, aber Sie haben nicht die richtigen Berechtigungen, um die "
+"% s-Plugins zu installieren. Wenden Sie sich an den Administrator dieser "
+"Website, um Hilfe beim Installieren des Plugins zu erhalten."
+
+#. translators: 1: plugin name(s).
+#: inc/__plugin-installer.class.php:168 inc/plugin-installer.class.php:367
+#, php-format
+msgid "The following required plugin is currently inactive: %1$s."
+msgid_plural "The following required plugins are currently inactive: %1$s."
+msgstr[0] "Das folgende erforderliche Plugin ist derzeit inaktiv: %1$s."
+msgstr[1] "Die folgenden erforderlichen Plugins sind derzeit inaktiv: %1$s."
+
+#. translators: 1: plugin name(s).
+#: inc/__plugin-installer.class.php:169 inc/dependencies.php:46
+#: inc/plugin-installer.class.php:373
+#, php-format
+msgid "The following recommended plugin is currently inactive: %1$s."
+msgid_plural "The following recommended plugins are currently inactive: %1$s."
+msgstr[0] "Das folgende empfohlene Plugin ist derzeit inaktiv: %1$s."
+msgstr[1] "Die folgenden empfohlenen Plugins sind derzeit inaktiv: %1$s."
+
+#: inc/__plugin-installer.class.php:170 inc/dependencies.php:47
+#, php-format
+msgid ""
+"Sorry, but you do not have the correct permissions to activate the %s "
+"plugin. Contact the administrator of this site for help on getting the "
+"plugin activated."
+msgid_plural ""
+"Sorry, but you do not have the correct permissions to activate the %s "
+"plugins. Contact the administrator of this site for help on getting the "
+"plugins activated."
+msgstr[0] ""
+"Entschuldigung, aber Du hast nicht die korrekten Berechtigungen zum "
+"Aktivieren des %s Plugin. Kontaktiere den Admin dieser Seite zur Hilfe beim "
+"Aktivieren des Plugin."
+msgstr[1] ""
+"Entschuldigung, aber Du hast nicht die korrekten Berechtigungen zum "
+"Aktivieren der %s Plugins. Kontaktiere den Admin dieser Seite zur Hilfe beim "
+"Aktivieren des Plugin."
+
+#. translators: 1: plugin name(s).
+#: inc/__plugin-installer.class.php:171 inc/dependencies.php:48
+#: inc/plugin-installer.class.php:355
+#, php-format
+msgid ""
+"The following plugin needs to be updated to its latest version to ensure "
+"maximum compatibility with this theme: %1$s."
+msgid_plural ""
+"The following plugins need to be updated to their latest version to ensure "
+"maximum compatibility with this theme: %1$s."
+msgstr[0] ""
+"Das folgende Plugin muss auf die neueste Version aktualisiert werden, um "
+"maximale Kompatibilität mit diesem Theme sicher zu stellen: %1$s."
+msgstr[1] ""
+"Die folgenden Plugins müssen auf die neueste Version aktualisiert werden, um "
+"maximale Kompatibilität mit diesem Theme sicher zu stellen: %1$s."
+
+#: inc/__plugin-installer.class.php:172 inc/dependencies.php:49
+#, php-format
+msgid ""
+"Sorry, but you do not have the correct permissions to update the %s plugin. "
+"Contact the administrator of this site for help on getting the plugin "
+"updated."
+msgid_plural ""
+"Sorry, but you do not have the correct permissions to update the %s plugins. "
+"Contact the administrator of this site for help on getting the plugins "
+"updated."
+msgstr[0] ""
+"Entschuldigung, aber Du hast nicht die korrekten Berechtigungen zum "
+"Aktualisieren des %s Plugin. Kontaktiere den Admin dieser Seite zur Hilfe "
+"beim Aktualisieren des Plugin."
+msgstr[1] ""
+"Entschuldigung, aber Du hast nicht die notwendigen Berechtigungen zum "
+"Aktualisieren der %s Plugins. Kontaktiere den Admin dieser Seite zur Hilfe "
+"beim Aktualisieren der Plugins."
+
+#: inc/__plugin-installer.class.php:173 inc/dependencies.php:50
+#: inc/plugin-installer.class.php:378
+msgid "Begin installing plugin"
+msgid_plural "Begin installing plugins"
+msgstr[0] "Beginne das Plugin zu installieren"
+msgstr[1] "Beginne die Plugins zu installieren"
+
+#: inc/__plugin-installer.class.php:174 inc/dependencies.php:51
+#: inc/plugin-installer.class.php:388
+msgid "Begin activating plugin"
+msgid_plural "Begin activating plugins"
+msgstr[0] "Plugin wird aktiviert"
+msgstr[1] "Plugins werden aktiviert"
+
+#: inc/__plugin-installer.class.php:175 inc/dependencies.php:52
+#: inc/plugin-installer.class.php:392
+msgid "Return to Required Plugins Installer"
+msgstr "Zurück zur Installation der benötigten Plugins"
+
+#: inc/__plugin-installer.class.php:176
+msgid "Return to the dashboard"
+msgstr "Zurück zum Dashboard"
+
+#: inc/__plugin-installer.class.php:177 inc/__plugin-installer.class.php:1941
+#: inc/dependencies.php:53 inc/plugin-installer.class.php:394
+#: inc/plugin-installer.class.php:3254
+msgid "Plugin activated successfully."
+msgstr "Plugin erfolgreich aktiviert."
+
+#: inc/__plugin-installer.class.php:178 inc/__plugin-installer.class.php:1632
+#: inc/plugin-installer.class.php:395 inc/plugin-installer.class.php:3047
+msgid "The following plugin was activated successfully:"
+msgid_plural "The following plugins were activated successfully:"
+msgstr[0] "Das folgende Plugin wurde erfolgreich aktiviert:"
+msgstr[1] "Die folgenden Plugins wurden erfolgreich aktiviert:"
+
+#. translators: 1: dashboard link.
+#: inc/__plugin-installer.class.php:179 inc/plugin-installer.class.php:401
+#, php-format
+msgid "All plugins installed and activated successfully. %1$s"
+msgstr "Alle Plugins wurden erfolgreich installiert und aktiviert. %1$s"
+
+#: inc/__plugin-installer.class.php:180 inc/plugin-installer.class.php:402
+#, fuzzy
+msgid "Dismiss this notice"
+msgstr "Diesen Hinweis ausblenden"
+
+#: inc/__plugin-installer.class.php:531 inc/__plugin-installer.class.php:2158
+#: inc/plugin-installer.class.php:393 inc/plugin-installer.class.php:922
+#: inc/plugin-installer.class.php:2628 inc/plugin-installer.class.php:3675
+msgid "Return to the Dashboard"
+msgstr "Zurück zum Dashboard"
+
+#: inc/__plugin-installer.class.php:1168
+msgid "Private Repository"
+msgstr "Privates Repository"
+
+#: inc/__plugin-installer.class.php:1171 inc/plugin-installer.class.php:2393
+msgid "Pre-Packaged"
+msgstr "Pre-Packaged"
+
+#: inc/__plugin-installer.class.php:1176 inc/plugin-installer.class.php:2387
+msgid "WordPress Repository"
+msgstr "WordPress Repository"
+
+#: inc/__plugin-installer.class.php:1179 inc/plugin-installer.class.php:2368
+msgid "Required"
+msgstr "Erforderlich"
+
+#: inc/__plugin-installer.class.php:1179 inc/plugin-installer.class.php:2371
+msgid "Recommended"
+msgstr "Empfohlen"
+
+#: inc/__plugin-installer.class.php:1182 inc/plugin-installer.class.php:2410
+#, fuzzy
+msgid "Not Installed"
+msgstr "Nicht installiert"
+
+#: inc/__plugin-installer.class.php:1184 inc/plugin-installer.class.php:2414
+msgid "Installed But Not Activated"
+msgstr "Installiert aber nicht aktiviert"
+
+#: inc/__plugin-installer.class.php:1289 inc/__plugin-installer.class.php:1397
+#: inc/plugin-installer.class.php:2812
+msgid "Install"
+msgstr "Installieren"
+
+#: inc/__plugin-installer.class.php:1311 inc/__plugin-installer.class.php:1398
+#: inc/plugin-installer.class.php:2821
+msgid "Activate"
+msgstr "Aktivieren"
+
+#: inc/__plugin-installer.class.php:1360
+#, php-format
+msgid ""
+"No plugins to install or activate. <a href=\"%1$s\" title=\"Return to the "
+"Dashboard\">Return to the Dashboard</a>"
+msgstr ""
+"Keine Plugins zum installieren oder aktivieren. <a href=„%1$s“ title=„Zurück "
+"zum Dashboard“>Zurück zum Dashboard</a>"
+
+#: inc/__plugin-installer.class.php:1376 inc/plugin-installer.class.php:2642
+msgid "Plugin"
+msgstr "Plugin"
+
+#: inc/__plugin-installer.class.php:1377 inc/plugin-installer.class.php:2643
+msgid "Source"
+msgstr "Quelle"
+
+#: inc/__plugin-installer.class.php:1378 inc/crm/clienti/form.php:612
+#: inc/pluggable/clienti/form.php:26 inc/pluggable/documenti/list.php:133
+#: inc/pluggable/scheduler/list.php:107 inc/plugin-installer.class.php:2644
+msgid "Type"
+msgstr "Typ"
+
+#: inc/__plugin-installer.class.php:1379 inc/crm/dashboard-scheduler.php:452
+#: inc/crm/dashboard-scheduler.php:486 inc/crm/dashboard-scheduler.php:523
+#: inc/crm/dashboard.php:275 inc/crm/dashboard.php:415 inc/crm/main.php:93
+#: inc/pluggable/clienti/form.php:136 inc/pluggable/scheduler/list.php:163
+#: inc/plugin-installer.class.php:2649
+msgid "Status"
+msgstr "Status"
+
+#: inc/__plugin-installer.class.php:1924
+msgid "Install package not available."
+msgstr "Installationspaket nicht verfügbar."
+
+#: inc/__plugin-installer.class.php:1925
+#, php-format
+msgid "Downloading install package from <span class=\"code\">%s</span>&#8230;"
+msgstr ""
+"Herunterladen des Installationspakets von <span class=\"code\">%s</"
+"span>&#8230;"
+
+#: inc/__plugin-installer.class.php:1926
+msgid "Unpacking the package&#8230;"
+msgstr "Entpacken des Pakets&#8230;"
+
+#: inc/__plugin-installer.class.php:1927
+msgid "Installing the plugin&#8230;"
+msgstr "Installiere das Plugin&#8230;"
+
+#: inc/__plugin-installer.class.php:1928
+msgid "Plugin install failed."
+msgstr "Plugin-Installation fehlgeschlagen."
+
+#: inc/__plugin-installer.class.php:1929
+msgid "Plugin installed successfully."
+msgstr "Plugin erfolgreich installiert."
+
+#: inc/__plugin-installer.class.php:1940 inc/plugin-installer.class.php:3253
+msgid "Plugin activation failed."
+msgstr "Plugin-Aktivierung fehlgeschlagen."
+
+#: inc/__plugin-installer.class.php:2054 inc/plugin-installer.class.php:3602
+msgid ""
+"The installation and activation process is starting. This process may take a "
+"while on some hosts, so please be patient."
+msgstr ""
+"Der Installations- und Aktivierungsprozess wurde gestartet. Dies kann eine "
+"Weile dauern, haben Sie etwas Geduld."
+
+#. translators: 1: plugin name.
+#: inc/__plugin-installer.class.php:2055 inc/plugin-installer.class.php:3604
+#, php-format
+msgid "%1$s installed and activated successfully."
+msgstr "%1$s erfolgreich installiert und aktiviert."
+
+#: inc/__plugin-installer.class.php:2055 inc/__plugin-installer.class.php:2064
+#: inc/plugin-installer.class.php:3604 inc/plugin-installer.class.php:3612
+msgid "Show Details"
+msgstr "Details anzeigen"
+
+#: inc/__plugin-installer.class.php:2055 inc/__plugin-installer.class.php:2064
+#: inc/plugin-installer.class.php:3604 inc/plugin-installer.class.php:3612
+msgid "Hide Details"
+msgstr "Details ausblenden"
+
+#: inc/__plugin-installer.class.php:2056 inc/plugin-installer.class.php:3605
+msgid "All installations and activations have been completed."
+msgstr "Alle Installationen und Aktivierungen sind abgeschlossen."
+
+#. translators: 1: plugin name, 2: action number 3: total number of actions.
+#: inc/__plugin-installer.class.php:2057 inc/plugin-installer.class.php:3607
+#, php-format
+msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
+msgstr "Installiere und aktiviere Plugin %1$s (%2$d/%3$d)"
+
+#: inc/__plugin-installer.class.php:2061 inc/plugin-installer.class.php:3610
+msgid ""
+"The installation process is starting. This process may take a while on some "
+"hosts, so please be patient."
+msgstr ""
+"Der Installationsprozess wird gestartet. Dieser Prozess kann auf manchen "
+"Servern etwas Zeit in Anspruch nehmen. Bitte haben Sie Geduld."
+
+#. translators: 1: plugin name, 2: error message.
+#: inc/__plugin-installer.class.php:2062 inc/plugin-installer.class.php:3596
+#, php-format
+msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
+msgstr ""
+"Während der Installation von %1$s: <strong>%2$s</strong> ist ein Fehler "
+"aufgetreten."
+
+#. translators: 1: plugin name.
+#: inc/__plugin-installer.class.php:2063 inc/plugin-installer.class.php:3598
+#, php-format
+msgid "The installation of %1$s failed."
+msgstr "Die Installation von %1$s ist fehlgeschlagen."
+
+#. translators: 1: plugin name.
+#: inc/__plugin-installer.class.php:2064 inc/plugin-installer.class.php:3612
+#, php-format
+msgid "%1$s installed successfully."
+msgstr "%1$s wurde erfolgreich installiert."
+
+#: inc/__plugin-installer.class.php:2065 inc/plugin-installer.class.php:3613
+#, fuzzy
+msgid "All installations have been completed."
+msgstr "Alle Installationen wurden abgeschlossen."
+
+#. translators: 1: plugin name, 2: action number 3: total number of actions.
+#: inc/__plugin-installer.class.php:2066 inc/plugin-installer.class.php:3615
+#, php-format
+msgid "Installing Plugin %1$s (%2$d/%3$d)"
+msgstr "Installiere Plugin %1$s (%2$d/%3$d)"
+
+#: inc/classes/CRMmail.class.php:470 inc/classes/CRMmail.class.php:1251
+#, php-format
+msgid "Appointment with staff %1$s on %2$s"
+msgstr "Termin mit %1$s on %2$s"
+
+#: inc/classes/CRMmail.class.php:475 inc/classes/CRMmail.class.php:1256
+#, php-format
+msgid "%1$s: Exipiring service on %2$s"
+msgstr "%1$s: Ablaufdienst auf %2$s"
+
+#: inc/classes/CRMmail.class.php:480 inc/classes/CRMmail.class.php:514
+#: inc/classes/CRMmail.class.php:1261 inc/classes/CRMmail.class.php:1291
+#, php-format
+msgid "%1$s: purchase on %2$s"
+msgstr "%1$s: Kauf auf %2$s"
+
+#: inc/classes/CRMmail.class.php:502 inc/classes/CRMmail.class.php:1279
+#, php-format
+msgid "Dear %1$s, we remind you the appointment with our staff on %2$s at %3$s"
+msgstr ""
+"Sehr geehrte %1$s, wir erinnern Sie an den Termin mit unseren Mitarbeitern "
+"auf %2$s bei %3$s"
+
+#: inc/classes/CRMmail.class.php:504 inc/classes/CRMmail.class.php:1281
+#: inc/functions.php:1744 inc/functions.php:3357
+msgid "Kind regards"
+msgstr "Freundliche Grüße"
+
+#: inc/classes/CRMmail.class.php:510 inc/classes/CRMmail.class.php:1287
+#, php-format
+msgid "Dear %1$s, %2$s reminds you that the service: %3$s will expire on %4$s"
+msgstr ""
+"Sehr geehrte %1$s, %2$s erinnert Sie daran, dass der Dienst: %3$s am %4$s "
+"abläuft"
+
+#: inc/classes/CRMmail.class.php:534 inc/classes/CRMmail.class.php:1307
+#, php-format
+msgid "Appointment on %1$s with %2$s"
+msgstr "Termin am %1$s mit %2$s"
+
+#: inc/classes/CRMmail.class.php:537 inc/classes/CRMmail.class.php:1310
+#, php-format
+msgid "Todo on %s"
+msgstr "Aufgabe zu %s"
+
+#: inc/classes/CRMmail.class.php:540 inc/classes/CRMmail.class.php:1313
+#, php-format
+msgid "Expiring service: %1$s on %2$s"
+msgstr "Abläufter Dienst: %1$s auf %2$s"
+
+#: inc/classes/CRMmail.class.php:543 inc/classes/CRMmail.class.php:1316
+#, php-format
+msgid "Payment expired on %1$s invoice # %2$s"
+msgstr "Die Zahlungsziel der Rechnung %1$s ist abgelaufen # %2$s"
+
+#: inc/classes/CRMmail.class.php:546 inc/classes/CRMmail.class.php:1319
+#, php-format
+msgid "Purchase on %1$s by %2$s"
+msgstr "Kaufen auf %1$s um %2$s"
+
+#: inc/classes/CRMmail.class.php:566 inc/classes/CRMmail.class.php:1338
+#, php-format
+msgid "We remind you the appointment with %1$s on %2$s at %3$s"
+msgstr "Wir erinnern Sie an den Termin mit %1$s auf %2$s bei %3$s"
+
+#: inc/classes/CRMmail.class.php:570 inc/classes/CRMmail.class.php:1341
+#, php-format
+msgid "We remind you the activity %1$s on %2$s"
+msgstr "Wir erinnern Sie an die Aktivität %1$s es auf %2$s"
+
+#: inc/classes/CRMmail.class.php:574 inc/classes/CRMmail.class.php:1346
+#, php-format
+msgid "We remind you that the service: %1$s by %2$s will expire on %3$s"
+msgstr "Wir erinnern Sie daran, dass der Dienst: %1$s von %2$s am %3$s abläuft"
+
+#: inc/classes/CRMmail.class.php:578 inc/classes/CRMmail.class.php:1349
+#, php-format
+msgid ""
+"We remind you that the payment of invoice # %1$s amount %2$d expired on %3$s"
+msgstr ""
+"Wir erinnern Sie daran, dass die Zahlung der Rechnung %1$s Betrag %2$d seit "
+"%3$s abgelaufen ist"
+
+#: inc/classes/CRMmail.class.php:582 inc/classes/CRMmail.class.php:1352
+#, php-format
+msgid "Purchase on %1$s"
+msgstr "Kaufen auf %1$s"
+
+#: inc/crm/articoli/list.php:55
+#: inc/crm/documenti/accountabilities/accountability_0.php:23
+#: inc/crm/documenti/accountabilities/accountability_print_0.php:11
+#: inc/crm/documenti/form_quotation.php:267
+#: inc/templates/archive-services.php:45
+#: inc/templates/single-service-stripe.php:331
+msgid "Code"
+msgstr "Code"
+
+#: inc/crm/articoli/list.php:55 inc/crm/dashboard-scheduler.php:451
+#: inc/crm/dashboard-scheduler.php:485 inc/crm/dashboard-scheduler.php:522
+#: inc/crm/dashboard.php:225 inc/crm/dashboard.php:367
+#: inc/crm/documenti/accountabilities/accountability_0.php:26
+#: inc/crm/documenti/accountabilities/accountability_print_0.php:11
+#: inc/crm/documenti/form_quotation.php:268 inc/crm/main.php:86
+#: inc/crm/scheduler/form.php:394 inc/functions.php:2248
+#: inc/pluggable/clienti/form.php:28
+msgid "Description"
+msgstr "Beschreibung"
+
+#: inc/crm/articoli/list.php:55
+#: inc/crm/documenti/accountabilities/accountability_0.php:35
+#: inc/crm/documenti/accountabilities/accountability_print_0.php:11
+#: inc/crm/documenti/accountabilities/accountability_print_0.php:86
+#: inc/crm/documenti/form_quotation.php:270
+msgid "Price"
+msgstr "Preis"
+
+#: inc/crm/articoli/list.php:58 inc/crm/dashboard-scheduler.php:356
+#: inc/crm/dashboard-scheduler.php:481 inc/crm/documenti/document_print.php:231
+#: inc/crm/documenti/form_credit_note.php:135
+#: inc/crm/documenti/form_invoice.php:153
+#: inc/crm/documenti/form_invoice_informal.php:137 inc/options.php:1010
+#: inc/options.php:1044 inc/options.php:1078 inc/options.php:1095
+#: inc/pluggable/clienti/form.php:235 inc/pluggable/clienti/list.php:157
+#: inc/pluggable/documenti/list.php:178 inc/subscription_rules.php:254
+#: inc/subscription_rules.php:773 inc/subscription_rules.php:807
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: inc/crm/articoli/list.php:79
+msgid "New Item"
+msgstr "Neuer Eintrag"
+
+#: inc/crm/c_menu.php:13
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#: inc/crm/c_menu.php:16 inc/options.php:149 inc/setup.php:700
+msgid "Customers"
+msgstr "Kunden"
+
+#: inc/crm/c_menu.php:21 inc/crm/c_menu.php:47 inc/crm/c_menu.php:73
+msgid "LIST"
+msgstr "Liste"
+
+#: inc/crm/c_menu.php:27
+msgid "NEW CUSTOMER"
+msgstr "NEUER KUNDE"
+
+#: inc/crm/c_menu.php:36 inc/options.php:169
+#: inc/templates/archive-services.php:7
+msgid "Services"
+msgstr "Dienstleistungen"
+
+#: inc/crm/c_menu.php:41 inc/setup.php:708
+msgid "Scheduler"
+msgstr "Planer"
+
+#: inc/crm/c_menu.php:53 inc/crm/clienti/form.php:561
+#: inc/crm/clienti/form.php:913 inc/crm/clienti/form_non-modal.php:284
+#: inc/crm/clienti/form_non-modal.php:461
+#: inc/crm/documenti/form_credit_note.php:248
+#: inc/crm/documenti/form_credit_note.php:493
+#: inc/crm/documenti/form_invoice.php:247
+#: inc/crm/documenti/form_invoice.php:493
+#: inc/crm/documenti/form_invoice_informal.php:250
+#: inc/crm/documenti/form_invoice_informal.php:502
+#: inc/crm/documenti/form_quotation.php:154
+#: inc/crm/documenti/form_quotation.php:441 inc/crm/scheduler/list.php:138
+#: inc/pluggable/clienti/form.php:270
+msgid "NEW TODO"
+msgstr "Neue Aufgabe"
+
+#: inc/crm/c_menu.php:59 inc/crm/clienti/form.php:565
+#: inc/crm/clienti/form.php:917 inc/crm/clienti/form_non-modal.php:287
+#: inc/crm/clienti/form_non-modal.php:464
+#: inc/crm/documenti/form_credit_note.php:252
+#: inc/crm/documenti/form_credit_note.php:494
+#: inc/crm/documenti/form_invoice.php:251
+#: inc/crm/documenti/form_invoice.php:494
+#: inc/crm/documenti/form_invoice_informal.php:254
+#: inc/crm/documenti/form_invoice_informal.php:503
+#: inc/crm/documenti/form_quotation.php:158
+#: inc/crm/documenti/form_quotation.php:442 inc/crm/scheduler/list.php:141
+#: inc/pluggable/clienti/form.php:271 inc/pluggable/clienti/list.php:289
+msgid "NEW APPOINTMENT"
+msgstr "Neuer Termin"
+
+#: inc/crm/c_menu.php:68 inc/options.php:158 inc/setup.php:716
+msgid "Documents"
+msgstr "Dokumente"
+
+#: inc/crm/c_menu.php:79 inc/crm/documenti/list.php:22
+#: inc/crm/documenti/list.php:323
+#, fuzzy
+msgid "NEW INVOICE"
+msgstr "NEUE RECHNUNG"
+
+#: inc/crm/c_menu.php:85
+#, fuzzy
+msgid "NEW QUOTATION"
+msgstr "NEUES ANGEBOT"
+
+#: inc/crm/c_menu.php:94
+msgid "Utilities"
+msgstr "Werkzeuge"
+
+#: inc/crm/c_menu.php:96 inc/metabox.php:33
+msgid "SETTINGS"
+msgstr "EINSTELLUNGEN"
+
+#: inc/crm/c_menu.php:97
+#, fuzzy
+msgid "REGISTER INVOICES"
+msgstr "RECHNUNGEN REGISTRIEREN"
+
+#: inc/crm/c_menu.php:98
+#, fuzzy
+msgid "IMPORT CUSTOMERS"
+msgstr "IMPORTKUNDEN"
+
+#: inc/crm/c_menu.php:106
+#, fuzzy
+msgid "Subscription/Notification rules"
+msgstr "Regeln für die Anmeldung/Benachrichtigung"
+
+#: inc/crm/clienti/form.php:239
+#, fuzzy
+msgid ""
+"Confirm delete? It will still be possible to recover the deleted Customer "
+msgstr ""
+"Bestätigen Sie die Löschung? Es ist immer noch möglich, den gelöschten "
+"Kunden wiederherzustellen"
+
+#: inc/crm/clienti/form.php:466
+#, fuzzy
+msgid "You should select customer country"
+msgstr "Du solltest das Land des Kunden auswählen"
+
+#: inc/crm/clienti/form.php:467
+#, fuzzy
+msgid "You should type customer VALID Tax Code or Vat Number"
+msgstr ""
+"Du solltest eine GÜLTIGE Steuernummer oder Umsatzsteueridentifikationsnummer "
+"des Kunden eingeben"
+
+#: inc/crm/clienti/form.php:468
+#, fuzzy
+msgid "You should type customer First Name or Business Name."
+msgstr "Du solltest den Vornamen oder den Firmennamen des Kunden eingeben."
+
+#: inc/crm/clienti/form.php:469
+#, fuzzy
+msgid "You should type customer Last Name or Business Name."
+msgstr "Du solltest den Nachnamen oder den Firmennamen des Kunden eingeben."
+
+#: inc/crm/clienti/form.php:470
+#, fuzzy
+msgid "You should type customer Business name or First Name and Last Name"
+msgstr ""
+"Du solltest den Firmennamen oder den Vor- und Nachnamen des Kunden eingeben"
+
+#: inc/crm/clienti/form.php:471
+#, fuzzy
+msgid "You should type customer VAT CODE if you use the 'Business name' field"
+msgstr ""
+"Du solltest den VAT CODE des Kunden eingeben, wenn du das Feld "
+"\"Unternehmensname\" verwendest"
+
+#: inc/crm/clienti/form.php:472
+#, fuzzy
+msgid "To create a new WP user you must set Email, Username and Password"
+msgstr ""
+"Um einen neuen WP-Benutzer anzulegen, musst du E-Mail, Benutzername und "
+"Passwort festlegen"
+
+#: inc/crm/clienti/form.php:473
+#, fuzzy
+msgid "Please check private or business"
+msgstr "Bitte ankreuzen: privat oder geschäftlich"
+
+#: inc/crm/clienti/form.php:496
+msgid "Customer has been saved"
+msgstr "Der Kunde wurde gespeichert"
+
+#: inc/crm/clienti/form.php:513
+#, fuzzy
+msgid "Something was wrong"
+msgstr "Etwas war falsch"
+
+#: inc/crm/clienti/form.php:535 inc/crm/dashboard-scheduler.php:455
+#: inc/crm/dashboard-scheduler.php:490 inc/crm/dashboard-scheduler.php:524
+#: inc/crm/dashboard.php:223 inc/crm/dashboard.php:365
+#: inc/crm/documenti/form_credit_note.php:268
+#: inc/crm/documenti/form_invoice.php:267
+#: inc/crm/documenti/form_invoice_informal.php:270
+#: inc/crm/documenti/form_quotation.php:172 inc/crm/scheduler/form.php:360
+#: inc/functions.php:2236 inc/pluggable/documenti/list.php:145
+#: inc/pluggable/scheduler/list.php:108
+#, fuzzy
+msgid "Customer"
+msgstr "Kunde"
+
+#: inc/crm/clienti/form.php:537 inc/crm/dashboard-scheduler.php:25
+#: inc/crm/dashboard.php:436
+msgid "New Customer"
+msgstr "Neuer Kunde"
+
+#: inc/crm/clienti/form.php:548 inc/crm/clienti/form.php:901
+#: inc/crm/clienti/form_appuntamento.php:110
+#: inc/crm/clienti/form_attivita.php:26 inc/crm/clienti/form_non-modal.php:273
+#: inc/crm/clienti/form_non-modal.php:450 inc/crm/clienti/form_todo.php:90
+#: inc/crm/documenti/form_credit_note.php:287
+#: inc/crm/documenti/form_credit_note.php:376
+#: inc/crm/documenti/form_invoice.php:283
+#: inc/crm/documenti/form_invoice.php:375
+#: inc/crm/documenti/form_invoice_informal.php:289
+#: inc/crm/documenti/form_invoice_informal.php:377
+#: inc/crm/documenti/form_quotation.php:191
+#: inc/crm/documenti/form_quotation.php:377
+#: inc/crm/register_invoices/form.php:86 inc/crm/scheduler/form.php:465
+#: inc/functions.php:2330 inc/options.php:282 inc/options.php:1298
+#: inc/options.php:1326 inc/options.php:1449
+#: inc/templates/user-tabs/tab1-form.php:40
+#, fuzzy
+msgid "Save"
+msgstr "Speichern"
+
+#: inc/crm/clienti/form.php:553 inc/crm/clienti/form.php:905
+#: inc/crm/clienti/form_appuntamento.php:111
+#: inc/crm/clienti/form_attivita.php:29 inc/crm/clienti/form_mail.php:66
+#: inc/crm/clienti/form_non-modal.php:276
+#: inc/crm/clienti/form_non-modal.php:453 inc/crm/clienti/form_todo.php:91
+#: inc/crm/documenti/form_credit_note.php:380
+#: inc/crm/documenti/form_credit_note.php:405
+#: inc/crm/documenti/form_invoice.php:380
+#: inc/crm/documenti/form_invoice.php:405
+#: inc/crm/documenti/form_invoice_informal.php:381
+#: inc/crm/documenti/form_invoice_informal.php:406
+#: inc/crm/documenti/form_quotation.php:381 inc/crm/import/form.php:150
+#: inc/crm/register_invoices/form.php:90 inc/crm/scheduler/form.php:468
+#: inc/functions.php:2331 inc/options.php:1295 inc/options.php:1323
+#: inc/subscription_rules.php:55 inc/subscription_rules.php:141
+#: inc/subscription_rules.php:160 inc/subscription_rules.php:488
+msgid "Reset"
+msgstr "Zurücksetzen"
+
+#: inc/crm/clienti/form.php:558 inc/crm/clienti/form.php:910
+#: inc/crm/clienti/form_non-modal.php:280
+#: inc/crm/clienti/form_non-modal.php:457 inc/crm/dashboard.php:260
+#: inc/crm/dashboard.php:402
+#: inc/crm/documenti/accountabilities/accountability_0.php:78
+#: inc/crm/documenti/accountabilities/accountability_0.php:127
+#: inc/crm/documenti/accountabilities/accountability_0.php:182
+#: inc/crm/documenti/accountabilities/accountability_0.php:188
+#: inc/crm/documenti/accountabilities/accountability_0.php:215
+#: inc/crm/documenti/accountabilities/accountability_0.php:382
+#: inc/crm/documenti/accountabilities/accountability_0.php:392
+#: inc/crm/documenti/accountabilities/accountability_0.php:406
+#: inc/crm/documenti/form_quotation.php:295
+#: inc/crm/documenti/form_quotation.php:309
+#: inc/crm/documenti/form_quotation.php:805
+#: inc/crm/documenti/form_quotation.php:823
+#: inc/crm/documenti/form_quotation.php:832 inc/pluggable/clienti/form.php:59
+#: inc/pluggable/clienti/form.php:239 inc/pluggable/clienti/list.php:167
+#: inc/pluggable/documenti/list.php:196 inc/pluggable/scheduler/list.php:149
+#: inc/subscription_rules.php:254 inc/subscription_rules.php:468
+#: inc/subscription_rules.php:773 inc/subscription_rules.php:807
+msgid "Delete"
+msgstr "Löschen"
+
+#: inc/crm/clienti/form.php:569 inc/crm/clienti/form.php:921
+#: inc/crm/documenti/form_credit_note.php:256
+#: inc/crm/documenti/form_invoice.php:255
+#: inc/crm/documenti/form_invoice_informal.php:258
+#: inc/crm/documenti/form_quotation.php:162
+#, fuzzy
+msgid "NEW ANNOTATION"
+msgstr "NEUE ANMERKUNG"
+
+#: inc/crm/clienti/form.php:578 inc/crm/clienti/form_non-modal.php:296
+msgid "Master Data"
+msgstr "Stammdaten"
+
+#: inc/crm/clienti/form.php:582 inc/crm/clienti/form_non-modal.php:297
+msgid "Contacts"
+msgstr "Kontakte"
+
+#: inc/crm/clienti/form.php:583 inc/crm/clienti/form.php:868
+#: inc/crm/clienti/form_appuntamento.php:43
+#: inc/crm/clienti/form_attivita.php:19 inc/crm/clienti/form_non-modal.php:298
+#: inc/crm/clienti/form_non-modal.php:429 inc/crm/clienti/form_todo.php:29
+#: inc/crm/documenti/document_print.php:164
+#: inc/crm/documenti/form_credit_note.php:166
+#: inc/crm/documenti/form_invoice.php:163
+#: inc/crm/documenti/form_invoice_informal.php:168
+#: inc/crm/documenti/form_quotation.php:135 inc/functions.php:3266
+msgid "Notes"
+msgstr "Notizen"
+
+#: inc/crm/clienti/form.php:584 inc/crm/clienti/form_non-modal.php:299
+msgid "Summary"
+msgstr "Zusammenfassung"
+
+#: inc/crm/clienti/form.php:594 inc/crm/clienti/form_attivita.php:11
+#: inc/crm/clienti/form_non-modal.php:308 inc/crm/clienti/script_mail.php:31
+#: inc/crm/documenti/form_credit_note.php:147
+#: inc/crm/documenti/form_credit_note.php:151
+#: inc/crm/documenti/form_invoice.php:138
+#: inc/crm/documenti/form_invoice.php:142
+#: inc/crm/documenti/form_invoice_informal.php:149
+#: inc/crm/documenti/form_invoice_informal.php:153
+#: inc/crm/documenti/form_quotation.php:113
+#: inc/crm/documenti/form_quotation.php:114
+#: inc/pluggable/documenti/list.php:136
+#: inc/templates/user-tabs/tab2-invoices.php:14
+msgid "Date"
+msgstr "Datum"
+
+#: inc/crm/clienti/form.php:604
+#, fuzzy
+msgid "Invoiceable?"
+msgstr "In Rechnung stellen?"
+
+#: inc/crm/clienti/form.php:607 inc/functions.php:413 inc/functions.php:2190
+msgid "Yes"
+msgstr "Ja"
+
+#: inc/crm/clienti/form.php:608 inc/functions.php:2190
+msgid "No"
+msgstr "Nein"
+
+#: inc/crm/clienti/form.php:615 inc/gateways/form.php:24
+#: inc/templates/single-service-stripe.php:295
+#: inc/templates/user-tabs/tab1-form.php:32
+msgid "Private"
+msgstr "Privat"
+
+#: inc/crm/clienti/form.php:616 inc/gateways/form.php:25 inc/options.php:121
+#: inc/templates/single-service-stripe.php:295
+#: inc/templates/user-tabs/tab1-form.php:32
+msgid "Business"
+msgstr "Geschäftlich"
+
+#: inc/crm/clienti/form.php:620
+msgid "Country"
+msgstr "Land"
+
+#: inc/crm/clienti/form.php:624 inc/crm/clienti/form_non-modal.php:305
+#: inc/options.php:230 inc/pluggable/clienti/list.php:98
+#: inc/templates/single-service-stripe.php:296
+#: inc/templates/user-tabs/tab1-form.php:33
+msgid "Business Name"
+msgstr "Geschäftsname"
+
+#: inc/crm/clienti/form.php:630
+msgid "Tax code"
+msgstr "Steuergesetzbuch"
+
+#: inc/crm/clienti/form.php:632 inc/crm/clienti/form.php:636
+#: inc/crm/clienti/form.php:1197 inc/crm/clienti/form.php:1204
+#, fuzzy
+msgid "Select country first"
+msgstr "Wähle zuerst das Land"
+
+#: inc/crm/clienti/form.php:634 inc/crm/clienti/form_non-modal.php:316
+msgid "VAT number"
+msgstr "MwSt-Nummer"
+
+#: inc/crm/clienti/form.php:640 inc/crm/clienti/form_non-modal.php:321
+#: inc/gateways/form.php:19 inc/templates/single-service-stripe.php:287
+#: inc/templates/user-tabs/tab1-form.php:25
+msgid "First Name"
+msgstr "Vorname"
+
+#: inc/crm/clienti/form.php:644 inc/crm/clienti/form_non-modal.php:324
+#: inc/gateways/form.php:20 inc/pluggable/clienti/form.php:218
+#: inc/templates/single-service-stripe.php:288
+#: inc/templates/user-tabs/tab1-form.php:26
+msgid "Last Name"
+msgstr "Nachname"
+
+#: inc/crm/clienti/form.php:650 inc/crm/clienti/form_non-modal.php:329
+#: inc/crm/documenti/form_credit_note.php:291
+#: inc/crm/documenti/form_invoice.php:287
+#: inc/crm/documenti/form_invoice_informal.php:293
+#: inc/crm/documenti/form_quotation.php:195 inc/functions.php:60
+#: inc/gateways/form.php:22 inc/pluggable/clienti/list.php:103
+#: inc/templates/single-service-stripe.php:291
+#: inc/templates/single-service-stripe.php:465
+#: inc/templates/single-service-stripe.php:480
+#: inc/templates/user-tabs/tab1-form.php:28
+msgid "Address"
+msgstr "Adresse"
+
+#: inc/crm/clienti/form.php:654 inc/crm/clienti/form_non-modal.php:332
+#: inc/templates/single-service-stripe.php:293
+#: inc/templates/user-tabs/tab1-form.php:30
+msgid "ZIP Code"
+msgstr "PLZ"
+
+#: inc/crm/clienti/form.php:660 inc/crm/clienti/form_non-modal.php:337
+#: inc/crm/documenti/form_credit_note.php:310
+#: inc/crm/documenti/form_invoice.php:306
+#: inc/crm/documenti/form_invoice_informal.php:312
+#: inc/crm/documenti/form_quotation.php:214 inc/functions.php:61
+#: inc/gateways/form.php:23 inc/options.php:240
+#: inc/templates/single-service-stripe.php:292
+#: inc/templates/user-tabs/tab1-form.php:29
+msgid "Town"
+msgstr "Stadt"
+
+#: inc/crm/clienti/form.php:664 inc/crm/clienti/form_non-modal.php:340
+#, fuzzy
+msgid "State/prov."
+msgstr "Staat/prov."
+
+#: inc/crm/clienti/form.php:671 inc/crm/clienti/form_non-modal.php:346
+#: inc/functions.php:65 inc/options.php:256 inc/pluggable/clienti/list.php:117
+#: inc/templates/single-service-stripe.php:294
+#: inc/templates/user-tabs/tab1-form.php:31
+msgid "Phone"
+msgstr "Telefon"
+
+#: inc/crm/clienti/form.php:676 inc/crm/clienti/form_non-modal.php:354
+#: inc/functions.php:66 inc/options.php:260
+msgid "Fax"
+msgstr "Fax"
+
+#: inc/crm/clienti/form.php:684
+msgid "Mobile"
+msgstr "Mobil"
+
+#: inc/crm/clienti/form.php:689 inc/crm/clienti/form_non-modal.php:235
+#: inc/crm/clienti/form_non-modal.php:357 inc/functions.php:67
+#: inc/gateways/form.php:21 inc/options.php:264
+#: inc/pluggable/clienti/form.php:222 inc/pluggable/clienti/list.php:122
+#: inc/templates/single-service-stripe.php:289
+#: inc/templates/user-tabs/tab1-form.php:27
+msgid "Email"
+msgstr "E-Mail"
+
+#: inc/crm/clienti/form.php:697
+msgid "Place of birth"
+msgstr "Geburtsort"
+
+#: inc/crm/clienti/form.php:702 inc/crm/clienti/form_non-modal.php:385
+msgid "Skype"
+msgstr "Skype"
+
+#: inc/crm/clienti/form.php:709
+msgid "Date of birth"
+msgstr "Geburtsdatum"
+
+#: inc/crm/clienti/form.php:713 inc/crm/clienti/form_non-modal.php:362
+msgid "Category"
+msgstr "Kategorie"
+
+#: inc/crm/clienti/form.php:737 inc/crm/clienti/form.php:779
+#: inc/crm/clienti/form.php:817 inc/crm/clienti/form_appuntamento.php:58
+#: inc/crm/clienti/form_todo.php:40 inc/crm/documenti/form_credit_note.php:178
+#: inc/crm/documenti/form_invoice.php:175
+#: inc/crm/documenti/form_invoice_informal.php:180 inc/crm/main.php:119
+#: inc/options.php:709 inc/options.php:891 inc/subscription_rules.php:52
+#: inc/subscription_rules.php:70 inc/subscription_rules.php:114
+msgid "Select"
+msgstr "Auswählen"
+
+#: inc/crm/clienti/form.php:738
+#, fuzzy
+msgid ""
+"No Categories; create categories in CRM settings ->Customers settings page"
+msgstr ""
+"Keine Kategorien; erstelle Kategorien auf der Seite CRM-Einstellungen -"
+">Kundeneinstellungen"
+
+#: inc/crm/clienti/form.php:750 inc/crm/clienti/form_non-modal.php:380
+#: inc/functions.php:68 inc/options.php:269
+msgid "Web Site"
+msgstr "Website"
+
+#: inc/crm/clienti/form.php:755 inc/pluggable/clienti/list.php:139
+#: inc/setup.php:623
+msgid "Interests"
+msgstr "Interessen"
+
+#: inc/crm/clienti/form.php:781
+#, fuzzy
+msgid ""
+"No Interests; create interests in CRM settings ->Customers settings page"
+msgstr ""
+"Keine Interessen; erstelle Interessen auf der Seite CRM-Einstellungen -"
+">Kundeneinstellungen"
+
+#: inc/crm/clienti/form.php:793 inc/crm/clienti/form_non-modal.php:390
+msgid "Agent"
+msgstr "Agent"
+
+#: inc/crm/clienti/form.php:797 inc/crm/clienti/form_non-modal.php:393
+#, fuzzy
+msgid "Comes from"
+msgstr "Kommt von"
+
+#: inc/crm/clienti/form.php:819
+#, fuzzy
+msgid "No Origins; create origins in CRM settings ->Customers settings page"
+msgstr ""
+"Keine Ursprünge; Ursprünge auf der Seite CRM-Einstellungen -"
+">Kundeneinstellungen erstellen"
+
+#: inc/crm/clienti/form.php:838
+#, fuzzy
+msgid "Create WP user"
+msgstr "WP-Benutzer erstellen"
+
+#: inc/crm/clienti/form.php:844 inc/crm/clienti/form_non-modal.php:407
+msgid "Username"
+msgstr "Benutzername"
+
+#: inc/crm/clienti/form.php:848 inc/crm/clienti/form_non-modal.php:410
+#, fuzzy
+msgid "Password"
+msgstr "Passwort"
+
+#: inc/crm/clienti/form.php:871
+#, fuzzy
+msgid "Notes Timeline"
+msgstr "Noten Zeitleiste"
+
+#: inc/crm/clienti/form.php:973
+#, fuzzy
+msgid "Create invoice for"
+msgstr "Rechnung erstellen für"
+
+#: inc/crm/clienti/form.php:988
+#, fuzzy
+msgid "Create quote for"
+msgstr "Angebot erstellen für"
+
+#: inc/crm/clienti/form.php:1019
+#, fuzzy
+msgid "Annotation has been deleted"
+msgstr "Die Anmerkung wurde gelöscht"
+
+#: inc/crm/clienti/form.php:1190
+msgid "Select country"
+msgstr "Land auswählen"
+
+#: inc/crm/clienti/form_appuntamento.php:24 inc/crm/dashboard-scheduler.php:449
+#: inc/crm/dashboard-scheduler.php:483 inc/crm/dashboard-scheduler.php:520
+#: inc/crm/main.php:49 inc/crm/scheduler/form.php:369 inc/functions.php:2287
+msgid "Start"
+msgstr "Start"
+
+#: inc/crm/clienti/form_appuntamento.php:28 inc/crm/dashboard-scheduler.php:450
+#: inc/crm/dashboard-scheduler.php:484 inc/crm/dashboard-scheduler.php:521
+#: inc/crm/main.php:67 inc/crm/scheduler/form.php:372 inc/functions.php:2291
+msgid "End"
+msgstr "Ende"
+
+#: inc/crm/clienti/form_appuntamento.php:33 inc/crm/clienti/form_todo.php:15
+#: inc/crm/scheduler/form.php:400 inc/functions.php:2305
+msgid "Priority"
+msgstr "Priorität"
+
+#: inc/crm/clienti/form_appuntamento.php:40 inc/crm/clienti/form_mail.php:13
+#: inc/crm/dashboard.php:224 inc/crm/dashboard.php:366
+#: inc/pluggable/scheduler/list.php:109
+msgid "Object"
+msgstr "Objekt"
+
+#: inc/crm/clienti/form_appuntamento.php:40
+#, fuzzy
+msgid "Type an object for this Item"
+msgstr "Gib ein Objekt für diesen Artikel ein"
+
+#: inc/crm/clienti/form_appuntamento.php:50
+#, fuzzy
+msgid "Notifications rules for this Appointment"
+msgstr "Benachrichtigungsregeln für diesen Termin"
+
+#: inc/crm/clienti/form_appuntamento.php:56 inc/crm/clienti/form_todo.php:38
+#: inc/crm/main.php:115 inc/crm/scheduler/form.php:410 inc/functions.php:2260
+#: inc/subscription_rules.php:70 inc/subscription_rules.php:113
+#: inc/subscription_rules.php:235 inc/subscription_rules.php:780
+#, fuzzy
+msgid "Days in advance"
+msgstr "Tage im Voraus"
+
+#: inc/crm/clienti/form_appuntamento.php:63 inc/crm/clienti/form_todo.php:46
+#: inc/crm/scheduler/form.php:417
+#, fuzzy
+msgid "Send also instant notification"
+msgstr "Sende auch sofortige Benachrichtigung"
+
+#: inc/crm/clienti/form_appuntamento.php:72 inc/crm/scheduler/form.php:439
+#, fuzzy
+msgid "Select Account for this appointment"
+msgstr "Konto für diesen Termin auswählen"
+
+#: inc/crm/clienti/form_appuntamento.php:77 inc/crm/main.php:146
+#: inc/crm/scheduler/form.php:444 inc/functions.php:2276
+#, fuzzy
+msgid "Publish on Account dashboard"
+msgstr "Auf dem Konto-Dashboard veröffentlichen"
+
+#: inc/crm/clienti/form_appuntamento.php:84
+#: inc/crm/documenti/form_credit_note.php:221
+#: inc/crm/documenti/form_invoice.php:220
+#: inc/crm/documenti/form_invoice_informal.php:223
+#: inc/crm/scheduler/form.php:450
+#, fuzzy
+msgid "Send to Group"
+msgstr "An Gruppe senden"
+
+#: inc/crm/clienti/form_appuntamento.php:89 inc/crm/clienti/form_todo.php:70
+#: inc/crm/main.php:165 inc/functions.php:2280
+#, fuzzy
+msgid "Publish on group dashboard"
+msgstr "Auf dem Dashboard der Gruppe veröffentlichen"
+
+#: inc/crm/clienti/form_appuntamento.php:97 inc/crm/clienti/form_mail.php:41
+#: inc/crm/clienti/form_todo.php:78 inc/crm/main.php:123
+#: inc/subscription_rules.php:72 inc/subscription_rules.php:124
+#, fuzzy
+msgid "Send mail to customer"
+msgstr "Post an den Kunden senden"
+
+#: inc/crm/clienti/form_appuntamento.php:103 inc/crm/main.php:127
+#, fuzzy
+msgid "Send mail to selected Accounts"
+msgstr "Mails an ausgewählte Konten senden"
+
+#: inc/crm/clienti/form_mail.php:15
+#, fuzzy
+msgid "Type an object for this email"
+msgstr "Gib ein Objekt für diese E-Mail ein"
+
+#: inc/crm/clienti/form_mail.php:21
+#, fuzzy
+msgid "Message"
+msgstr "Nachricht"
+
+#: inc/crm/clienti/form_mail.php:29
+#, fuzzy
+msgid "Send mail now"
+msgstr "Mail jetzt senden"
+
+#: inc/crm/clienti/form_mail.php:32
+#, fuzzy
+msgid "Schedule mail"
+msgstr "Post einplanen"
+
+#: inc/crm/clienti/form_mail.php:36
+#, fuzzy
+msgid ""
+"Please note that there can be a significative delay in scheduled time "
+"delivery's  accuracy. If you need an urgent delivery choose \"send mail "
+"now\" "
+msgstr ""
+"Bitte beachte, dass es zu einer erheblichen Verzögerung bei der Genauigkeit "
+"der geplanten Zustellung kommen kann. Wenn du eine dringende Lieferung "
+"benötigst, wähle \"Jetzt versenden\""
+
+#: inc/crm/clienti/form_mail.php:45 inc/subscription_rules.php:73
+#, fuzzy
+msgid "Send mail to Users"
+msgstr "Mails an Benutzer senden"
+
+#: inc/crm/clienti/form_mail.php:52
+msgid "Select Users"
+msgstr "Benutzer wählen"
+
+#: inc/crm/clienti/form_mail.php:56
+msgid "Select Groups"
+msgstr "Gruppen wählen"
+
+#: inc/crm/clienti/form_mail.php:63
+msgid "Send"
+msgstr "Senden"
+
+#: inc/crm/clienti/form_non-modal.php:190 inc/crm/dashboard.php:192
+#: inc/crm/dashboard.php:334 inc/pluggable/clienti/form.php:177
+#: inc/pluggable/clienti/list.php:60 inc/pluggable/documenti/list.php:96
+#: inc/pluggable/scheduler/list.php:90
+msgid "Showing"
+msgstr "Anzeigen"
+
+#: inc/crm/clienti/form_non-modal.php:190
+#: inc/crm/clienti/form_non-modal.php:191 inc/crm/dashboard.php:192
+#: inc/crm/dashboard.php:193 inc/crm/dashboard.php:334
+#: inc/crm/dashboard.php:335 inc/pluggable/clienti/form.php:177
+#: inc/pluggable/clienti/form.php:178 inc/pluggable/clienti/list.php:60
+#: inc/pluggable/clienti/list.php:61 inc/pluggable/documenti/list.php:96
+#: inc/pluggable/documenti/list.php:97 inc/pluggable/scheduler/list.php:90
+#: inc/pluggable/scheduler/list.php:91
+msgid "of"
+msgstr "von"
+
+#: inc/crm/clienti/form_non-modal.php:190 inc/crm/dashboard.php:192
+#: inc/crm/dashboard.php:334 inc/pluggable/clienti/form.php:177
+#: inc/pluggable/clienti/list.php:60 inc/pluggable/documenti/list.php:96
+#: inc/pluggable/scheduler/list.php:90
+msgid "total"
+msgstr "gesamt"
+
+#: inc/crm/clienti/form_non-modal.php:192 inc/crm/dashboard.php:194
+#: inc/crm/dashboard.php:336 inc/pluggable/clienti/form.php:179
+#: inc/pluggable/documenti/list.php:98 inc/pluggable/scheduler/list.php:92
+msgid "Posts per page"
+msgstr "Beiträge pro Seite"
+
+#: inc/crm/clienti/form_non-modal.php:193 inc/crm/dashboard.php:195
+#: inc/crm/dashboard.php:337 inc/pluggable/clienti/form.php:180
+#: inc/pluggable/clienti/list.php:63 inc/pluggable/documenti/list.php:99
+#: inc/pluggable/scheduler/list.php:93
+msgid "First page"
+msgstr "Erste Seite"
+
+#: inc/crm/clienti/form_non-modal.php:194 inc/crm/dashboard.php:196
+#: inc/crm/dashboard.php:338 inc/pluggable/clienti/form.php:181
+#: inc/pluggable/clienti/list.php:64 inc/pluggable/documenti/list.php:100
+#: inc/pluggable/scheduler/list.php:94
+msgid "Last page"
+msgstr "Letzte Seite"
+
+#: inc/crm/clienti/form_non-modal.php:195 inc/crm/dashboard.php:197
+#: inc/crm/dashboard.php:339 inc/pluggable/clienti/form.php:182
+#: inc/pluggable/clienti/list.php:65 inc/pluggable/documenti/list.php:101
+#: inc/pluggable/scheduler/list.php:95
+msgid "Next"
+msgstr "Weiter"
+
+#: inc/crm/clienti/form_non-modal.php:196 inc/crm/dashboard.php:198
+#: inc/crm/dashboard.php:340 inc/pluggable/clienti/form.php:183
+#: inc/pluggable/clienti/list.php:66 inc/pluggable/documenti/list.php:102
+#: inc/pluggable/scheduler/list.php:96
+msgid "Prev."
+msgstr "Zurück"
+
+#: inc/crm/clienti/form_non-modal.php:197 inc/crm/dashboard.php:199
+#: inc/crm/dashboard.php:341 inc/pluggable/clienti/form.php:184
+#: inc/pluggable/clienti/list.php:67 inc/pluggable/documenti/list.php:103
+#: inc/pluggable/scheduler/list.php:97
+msgid "Reload"
+msgstr "Neu laden"
+
+#: inc/crm/clienti/form_non-modal.php:198 inc/crm/dashboard.php:200
+#: inc/crm/dashboard.php:342 inc/pluggable/clienti/form.php:185
+#: inc/pluggable/clienti/list.php:68 inc/pluggable/documenti/list.php:104
+#: inc/pluggable/scheduler/list.php:98
+msgid "More"
+msgstr "Mehr"
+
+#: inc/crm/clienti/form_non-modal.php:205 inc/crm/dashboard.php:207
+#: inc/crm/dashboard.php:349 inc/pluggable/clienti/form.php:192
+#: inc/pluggable/clienti/list.php:76 inc/pluggable/documenti/list.php:111
+msgid "Filter by"
+msgstr "Filtern nach"
+
+#: inc/crm/clienti/form_non-modal.php:212 inc/crm/dashboard.php:214
+#: inc/crm/dashboard.php:356 inc/pluggable/clienti/form.php:199
+#: inc/pluggable/clienti/list.php:83 inc/pluggable/documenti/list.php:119
+msgid "Contains"
+msgstr "Enthält"
+
+#: inc/crm/clienti/form_non-modal.php:213 inc/crm/dashboard.php:215
+#: inc/crm/dashboard.php:357 inc/pluggable/clienti/form.php:200
+#: inc/pluggable/clienti/list.php:84 inc/pluggable/documenti/list.php:120
+msgid "Starts with"
+msgstr "Beginnt mit"
+
+#: inc/crm/clienti/form_non-modal.php:214 inc/crm/dashboard.php:216
+#: inc/crm/dashboard.php:358 inc/pluggable/clienti/form.php:201
+#: inc/pluggable/clienti/list.php:85 inc/pluggable/documenti/list.php:121
+msgid "Equal"
+msgstr "Gleich"
+
+#: inc/crm/clienti/form_non-modal.php:215 inc/crm/dashboard.php:217
+#: inc/crm/dashboard.php:359 inc/pluggable/clienti/form.php:202
+#: inc/pluggable/clienti/list.php:86 inc/pluggable/documenti/list.php:122
+msgid "Not equal"
+msgstr "Ungleich"
+
+#: inc/crm/clienti/form_non-modal.php:223 inc/pluggable/clienti/form.php:210
+#: inc/pluggable/clienti/list.php:93
+msgid "ID"
+msgstr "ID"
+
+#: inc/crm/clienti/form_non-modal.php:227
+msgid "Nome"
+msgstr "Name"
+
+#: inc/crm/clienti/form_non-modal.php:231
+msgid "Cognome"
+msgstr "Nachname"
+
+#: inc/crm/clienti/form_non-modal.php:239
+msgid "Telefono"
+msgstr "Telefon"
+
+#: inc/crm/clienti/form_non-modal.php:243
+#, fuzzy
+msgid "Qualifica"
+msgstr "Qualifica"
+
+#: inc/crm/clienti/form_non-modal.php:270 inc/setup.php:595
+#, fuzzy
+msgid "Cliente"
+msgstr "Cliente"
+
+#: inc/crm/clienti/form_non-modal.php:270
+msgid "New Client"
+msgstr "Neuer Kunde"
+
+#: inc/crm/clienti/form_non-modal.php:290
+#: inc/crm/clienti/form_non-modal.php:467
+#: inc/crm/documenti/form_credit_note.php:495
+#: inc/crm/documenti/form_invoice.php:495
+#: inc/crm/documenti/form_invoice_informal.php:504
+#: inc/crm/documenti/form_quotation.php:443 inc/crm/scheduler/list.php:145
+#: inc/pluggable/clienti/form.php:272 inc/pluggable/clienti/list.php:291
+#, fuzzy
+msgid "NEW ACTIVITY"
+msgstr "NEUE AKTIVITÄT"
+
+#: inc/crm/clienti/form_non-modal.php:313
+#, fuzzy
+msgid "Codice fiscale"
+msgstr "Steuergesetzbuch"
+
+#: inc/crm/clienti/form_non-modal.php:349
+msgid "Phone 2"
+msgstr "Telefon 2"
+
+#: inc/crm/clienti/form_non-modal.php:402
+msgid "Create User"
+msgstr "Benutzer erstellen"
+
+#: inc/crm/clienti/form_todo.php:10 inc/crm/dashboard.php:226
+#: inc/crm/dashboard.php:368 inc/functions.php:2299
+#: inc/pluggable/scheduler/list.php:110
+msgid "Expiration"
+msgstr "Ablauf"
+
+#: inc/crm/clienti/form_todo.php:24 inc/crm/documenti/document_print.php:132
+#: inc/crm/documenti/form_quotation.php:126 inc/crm/scheduler/form.php:387
+#: inc/functions.php:2244 inc/functions.php:3234
+#: inc/pluggable/clienti/form.php:27
+msgid "Subject"
+msgstr "Betreff"
+
+#: inc/crm/clienti/form_todo.php:25
+#, fuzzy
+msgid "Type a subject for this Item"
+msgstr "Gib einen Betreff für diesen Artikel ein"
+
+#: inc/crm/clienti/form_todo.php:34
+#, fuzzy
+msgid "Notifications rules for this TODO"
+msgstr "Benachrichtigungsregeln für dieses TODO"
+
+#: inc/crm/clienti/form_todo.php:53
+#, fuzzy
+msgid "Notify to User"
+msgstr "Benutzer benachrichtigen"
+
+#: inc/crm/clienti/form_todo.php:58
+#, fuzzy
+msgid "Publish on user dashboard"
+msgstr "Auf dem Benutzer-Dashboard veröffentlichen"
+
+#: inc/crm/clienti/form_todo.php:65
+#, fuzzy
+msgid "Notify to Group"
+msgstr "An Gruppe benachrichtigen"
+
+#: inc/crm/clienti/form_todo.php:84 inc/subscription_rules.php:131
+#, fuzzy
+msgid "Send mail to selected recipients"
+msgstr "Mails an ausgewählte Empfänger senden"
+
+#: inc/crm/clienti/list.php:65
+#, fuzzy
+msgid "CUSTOMERS"
+msgstr "KUNDEN"
+
+#: inc/crm/clienti/script_appuntamento.php:9 inc/pluggable/clienti/list.php:200
+#, fuzzy
+msgid "Add appointment for Customer:"
+msgstr "Termin für Kunden hinzufügen:"
+
+#: inc/crm/clienti/script_appuntamento.php:69
+#: inc/crm/clienti/script_mail.php:90 inc/crm/clienti/script_todo.php:71
+msgid "Select user"
+msgstr "Benutzer wählen"
+
+#: inc/crm/clienti/script_appuntamento.php:85
+#: inc/crm/clienti/script_mail.php:106 inc/crm/clienti/script_todo.php:87
+msgid "Select group"
+msgstr "Gruppe auswählen"
+
+#: inc/crm/clienti/script_appuntamento.php:213
+#, fuzzy
+msgid "Appointment has been added"
+msgstr "Termin wurde hinzugefügt"
+
+#: inc/crm/clienti/script_appuntamento.php:351
+#: inc/crm/clienti/script_todo.php:354 inc/crm/scheduler/form.php:201
+#, fuzzy
+msgid "You should select how many days in advance to activate the notification"
+msgstr ""
+"Du solltest auswählen, wie viele Tage im Voraus die Benachrichtigung "
+"aktiviert werden soll"
+
+#: inc/crm/clienti/script_appuntamento.php:352
+#: inc/crm/clienti/script_todo.php:355
+#: inc/crm/documenti/form_credit_note.php:563
+#: inc/crm/documenti/form_invoice.php:563
+#: inc/crm/documenti/form_invoice_informal.php:572
+#: inc/crm/scheduler/form.php:202
+#, fuzzy
+msgid "You should select a user or a group of users to notify to"
+msgstr ""
+"Du solltest einen Benutzer oder eine Gruppe von Benutzern auswählen, die "
+"benachrichtigt werden sollen"
+
+#: inc/crm/clienti/script_appuntamento.php:353
+#: inc/crm/clienti/script_todo.php:356
+#, fuzzy
+msgid "You should select a client"
+msgstr "Du solltest einen Kunden auswählen"
+
+#: inc/crm/clienti/script_appuntamento.php:354
+#: inc/crm/clienti/script_mail.php:286 inc/crm/clienti/script_todo.php:357
+#, fuzzy
+msgid "You should type a subject for this item"
+msgstr "Du solltest einen Betreff für diesen Artikel eingeben"
+
+#: inc/crm/clienti/script_appuntamento.php:355
+#: inc/crm/clienti/script_todo.php:358
+#, fuzzy
+msgid "You should select  date for this event"
+msgstr "Du solltest das Datum für diese Veranstaltung auswählen"
+
+#: inc/crm/clienti/script_attivita.php:7 inc/crm/clienti/script_attivita.php:18
+#: inc/pluggable/clienti/list.php:215
+#, fuzzy
+msgid "Add activity for Customer:"
+msgstr "Aktivität für Kunden hinzufügen:"
+
+#: inc/crm/clienti/script_attivita.php:39
+#, fuzzy
+msgid "You should type some text"
+msgstr "Du solltest etwas Text eingeben"
+
+#: inc/crm/clienti/script_attivita.php:114
+#, fuzzy
+msgid "Annotation has been added"
+msgstr "Anmerkung wurde hinzugefügt"
+
+#: inc/crm/clienti/script_mail.php:24
+msgid "Attach files"
+msgstr "Datei(en) einfügen"
+
+#: inc/crm/clienti/script_mail.php:28 inc/crm/documenti/document_print.php:64
+#: inc/crm/documenti/form_quotation.php:73 inc/crm/documenti/list.php:45
+#: inc/crm/documenti/list.php:333 inc/functions.php:3152
+msgid "Quote"
+msgstr "Zitat"
+
+#: inc/crm/clienti/script_mail.php:28 inc/crm/documenti/document_print.php:74
+#: inc/crm/documenti/list.php:44 inc/crm/documenti/list.php:332
+#: inc/functions.php:3162 inc/templates/user-tabs/tab2-invoices.php:14
+msgid "Invoice"
+msgstr "Rechnung"
+
+#: inc/crm/clienti/script_mail.php:29
+#, fuzzy
+msgid "Generate pdf"
+msgstr "Pdf generieren"
+
+#: inc/crm/clienti/script_mail.php:29
+msgid "View document"
+msgstr "Dokument ansehen"
+
+#: inc/crm/clienti/script_mail.php:31 inc/pluggable/documenti/list.php:146
+msgid "Amount"
+msgstr "Menge"
+
+#: inc/crm/clienti/script_mail.php:193 inc/crm/clienti/script_mail.php:204
+#, fuzzy
+msgid "Send mail to Customer:"
+msgstr "Post an den Kunden schicken:"
+
+#: inc/crm/clienti/script_mail.php:216
+msgid "Generate PDF"
+msgstr "PDF generieren"
+
+#: inc/crm/clienti/script_mail.php:287
+#, fuzzy
+msgid "You should write a content message"
+msgstr "Du solltest eine inhaltliche Botschaft schreiben"
+
+#: inc/crm/clienti/script_mail.php:333
+#, fuzzy
+msgid "Email has been scheduled"
+msgstr "E-Mail wurde geplant"
+
+#: inc/crm/clienti/script_mail.php:333
+msgid "Email has been sent"
+msgstr "E-Mail wurde gesendet"
+
+#: inc/crm/clienti/script_todo.php:9 inc/crm/clienti/script_todo.php:21
+#: inc/pluggable/clienti/list.php:186
+#, fuzzy
+msgid "Add todo for Customer:"
+msgstr "ToDo für Kunden hinzufügen:"
+
+#: inc/crm/clienti/script_todo.php:213
+#, fuzzy
+msgid "TODO has been added"
+msgstr "TODO wurde hinzugefügt"
+
+#: inc/crm/dashboard-scheduler.php:9 inc/crm/dashboard.php:425
+#, fuzzy
+msgid "Quick Menu"
+msgstr "Schnellmenü"
+
+#: inc/crm/dashboard-scheduler.php:13 inc/crm/dashboard-scheduler.php:16
+#: inc/crm/dashboard.php:429
+#, fuzzy
+msgid "New Todo"
+msgstr "Neu Todo"
+
+#: inc/crm/dashboard-scheduler.php:19 inc/crm/dashboard-scheduler.php:22
+#: inc/crm/dashboard.php:432
+msgid "New appointment"
+msgstr "Neue Terminvereinbarung"
+
+#: inc/crm/dashboard-scheduler.php:31 inc/crm/dashboard.php:442
+#, fuzzy
+msgid "New quotation"
+msgstr "Neues Angebot"
+
+#: inc/crm/dashboard-scheduler.php:36 inc/crm/dashboard.php:447
+msgid "New Invoice"
+msgstr "Neue Rechnung"
+
+#: inc/crm/dashboard-scheduler.php:46 inc/crm/dashboard.php:457
+#: inc/options.php:1419
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: inc/crm/dashboard-scheduler.php:57
+#, fuzzy
+msgid "Copy Event"
+msgstr "Ereignis kopieren"
+
+#: inc/crm/dashboard-scheduler.php:57
+msgid "OR"
+msgstr "ODER"
+
+#: inc/crm/dashboard-scheduler.php:57
+msgid "Edit Event"
+msgstr "Veranstaltung bearbeiten"
+
+#: inc/crm/dashboard-scheduler.php:77
+msgid "New"
+msgstr "Neu"
+
+#: inc/crm/dashboard-scheduler.php:296
+msgid "Are you sure you want to delete this event?"
+msgstr "Sind Sie sicher, dass Sie dieses Ereignis löschen möchten?"
+
+#: inc/crm/dashboard-scheduler.php:300
+msgid "More events"
+msgstr "Mehr Veranstaltungen"
+
+#: inc/crm/dashboard-scheduler.php:456 inc/crm/dashboard-scheduler.php:491
+#: inc/crm/dashboard-scheduler.php:525
+msgid "Assigned to"
+msgstr "Zugewiesen an"
+
+#: inc/crm/dashboard-scheduler.php:479 inc/crm/dashboard.php:485
+#: inc/crm/dashboard.php:511 inc/crm/main.php:98 inc/crm/scheduler/list.php:153
+#: inc/functions.php:2317
+msgid "Done"
+msgstr "Erledigt"
+
+#: inc/crm/dashboard-scheduler.php:479 inc/crm/dashboard.php:488
+#: inc/crm/dashboard.php:514 inc/crm/main.php:96 inc/crm/scheduler/list.php:157
+#: inc/functions.php:2314
+#, fuzzy
+msgid "To be done"
+msgstr "Noch zu erledigen"
+
+#: inc/crm/dashboard-scheduler.php:487
+msgid "Quick Edit"
+msgstr "Schnellbearbeitung"
+
+#: inc/crm/dashboard-scheduler.php:527
+#, fuzzy
+msgid "No event data is available"
+msgstr "Es sind keine Ereignisdaten verfügbar"
+
+#: inc/crm/dashboard.php:139
+msgid "No TODO to show"
+msgstr "Keine Aufgabe eigetragen"
+
+#: inc/crm/dashboard.php:184 inc/crm/dashboard.php:324
+#: inc/pluggable/clienti/form.php:20 inc/pluggable/clienti/form.php:167
+#: inc/pluggable/documenti/list.php:87 inc/pluggable/scheduler/list.php:82
+#, fuzzy
+msgid "Drag columns headers and drop it here to group by that column"
+msgstr ""
+"Ziehe die Spaltenüberschriften und lege sie hier ab, um nach dieser Spalte "
+"zu gruppieren"
+
+#: inc/crm/dashboard.php:227 inc/crm/dashboard.php:369
+#: inc/pluggable/scheduler/list.php:119
+msgid "Recipients"
+msgstr "Empfänger"
+
+#: inc/crm/dashboard.php:230 inc/crm/dashboard.php:372
+#: inc/pluggable/clienti/form.php:32 inc/pluggable/scheduler/list.php:123
+msgid "Open"
+msgstr "Offen"
+
+#: inc/crm/dashboard.php:268 inc/crm/dashboard.php:408
+#: inc/crm/documenti/accountabilities/accountability_0.php:400
+#: inc/pluggable/clienti/form.php:61 inc/pluggable/clienti/form.php:243
+#: inc/pluggable/clienti/list.php:169 inc/pluggable/documenti/list.php:205
+#: inc/pluggable/scheduler/list.php:151
+msgid "Confirm delete"
+msgstr "Löschen bestätigen"
+
+#: inc/crm/dashboard.php:284
+msgid "No APPOINTMENTS to show"
+msgstr "Keine TERMINE eingetragen"
+
+#: inc/crm/dashboard.php:465
+#, fuzzy
+msgid "Your current notifications"
+msgstr "Deine aktuellen Benachrichtigungen"
+
+#: inc/crm/dashboard.php:468
+msgid "Daily View"
+msgstr "Tagesansicht"
+
+#: inc/crm/dashboard.php:469
+msgid "Weekly View"
+msgstr "Wochenansicht"
+
+#: inc/crm/dashboard.php:478
+msgid "Todo"
+msgstr "Aufgabenliste"
+
+#: inc/crm/dashboard.php:482 inc/crm/dashboard.php:508
+#: inc/crm/scheduler/list.php:149 inc/subscription_rules.php:91
+msgid "Legend"
+msgstr "Legende"
+
+#: inc/crm/dashboard.php:491 inc/crm/dashboard.php:517 inc/crm/main.php:100
+#: inc/crm/scheduler/list.php:161 inc/functions.php:2320
+msgid "Canceled"
+msgstr "Abgebrochen"
+
+#: inc/crm/dashboard.php:494 inc/crm/dashboard.php:520
+#: inc/crm/scheduler/list.php:164
+#, fuzzy
+msgid "Mouse over to display info"
+msgstr "Maus darüber fahren, um Infos anzuzeigen"
+
+#: inc/crm/dashboard.php:504
+msgid "Appointments"
+msgstr "Termine"
+
+#: inc/crm/dashboard.php:520
+#, fuzzy
+msgid "Info tooltip"
+msgstr "Info-Tooltip"
+
+#: inc/crm/documenti/accountabilities/accountability_0.php:5
+#: inc/crm/documenti/form_quotation.php:258
+#, fuzzy
+msgid "Add row with price"
+msgstr "Zeile mit Preis hinzufügen"
+
+#: inc/crm/documenti/accountabilities/accountability_0.php:8
+#: inc/crm/documenti/form_quotation.php:259
+#, fuzzy
+msgid "Add descriptive row"
+msgstr "Beschreibende Zeile hinzufügen"
+
+#: inc/crm/documenti/accountabilities/accountability_0.php:29
+msgid "Rule"
+msgstr "Regel"
+
+#: inc/crm/documenti/accountabilities/accountability_0.php:32
+#: inc/crm/documenti/form_quotation.php:269
+msgid "Q.ty"
+msgstr "Q ty"
+
+#: inc/crm/documenti/accountabilities/accountability_0.php:38
+#: inc/crm/documenti/accountabilities/accountability_print_0.php:11
+#: inc/crm/documenti/form_quotation.php:271
+msgid "Discount"
+msgstr "Rabatt"
+
+#: inc/crm/documenti/accountabilities/accountability_0.php:43
+#: inc/crm/documenti/form_quotation.php:272 inc/metabox.php:108
+#: inc/options.php:882 inc/pluggable/clienti/list.php:112
+msgid "VAT"
+msgstr "MwSt."
+
+#: inc/crm/documenti/accountabilities/accountability_0.php:46
+#: inc/crm/documenti/accountabilities/accountability_0.php:155
+#: inc/crm/documenti/accountabilities/accountability_print_0.php:11
+#: inc/crm/documenti/form_quotation.php:273
+#: inc/crm/documenti/form_quotation.php:333
+#, fuzzy
+msgid "Total"
+msgstr "Gesamt"
+
+#: inc/crm/documenti/accountabilities/accountability_0.php:49
+#: inc/crm/documenti/form_quotation.php:274 inc/subscription_rules.php:71
+#: inc/subscription_rules.php:109
+msgid "Actions"
+msgstr "Aktionen"
+
+#: inc/crm/documenti/accountabilities/accountability_0.php:143
+#: inc/crm/documenti/accountabilities/accountability_print_0.php:85
+#: inc/crm/documenti/form_quotation.php:327
+msgid "Total Net"
+msgstr "Gesamt Netto"
+
+#: inc/crm/documenti/accountabilities/accountability_0.php:149
+#: inc/crm/documenti/accountabilities/accountability_print_0.php:87
+#: inc/crm/documenti/form_quotation.php:330
+msgid "Total Tax"
+msgstr "Gesamtsteuer"
+
+#: inc/crm/documenti/accountabilities/accountability_0.php:337
+msgid ""
+"Confirm delete? Deletion will not have effect until you save the document"
+msgstr ""
+"Löschen bestätigen? Das Löschen wird erst wirksam, wenn Sie das Dokument "
+"speichern"
+
+#: inc/crm/documenti/accountabilities/accountability_print_0.php:11
+msgid "Quantity"
+msgstr "Menge"
+
+#: inc/crm/documenti/accountabilities/accountability_print_0.php:89
+msgid "Refund"
+msgstr "Rückerstattung"
+
+#: inc/crm/documenti/accountabilities/accountability_print_0.php:91
+msgid "Grand Total"
+msgstr "Gesamtsumme"
+
+#: inc/crm/documenti/document_print.php:84 inc/functions.php:3172
+#, fuzzy
+msgid "Informal invoice"
+msgstr "Informelle Rechnung"
+
+#: inc/crm/documenti/document_print.php:121
+#: inc/crm/documenti/form_credit_note.php:322
+#: inc/crm/documenti/form_invoice.php:318
+#: inc/crm/documenti/form_invoice_informal.php:324
+#: inc/crm/documenti/form_quotation.php:226 inc/functions.php:3220
+#: inc/gateways/form.php:27
+#, fuzzy
+msgid "VAT code"
+msgstr "MwSt.-Code"
+
+#: inc/crm/documenti/document_print.php:123 inc/functions.php:3222
+#: inc/pluggable/clienti/list.php:107
+msgid "Fiscal code"
+msgstr "Steuernummer"
+
+#: inc/crm/documenti/document_print.php:125 inc/functions.php:3226
+#, fuzzy
+msgid "Reference #"
+msgstr "Referenz #"
+
+#: inc/crm/documenti/document_print.php:127 inc/functions.php:3216
+msgid "issued on"
+msgstr "ausgestellt am"
+
+#: inc/crm/documenti/document_print.php:162 inc/functions.php:3264
+msgid "Payment"
+msgstr "Zahlung"
+
+#: inc/crm/documenti/document_print.php:181 inc/functions.php:3280
+msgid "Conditions"
+msgstr "Bedingungen"
+
+#: inc/crm/documenti/document_print.php:221
+msgid "Get PDF"
+msgstr "PDF herunterladen"
+
+#: inc/crm/documenti/document_print.php:224
+msgid "Download"
+msgstr "Download"
+
+#: inc/crm/documenti/document_print.php:239
+msgid "Print options"
+msgstr "Print-Optionen"
+
+#: inc/crm/documenti/document_print.php:460
+#, fuzzy
+msgid ""
+"The current document has been downloaded in your PC and saved on the server "
+"in"
+msgstr ""
+"Das aktuelle Dokument wurde auf deinem PC heruntergeladen und auf dem Server "
+"in"
+
+#: inc/crm/documenti/document_print.php:461
+msgid "Send to customer"
+msgstr "An Kunden senden"
+
+#: inc/crm/documenti/form_credit_note.php:125
+#, fuzzy
+msgid "CREATE/EDIT CREDIT NOTE"
+msgstr "GUTSCHRIFT ERSTELLEN/BEARBEITEN"
+
+#: inc/crm/documenti/form_credit_note.php:128
+msgid "CREDIT NOTE"
+msgstr "Gutschrift"
+
+#: inc/crm/documenti/form_credit_note.php:129
+#: inc/crm/documenti/form_invoice.php:124
+#: inc/crm/documenti/form_invoice_informal.php:131
+#: inc/crm/documenti/form_quotation.php:102
+#, fuzzy
+msgid "COMMENTS AND INTERNAL DATA"
+msgstr "KOMMENTARE UND INTERNE DATEN"
+
+#: inc/crm/documenti/form_credit_note.php:133
+#, fuzzy
+msgid "CREDIT NOTE DATA"
+msgstr "GUTSCHRIFTSDATEN"
+
+#: inc/crm/documenti/form_credit_note.php:138
+#: inc/crm/documenti/form_credit_note.php:140
+#: inc/crm/documenti/form_invoice.php:146
+#: inc/crm/documenti/form_invoice.php:148
+#: inc/crm/documenti/form_invoice_informal.php:140
+#: inc/crm/documenti/form_invoice_informal.php:142
+#: inc/crm/documenti/form_quotation.php:109
+msgid "Number"
+msgstr "Nummer"
+
+#: inc/crm/documenti/form_credit_note.php:144
+#: inc/crm/documenti/form_invoice.php:135
+#: inc/crm/documenti/form_invoice_informal.php:146
+msgid "Issue Date"
+msgstr "Ausgabedatum"
+
+#: inc/crm/documenti/form_credit_note.php:156
+#: inc/crm/documenti/form_invoice.php:156
+#: inc/crm/documenti/form_invoice_informal.php:158
+#, fuzzy
+msgid ""
+"WARNING: edit date and number may cause incongruences in your accounting"
+msgstr ""
+"WARNUNG: Die Bearbeitung von Datum und Nummer kann zu Unstimmigkeiten in "
+"deiner Buchhaltung führen"
+
+#: inc/crm/documenti/form_credit_note.php:162
+#: inc/crm/documenti/form_invoice.php:159
+#: inc/crm/documenti/form_invoice_informal.php:164
+#: inc/crm/documenti/form_quotation.php:130
+msgid "Reference"
+msgstr "Referenz"
+
+#: inc/crm/documenti/form_credit_note.php:169
+#: inc/crm/documenti/form_invoice.php:166
+#: inc/crm/documenti/form_invoice_informal.php:171
+#, fuzzy
+msgid "Will be shown in the document"
+msgstr "Wird im Dokument angezeigt"
+
+#: inc/crm/documenti/form_credit_note.php:174
+#: inc/crm/documenti/form_invoice.php:171
+#: inc/crm/documenti/form_invoice_informal.php:176 inc/options.php:858
+msgid "Payment methods"
+msgstr "Zahlungsarten"
+
+#: inc/crm/documenti/form_credit_note.php:183
+#: inc/crm/documenti/form_invoice.php:181
+#: inc/crm/documenti/form_invoice_informal.php:185 inc/options.php:1201
+#: inc/options.php:1209
+msgid "dd"
+msgstr "tt"
+
+#: inc/crm/documenti/form_credit_note.php:195
+#: inc/crm/documenti/form_invoice.php:193
+#: inc/crm/documenti/form_invoice_informal.php:197
+#, fuzzy
+msgid "Payment exp. Date"
+msgstr "Zahlungsfr. Datum"
+
+#: inc/crm/documenti/form_credit_note.php:203
+#: inc/crm/documenti/form_invoice.php:201
+#: inc/crm/documenti/form_invoice_informal.php:205
+#: inc/pluggable/documenti/list.php:159
+msgid "Paid"
+msgstr "Bezahlt"
+
+#: inc/crm/documenti/form_credit_note.php:210
+#: inc/crm/documenti/form_invoice.php:208
+#: inc/crm/documenti/form_invoice_informal.php:212
+msgid "Notify"
+msgstr "Benachrichtigen"
+
+#: inc/crm/documenti/form_credit_note.php:217
+#, fuzzy
+msgid "Credit note payment reminder"
+msgstr "Gutschrift Zahlungserinnerung"
+
+#: inc/crm/documenti/form_credit_note.php:220
+#: inc/crm/documenti/form_invoice.php:219
+#: inc/crm/documenti/form_invoice_informal.php:222
+#: inc/crm/scheduler/form.php:439
+msgid "Send to User"
+msgstr "An Benutzer senden"
+
+#: inc/crm/documenti/form_credit_note.php:222
+#: inc/crm/documenti/form_invoice.php:221
+#: inc/crm/documenti/form_invoice_informal.php:224
+#, fuzzy
+msgid "Days after expiration"
+msgstr "Tage nach Verfall"
+
+#: inc/crm/documenti/form_credit_note.php:222
+#: inc/crm/documenti/form_invoice.php:221
+#: inc/crm/documenti/form_invoice_informal.php:224
+#, fuzzy
+msgid "Edit default value"
+msgstr "Standardwert bearbeiten"
+
+#: inc/crm/documenti/form_credit_note.php:230
+#: inc/crm/documenti/form_invoice.php:229
+#: inc/crm/documenti/form_invoice_informal.php:232
+#: inc/crm/documenti/form_quotation.php:138
+#, fuzzy
+msgid "CUSTOMER DATA"
+msgstr "KUNDENDATEN"
+
+#: inc/crm/documenti/form_credit_note.php:241
+#: inc/crm/documenti/form_invoice.php:240
+#: inc/crm/documenti/form_invoice_informal.php:243
+#: inc/crm/documenti/form_quotation.php:148
+#, fuzzy
+msgid "EDIT CUSTOMER DETAILS"
+msgstr "KUNDENDATEN BEARBEITEN"
+
+#: inc/crm/documenti/form_credit_note.php:245
+#: inc/crm/documenti/form_invoice.php:244
+#: inc/crm/documenti/form_invoice_informal.php:247
+#: inc/crm/documenti/form_quotation.php:151
+#, fuzzy
+msgid "QUIT EDITING"
+msgstr "EDITIEREN BEENDEN"
+
+#: inc/crm/documenti/form_credit_note.php:281
+#: inc/crm/documenti/form_invoice_informal.php:283
+#: inc/crm/documenti/form_quotation.php:186 inc/functions.php:2240
+msgid "Contact"
+msgstr "Kontakt"
+
+#: inc/crm/documenti/form_credit_note.php:297
+#: inc/crm/documenti/form_invoice.php:293
+#: inc/crm/documenti/form_invoice_informal.php:299
+#: inc/crm/documenti/form_quotation.php:201 inc/options.php:244
+msgid "ZIP code"
+msgstr "PLZ"
+
+#: inc/crm/documenti/form_credit_note.php:303
+#: inc/crm/documenti/form_invoice.php:299
+#: inc/crm/documenti/form_invoice_informal.php:305
+#: inc/crm/documenti/form_quotation.php:207
+#, fuzzy
+msgid "C.F."
+msgstr "C.F."
+
+#: inc/crm/documenti/form_credit_note.php:316
+#: inc/crm/documenti/form_invoice.php:312
+#: inc/crm/documenti/form_invoice_informal.php:318
+#: inc/crm/documenti/form_quotation.php:220
+#, fuzzy
+msgid "State/Prov."
+msgstr "Staat/Prov."
+
+#: inc/crm/documenti/form_credit_note.php:329
+#, fuzzy
+msgid "Add Products to credit note"
+msgstr "Produkte zur Gutschrift hinzufügen"
+
+#: inc/crm/documenti/form_credit_note.php:363
+#: inc/crm/documenti/form_invoice.php:359
+#: inc/crm/documenti/form_invoice_informal.php:364
+#: inc/crm/documenti/form_quotation.php:349
+msgid "Comments"
+msgstr "Kommentare"
+
+#: inc/crm/documenti/form_credit_note.php:390
+#: inc/crm/documenti/form_invoice.php:390
+#: inc/crm/documenti/form_invoice_informal.php:391
+#: inc/crm/documenti/form_quotation.php:389
+msgid "Printable version"
+msgstr "Druckbare Fassung"
+
+#: inc/crm/documenti/form_credit_note.php:400
+#: inc/crm/documenti/form_invoice.php:400
+#: inc/crm/documenti/form_invoice_informal.php:401
+#, fuzzy
+msgid "Change default days"
+msgstr "Standardtage ändern"
+
+#: inc/crm/documenti/form_credit_note.php:403
+#: inc/crm/documenti/form_invoice.php:403
+#: inc/crm/documenti/form_invoice_informal.php:404
+#, fuzzy
+msgid "Change default value"
+msgstr "Standardwert ändern"
+
+#: inc/crm/documenti/form_credit_note.php:404
+#: inc/crm/documenti/form_invoice.php:404
+#: inc/crm/documenti/form_invoice_informal.php:405 inc/gateways/form.php:31
+msgid "Confirm"
+msgstr "Bestätigen"
+
+#: inc/crm/documenti/form_credit_note.php:447
+#: inc/crm/documenti/form_invoice.php:447
+#: inc/crm/documenti/form_invoice_informal.php:448
+#, fuzzy
+msgid "Input full amount for reverse calculation:"
+msgstr "Gib den vollen Betrag für die Rückrechnung ein:"
+
+#: inc/crm/documenti/form_credit_note.php:450
+#: inc/crm/documenti/form_invoice.php:450
+#: inc/crm/documenti/form_invoice_informal.php:451
+#, fuzzy
+msgid "Input refund for reverse calculation:"
+msgstr "Eingabe der Erstattung für die Rückrechnung:"
+
+#: inc/crm/documenti/form_credit_note.php:453
+#: inc/crm/documenti/form_invoice.php:453
+#: inc/crm/documenti/form_invoice_informal.php:454
+msgid "Calculate:"
+msgstr "Berechnen:"
+
+#: inc/crm/documenti/form_credit_note.php:462
+#: inc/crm/documenti/form_invoice.php:462
+#: inc/crm/documenti/form_invoice_informal.php:471
+#, fuzzy
+msgid "Calculate from full amount:"
+msgstr "Berechne vom vollen Betrag:"
+
+#: inc/crm/documenti/form_credit_note.php:490
+#: inc/crm/documenti/form_invoice.php:490
+#: inc/crm/documenti/form_invoice_informal.php:499
+#: inc/crm/documenti/form_quotation.php:438 inc/pluggable/clienti/form.php:267
+#, fuzzy
+msgid "BUTTONS LEGEND"
+msgstr "BUTTONS LEGEND"
+
+#: inc/crm/documenti/form_credit_note.php:496
+#: inc/crm/documenti/form_invoice.php:496
+#: inc/crm/documenti/form_invoice_informal.php:505
+#: inc/crm/documenti/form_quotation.php:444
+#, fuzzy
+msgid "NEW MAIL"
+msgstr "NEUE MAIL"
+
+#: inc/crm/documenti/form_credit_note.php:562
+#: inc/crm/documenti/form_invoice.php:562
+#: inc/crm/documenti/form_invoice_informal.php:571
+#, fuzzy
+msgid "You should select an expiration date; select today for a non-relevant "
+msgstr ""
+"Du solltest ein Ablaufdatum wählen; wähle heute für eine nicht relevante"
+
+#: inc/crm/documenti/form_credit_note.php:564
+#: inc/crm/documenti/form_credit_note.php:601
+#: inc/crm/documenti/form_invoice.php:564
+#: inc/crm/documenti/form_invoice.php:601
+#: inc/crm/documenti/form_invoice_informal.php:573
+#: inc/crm/documenti/form_invoice_informal.php:610
+#: inc/crm/documenti/form_quotation.php:783 inc/crm/scheduler/form.php:203
+#, fuzzy
+msgid "You should select a customer"
+msgstr "Du solltest einen Kunden auswählen"
+
+#: inc/crm/documenti/form_credit_note.php:565
+#: inc/crm/documenti/form_invoice.php:565
+#: inc/crm/documenti/form_invoice_informal.php:574
+#, fuzzy
+msgid "You should add at least one row to this invoice"
+msgstr "Du solltest mindestens eine Zeile zu dieser Rechnung hinzufügen"
+
+#: inc/crm/documenti/form_credit_note.php:566
+#: inc/crm/documenti/form_invoice.php:566
+#: inc/crm/documenti/form_invoice_informal.php:575
+msgid "Description is mandatory"
+msgstr "Beschreibung ist erforderlich"
+
+#: inc/crm/documenti/form_credit_note.php:701
+#: inc/crm/documenti/form_invoice.php:703
+#: inc/crm/documenti/form_invoice_informal.php:710
+#: inc/crm/documenti/form_quotation.php:481
+#, fuzzy
+msgid "You're editing the master data for this customer"
+msgstr "Du bearbeitest die Stammdaten für diesen Kunden"
+
+#: inc/crm/documenti/form_credit_note.php:734
+#: inc/crm/documenti/form_invoice.php:736
+#: inc/crm/documenti/form_invoice_informal.php:743
+#: inc/crm/documenti/form_quotation.php:514
+#, fuzzy
+msgid "Data has been saved"
+msgstr "Die Daten wurden gespeichert"
+
+#: inc/crm/documenti/form_credit_note.php:782
+#: inc/crm/documenti/form_invoice.php:784
+#: inc/crm/documenti/form_invoice_informal.php:792
+#: inc/crm/scheduler/form.php:54
+msgid "Select Customer"
+msgstr "Wählen Sie einen Kunden aus"
+
+#: inc/crm/documenti/form_credit_note.php:864
+#: inc/crm/documenti/form_invoice.php:866
+#: inc/crm/documenti/form_invoice_informal.php:874
+#: inc/crm/scheduler/form.php:85 inc/subscription_rules.php:700
+#: inc/subscription_rules.php:730
+msgid "Select User"
+msgstr "Benutzer auswählen"
+
+#: inc/crm/documenti/form_credit_note.php:880
+#: inc/crm/documenti/form_invoice.php:882
+#: inc/crm/documenti/form_invoice_informal.php:890
+#: inc/crm/scheduler/form.php:119 inc/subscription_rules.php:715
+#: inc/subscription_rules.php:745
+msgid "Select Role"
+msgstr "Rolle auswählen"
+
+#: inc/crm/documenti/form_credit_note.php:952
+#: inc/crm/documenti/form_invoice.php:954
+#: inc/crm/documenti/form_invoice_informal.php:962
+#, fuzzy
+msgid "Option Saved"
+msgstr "Gespeicherte Option"
+
+#: inc/crm/documenti/form_credit_note.php:962
+#: inc/crm/documenti/form_invoice.php:964
+#: inc/crm/documenti/form_invoice_informal.php:972
+msgid "An error occurred"
+msgstr "Ein Fehler ist aufgetreten"
+
+#: inc/crm/documenti/form_invoice.php:120
+#, fuzzy
+msgid "CREATE/EDIT INVOICE"
+msgstr "RECHNUNG ERSTELLEN/BEARBEITEN"
+
+#: inc/crm/documenti/form_invoice.php:123
+#: inc/crm/documenti/form_invoice_informal.php:130
+msgid "INVOICE"
+msgstr "RECHNUNG"
+
+#: inc/crm/documenti/form_invoice.php:132
+#: inc/crm/documenti/form_invoice_informal.php:135
+#, fuzzy
+msgid "INVOICE DATA"
+msgstr "RECHNUNGSDATEN"
+
+#: inc/crm/documenti/form_invoice.php:216
+#: inc/crm/documenti/form_invoice_informal.php:219
+msgid "Invoice payment reminder"
+msgstr "Zahlungserinnerung"
+
+#: inc/crm/documenti/form_invoice.php:325
+#: inc/crm/documenti/form_invoice_informal.php:331
+#, fuzzy
+msgid "Add Products to invoice"
+msgstr "Produkte zur Rechnung hinzufügen"
+
+#: inc/crm/documenti/form_invoice_informal.php:127
+#, fuzzy
+msgid "CREATE/EDIT INFORMAL INVOICE"
+msgstr "INFORMELLE RECHNUNG ERSTELLEN/BEARBEITEN"
+
+#: inc/crm/documenti/form_invoice_informal.php:1007
+#, fuzzy
+msgid "WARNING: you're working on an INFORMAL INVOICE"
+msgstr "WARNUNG: Du arbeitest an einer INFORMELLEN RECHNUNG"
+
+#: inc/crm/documenti/form_quotation.php:92
+#, fuzzy
+msgid "CREATE/EDIT QUOTE"
+msgstr "ANGEBOT ERSTELLEN/BEARBEITEN"
+
+#: inc/crm/documenti/form_quotation.php:95
+msgid "DOCUMENT"
+msgstr "DOKUMENT"
+
+#: inc/crm/documenti/form_quotation.php:96
+msgid "BODY"
+msgstr "TEXTKÖRPER"
+
+#: inc/crm/documenti/form_quotation.php:100
+#, fuzzy
+msgid "SERVICES/PRODUCTS"
+msgstr "DIENSTLEISTUNGEN/PRODUKTE"
+
+#: inc/crm/documenti/form_quotation.php:107
+#, fuzzy
+msgid "DOCUMENT DATA"
+msgstr "DOKUMENTENDATEN"
+
+#: inc/crm/documenti/form_quotation.php:117
+msgid "Expiration date"
+msgstr "Ablaufdatum"
+
+#: inc/crm/documenti/form_quotation.php:120
+#: inc/pluggable/documenti/list.php:161
+msgid "Accepted"
+msgstr "Akzeptiert"
+
+#: inc/crm/documenti/form_quotation.php:238
+#, fuzzy
+msgid "QUOTE TEXT"
+msgstr "QUOTE TEXT"
+
+#: inc/crm/documenti/form_quotation.php:253
+#, fuzzy
+msgid "Add Products to quote"
+msgstr "Produkte zum Angebot hinzufügen"
+
+#: inc/crm/documenti/form_quotation.php:342
+#, fuzzy
+msgid "Quote value (required)"
+msgstr "Angebotswert (erforderlich)"
+
+#: inc/crm/documenti/form_quotation.php:354
+#, fuzzy
+msgid "Forecast success percentage"
+msgstr "Prozentsatz der Erfolgsprognose"
+
+#: inc/crm/documenti/form_quotation.php:784
+#, fuzzy
+msgid "This quote should have a value"
+msgstr "Dieses Zitat sollte einen Wert haben"
+
+#: inc/crm/documenti/form_quotation.php:895
+#, fuzzy
+msgid "Confirm delete? It will still be possible to recover the deleted item "
+msgstr ""
+"Bestätigen Sie das Löschen? Es ist immer noch möglich, das gelöschte Objekt "
+"wiederherzustellen"
+
+#: inc/crm/documenti/list.php:16 inc/crm/documenti/list.php:317
+#, fuzzy
+msgid "NEW QUOTE"
+msgstr "NEUE QUOTE"
+
+#: inc/crm/documenti/list.php:32
+#, fuzzy
+msgid "NEW CREDIT NOTE"
+msgstr "NEUE GUTSCHRIFT"
+
+#: inc/crm/documenti/list.php:43 inc/crm/documenti/list.php:331
+#, fuzzy
+msgid "Registered invoices (underlined) cannot be edited or deleted."
+msgstr ""
+"Registrierte Rechnungen (unterstrichen) können nicht bearbeitet oder "
+"gelöscht werden."
+
+#: inc/crm/documenti/list.php:53
+msgid "INVOICES"
+msgstr "RECHNUNGEN"
+
+#: inc/crm/documenti/list.php:56
+#, fuzzy
+msgid "QUOTES"
+msgstr "ZITATE"
+
+#: inc/crm/documenti/stats.php:9
+#, fuzzy
+msgid "INVOICES STATISTICS"
+msgstr "RECHNUNGSSTATISTIK"
+
+#: inc/crm/documenti/stats.php:12
+#, fuzzy
+msgid "QUOTES STATISTICS"
+msgstr "ANFÜHRUNGSZEICHEN STATISTIK"
+
+#: inc/crm/import/form.php:52
+#, fuzzy
+msgid "The following errors occurred during import"
+msgstr "Beim Import sind folgende Fehler aufgetreten"
+
+#: inc/crm/import/form.php:80
+#, fuzzy
+msgid "Import customers from csv file"
+msgstr "Kunden aus einer csv-Datei importieren"
+
+#: inc/crm/import/form.php:81
+#, fuzzy
+msgid ""
+"Select a cvs file to import your customers. Note that the first row of the "
+"file must contain the following headers (named exactly as they are):"
+msgstr ""
+"Wähle eine cvs-Datei aus, um deine Kunden zu importieren. Beachte, dass die "
+"erste Zeile der Datei die folgenden Kopfzeilen enthalten muss (genau so "
+"benannt):"
+
+#: inc/crm/import/form.php:84
+#, fuzzy
+msgid "The fields must be separated by semicolon (;)."
+msgstr "Die Felder müssen durch ein Semikolon (;) getrennt werden."
+
+#: inc/crm/import/form.php:86
+#, fuzzy
+msgid ""
+"The only mandatory fields are: \"first_name\"+\"last_name\" or alternatively "
+"\"company\"."
+msgstr ""
+"Die einzigen Pflichtfelder sind: \"vorname \"+\"nachname\" oder alternativ "
+"\"Firma\"."
+
+#: inc/crm/import/form.php:87
+#, fuzzy
+msgid ""
+"birth_date must be in yyyy-mm-dd format; invoiceable can be 1 or 0 (for yes/"
+"no); type can be 1 or 2 (for private/business); categories, interests and "
+"origins can contain string separated by commas (see example file) "
+msgstr ""
+"birth_date muss im Format yyyy-mm-dd sein; invoiceable kann 1 oder 0 sein "
+"(für ja/nein); type kann 1 oder 2 sein (für privat/geschäftlich); "
+"categories, interests und origins können durch Kommas getrennte Strings "
+"enthalten (siehe Beispieldatei)"
+
+#: inc/crm/import/form.php:92
+#, fuzzy
+msgid ""
+"Optionally you can import newsletter subscribers into one or more lists. To "
+"this purpose, you have to add one column to your csv file named "
+"\"newsletter\" (with values 1/0) and optionally check the list(s) in which  "
+"you want to import"
+msgstr ""
+"Optional kannst du Newsletter-Abonnenten in eine oder mehrere Listen "
+"importieren. Dazu musst du deiner csv-Datei eine Spalte mit dem Namen "
+"\"newsletter\" (mit den Werten 1/0) hinzufügen und optional die Liste(n) "
+"ankreuzen, in die du importieren möchtest"
+
+#: inc/crm/import/form.php:94
+#, fuzzy
+msgid ""
+"A report will show your import errors. You can find error logs in wp-content/"
+"plugins/cp-smart-crm/logs"
+msgstr ""
+"Ein Bericht zeigt deine Importfehler an. Die Fehlerprotokolle findest du "
+"unter wp-content/plugins/cp-smart-crm/logs"
+
+#: inc/crm/import/form.php:95
+#, fuzzy
+msgid ""
+"If you select the overwrite option, the existing records will be deleted. Be "
+"careful if you have done operations on your customers: all the activities "
+"previously saved will loose their customer association."
+msgstr ""
+"Wenn du die Option Überschreiben wählst, werden die vorhandenen Datensätze "
+"gelöscht. Sei vorsichtig, wenn du Vorgänge an deinen Kunden durchgeführt "
+"hast: Alle zuvor gespeicherten Vorgänge verlieren ihre Kundenzuordnung."
+
+#: inc/crm/import/form.php:97
+#, fuzzy
+msgid "Download a csv example file"
+msgstr "Download einer csv-Beispieldatei"
+
+#: inc/crm/import/form.php:99
+#, fuzzy
+msgid "Upload csv"
+msgstr "Csv hochladen"
+
+#: inc/crm/import/form.php:105
+#, fuzzy
+msgid "Overwrite existing records"
+msgstr "Vorhandene Datensätze überschreiben"
+
+#: inc/crm/import/form.php:109
+#, fuzzy
+msgid "Warning: read above"
+msgstr "Warnung: oben lesen"
+
+#: inc/crm/import/form.php:118 inc/functions.php:3531
+#, fuzzy
+msgid "Insert in Newsletter"
+msgstr "In den Newsletter einfügen"
+
+#: inc/crm/import/form.php:125
+#, fuzzy
+msgid "Optionally select the list(s) where you want to import records"
+msgstr ""
+"Wähle optional die Liste(n) aus, in die du Datensätze importieren möchtest"
+
+#: inc/crm/import/form.php:146
+msgid "Import"
+msgstr "Importieren"
+
+#: inc/crm/main.php:19
+#, fuzzy
+msgid "Like this Plugin? A good Review is very much appreciated!"
+msgstr "Gefällt dir dieses Plugin? Eine gute Bewertung ist sehr willkommen!"
+
+#: inc/crm/main.php:29
+msgid "Title"
+msgstr "Titel"
+
+#: inc/crm/main.php:105 inc/functions.php:2311
+msgid "Result"
+msgstr "Ergebnis"
+
+#: inc/crm/main.php:134
+#, fuzzy
+msgid "Notify to users"
+msgstr "Benachrichtigung der Nutzer"
+
+#: inc/crm/main.php:153 inc/subscription_rules.php:245
+#: inc/subscription_rules.php:794 inc/subscription_rules.php:796
+#, fuzzy
+msgid "Notify to groups"
+msgstr "An Gruppen benachrichtigen"
+
+#: inc/crm/register_invoices/form.php:68
+#, fuzzy
+msgid "Register all invoices between two dates"
+msgstr "Registriere alle Rechnungen zwischen zwei Daten"
+
+#: inc/crm/register_invoices/form.php:70 inc/crm/scheduler/list.php:8
+#: inc/pluggable/documenti/list.php:227 inc/pluggable/documenti/list.php:239
+#: inc/pluggable/documenti/list.php:250
+msgid "From"
+msgstr "Von"
+
+#: inc/crm/register_invoices/form.php:72
+#, fuzzy
+msgid "You should select a date from"
+msgstr "Du solltest ein Datum auswählen aus"
+
+#: inc/crm/register_invoices/form.php:76 inc/crm/scheduler/list.php:10
+#: inc/pluggable/documenti/list.php:229 inc/pluggable/documenti/list.php:241
+#: inc/pluggable/documenti/list.php:252
+msgid "To"
+msgstr "Bis"
+
+#: inc/crm/register_invoices/form.php:78
+#, fuzzy
+msgid "You should select a date to"
+msgstr "Du solltest ein Datum wählen, das"
+
+#: inc/crm/register_invoices/form.php:83
+#, fuzzy
+msgid ""
+"WARNING: registered invoices cannot be edited any longer. These invoices "
+"exists as.pdf files in the folder: uploads/CRMdocuments"
+msgstr ""
+"WARNUNG: Registrierte Rechnungen können nicht mehr bearbeitet werden. Diese "
+"Rechnungen existieren als .pdf-Dateien im Ordner: uploads/CRMdocuments"
+
+#: inc/crm/scheduler/form.php:16 inc/pluggable/clienti/list.php:287
+#, fuzzy
+msgid "New TODO"
+msgstr "Neues TODO"
+
+#: inc/crm/scheduler/form.php:19
+msgid "New Appointment"
+msgstr "Neuer Termin"
+
+#: inc/crm/scheduler/form.php:22
+msgid "New Activity"
+msgstr "Neue Aktivität"
+
+#: inc/crm/scheduler/form.php:203
+#, fuzzy
+msgid "To send an internal communication select you company"
+msgstr "Um eine interne Mitteilung zu senden, wähle dein Unternehmen aus"
+
+#: inc/crm/scheduler/form.php:204
+#, fuzzy
+msgid "You should type a subject for this Eevent"
+msgstr "Du solltest einen Betreff für dieses Eevent eingeben"
+
+#: inc/crm/scheduler/form.php:205
+#, fuzzy
+msgid "You should select at least one user"
+msgstr "Du solltest mindestens einen Benutzer auswählen"
+
+#: inc/crm/scheduler/form.php:215
+msgid "Saving..."
+msgstr "Speichern..."
+
+#: inc/crm/scheduler/form.php:370
+#, fuzzy
+msgid "You should select a start date/time for this appointment"
+msgstr "Du solltest ein Startdatum/eine Startzeit für diesen Termin auswählen"
+
+#: inc/crm/scheduler/form.php:373
+#, fuzzy
+msgid "You should select an end date/time for this appointment"
+msgstr "Du solltest ein Enddatum/eine Endzeit für diesen Termin wählen"
+
+#: inc/crm/scheduler/form.php:379
+#, fuzzy
+msgid "TODO Date"
+msgstr "TODO Datum"
+
+#: inc/crm/scheduler/form.php:381
+#, fuzzy
+msgid "You should select an expiration date for this event"
+msgstr "Du solltest ein Ablaufdatum für dieses Ereignis wählen"
+
+#: inc/crm/scheduler/form.php:385
+msgid "Contents"
+msgstr "Inhalte"
+
+#: inc/crm/scheduler/form.php:389
+#, fuzzy
+msgid "Type a subject for this Event"
+msgstr "Gib einen Betreff für dieses Ereignis ein"
+
+#: inc/crm/scheduler/form.php:406 inc/setup.php:692
+#, fuzzy
+msgid "Notification rules"
+msgstr "Benachrichtigungsregeln"
+
+#: inc/crm/scheduler/form.php:413
+#, fuzzy
+msgid "Sel"
+msgstr "Sel"
+
+#: inc/crm/scheduler/form.php:427 inc/functions.php:2266
+#, fuzzy
+msgid "Send email to customer"
+msgstr "E-Mail an den Kunden senden"
+
+#: inc/crm/scheduler/form.php:433 inc/functions.php:2272
+#, fuzzy
+msgid "Send mail to recipients"
+msgstr "Mails an Empfänger senden"
+
+#: inc/crm/scheduler/form.php:444
+#, fuzzy
+msgid "Publish on User dashboard"
+msgstr "Auf dem Benutzer-Dashboard veröffentlichen"
+
+#: inc/crm/scheduler/form.php:454 inc/subscription_rules.php:73
+#: inc/subscription_rules.php:74
+#, fuzzy
+msgid "Publish on dashboard"
+msgstr "Auf dem Dashboard veröffentlichen"
+
+#: inc/crm/scheduler/list.php:7 inc/pluggable/documenti/list.php:226
+#: inc/pluggable/documenti/list.php:238 inc/pluggable/documenti/list.php:249
+msgid "Filter by date"
+msgstr "Nach Datum sortieren"
+
+#: inc/crm/scheduler/list.php:12 inc/pluggable/documenti/list.php:231
+#: inc/pluggable/documenti/list.php:243 inc/pluggable/documenti/list.php:254
+msgid "Filter"
+msgstr "Filter"
+
+#: inc/crm/scheduler/list.php:13 inc/pluggable/documenti/list.php:234
+#: inc/pluggable/documenti/list.php:246 inc/pluggable/documenti/list.php:257
+msgid "Reset filters"
+msgstr "Filter zurücksetzen"
+
+#: inc/custom_fields.php:9
+#, fuzzy
+msgid "WP smart CRM custom fields"
+msgstr "WP smart CRM benutzerdefinierte Felder"
+
+#: inc/dependencies.php:41 inc/plugin-installer.class.php:340
+msgid "Something went wrong with the plugin API."
+msgstr "Es ist ein Fehler mit der Plugin-API aufgetreten."
+
+#: inc/dependencies.php:42
+#, php-format
+msgid "This plugin requires the following plugin: %1$s."
+msgid_plural "This plugin requires the following plugins: %1$s."
+msgstr[0] "Dieses Plugin erfordert das folgende Plugin: %1$s."
+msgstr[1] "Dieses Plugin erfordert die folgenden Plugins: %1$s."
+
+#: inc/dependencies.php:43
+#, php-format
+msgid "This plugin recommends the following plugin: %1$s."
+msgid_plural "This plugin recommends the following plugins: %1$s."
+msgstr[0] "Dieses Plugin empfiehlt das folgende Plugin: %1$s."
+msgstr[1] "Dieses Plugin empfiehlt die folgenden Plugins: %1$s."
+
+#: inc/dependencies.php:45
+#, php-format
+msgid ""
+"The following required plugin for CP Smart CRM is currently inactive: %1$s."
+msgid_plural "The following required plugins are currently inactive: %1$s."
+msgstr[0] ""
+"Das folgende erforderliche Plugin für CP Smart CRM ist derzeit inaktiv: %1$s."
+msgstr[1] "Die folgenden erforderlichen Plugins sind derzeit inaktiv: %1$s."
+
+#: inc/dependencies.php:54
+#, php-format
+msgid "All plugins installed and activated successfully. %s"
+msgstr "Alle Plugins wurden erfolgreich installiert und aktiviert. %s"
+
+#: inc/functions.php:59 inc/pluggable/clienti/form.php:214
+#, fuzzy
+msgid "Name"
+msgstr "Name"
+
+#: inc/functions.php:62
+msgid "Zip"
+msgstr "Postleitzahl"
+
+#: inc/functions.php:63 inc/options.php:248
+#, fuzzy
+msgid "Vat Code"
+msgstr "MwSt.-Code"
+
+#: inc/functions.php:64
+#, fuzzy
+msgid "Cod. Fisc"
+msgstr "Kabeljau. Fisc"
+
+#: inc/functions.php:69
+msgid "IBAN"
+msgstr "IBAN"
+
+#: inc/functions.php:70
+msgid "SWIFT"
+msgstr "SWIFT/BIC"
+
+#: inc/functions.php:1416
+msgid "Generic error"
+msgstr "Generischer Fehler"
+
+#: inc/functions.php:1472 inc/functions.php:1474 inc/functions.php:1476
+#, fuzzy, php-format
+msgid "Missing field: %s"
+msgstr "Fehlendes Feld: %s"
+
+#: inc/functions.php:1485
+#, fuzzy
+msgid "Could not read file. Try again."
+msgstr "Die Datei konnte nicht gelesen werden. Versuche es noch einmal."
+
+#: inc/functions.php:1504
+#, fuzzy
+msgid "Import successfully done."
+msgstr "Import erfolgreich abgeschlossen."
+
+#: inc/functions.php:1662
+msgid "Low"
+msgstr "Niedrig"
+
+#: inc/functions.php:1662
+msgid "Normal"
+msgstr "Normal"
+
+#: inc/functions.php:1662
+msgid "High"
+msgstr "Hoch"
+
+#: inc/functions.php:1712
+#, fuzzy
+msgid "New User Registration on"
+msgstr "Neue Benutzerregistrierung auf"
+
+#: inc/functions.php:1716
+msgid "A very special welcome to you"
+msgstr "Ein ganz besonderes Willkommen an Sie"
+
+#: inc/functions.php:1716
+msgid "Thank you for joining"
+msgstr "Vielen Dank für Ihre Registrierung"
+
+#: inc/functions.php:1719
+msgid "Your password is"
+msgstr "Ihr Passwort ist"
+
+#: inc/functions.php:1729 inc/functions.php:1732 inc/functions.php:1735
+#, fuzzy
+msgid "Your password strenght has been detected as"
+msgstr "Die Stärke deines Passworts wurde erkannt als"
+
+#: inc/functions.php:1729
+msgid "Very Weak"
+msgstr "Sehr schwach"
+
+#: inc/functions.php:1729 inc/functions.php:1732 inc/functions.php:1735
+#, fuzzy
+msgid ""
+"We cannot accept users with weak passwords since the security of the whole "
+"site could be compromised"
+msgstr ""
+"Wir können keine Benutzer mit schwachen Passwörtern akzeptieren, da die "
+"Sicherheit der gesamten Website gefährdet sein könnte"
+
+#: inc/functions.php:1729 inc/functions.php:1732 inc/functions.php:1735
+#, fuzzy
+msgid ""
+"Therefore you have to update your password using special chars, capital and "
+"normal letters and numbers ( min 8) click here to update it"
+msgstr ""
+"Deshalb musst du dein Passwort aktualisieren, indem du Sonderzeichen, "
+"Großbuchstaben, normale Buchstaben und Zahlen (mindestens 8) verwendest. "
+"Klicke hier, um es zu aktualisieren"
+
+#: inc/functions.php:1729 inc/functions.php:1732 inc/functions.php:1735
+msgid "Your Profile"
+msgstr "Dein Profil"
+
+#: inc/functions.php:1729 inc/functions.php:1732 inc/functions.php:1735
+#, fuzzy
+msgid "thank you"
+msgstr "dankeschön"
+
+#: inc/functions.php:1732
+msgid "Weak"
+msgstr "Schwach"
+
+#: inc/functions.php:1735
+msgid "Medium"
+msgstr "Mittel"
+
+#: inc/functions.php:1953 inc/functions.php:1954
+#: inc/templates/single-service-stripe.php:227
+#: inc/templates/single-service-stripe.php:228
+#, fuzzy
+msgid "Expiring service"
+msgstr "Auslaufender Dienst"
+
+#: inc/functions.php:1956 inc/templates/single-service-stripe.php:230
+msgid "Invoice #"
+msgstr "Rechnung #"
+
+#: inc/functions.php:1958 inc/templates/single-service-stripe.php:232
+msgid "to"
+msgstr "bis"
+
+#: inc/functions.php:2212 inc/pluggable/clienti/list.php:19
+msgid "TODO"
+msgstr "ZU ERLEDIGEN"
+
+#: inc/functions.php:2215
+msgid "Appointment"
+msgstr "Termin"
+
+#: inc/functions.php:2218
+msgid "Activity"
+msgstr "Aktivität"
+
+#: inc/functions.php:2229
+#, fuzzy
+msgid "Activity detail"
+msgstr "Aktivität Detail"
+
+#: inc/functions.php:2252
+msgid "Users"
+msgstr "Benutzer"
+
+#: inc/functions.php:2256
+msgid "Groups"
+msgstr "Gruppen"
+
+#: inc/functions.php:2325
+msgid "Annotations"
+msgstr "Referenzen"
+
+#: inc/functions.php:2562
+msgid "Select..."
+msgstr "Auswählen..."
+
+#: inc/functions.php:3353
+#, fuzzy, php-format
+msgid "Invoice issued on %1$s from %2$s"
+msgstr "Rechnung ausgestellt am %1$s von %2$s"
+
+#: inc/functions.php:3355
+#, fuzzy
+msgid "Dear customer, thank you for your purchase. Your invoice is attached."
+msgstr ""
+"Lieber Kunde, vielen Dank für deinen Einkauf. Deine Rechnung ist beigefügt."
+
+#: inc/functions.php:3376
+#, fuzzy
+msgid "Print net + taxes"
+msgstr "Druck netto + Steuern"
+
+#: inc/functions.php:3382
+#, fuzzy
+msgid "Print gros amount"
+msgstr "Grosbetrag drucken"
+
+#: inc/functions.php:3388
+#, fuzzy
+msgid "Show table of total"
+msgstr "Tabelle der Gesamtsumme anzeigen"
+
+#: inc/functions.php:3394
+#, fuzzy
+msgid "Do not print anyting"
+msgstr "Nichts drucken"
+
+#: inc/functions.php:3402
+#, fuzzy
+msgid "Print 'PAID' if paid"
+msgstr "Drucke 'PAID', wenn du bezahlt hast"
+
+#: inc/functions.php:3410
+#, fuzzy
+msgid "Print 'Non formal' "
+msgstr "Drucken 'Nicht formell'"
+
+#: inc/functions.php:3431
+#, fuzzy
+msgid "ID CRM"
+msgstr "ID CRM"
+
+#: inc/functions.php:3474
+#, fuzzy
+msgid "A record with this email already exixts in state \"Confirmed\" "
+msgstr ""
+"Ein Datensatz mit dieser E-Mail befindet sich bereits im Status \"Bestätigt\""
+
+#: inc/functions.php:3477
+#, fuzzy
+msgid "A record with this email already exixts in state \"Not Confirmed\" "
+msgstr ""
+"Ein Datensatz mit dieser E-Mail befindet sich bereits im Status \"Nicht "
+"bestätigt\""
+
+#: inc/functions.php:3480
+#, fuzzy
+msgid "A record with this email already exixts in state \"Unsubsrcibed\" "
+msgstr ""
+"Ein Datensatz mit dieser E-Mail befindet sich bereits im Status "
+"\"Unsubsrcibed\""
+
+#: inc/functions.php:3483
+#, fuzzy
+msgid "A record with this email already exixts in state \"Bounced\" "
+msgstr ""
+"Ein Datensatz mit dieser E-Mail existiert bereits im Status \"Bounced\""
+
+#: inc/functions.php:3486
+#, fuzzy
+msgid "A record with this email already exixts "
+msgstr "Ein Datensatz mit dieser E-Mail ist bereits vorhanden"
+
+#: inc/functions.php:3492 inc/functions.php:3527
+#, fuzzy
+msgid "Newsletter management"
+msgstr "Newsletter Management"
+
+#: inc/functions.php:3494
+msgid "Manage subscribers"
+msgstr "Abonnenten verwalten"
+
+#: inc/functions.php:3499
+#, fuzzy
+msgid "Add record to specific newsletter lists"
+msgstr "Datensatz zu bestimmten Newsletter-Listen hinzufügen"
+
+#: inc/gateways/form.php:18
+#, fuzzy
+msgid "Confirm your data"
+msgstr "Bestätige deine Daten"
+
+#: inc/gateways/form.php:24
+msgid "Customer Type"
+msgstr "Kunden Typ"
+
+#: inc/gateways/form.php:29 inc/templates/single-service-stripe.php:302
+msgid "Choose a username"
+msgstr "Wählen Sie einen Benutzername"
+
+#: inc/gateways/form.php:30 inc/templates/single-service-stripe.php:303
+msgid "Choose a Password"
+msgstr "Wählen Sie ein Passwort"
+
+#: inc/metabox.php:25 inc/templates/single-service-stripe.php:55
+msgid "Months"
+msgstr "Monate"
+
+#: inc/metabox.php:39
+#, fuzzy
+msgid "Service code"
+msgstr "Service Code"
+
+#: inc/metabox.php:44
+msgid "Short Description"
+msgstr "Kurzbeschreibung"
+
+#: inc/metabox.php:49
+msgid "Important notes"
+msgstr "Wichtige Hinweise"
+
+#: inc/metabox.php:59
+msgid "Subscription"
+msgstr "Abonnement"
+
+#: inc/metabox.php:73
+#, fuzzy
+msgid "Price per...?"
+msgstr "Preis pro...?"
+
+#: inc/metabox.php:77
+msgid "Month"
+msgstr "Monat"
+
+#: inc/metabox.php:78
+#, fuzzy
+msgid "Full Object"
+msgstr "Volles Objekt"
+
+#: inc/metabox.php:83
+#, fuzzy
+msgid "Showcase Price"
+msgstr "Showcase Preis"
+
+#: inc/metabox.php:88
+#, fuzzy
+msgid "Price list 1"
+msgstr "Preisliste 1"
+
+#: inc/metabox.php:93
+#, fuzzy
+msgid "Price list 2"
+msgstr "Preisliste 2"
+
+#: inc/metabox.php:98
+#, fuzzy
+msgid "Price list 3"
+msgstr "Preisliste 3"
+
+#: inc/metabox.php:103
+#, fuzzy
+msgid "Price list 4"
+msgstr "Preisliste 4"
+
+#: inc/metabox.php:113
+msgid "Photo Gallery"
+msgstr "Fotogalerie"
+
+#: inc/metabox.php:117
+#, fuzzy
+msgid "6 Max"
+msgstr "6 Max"
+
+#: inc/options.php:110
+#, fuzzy
+msgid "WP smart CRM options and Settings"
+msgstr "WP smart CRM Optionen und Einstellungen"
+
+#: inc/options.php:123
+msgid "Business Settings"
+msgstr "Unternehmenseinstellungen"
+
+#: inc/options.php:128
+msgid "General"
+msgstr "Allgemein"
+
+#: inc/options.php:130
+#, fuzzy
+msgid "General CRM Settings"
+msgstr "Allgemeine CRM-Einstellungen"
+
+#: inc/options.php:131
+#, fuzzy
+msgid "Redirect to CRM"
+msgstr "Weiterleitung zum CRM"
+
+#: inc/options.php:132
+#, fuzzy
+msgid "Minimize WP Menu"
+msgstr "WP-Menü minimieren"
+
+#: inc/options.php:134
+msgid "Company Logo"
+msgstr "Firmenlogo"
+
+#: inc/options.php:135
+#, fuzzy
+msgid "Use Logo in documents (invoices, offers)"
+msgstr "Logo in Dokumenten verwenden (Rechnungen, Angebote)"
+
+#: inc/options.php:136
+#, fuzzy
+msgid "Show all notifications to administrators"
+msgstr "Alle Benachrichtigungen für Administratoren anzeigen"
+
+#: inc/options.php:137
+#, fuzzy
+msgid "Do not show closed past activities  in scheduler and dashboard"
+msgstr "Keine Anzeige von abgeschlossenen Aktivitäten im Planer und Dashboard"
+
+#: inc/options.php:138
+#, fuzzy
+msgid "Allow deletion of activities ( todo, appointments )"
+msgstr "Erlaube das Löschen von Aktivitäten ( ToDo, Termine )"
+
+#: inc/options.php:139
+#, fuzzy
+msgid "Extend agent capabilities"
+msgstr "Erweitern Sie die Fähigkeiten der Agenten"
+
+#: inc/options.php:140
+#, fuzzy
+msgid "Set email  sender for notification"
+msgstr "E-Mail-Absender für Benachrichtigung festlegen"
+
+#: inc/options.php:141
+#, fuzzy
+msgid "Set sender name for notification"
+msgstr "Absendername für Benachrichtigung festlegen"
+
+#: inc/options.php:142
+#, fuzzy
+msgid "Set grid height for customers"
+msgstr "Rasterhöhe für Kunden festlegen"
+
+#: inc/options.php:143
+#, fuzzy
+msgid "Set grid height for documents"
+msgstr "Rasterhöhe für Dokumente festlegen"
+
+#: inc/options.php:151
+#, fuzzy
+msgid "Customers Settings"
+msgstr "Kunden Einstellungen"
+
+#: inc/options.php:152
+#, fuzzy
+msgid "Customers categories"
+msgstr "Kunden Kategorien"
+
+#: inc/options.php:160
+#, fuzzy
+msgid "Documents Settings"
+msgstr "Dokumente Einstellungen"
+
+#: inc/options.php:176
+msgid "Currency"
+msgstr "Währung"
+
+#: inc/options.php:177
+msgid "Payment gateways"
+msgstr "Zahlungsarten"
+
+#: inc/options.php:181
+msgid "Woocommerce settings"
+msgstr "WooCommerce Einstellungen"
+
+#: inc/options.php:183
+msgid "Woocommerce Settings"
+msgstr "WooCommerce Einstellungen"
+
+#: inc/options.php:187
+#, fuzzy
+msgid "Accountability settings"
+msgstr "Einstellungen zur Rechenschaftspflicht"
+
+#: inc/options.php:189
+#, fuzzy
+msgid "Accountability Settings"
+msgstr "Einstellungen zur Rechenschaftspflicht"
+
+#: inc/options.php:193
+msgid "Advanced settings"
+msgstr "Erweiterte Einstellungen"
+
+#: inc/options.php:195
+msgid "Advanced Settings"
+msgstr "Erweiterte Einstellungen"
+
+#: inc/options.php:227
+#, fuzzy
+msgid "Business main data"
+msgstr "Geschäftliche Hauptdaten"
+
+#: inc/options.php:227
+#, fuzzy
+msgid ""
+"These info will create customer # 1 (for self todo) at plugin activation and "
+"will be used in documents ( invoices, offers, etc)"
+msgstr ""
+"Diese Informationen werden bei der Plugin-Aktivierung als Kunde Nr. 1 "
+"angelegt und in Dokumenten (Rechnungen, Angebote, etc.) verwendet"
+
+#: inc/options.php:235
+#, fuzzy
+msgid "Address (street, number)"
+msgstr "Adresse (Straße, Nummer)"
+
+#: inc/options.php:252 inc/templates/single-service-stripe.php:297
+#: inc/templates/user-tabs/tab1-form.php:34
+#, fuzzy
+msgid "Cod. Fisc."
+msgstr "Cod. Fisc."
+
+#: inc/options.php:257 inc/options.php:261 inc/options.php:265
+#: inc/options.php:270 inc/options.php:274 inc/options.php:278
+#, fuzzy
+msgid "Show in document header"
+msgstr "Im Dokumentenkopf anzeigen"
+
+#: inc/options.php:273
+#, fuzzy
+msgid "Bank account code (IBAN)"
+msgstr "Bankkontonummer (IBAN)"
+
+#: inc/options.php:277
+#, fuzzy
+msgid "Int. account code (SWIFT)"
+msgstr "Int. Kontocode (SWIFT)"
+
+#: inc/options.php:357
+#, fuzzy
+msgid "Business name is required"
+msgstr "Geschäftsname ist erforderlich"
+
+#: inc/options.php:358
+msgid "Address is required"
+msgstr "Adresse ist erforderlich"
+
+#: inc/options.php:359
+#, fuzzy
+msgid "Town is required"
+msgstr "Stadt ist erforderlich"
+
+#: inc/options.php:360
+#, fuzzy
+msgid "Zip code is required"
+msgstr "Postleitzahl ist erforderlich"
+
+#: inc/options.php:361
+#, fuzzy
+msgid "Vat Code is required"
+msgstr "MwSt.-Code ist erforderlich"
+
+#: inc/options.php:384
+#, fuzzy
+msgid "PLEASE SOME BASIC INFORMATION ARE REQUIRED TO PROCEED"
+msgstr "BITTE EINIGE GRUNDLEGENDE INFORMATIONEN, UM FORTZUFAHREN"
+
+#: inc/options.php:406
+#, fuzzy
+msgid "Activate services module"
+msgstr "Aktiviere das Modul Dienste"
+
+#: inc/options.php:423
+#, fuzzy
+msgid "Select a style..."
+msgstr "Wähle einen Stil aus..."
+
+#: inc/options.php:424
+msgid "Dark"
+msgstr "Dunkel"
+
+#: inc/options.php:425
+msgid "Light"
+msgstr "Hell"
+
+#: inc/options.php:444
+#, fuzzy
+msgid "Redirect to CRM dashboard on login"
+msgstr "Weiterleitung zum CRM-Dashboard bei der Anmeldung"
+
+#: inc/options.php:464
+#, fuzzy
+msgid "Minimize Wp Main menu and use CRM fullpage ( Recommended )"
+msgstr "Minimiere das Wp-Hauptmenü und verwende die CRM-Fullpage ( empfohlen )"
+
+#: inc/options.php:482
+#, fuzzy
+msgid "Show notifications for all agents/users to site Administrators"
+msgstr ""
+"Benachrichtigungen für alle Agenten/Benutzer für Standortadministratoren "
+"anzeigen"
+
+#: inc/options.php:500
+#, fuzzy
+msgid ""
+"Do not show activities marked as DONE or CANCELED older than one day in "
+"dashboard and scheduler"
+msgstr ""
+"Zeige im Dashboard und im Planer keine Aktivitäten an, die als ERFOLGT oder "
+"ABGESAGT markiert sind und älter als ein Tag sind"
+
+#: inc/options.php:515 inc/options.php:523
+#, fuzzy
+msgid "Allow deletion of activities to administrators only"
+msgstr "Löschung von Aktivitäten nur für Administratoren zulassen"
+
+#: inc/options.php:518 inc/options.php:526
+#, fuzzy
+msgid "Allow deletion of activities to administrators and creator"
+msgstr "Löschung von Aktivitäten für Administratoren und Ersteller zulassen"
+
+#: inc/options.php:542 inc/options.php:550
+#, fuzzy
+msgid ""
+"Allow agents to see documents and customers associated to other CRM Agents"
+msgstr ""
+"Erlaube es Agenten, Dokumente und Kunden zu sehen, die mit anderen CRM-"
+"Agenten verbunden sind"
+
+#: inc/options.php:545 inc/options.php:553
+#, fuzzy
+msgid ""
+"Allow an agent to see only documents and customers associated to himself"
+msgstr ""
+"Erlaube einem Agenten, nur Dokumente und Kunden zu sehen, die ihm zugeordnet "
+"sind"
+
+#: inc/options.php:570
+msgid "Upload"
+msgstr "Hochladen"
+
+#: inc/options.php:572
+#, fuzzy
+msgid ""
+"Select your Company Logo to be used in documents ( invoices, offers etc..) "
+"best results with a square image 100px x 100px"
+msgstr ""
+"Wähle dein Firmenlogo für die Verwendung in Dokumenten (Rechnungen, Angebote "
+"etc.) aus. Die besten Ergebnisse erzielst du mit einem quadratischen Bild "
+"von 100px x 100px"
+
+#: inc/options.php:615
+#, fuzzy
+msgid "Use Logo in documents"
+msgstr "Logo in Dokumenten verwenden"
+
+#: inc/options.php:632
+#, fuzzy
+msgid "Set a sender email address for CRM notification emails"
+msgstr ""
+"Lege eine Absender-E-Mail-Adresse für CRM-Benachrichtigungs-E-Mails fest"
+
+#: inc/options.php:632
+#, fuzzy
+msgid "If blank the admin email will be used"
+msgstr "Wenn leer, wird die Admin-E-Mail verwendet"
+
+#: inc/options.php:648
+#, fuzzy
+msgid "Set a sender name for CRM notification emails"
+msgstr "Einen Absendernamen für CRM-Benachrichtigungs-E-Mails festlegen"
+
+#: inc/options.php:648
+#, fuzzy
+msgid "If blank the site name will be used"
+msgstr "Wenn leer, wird der Standortname verwendet"
+
+#: inc/options.php:663
+#, fuzzy
+msgid "Set grid height ( in px ) for customers"
+msgstr "Rasterhöhe (in px) für Kunden festlegen"
+
+#: inc/options.php:678
+#, fuzzy
+msgid "Set grid height ( in px ) for documents"
+msgstr "Rasterhöhe (in px) für Dokumente festlegen"
+
+#: inc/options.php:691
+msgid "EUR"
+msgstr "EUR"
+
+#: inc/options.php:692
+msgid "USD"
+msgstr "USD"
+
+#: inc/options.php:693
+msgid "CHF"
+msgstr "CHF"
+
+#: inc/options.php:694
+#, fuzzy
+msgid "BRL"
+msgstr "BRL"
+
+#: inc/options.php:719
+#, fuzzy
+msgid "Stripe Configuration"
+msgstr "Stripe Konfiguration"
+
+#: inc/options.php:720
+#, fuzzy
+msgid "Use your stripe account settings here"
+msgstr "Verwende deine Stripe-Kontoeinstellungen hier"
+
+#: inc/options.php:804
+#, fuzzy
+msgid "Show customers Category in grid"
+msgstr "Kundenkategorie im Raster anzeigen"
+
+#: inc/options.php:815
+#, fuzzy
+msgid "Show customers Interests in grid"
+msgstr "Kundeninteressen im Raster anzeigen"
+
+#: inc/options.php:826
+#, fuzzy
+msgid "Show customers Origin in grid"
+msgstr "Kunden anzeigen Herkunft im Raster"
+
+#: inc/options.php:851
+#, fuzzy
+msgid "Documents settings"
+msgstr "Einstellungen für Dokumente"
+
+#: inc/options.php:854
+#, fuzzy
+msgid "Document header"
+msgstr "Dokumentenkopf"
+
+#: inc/options.php:861
+msgid "Messages"
+msgstr "Nachrichten"
+
+#: inc/options.php:864
+msgid "Signature"
+msgstr "Unterschrift"
+
+#: inc/options.php:867
+#, fuzzy
+msgid "Custom Style"
+msgstr "Benutzerdefinitierter Stil"
+
+#: inc/options.php:878
+#, fuzzy
+msgid "Default VAT and Currency"
+msgstr "Standard Mehrwertsteuer und Währung"
+
+#: inc/options.php:913
+#, fuzzy
+msgid "Days after payment notification"
+msgstr "Tage nach der Zahlungsmitteilung"
+
+#: inc/options.php:927
+#, fuzzy
+msgid "Invoices Numbering settings"
+msgstr "Einstellungen für die Rechnungsnummerierung"
+
+#: inc/options.php:933
+msgid "Invoice prefix"
+msgstr "Rechnungspräfix"
+
+#: inc/options.php:937
+msgid "Invoice suffix"
+msgstr "Rechnungssuffix"
+
+#: inc/options.php:941
+#, fuzzy
+msgid "Invoices last insert"
+msgstr "Rechnungen zuletzt einfügen"
+
+#: inc/options.php:953
+#, fuzzy
+msgid "Offers Numbering settings"
+msgstr "Bietet Nummerierungseinstellungen"
+
+#: inc/options.php:959
+#, fuzzy
+msgid "Offers prefix"
+msgstr "Angebote Präfix"
+
+#: inc/options.php:963
+#, fuzzy
+msgid "Offers suffix"
+msgstr "Angebote Suffix"
+
+#: inc/options.php:967
+#, fuzzy
+msgid "Offers last insert"
+msgstr "Angebote letzte Beilage"
+
+#: inc/options.php:979
+#, fuzzy
+msgid ""
+"Warning: you're inputing a number lower than last invoice issued, be "
+"careful, this can cause problems with duplicated id"
+msgstr ""
+"Achtung: Wenn du eine Nummer eingibst, die niedriger ist als die letzte "
+"ausgestellte Rechnung, kann dies zu Problemen mit doppelten IDs führen"
+
+#: inc/options.php:983
+#, fuzzy
+msgid ""
+"Warning: you're inputing a number lower than last quote issued, be careful, "
+"this can cause problems with duplicated id"
+msgstr ""
+"Warnung: Du gibst eine Zahl ein, die niedriger ist als die letzte "
+"ausgegebene Quote. Sei vorsichtig, das kann zu Problemen mit einer doppelten "
+"ID führen"
+
+#: inc/options.php:993
+#, fuzzy
+msgid "Drag elements (left-right) to align them in documents "
+msgstr "Elemente ziehen (links-rechts), um sie in Dokumenten auszurichten"
+
+#: inc/options.php:1001 inc/options.php:1086
+msgid "Logo"
+msgstr "Logo"
+
+#: inc/options.php:1018 inc/options.php:1053
+msgid "Header"
+msgstr "Header"
+
+#: inc/options.php:1151
+#, fuzzy
+msgid "Payment methods definitions"
+msgstr "Definitionen der Zahlungsarten"
+
+#: inc/options.php:1158
+msgid "Label"
+msgstr "Label"
+
+#: inc/options.php:1162
+msgid "Days"
+msgstr "Tage"
+
+#: inc/options.php:1166
+msgid "Add"
+msgstr "Hinzufügen"
+
+#: inc/options.php:1229
+#, fuzzy
+msgid "INVOICES MESSAGES SETTINGS"
+msgstr "RECHNUNGEN NACHRICHTEN EINSTELLUNGEN"
+
+#: inc/options.php:1233 inc/options.php:1257
+msgid "Dear"
+msgstr "Liebe/Lieber"
+
+#: inc/options.php:1237
+#, fuzzy
+msgid "Invoices before text"
+msgstr "Rechnungen vor Text"
+
+#: inc/options.php:1242
+#, fuzzy
+msgid "Invoices after text"
+msgstr "Rechnungen nach Text"
+
+#: inc/options.php:1251
+#, fuzzy
+msgid "OFFERS MESSAGES SETTINGS"
+msgstr "BIETET NACHRICHTENEINSTELLUNGEN"
+
+#: inc/options.php:1261
+#, fuzzy
+msgid "Offers before text"
+msgstr "Angebote vor Text"
+
+#: inc/options.php:1265
+#, fuzzy
+msgid "Offers after text"
+msgstr "Angebote nach Text"
+
+#: inc/options.php:1279
+#, fuzzy
+msgid "Signature settings"
+msgstr "Einstellungen für die Unterschrift"
+
+#: inc/options.php:1282
+#, fuzzy
+msgid "Draw your signature (mouse or touch) to be used in offers"
+msgstr ""
+"Zeichne deine Unterschrift (mit der Maus oder per Touch), um sie in "
+"Angeboten zu verwenden"
+
+#: inc/options.php:1302 inc/options.php:1331
+#, fuzzy
+msgid "Use this Signature"
+msgstr "Benutze diese Unterschrift"
+
+#: inc/options.php:1311
+#, fuzzy
+msgid "Formatted signature ( i.e. company name)"
+msgstr "Formatierte Unterschrift (z. B. Firmenname)"
+
+#: inc/options.php:1356
+msgid "Custom css"
+msgstr "Benutzerdefiniertes CSS"
+
+#: inc/options.php:1359
+#, fuzzy
+msgid "Add or overwrite existing style in PDF documents"
+msgstr "Hinzufügen oder Überschreiben vorhandener Stile in PDF-Dokumenten"
+
+#: inc/options.php:1366
+#, fuzzy
+msgid ""
+"Use these CSS rules to adjust the layout of the printable version of your "
+"documents (available after a document has been created)"
+msgstr ""
+"Verwende diese CSS-Regeln, um das Layout der druckbaren Version deiner "
+"Dokumente anzupassen (verfügbar, nachdem ein Dokument erstellt wurde)"
+
+#: inc/pluggable/clienti/form.php:11
+#, fuzzy
+msgid "No activity for this customer"
+msgstr "Keine Aktivität für diesen Kunden"
+
+#: inc/pluggable/clienti/form.php:29
+#, fuzzy
+msgid "Exp. date"
+msgstr "Ablaufdatum"
+
+#: inc/pluggable/clienti/form.php:162
+#, fuzzy
+msgid "No Contacts to show"
+msgstr "Keine Kontakte anzeigen"
+
+#: inc/pluggable/clienti/form.php:206
+#, fuzzy
+msgid "Add new contact"
+msgstr "Neuen Kontakt hinzufügen"
+
+#: inc/pluggable/clienti/form.php:226
+msgid "Telephone"
+msgstr "Telefon"
+
+#: inc/pluggable/clienti/form.php:230
+msgid "Qualification"
+msgstr "Qualifikation"
+
+#: inc/pluggable/clienti/form.php:235 inc/plugin-installer.class.php:2818
+msgid "Update"
+msgstr "Aktualisieren"
+
+#: inc/pluggable/clienti/form.php:235
+#, fuzzy
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: inc/pluggable/clienti/list.php:13
+msgid "New customer"
+msgstr "Neukunde"
+
+#: inc/pluggable/clienti/list.php:22
+msgid "APPOINTMENT"
+msgstr "Neuer Termin"
+
+#: inc/pluggable/clienti/list.php:25
+msgid "ACTIVITY"
+msgstr "AKTIVITÄT"
+
+#: inc/pluggable/clienti/list.php:50
+#, fuzzy
+msgid "No CUSTOMERS in database"
+msgstr "Keine KUNDEN in der Datenbank"
+
+#: inc/pluggable/clienti/list.php:62
+#, fuzzy
+msgid "Clients per page"
+msgstr "Kunden pro Seite"
+
+#: inc/pluggable/clienti/list.php:130 inc/setup.php:644
+msgid "Categories"
+msgstr "Kategorien"
+
+#: inc/pluggable/clienti/list.php:148
+msgid "Origin"
+msgstr "Herkunft"
+
+#: inc/pluggable/documenti/list.php:81
+#, fuzzy
+msgid ""
+"No documents to show. You can create new documents from the above menu; be "
+"sure to have some customers archived before to create new documents"
+msgstr ""
+"Es werden keine Dokumente angezeigt. Du kannst neue Dokumente über das obige "
+"Menü erstellen. Achte darauf, dass du einige Kunden archiviert hast, bevor "
+"du neue Dokumente erstellst"
+
+#: inc/pluggable/documenti/list.php:149
+msgid "Expiration Date"
+msgstr "Ablaufdatum"
+
+#: inc/pluggable/documenti/list.php:169
+msgid "Print"
+msgstr "Drucken"
+
+#: inc/pluggable/documenti/list.php:185
+#, fuzzy
+msgid "This invoice is registered and not editable"
+msgstr "Diese Rechnung ist registriert und kann nicht bearbeitet werden"
+
+#: inc/pluggable/documenti/list.php:202
+#, fuzzy
+msgid "This invoice is registered and not deletable"
+msgstr "Diese Rechnung ist registriert und nicht löschbar"
+
+#: inc/pluggable/documenti/list.php:232 inc/pluggable/documenti/list.php:244
+#: inc/pluggable/documenti/list.php:255
+msgid "Filter by agent"
+msgstr "Filtern nach Agent"
+
+#: inc/pluggable/scheduler/list.php:78
+#, fuzzy
+msgid ""
+"No ACTIVITIES to show; you can add new todo or new appointments, please be "
+"sure to have some customers available or create a new customer from the main "
+"menu"
+msgstr ""
+"Es werden keine AKTIVITÄTEN angezeigt; du kannst neue ToDos oder neue "
+"Termine hinzufügen. Achte darauf, dass du einige Kunden zur Verfügung hast "
+"oder erstelle einen neuen Kunden im Hauptmenü"
+
+#. translators: %s: plugin name.
+#: inc/plugin-installer.class.php:339
+#, php-format
+msgid "Updating Plugin: %s"
+msgstr "Aktualisiere Plugin: %s"
+
+#. translators: 1: plugin name(s).
+#: inc/plugin-installer.class.php:361
+#, php-format
+msgid "There is an update available for: %1$s."
+msgid_plural "There are updates available for the following plugins: %1$s."
+msgstr[0] "Es ist ein Update verfügbar für: %1$s."
+msgstr[1] "Es sind Updates verfügbar für: %1$s."
+
+#: inc/plugin-installer.class.php:383
+msgid "Begin updating plugin"
+msgid_plural "Begin updating plugins"
+msgstr[0] "Beginne mit der Aktualisierung des Plugins"
+msgstr[1] "Beginne mit der Aktualisierung der Plugins"
+
+#. translators: 1: plugin name.
+#: inc/plugin-installer.class.php:397
+#, php-format
+msgid "No action taken. Plugin %1$s was already active."
+msgstr "Keine Maßnahmen ergriffen. Plugin %1$s war bereits aktiv."
+
+#. translators: 1: plugin name.
+#: inc/plugin-installer.class.php:399
+#, php-format
+msgid ""
+"Plugin not activated. A higher version of %s is needed for this theme. "
+"Please update the plugin."
+msgstr ""
+"Plugin wurde nicht aktiviert. Eine neuere Version des %s ist für dieses "
+"Theme erforderlich. Bitte aktualisieren Sie das Plugin."
+
+#: inc/plugin-installer.class.php:403
+msgid ""
+"There are one or more required or recommended plugins to install, update or "
+"activate."
+msgstr ""
+"Es existieren ein oder mehrere benötigte oder empfohlene Plugins, die "
+"installiert, aktualisiert oder aktiviert werden müssen."
+
+#: inc/plugin-installer.class.php:404
+msgid "Please contact the administrator of this site for help."
+msgstr "Bitte kontaktieren Sie den Administrator dieser Website für Hilfe."
+
+#: inc/plugin-installer.class.php:607
+msgid "This plugin needs to be updated to be compatible with your theme."
+msgstr ""
+"Dieses Plugin muss aktualisiert werden, um mit Ihrem Theme kompatibel zu "
+"sein."
+
+#: inc/plugin-installer.class.php:608
+#, fuzzy
+msgid "Update Required"
+msgstr "Aktualisierung erforderlich"
+
+#: inc/plugin-installer.class.php:725
+msgid "Set the parent_slug config variable instead."
+msgstr "Verwenden Sie stattdessen die Variable parent_slug."
+
+#: inc/plugin-installer.class.php:1029
+msgid ""
+"The remote plugin package does not contain a folder with the desired slug "
+"and renaming did not work."
+msgstr ""
+"Das Remote-Plugin-Paket enthält keinen Ordner mit dem gewünschten Kürzel und "
+"eine Umbenennung hat nicht funktioniert."
+
+#: inc/plugin-installer.class.php:1029 inc/plugin-installer.class.php:1032
+msgid ""
+"Please contact the plugin provider and ask them to package their plugin "
+"according to the WordPress guidelines."
+msgstr ""
+"Bitte kontaktieren Sie den Plugin-Anbieter und bitten Sie ihn, seine Plugins "
+"nach den Wordpress-Richtlinien zu komprimieren."
+
+#: inc/plugin-installer.class.php:1032
+msgid ""
+"The remote plugin package consists of more than one file, but the files are "
+"not packaged in a folder."
+msgstr ""
+"Das Remote-Plugin-Paket besteht aus mehreren Dateien, aber die Dateien sind "
+"nicht in einem Ordner gepackt."
+
+#: inc/plugin-installer.class.php:1216 inc/plugin-installer.class.php:3043
+msgctxt "plugin A *and* plugin B"
+msgid "and"
+msgstr "und"
+
+#. translators: %s: version number
+#: inc/plugin-installer.class.php:2077
+#, php-format
+msgid "TGMPA v%s"
+msgstr "TGMPA v%s"
+
+#: inc/plugin-installer.class.php:2390
+msgid "External Source"
+msgstr "Externe Quelle"
+
+#: inc/plugin-installer.class.php:2416
+msgid "Active"
+msgstr "Aktiv"
+
+#: inc/plugin-installer.class.php:2422
+msgid "Required Update not Available"
+msgstr "Erforderliche Aktualisierung nicht verfügbar"
+
+#: inc/plugin-installer.class.php:2425
+msgid "Requires Update"
+msgstr "Update erforderlich"
+
+#: inc/plugin-installer.class.php:2428
+msgid "Update recommended"
+msgstr "Update empfohlen"
+
+#. translators: 1: install status, 2: update status
+#: inc/plugin-installer.class.php:2437
+#, php-format
+msgctxt "Install/Update Status"
+msgid "%1$s, %2$s"
+msgstr "%1$s, %2$s"
+
+#. translators: 1: number of plugins.
+#: inc/plugin-installer.class.php:2483
+#, php-format
+msgctxt "plugins"
+msgid "All <span class=\"count\">(%s)</span>"
+msgid_plural "All <span class=\"count\">(%s)</span>"
+msgstr[0] "Alle <span class=\"count\">(%s)</span>"
+msgstr[1] "Alle <span class=\"count\">(%s)</span>"
+
+#. translators: 1: number of plugins.
+#: inc/plugin-installer.class.php:2487
+#, php-format
+msgid "To Install <span class=\"count\">(%s)</span>"
+msgid_plural "To Install <span class=\"count\">(%s)</span>"
+msgstr[0] "Zum Installieren <span class=\"count\">(%s)</span>"
+msgstr[1] "Zum Installieren <span class=\"count\">(%s)</span>"
+
+#. translators: 1: number of plugins.
+#: inc/plugin-installer.class.php:2491
+#, php-format
+msgid "Update Available <span class=\"count\">(%s)</span>"
+msgid_plural "Update Available <span class=\"count\">(%s)</span>"
+msgstr[0] "Aktualisierung verfügbar <span class=\"count\">(%s)</span>"
+msgstr[1] "Aktualisierung verfügbar <span class=\"count\">(%s)</span>"
+
+#. translators: 1: number of plugins.
+#: inc/plugin-installer.class.php:2495
+#, php-format
+msgid "To Activate <span class=\"count\">(%s)</span>"
+msgid_plural "To Activate <span class=\"count\">(%s)</span>"
+msgstr[0] "Zum Aktivieren <span class=\"count\">(%s)</span>"
+msgstr[1] "Zum Aktivieren <span class=\"count\">(%s)</span>"
+
+#: inc/plugin-installer.class.php:2577
+msgctxt "as in: \"version nr unknown\""
+msgid "unknown"
+msgstr "unbekannt"
+
+#: inc/plugin-installer.class.php:2585
+msgid "Installed version:"
+msgstr "Installierte Version:"
+
+#: inc/plugin-installer.class.php:2593
+msgid "Minimum required version:"
+msgstr "Minimal erforderliche Version:"
+
+#: inc/plugin-installer.class.php:2605
+msgid "Available version:"
+msgstr "Verfügbare Version:"
+
+#: inc/plugin-installer.class.php:2628
+msgid "No plugins to install, update or activate."
+msgstr "Keine Plugins zum Installieren, Aktualisieren oder Aktivieren."
+
+#: inc/plugin-installer.class.php:2648
+msgid "Version"
+msgstr "Version"
+
+#. translators: %2$s: plugin name in screen reader markup
+#: inc/plugin-installer.class.php:2698
+#, php-format
+msgid "Install %2$s"
+msgstr "Installiere %2$s"
+
+#. translators: %2$s: plugin name in screen reader markup
+#: inc/plugin-installer.class.php:2703
+#, php-format
+msgid "Update %2$s"
+msgstr "Aktualisiere %2$s"
+
+#. translators: %2$s: plugin name in screen reader markup
+#: inc/plugin-installer.class.php:2709
+#, php-format
+msgid "Activate %2$s"
+msgstr "Aktiviere %2$s"
+
+#: inc/plugin-installer.class.php:2779
+msgid "Upgrade message from the plugin author:"
+msgstr "Upgrade-Nachricht vom Plugin-Autor:"
+
+#: inc/plugin-installer.class.php:2852
+msgid "No plugins were selected to be installed. No action taken."
+msgstr ""
+"Es wurden keine Plugins zur Installation ausgewählt. Es wurde nichts "
+"unternommen."
+
+#: inc/plugin-installer.class.php:2854
+msgid "No plugins were selected to be updated. No action taken."
+msgstr ""
+"Es wurden keine Plugins zur Aktualisierung ausgewählt. Es wurde nichts "
+"unternommen."
+
+#: inc/plugin-installer.class.php:2895
+msgid "No plugins are available to be installed at this time."
+msgstr "Derzeit stehen keine Plugins zur Installation zur Verfügung."
+
+#: inc/plugin-installer.class.php:2897
+msgid "No plugins are available to be updated at this time."
+msgstr "Derzeit stehen keine Plugins zur Aktualisierung zur Verfügung."
+
+#: inc/plugin-installer.class.php:3003
+msgid "No plugins were selected to be activated. No action taken."
+msgstr ""
+"Es wurden keine Plugins zur Aktivierung ausgewählt. Es wurde nichts "
+"unternommen."
+
+#: inc/plugin-installer.class.php:3029
+msgid "No plugins are available to be activated at this time."
+msgstr "Derzeit stehen keine Plugins zur Aktivierung zur Verfügung."
+
+#. translators: 1: plugin name, 2: action number 3: total number of actions.
+#: inc/plugin-installer.class.php:3593
+#, php-format
+msgid "Updating Plugin %1$s (%2$d/%3$d)"
+msgstr "Aktualisiere Plugin %1$s (%2$d/%3$d)"
+
+#: inc/setup.php:594
+#, fuzzy
+msgid "Clienti"
+msgstr "Clienti"
+
+#: inc/setup.php:596
+#, fuzzy
+msgid "Modifica cliente"
+msgstr "Änderung des Kunden"
+
+#: inc/setup.php:597
+#, fuzzy
+msgid "Aggiungi cliente"
+msgstr "Aggiungi cliente"
+
+#: inc/setup.php:598
+#, fuzzy
+msgid "Nuovo cliente"
+msgstr "Nuovo cliente"
+
+#: inc/setup.php:615
+msgctxt "taxonomy general name"
+msgid "Interests"
+msgstr "Interessen"
+
+#: inc/setup.php:616
+msgctxt "taxonomy singular name"
+msgid "Interest"
+msgstr "Zinsen"
+
+#: inc/setup.php:617
+#, fuzzy
+msgid "Search interest"
+msgstr "Interesse suchen"
+
+#: inc/setup.php:618
+#, fuzzy
+msgid "All interests"
+msgstr "Alle Interessen"
+
+#: inc/setup.php:619
+#, fuzzy
+msgid "Edit interest"
+msgstr "Interesse bearbeiten"
+
+#: inc/setup.php:620
+#, fuzzy
+msgid "Update interest"
+msgstr "Interesse aktualisieren"
+
+#: inc/setup.php:621
+#, fuzzy
+msgid "Add interest"
+msgstr "Zinsen hinzufügen"
+
+#: inc/setup.php:622
+#, fuzzy
+msgid "New interest"
+msgstr "Neues Interesse"
+
+#: inc/setup.php:636
+msgctxt "taxonomy general name"
+msgid "Categories"
+msgstr "Kategorien"
+
+#: inc/setup.php:637
+msgctxt "taxonomy singular name"
+msgid "Category"
+msgstr "Kategorie"
+
+#: inc/setup.php:638
+msgid "Search category"
+msgstr "Suchkategorie"
+
+#: inc/setup.php:639
+msgid "All categories"
+msgstr "Alle Kategorien"
+
+#: inc/setup.php:640
+msgid "Edit category"
+msgstr "Kategorie bearbeiten"
+
+#: inc/setup.php:641
+msgid "Update category"
+msgstr "Kategorie aktualisieren"
+
+#: inc/setup.php:642
+msgid "Add category"
+msgstr "Kategorie hinzufügen"
+
+#: inc/setup.php:643
+msgid "New category"
+msgstr "Neue Kategorie"
+
+#: inc/setup.php:657
+msgctxt "taxonomy general name"
+msgid "Origins"
+msgstr "Ursprünge"
+
+#: inc/setup.php:658
+msgctxt "taxonomy singular name"
+msgid "Origin"
+msgstr "Herkunft"
+
+#: inc/setup.php:659
+#, fuzzy
+msgid "Search origin"
+msgstr "Herkunft suchen"
+
+#: inc/setup.php:660
+#, fuzzy
+msgid "All Origins"
+msgstr "Alle Ursprünge"
+
+#: inc/setup.php:661
+#, fuzzy
+msgid "Edit Origin"
+msgstr "Herkunft bearbeiten"
+
+#: inc/setup.php:662
+#, fuzzy
+msgid "Update Origin"
+msgstr "Update Herkunft"
+
+#: inc/setup.php:663
+#, fuzzy
+msgid "Add Origin"
+msgstr "Herkunft hinzufügen"
+
+#: inc/setup.php:664
+#, fuzzy
+msgid "New Origin"
+msgstr "Neue Herkunft"
+
+#: inc/setup.php:665
+msgid "Origins"
+msgstr "Ursprünge"
+
+#: inc/setup.php:691
+#, fuzzy
+msgid "WP SMART CRM NOTIFICATION RULES"
+msgstr "WP SMART CRM BENACHRICHTIGUNGSREGELN"
+
+#: inc/setup.php:699
+#, fuzzy
+msgid "WP SMART CRM Customers"
+msgstr "WP SMART CRM Kunden"
+
+#: inc/setup.php:707
+#, fuzzy
+msgid "WP SMART CRM Scheduler"
+msgstr "WP SMART CRM Scheduler"
+
+#: inc/setup.php:715
+#, fuzzy
+msgid "WP SMART CRM Documents"
+msgstr "WP SMART CRM Dokumente"
+
+#: inc/subscription_rules.php:40
+#, fuzzy
+msgid "WP smart CRM subscription rules"
+msgstr "WP smart CRM Abo-Regeln"
+
+#: inc/subscription_rules.php:40
+msgid "Add rule"
+msgstr "Regel hinzufügen"
+
+#: inc/subscription_rules.php:45
+msgid "Add new rule"
+msgstr "Neue Regel erstellen"
+
+#: inc/subscription_rules.php:48
+msgid "Rule Name"
+msgstr "Regel Namen"
+
+#: inc/subscription_rules.php:51 inc/subscription_rules.php:157
+#, fuzzy
+msgid "Months length"
+msgstr "Länge der Monate"
+
+#: inc/subscription_rules.php:56 inc/subscription_rules.php:159
+msgid "Save rule"
+msgstr "Rolle speichern"
+
+#: inc/subscription_rules.php:61
+#, fuzzy
+msgid "Rule steps"
+msgstr "Schritte der Regel"
+
+#: inc/subscription_rules.php:61 inc/subscription_rules.php:810
+msgid "Add Step"
+msgstr "Schritt hinzufügen"
+
+#: inc/subscription_rules.php:63
+#, fuzzy
+msgid "Existing steps"
+msgstr "Vorhandene Schritte"
+
+#: inc/subscription_rules.php:74
+#, fuzzy
+msgid "Send mail to Groups"
+msgstr "Mails an Gruppen senden"
+
+#: inc/subscription_rules.php:78 inc/subscription_rules.php:140
+#, fuzzy
+msgid "Save step"
+msgstr "Schritt speichern"
+
+#: inc/subscription_rules.php:90
+msgid "Existing rules"
+msgstr "Vorhandene Regeln"
+
+#: inc/subscription_rules.php:91
+#, fuzzy
+msgid "Days in advance on the expiration to notify"
+msgstr "Tage im Voraus über das Auslaufen zu informieren"
+
+#: inc/subscription_rules.php:91
+#, fuzzy
+msgid "Email notification to customer & / or CRM users selected"
+msgstr "E-Mail-Benachrichtigung an ausgewählte Kunden und/oder CRM-Benutzer"
+
+#: inc/subscription_rules.php:91
+#, fuzzy
+msgid "Scheduled on selected CRM users/groups"
+msgstr "Geplant für ausgewählte CRM-Benutzer/Gruppen"
+
+#: inc/subscription_rules.php:91
+#, fuzzy
+msgid "Published on selected CRM users/groups dashboard for a quick reminder"
+msgstr ""
+"Veröffentlicht auf dem Dashboard ausgewählter CRM-Benutzer/Gruppen für eine "
+"schnelle Erinnerung"
+
+#: inc/subscription_rules.php:103
+msgid "Edit Step"
+msgstr "Schritt bearbeiten"
+
+#: inc/subscription_rules.php:103
+#, fuzzy
+msgid "for rule"
+msgstr "für die Regel"
+
+#: inc/subscription_rules.php:118 inc/subscription_rules.php:240
+#: inc/subscription_rules.php:786 inc/subscription_rules.php:788
+#, fuzzy
+msgid "Notify to Users"
+msgstr "Benutzer benachrichtigen"
+
+#: inc/subscription_rules.php:118
+#, fuzzy
+msgid "Publish on Users dashboard"
+msgstr "Auf dem Benutzer-Dashboard veröffentlichen"
+
+#: inc/subscription_rules.php:119
+#, fuzzy
+msgid "Notify to Groups"
+msgstr "An Gruppen benachrichtigen"
+
+#: inc/subscription_rules.php:119
+#, fuzzy
+msgid "Publish on Groups dashboard"
+msgstr "Auf dem Gruppen-Dashboard veröffentlichen"
+
+#: inc/subscription_rules.php:152
+msgid "Edit Rule"
+msgstr "Regel bearbeiten"
+
+#: inc/subscription_rules.php:156
+#, fuzzy
+msgid "Rule  Name"
+msgstr "Regel Name"
+
+#: inc/subscription_rules.php:157
+msgid "Unlimited"
+msgstr "Unbegrenzt"
+
+#: inc/subscription_rules.php:216
+#, fuzzy
+msgid "You should select days in advance"
+msgstr "Du solltest Tage im Voraus auswählen"
+
+#: inc/subscription_rules.php:217 inc/subscription_rules.php:218
+#, fuzzy
+msgid "You should select at least one user or one group"
+msgstr "Du solltest mindestens einen Benutzer oder eine Gruppe auswählen"
+
+#: inc/subscription_rules.php:237
+#, fuzzy
+msgid "Send mail to Customer"
+msgstr "Mail an den Kunden senden"
+
+#: inc/subscription_rules.php:239
+#, fuzzy
+msgid "Email to Customer"
+msgstr "E-Mail an den Kunden"
+
+#: inc/subscription_rules.php:242 inc/subscription_rules.php:244
+#, fuzzy
+msgid "Dashboard User Notification"
+msgstr "Dashboard Benutzerbenachrichtigung"
+
+#: inc/subscription_rules.php:247 inc/subscription_rules.php:249
+#: inc/subscription_rules.php:798 inc/subscription_rules.php:800
+#, fuzzy
+msgid "Dashboard Group Notification"
+msgstr "Dashboard Gruppenbenachrichtigung"
+
+#: inc/subscription_rules.php:251 inc/subscription_rules.php:253
+#, fuzzy
+msgid "Email to Recipients"
+msgstr "E-Mail an Empfänger"
+
+#: inc/subscription_rules.php:461
+#, fuzzy
+msgid ""
+"Please note that deleting an exixting rule may cause problems in invoices "
+"creation if you've products and services that already use it: Be sure to "
+"check and eventually assign a new rule for the missing ones"
+msgstr ""
+"Bitte beachte, dass das Löschen einer Exixting-Regel zu Problemen bei der "
+"Rechnungserstellung führen kann, wenn du Produkte und Dienstleistungen hast, "
+"die diese Regel bereits verwenden: Achte darauf, dass du die fehlenden "
+"Regeln überprüfst und ihnen eventuell eine neue Regel zuweist"
+
+#: inc/subscription_rules.php:484
+msgid "Rule deleted"
+msgstr "Regel gelöscht"
+
+#: inc/subscription_rules.php:602
+#, fuzzy
+msgid "Edit step"
+msgstr "Schritt bearbeiten"
+
+#: inc/subscription_rules.php:635
+#, fuzzy
+msgid "New Notification Step"
+msgstr "Neuer Benachrichtigungsschritt"
+
+#: inc/subscription_rules.php:773
+#, fuzzy
+msgid "Subscription Rule"
+msgstr "Abonnement-Regel"
+
+#: inc/subscription_rules.php:773
+msgid "Length"
+msgstr "Länge"
+
+#: inc/subscription_rules.php:773
+msgid "months"
+msgstr "Monate"
+
+#: inc/subscription_rules.php:774
+#, fuzzy
+msgid "Notification Steps"
+msgstr "Benachrichtigungsschritte"
+
+#: inc/subscription_rules.php:782 inc/subscription_rules.php:784
+msgid "Email to customer"
+msgstr "E-Mail an Kunden"
+
+#: inc/subscription_rules.php:790 inc/subscription_rules.php:792
+#, fuzzy
+msgid "Dashboard Users Notification"
+msgstr "Dashboard Benutzer Benachrichtigung"
+
+#: inc/subscription_rules.php:803
+msgid "Email Notification"
+msgstr "E-Mail-Benachrichtigung"
+
+#: inc/subscription_rules.php:805
+#, fuzzy
+msgid "Email  Notification"
+msgstr "E-Mail-Benachrichtigung"
+
+#: inc/templates/CRM_user.php:42
+msgid "Welcome"
+msgstr "Willkommen"
+
+#: inc/templates/CRM_user.php:42
+msgid "Logout"
+msgstr "Abmelden"
+
+#: inc/templates/CRM_user.php:44
+msgid "Profile Data"
+msgstr "Profildaten"
+
+#: inc/templates/CRM_user.php:45
+msgid "Invoices"
+msgstr "Rechnungen"
+
+#: inc/templates/CRM_user.php:53
+msgid "Profile data"
+msgstr "Profildaten"
+
+#: inc/templates/CRM_user.php:59
+msgid "Your Invoices"
+msgstr "Deine Rechnungen"
+
+#: inc/templates/archive-services.php:25
+#: inc/templates/single-service-stripe.php:68
+msgid "per month"
+msgstr "pro Monat"
+
+#: inc/templates/archive-services.php:42
+#: inc/templates/single-service-stripe.php:282
+msgid "PRICE"
+msgstr "PREIS"
+
+#: inc/templates/archive-services.php:50
+#: inc/templates/single-service-stripe.php:336
+msgid "CATEGORIES"
+msgstr "KATEGORIEN"
+
+#: inc/templates/archive-services.php:71
+#: inc/templates/single-service-stripe.php:357
+msgid "Additional info"
+msgstr "Zusätzliche Informationen"
+
+#: inc/templates/archive-services.php:77
+msgid "Read More"
+msgstr "Weiterlesen"
+
+#: inc/templates/single-service-stripe.php:55
+msgid "Subscription length"
+msgstr "Dauer des Abonnements"
+
+#: inc/templates/single-service-stripe.php:82
+msgid "Thanks for your purchase"
+msgstr "Vielen Dank für Ihren Kauf"
+
+#: inc/templates/single-service-stripe.php:83
+#, fuzzy
+msgid "We've sent you an email with your invoice."
+msgstr "Wir haben dir eine E-Mail mit deiner Rechnung geschickt."
+
+#: inc/templates/single-service-stripe.php:85
+#, fuzzy
+msgid ""
+"You can access your profile page after logging-in from the form here below. "
+"From there you can download your invoices and check status of your "
+"subscriptions."
+msgstr ""
+"Du kannst auf deine Profilseite zugreifen, nachdem du dich über das Formular "
+"hier unten eingeloggt hast. Von dort aus kannst du deine Rechnungen "
+"herunterladen und den Status deiner Abonnements überprüfen."
+
+#: inc/templates/single-service-stripe.php:86
+#: inc/templates/single-service-stripe.php:101
+#, fuzzy
+msgid "Return to the previous page."
+msgstr "Zurück zur vorherigen Seite."
+
+#: inc/templates/single-service-stripe.php:87
+#: inc/templates/single-service-stripe.php:102
+msgid "Return to homepage."
+msgstr "Zurück zur Startseite."
+
+#: inc/templates/single-service-stripe.php:99
+#, fuzzy
+msgid ""
+"You can access your profile page from the link here below. From there you "
+"can download your invoices and check status of your subscriptions."
+msgstr ""
+"Du kannst deine Profilseite über den unten stehenden Link aufrufen. Von dort "
+"aus kannst du deine Rechnungen herunterladen und den Status deiner "
+"Abonnements überprüfen."
+
+#: inc/templates/single-service-stripe.php:100
+#, fuzzy
+msgid "Profile page."
+msgstr "Profilseite."
+
+#: inc/templates/single-service-stripe.php:282
+msgid "Buy now"
+msgstr "Jetzt kaufen"
+
+#: inc/templates/single-service-stripe.php:290
+msgid "Confirm Email"
+msgstr "E-Mail-Adresse bestätigen"
+
+#: inc/templates/single-service-stripe.php:295
+#: inc/templates/user-tabs/tab1-form.php:32
+msgid "Client type"
+msgstr "Client Typ"
+
+#: inc/templates/single-service-stripe.php:298
+#, fuzzy
+msgid "Vat code"
+msgstr "MwSt.-Code"
+
+#: inc/templates/single-service-stripe.php:301
+msgid "Register"
+msgstr "Registrieren"
+
+#: inc/templates/single-service-stripe.php:301
+#, fuzzy
+msgid "Already registerd"
+msgstr "Bereits registriert"
+
+#: inc/templates/single-service-stripe.php:301
+#, fuzzy
+msgid "login here"
+msgstr "hier anmelden"
+
+#: inc/templates/single-service-stripe.php:304
+msgid "Confirm Password"
+msgstr "Passwort bestätigen"
+
+#: inc/templates/single-service-stripe.php:311
+msgid "Continue"
+msgstr "Weiter"
+
+#: inc/templates/single-service-stripe.php:312
+msgid "Buy Now"
+msgstr "Jetzt kaufen"
+
+#: inc/templates/single-service-stripe.php:328
+#, fuzzy
+msgid "Service Info and features"
+msgstr "Service Infos und Eigenschaften"
+
+#: inc/templates/single-service-stripe.php:362
+msgid "Gallery"
+msgstr "Galerie"
+
+#: inc/templates/single-service-stripe.php:458
+#: inc/templates/single-service-stripe.php:473
+msgid "Business Address"
+msgstr "Geschäftsadresse"
+
+#: inc/templates/user-tabs/tab1-form.php:35
+#, fuzzy
+msgid "P.IVA"
+msgstr "P.IVA"
+
+#. Plugin Name of the plugin/theme
+#, fuzzy
+msgid "CP Smart CRM"
+msgstr "CP Smart CRM"
+
+#. Plugin URI of the plugin/theme
+#, fuzzy
+msgid "https://n3rds.work/wordpress-crm-invoices-plugin"
+msgstr "https://n3rds.work/wordpress-crm-invoices-plugin"
+
+#. Description of the plugin/theme
+#, fuzzy
+msgid ""
+"Adds a powerful CRM to wp-admin. Manage Customers, Invoices, TODO, "
+"Appointments and future Notifications to Agents, Users and Customers"
+msgstr ""
+"Erweitert wp-admin um ein leistungsstarkes CRM. Verwalte Kunden, Rechnungen, "
+"TODOs, Termine und zukünftige Benachrichtigungen für Agenten, Benutzer und "
+"Kunden"
+
+#. Author of the plugin/theme
+#, fuzzy
+msgid "WMS N@W"
+msgstr "WMS N@W"
+
+#. Author URI of the plugin/theme
+#, fuzzy
+msgid "https://n3rds.work"
+msgstr "https://n3rds.work"

@@ -24,7 +24,7 @@
 	</li>
 	<?php 
 	is_multisite() ? $filter=get_blog_option(get_current_blog_id(), 'active_plugins' ) : $filter=get_option('active_plugins' );
-if ( in_array( 'wp-smart-crm-accountability/wp-smart-crm-accountability.php', apply_filters( 'active_plugins', $filter) ) ) {
+if ( in_array( 'cp-smart-crm-accountability/cp-smart-crm-accountability.php', apply_filters( 'active_plugins', $filter) ) ) {
 		?>
 	<li class="btn bg-danger btn-sm _flat btn_todo" onclick="location.href='<?php echo admin_url('admin.php?page=smart-crm&p=documenti/form_credit_note.php')?>';return false;">
 		<i class="glyphicon glyphicon-new-window"></i>

@@ -683,8 +683,8 @@ add_action('admin_menu', 'smart_crm_menu');
 function smart_crm_menu(){
 
 
-    add_menu_page( 'WP SMART CRM', 'WP Smart CRM', 'manage_crm', 'smart-crm', 'WPsCRM_smartcrm', 'dashicons-analytics', 71 );
-    add_submenu_page('SMART CRM', 'WP Smart CRM', 'manage_crm', 'smart-crm', 'WPsCRM_smartcrm', 'dashicons-analytics', 71);
+    add_menu_page( 'WP SMART CRM', 'CP Smart CRM', 'manage_crm', 'smart-crm', 'WPsCRM_smartcrm', 'dashicons-analytics', 71 );
+    add_submenu_page('SMART CRM', 'CP Smart CRM', 'manage_crm', 'smart-crm', 'WPsCRM_smartcrm', 'dashicons-analytics', 71);
 
 	add_submenu_page(
 			'smart-crm',

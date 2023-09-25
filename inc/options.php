@@ -129,7 +129,7 @@ class CRM_Options_Settings{
 		echo '<h1>'.__('WP smart CRM options and Settings','cpsmartcrm').'</h1>';
 	}
 	function footer(){
-		echo '<small style="text-align:center;top:30px;position:relative">Developed by Webmaster-Community N3rds@Work <a href="https://n3rds.work">https://n3rds.work</a></small></div>';
+		echo '<small style="text-align:center;top:30px;position:relative">Developed by Webmaster-Community N3rds@Work <a href="https://smart-cms.n3rds.work">https://smart-cms.n3rds.work</a></small></div>';
 	}
 	
 	/*

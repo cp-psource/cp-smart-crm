@@ -3868,7 +3868,7 @@ msgid "CP Smart CRM"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
-msgid "https://n3rds.work/wordpress-crm-invoices-plugin"
+msgid "https://smart-cms.n3rds.work/wordpress-crm-invoices-plugin"
 msgstr ""
 
 #. Description of the plugin/theme
@@ -3882,5 +3882,5 @@ msgid "WMS N@W"
 msgstr ""
 
 #. Author URI of the plugin/theme
-msgid "https://n3rds.work"
+msgid "https://smart-cms.n3rds.work"
 msgstr ""

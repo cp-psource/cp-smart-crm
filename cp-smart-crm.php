@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: CP Smart CRM
-Plugin URI: https://n3rds.work/wordpress-crm-invoices-plugin
+Plugin URI: https://smart-cms.n3rds.work/wordpress-crm-invoices-plugin
 Description: Adds a powerful CRM to wp-admin. Manage Customers, Invoices, TODO, Appointments and future Notifications to Agents, Users and Customers
 Version: 1.5.17
 Author:       WMS N@W
-Author URI:   https://n3rds.work
+Author URI:   https://smart-cms.n3rds.work
 Text Domain: cpsmartcrm
 Domain Path: /languages
  **************************************************************************
@@ -37,7 +37,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /*require 'psource/psource-plugin-update/psource-plugin-updater.php';
 use Psource\PluginUpdateChecker\v5\PucFactory;
 $MyUpdateChecker = PucFactory::buildUpdateChecker(
-    'https://n3rds.work//wp-update-server/?action=get_metadata&slug=cp-smart-crm', 
+    'https://smart-cms.n3rds.work//wp-update-server/?action=get_metadata&slug=cp-smart-crm', 
     __FILE__, 
     'cp-smart-crm' 
 );*/
@@ -376,12 +376,12 @@ add_action('admin_menu', 'WPsCRM_documentation_link',99);
 function WPsCRM_documentation_link(){
 	if(class_exists('sitepress')){
 		if(ICL_LANGUAGE_CODE =="it")
-			$link='https://n3rds.work/wordpress-crm-invoices-plugin/docs/';
+			$link='https://smart-cms.n3rds.work/wordpress-crm-invoices-plugin/docs/';
 		else
-			$link='https://n3rds.work/eng/wordpress-crm-invoices-plugin/docs/';
+			$link='https://smart-cms.n3rds.work/eng/wordpress-crm-invoices-plugin/docs/';
 		}
 		else{
-			$link='https://n3rds.work/eng/wordpress-crm-invoices-plugin/docs/';
+			$link='https://smart-cms.n3rds.work/eng/wordpress-crm-invoices-plugin/docs/';
 		}
 	add_submenu_page(
 	'smart-crm',

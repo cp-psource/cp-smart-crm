@@ -1,21 +1,20 @@
-﻿=== WP smart CRM & Invoices FREE ===
+﻿=== CP smart CRM ===
 
-Contributors: softradeweb,andrew_fisher
+Contributors: DerN3rd
 Tags: crm, invoices, todo
 Requires at least: 4.2
-Tested up to: 5.0.3
-Requires PHP: 5.6
-Stable tag: 1.8.3
+Tested up to: 5.1.0
+Stable tag: 1.5.17
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
  
-WP smart CRM & invoices FREE adds a powerful CRM with many functions to wp-admin. 
+CP smart CRM adds a powerful CRM with many functions to wp-admin. 
 Manage Customers, Invoices, TODO, Appointments and Notifications.
 
 == Description ==
 
 
-WP smart CRM & invoices FREE covers lots of "office management features". 
+CP smart CRM covers lots of "office management features". 
 
 CRM management: 
 
@@ -51,45 +50,8 @@ All the records in grids are powered with filtering/grouping/sorting functions f
 
 All the grids information are visually enhanced with icon/colors to always guarantee a quick overview
 
-Official site and support : [CP Smart CRM free plugin](http://softrade.it/wordpress-crm-invoices-plugin/ "Plugin  Wordpress per CRM e fatturazione") 
-
-== WP SMART CRM & INVOICES PRO VERSION  ==
-
-Upgrade to [PRO version](https://softrade.it/servizi/wp-smart-crm-pro-plugin/ "Plugin Wordpress PRO per CRM e fatturazione") 
-
-- Full page layout
-- Avanced Scheduler con drag & drop + clone & copy
-- Custom datasets for contacts (i.e. customers, suppliers, partners...)
-- Custom fields
-- File uploads for contacts
-- Sending of emails with attachments
-- Contacts import from other plugins (i.e. woocommerce)
-- Multipage invoice pdf
-- And much more!
-
-
-Try our [DEMO](http://crm.softrade.it/ "Plugin Wordpress PRO per CRM e fatturazione")
-User: demo
-Pwd: demowpsmartcrm
- 
-Current supported currencies in PRO version: EUR, USD, GPB, AUD, CHF, BRL, INR, CNY, JPY
-
-Not in the list? we can add any international currency on demand...just ask!
-
-The plugin has been designed conforming to the Italian fiscal rules but we're open to feedbacks to address specific country-based issues in EU, USA and ASIA.
-NOTE: the italian fiscal law system is worldwide recognized as (probably) the most tricky and confused..so it will  an easy task to adapt it to any system, just ask !
-
-If you want to send us feedback use the support forum, if you want to partecipate to its translation in more languages you can use the [translation project of the plugin](https://translate.wordpress.org/projects/wp-plugins/cpsmartcrm) here on the WP repository
-
-== Installation ==
-
-
-
-1. Upload `wp-smartcrm-invoices.php` to the `/wp-content/plugins/` directory or go to Plugins->add new ->search for `wp smart CRM`-> click on `install`
-
-2. Activate the plugin through the 'Plugins' menu in WordPress
-
-3. Some basic configuration are needed upon activation, follow the help to configure your business data
+If you want to send us feedback use the support forum, if you want to partecipate to its translation in more languages, drop us a note info [at] smart-cms.n3rds.work/
+Important: if you change .mo/.po files in the plugin "languages" folder, you may lose your changes in next update. To prevent this, copy your .mo/.po files in "/wp-content/languages/plugins" folder.
 
 
 == Screenshots ==
@@ -103,88 +65,12 @@ If you want to send us feedback use the support forum, if you want to partecipat
 
 == Changelog ==
 
+= 1.5.17 =
+* Minor Bugfixes
 
-= 1.8.3 =
-* Bufix  input fields length in form invoice and form quotation 
-
-= 1.8.2 =
-* Debug notice removed
-
-= 1.8.1 =
-* Replaced example import file
-
-= 1.8 =
-* Added agent field and annotations field in customers import
-* Improved customers import
-
-= 1.7.9 =
-* Improved payment conditions and annotations in printable version
-* Added link to online documentation
-
-= 1.7.8 =
-* WP 4.9.8 compatibility
-* Bugfix in total document row when amount has decimals
-
-= 1.7.7 =
-* WP 4.9.6 compatibility
-* Small bugfixes
-
-= 1.7.6 =
-* Bugfix in quotations printable version for some calculations
-* Improved printable version layout for documents
-
-= 1.7.5 =
-* Bugfix in discount calculation in document printable version
-* Bugfix in link of generated document after download from printable version
-* Minor bugfixes
-
-= 1.7.4 =
-* Bugfix in totals calculation in documents
-
-= 1.7.3 =
-* Quantity with decimals in documents
-
-= 1.7.2 =
-* Added time in annotations and improved timeline
-* Improvements in scheduler list
-* Improved input of numbers in documents
-* Minor bugfixes
-
-
-= 1.6.8 =
-* Bugfix on invoice automatic numbering in particular situations
-* Added translaion in French
-
-= 1.6.71 =
-* Minor bugfix on setup
-
-= 1.6.7 =
-* Added missing traslations
-* Minor bugfixes
-
-= 1.6.6 =
-* Improved import customers from csv file, which failed with special characters
-
-= 1.6.5 =
-* Bugfix on saving of todo/appointment in some cases
-
-= 1.6.4 =
-* Feature: columns "code" and "discount" not showing in print document if they are empty
-* Minor bugfixes
-
-= 1.6.3 =
-* bug fixed in customer when saving country
-* translation strings modified 
-
-= 1.6.2 =
-* bug fixed in customer import
-
-= 1.6.1 =
-* bug fixed saving customer missing control
-
-= 1.6 =
-* Improved localization procedure according to standard WP
-* Ajax save documents
+= 1.5.16 =
+* Bug fixed dbDelta at plugin activation + missing file
+* Added discount type in invoices ( %  or value)
 
 = 1.5.14 =
 * Bug fixed php notices
@@ -327,3 +213,4 @@ If you want to send us feedback use the support forum, if you want to partecipat
 * First version
 
 
+== Upgrade Notices ==

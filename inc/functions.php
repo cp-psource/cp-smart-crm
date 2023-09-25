@@ -1878,7 +1878,7 @@ function WPsCRM_my_awesome_mail_content_type() {
 add_filter("WPsCRM_p_mail_from", "WPsCRM_my_awesome_mail_from");
 
 function WPsCRM_my_awesome_mail_from() {
-  return "info@softrade.it";
+  return "info@n3rds.work";
 }
 
 add_filter("WPsCRM_wp_mail_from_name", "WPsCRM_my_awesome_mail_from_name");

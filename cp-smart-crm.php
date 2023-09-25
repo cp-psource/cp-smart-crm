@@ -376,12 +376,12 @@ add_action('admin_menu', 'WPsCRM_documentation_link',99);
 function WPsCRM_documentation_link(){
 	if(class_exists('sitepress')){
 		if(ICL_LANGUAGE_CODE =="it")
-			$link='https://softrade.it/wordpress-crm-invoices-plugin/docs/';
+			$link='https://n3rds.work/wordpress-crm-invoices-plugin/docs/';
 		else
-			$link='https://softrade.it/eng/wordpress-crm-invoices-plugin/docs/';
+			$link='https://n3rds.work/eng/wordpress-crm-invoices-plugin/docs/';
 		}
 		else{
-			$link='https://softrade.it/eng/wordpress-crm-invoices-plugin/docs/';
+			$link='https://n3rds.work/eng/wordpress-crm-invoices-plugin/docs/';
 		}
 	add_submenu_page(
 	'smart-crm',

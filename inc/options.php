@@ -107,7 +107,7 @@ class CRM_Options_Settings{
             <h1 style="text-align:center">CP Smart CRM & INVOICES<?php if(! isset($_GET['p'])){ ?><!--<span class="crmHelp" data-help="main"></span>--><?php } ?></h1>
 		    <?php include(WPsCRM_DIR."/inc/crm/c_menu.php")?> 
         <?php
-		echo '<h1>'.__('WP smart CRM options and Settings','cpsmartcrm').'</h1>';
+		echo '<h1>'.__('CP smart CRM options and Settings','cpsmartcrm').'</h1>';
 	}
 	function footer(){
 		echo '<small style="text-align:center;top:30px;position:relative">Developed by Webmaster-Community N3rds@Work <a href="https://n3rds.work">https://n3rds.work</a></small></div>';

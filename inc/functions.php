@@ -3306,64 +3306,59 @@ function WPsCRM_generate_document_HTML($ID)
 	return $content;
 }
 
-function WPsCRM_create_pdf_document($ID, $content, $attachment=0, $old_file, $tipo, $WOOmail)
-{
-	global $wpdb;
-	
-	$d_table=WPsCRM_TABLE."documenti";
-	$_customer=new CRM_customer();
-	$_customer->set_customerbyID_doc($ID);
-	$email=$_customer->email;
-	$FK_clienti=$_customer->customerID;
-	$html2pdf = new HTML2PDF('P', 'A4', 'it');
-	//$html2pdf->setModeDebug();
-	$html2pdf->pdf->SetDisplayMode('fullpage');
-	
-	$html2pdf->writeHTML($content, false);
+function WPsCRM_create_pdf_document($ID, $content, $attachment = 0, $old_file = null, $tipo = null, $WOOmail = null ) {
+    global $wpdb;
 
-	$save_to_path = WPsCRM_UPLOADS;
-	if(!file_exists($save_to_path)) wp_mkdir_p($save_to_path);
-	if (file_exists($save_to_path."/".$old_file.".pdf"))
-	unlink($save_to_path."/".$old_file.".pdf");
-	$random_name=WPsCRM_gen_random_code(20);
-	$document_name=$FK_clienti."_".$tipo."_".$ID."_".$random_name;
-	$filename=$save_to_path."/".$document_name.".pdf";
-	//  echo $filename;
-	$html2pdf->Output($filename,'F');
-	$wpdb->update( 
-	$d_table, 
-	array('filename' => "$document_name"),
-	array('id'=>$ID), 
-	array('%s') 
-	);
+    $d_table = WPsCRM_TABLE . "documenti";
+    $_customer = new CRM_customer();
+    $_customer->set_customerbyID_doc($ID);
+    $email = $_customer->email;
+    $FK_clienti = $_customer->customerID;
+    $html2pdf = new HTML2PDF('P', 'A4', 'it');
+    //$html2pdf->setModeDebug();
+    $html2pdf->pdf->SetDisplayMode('fullpage');
 
-	if ($attachment==1)
-	{
-		$user_page=get_option('CRM_user_page');
-		//$html2pdf->WriteHTML($content,false);
-		$content2 = $html2pdf->Output('', 'S');
-		$content2 = chunk_split(base64_encode($content2));
-		$mailto = $email;
-		$mailto = "info@stefyonweb.com";
-		$options=get_option('CRM_general_settings');
-		$from_mail=( isset($options['emailFrom']) && trim( $options['emailFrom'] ) !="" ) ? $options['emailFrom'] : get_bloginfo('admin_email') ;
-		$from_name=( isset($options['nameFrom'])  && trim( $options['nameFrom'] ) !="" ) ? $options['nameFrom'] : "WP smart CRM - ".get_bloginfo('name') ;
-		$e_date=date("Y-m-d");
-		//$subject = 'Fattura del '.date("d-m-Y").' di '. $from_name; 
-		$subject= sprintf( __( 'Invoice issued on %1$s from %2$s', 'cpsmartcrm' ), date("d-m-Y"), $from_name);
-		//$message = "Gentile cliente, ti ringraziamo per il tuo acquisto. In allegato trovi la tua fattura.". PHP_EOL;
-		$message= __( 'Dear customer, thank you for your purchase. Your invoice is attached.' , 'cpsmartcrm' );;
-		$message.="\r\n";
-		$message.=__( 'Kind regards', 'cpsmartcrm' );
-		$message.=PHP_EOL;
-		//$message .= "Clicca il seguente link per accedere al tuo pannello di controllo:  <a href=\"".get_page_link($user_page)."\">".__("Profile page.",'cpsmartcrm')."</a>";
-		//$attachname=$document_name.".pdf";
-		$attachments[]=$filename;
-		$headers[] = 'From: '.$WOOmail->emailFrom . PHP_EOL;
-		$WOOmail->sendMailToCustomer($from_mail, $mailto, $subject, $message, $e_date, $FK_clienti, $headers, $attachments);
-  
-	}
+    $html2pdf->writeHTML($content, false);
 
+    $save_to_path = WPsCRM_UPLOADS;
+    if (!file_exists($save_to_path)) wp_mkdir_p($save_to_path);
+    if (file_exists($save_to_path . "/" . $old_file . ".pdf"))
+        unlink($save_to_path . "/" . $old_file . ".pdf");
+    $random_name = WPsCRM_gen_random_code(20);
+    $document_name = $FK_clienti . "_" . $tipo . "_" . $ID . "_" . $random_name;
+    $filename = $save_to_path . "/" . $document_name . ".pdf";
+    //  echo $filename;
+    $html2pdf->Output($filename, 'F');
+    $wpdb->update(
+        $d_table,
+        array('filename' => "$document_name"),
+        array('id' => $ID),
+        array('%s')
+    );
+
+    if ($attachment == 1) {
+        //$html2pdf->WriteHTML($content,false);
+        $content2  = $html2pdf->Output('', 'S');
+        $content2  = chunk_split(base64_encode($content2));
+        $mailto    = $email;
+        $mailto    = "info@stefyonweb.com";
+        $options   = get_option('CRM_general_settings');
+        $from_mail = (isset($options['emailFrom']) && trim($options['emailFrom']) != "") ? $options['emailFrom'] : get_bloginfo('admin_email');
+        $from_name = (isset($options['nameFrom'])  && trim($options['nameFrom']) != "") ? $options['nameFrom'] : "WP smart CRM - " . get_bloginfo('name');
+        $e_date    = date("Y-m-d");
+        //$subject = 'Fattura del '.date("d-m-Y").' di '. $from_name; 
+        $subject   = sprintf(__('Invoice issued on %1$s from %2$s', 'cpsmartcrm'), date("d-m-Y"), $from_name);
+        //$message = "Gentile cliente, ti ringraziamo per il tuo acquisto. In allegato trovi la tua fattura.". PHP_EOL;
+        $message   = __('Dear customer, thank you for your purchase. Your invoice is attached.', 'cpsmartcrm');
+        $message  .= "\r\n";
+        $message  .= __('Kind regards', 'cpsmartcrm');
+        $message  .= PHP_EOL;
+        //$message .= "Clicca il seguente link per accedere al tuo pannello di controllo:  <a href=\"".get_page_link($user_page)."\">".__("Profile page.",'cpsmartcrm')."</a>";
+        //$attachname=$document_name.".pdf";
+        $attachments[] = $filename;
+        $headers[] = 'From: ' . $WOOmail->emailFrom . PHP_EOL;
+        $WOOmail->sendMailToCustomer($from_mail, $mailto, $subject, $message, $e_date, $FK_clienti, $headers, $attachments);
+    }
 }
 
 function WPsCRM_print_totalBox($tipo){

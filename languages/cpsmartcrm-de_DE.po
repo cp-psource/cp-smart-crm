@@ -2963,7 +2963,7 @@ msgstr "6 Max"
 
 #: inc/options.php:110
 #, fuzzy
-msgid "WP smart CRM options and Settings"
+msgid "CP smart CRM options and Settings"
 msgstr "WP smart CRM Optionen und Einstellungen"
 
 #: inc/options.php:123

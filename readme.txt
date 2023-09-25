@@ -1,20 +1,20 @@
-﻿=== WP smart CRM & Invoices FREE ===
+﻿=== CP smart CRM ===
 
-Contributors: softradeweb,andrew_fisher
+Contributors: DerN3rd
 Tags: crm, invoices, todo
 Requires at least: 4.2
-Tested up to: 4.7.5
+Tested up to: 5.1.0
 Stable tag: 1.5.17
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
  
-WP smart CRM & invoices FREE adds a powerful CRM with many functions to wp-admin. 
+CP smart CRM adds a powerful CRM with many functions to wp-admin. 
 Manage Customers, Invoices, TODO, Appointments and Notifications.
 
 == Description ==
 
 
-WP smart CRM & invoices FREE covers lots of "office management features". 
+CP smart CRM covers lots of "office management features". 
 
 CRM management: 
 
@@ -50,21 +50,8 @@ All the records in grids are powered with filtering/grouping/sorting functions f
 
 All the grids information are visually enhanced with icon/colors to always guarantee a quick overview
 
-Official site and support : [CP Smart CRM free plugin](http://softrade.it/wordpress-crm-invoices-plugin/ "Plugin  Wordpress per CRM e fatturazione") 
-The plugin has been designed conforming to the Italian fiscal rules but we're open to feedbacks to address specific country-based issues in EU, USA and ASIA.
-NOTE: the italian fiscal law system is worldwide recognized as (probably) the most tricky and confused..so it will  an easy task to adapt it to any system, just ask !
-
 If you want to send us feedback use the support forum, if you want to partecipate to its translation in more languages, drop us a note info [at] softrade.it
 Important: if you change .mo/.po files in the plugin "languages" folder, you may lose your changes in next update. To prevent this, copy your .mo/.po files in "/wp-content/languages/plugins" folder.
-== Installation ==
-
-
-
-1. Upload `wp-smartcrm-invoices.php` to the `/wp-content/plugins/` directory
-
-2. Activate the plugin through the 'Plugins' menu in WordPress
-
-3. Some basic configuration are needed upon activation, follow the help to configure your business data
 
 
 == Screenshots ==

@@ -33,6 +33,14 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
  **************************************************************************/
+
+require 'psource/psource-plugin-update/psource-plugin-updater.php';
+use Psource\PluginUpdateChecker\v5\PucFactory;
+$MyUpdateChecker = PucFactory::buildUpdateChecker(
+	'https://n3rds.work//wp-update-server/?action=get_metadata&slug=cp-smart-crm', 
+	__FILE__, 
+	'cp-smart-crm' 
+);
 /**
  * @@@@@@@@@@@@@@@@@ LOCALIZATION @@@@@@@@@@@
  *

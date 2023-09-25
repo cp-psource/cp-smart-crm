@@ -73,33 +73,45 @@
             }
             // Create form control select box and add into the editor
             var controlBox = function (target) {
-                var select = '';
+                var selectOptions = [
+                    { value: "0", label: opts.messages.add_new_field },
+                    { value: "input_text", label: opts.messages.text },
+                    { value: "textarea", label: opts.messages.paragraph },
+                    { value: "checkbox", label: opts.messages.checkboxes },
+                    { value: "radio", label: opts.messages.radio },
+                    { value: "select", label: opts.messages.select },
+                    { value: "datetime", label: opts.messages.datetime },
+                    { value: "color", label: opts.messages.color },
+                    { value: "video", label: opts.messages.video },
+                    { value: "gallery", label: opts.messages.gallery }
+                ];
+
                 var box_content = '';
                 var save_button = '';
                 var box_id = frmb_id + '-control-box';
                 var save_id = frmb_id + '-save-button';
-                // Add the available options
-                select += '<option value="0">' + opts.messages.add_new_field + '</option>';
-                select += '<option value="input_text">' + opts.messages.text + '</option>';
-                select += '<option value="textarea">' + opts.messages.paragraph + '</option>';
-                select += '<option value="checkbox">' + opts.messages.checkboxes + '</option>';
-                select += '<option value="radio">' + opts.messages.radio + '</option>';
-                select += '<option value="select">' + opts.messages.select + '</option>';
-                select += '<option value="datetime">' + opts.messages.datetime + '</option>';
-                select += '<option value="color">' + opts.messages.color + '</option>';
-                select += '<option value="video">' + opts.messages.video + '</option>';
-                select += '<option value="gallery">' + opts.messages.gallery + '</option>';
+
                 // Build the control box and search button content
-                box_content = '<select id="' + box_id + '" class="frmb-control">' + select + '</select>';
+                box_content = '<select id="' + box_id + '" class="frmb-control">';
+                
+                // Generate secure option elements
+                for (var i = 0; i < selectOptions.length; i++) {
+                    box_content += '<option value="' + selectOptions[i].value + '">' + selectOptions[i].label + '</option>';
+                }
+                
+                box_content += '</select>';
                 save_button = '<input type="submit" id="' + save_id + '" class="frmb-submit _saveFields" value="' + opts.messages.save + '"/>';
+
                 // Insert the control box into page
                 if (!target) {
                     $(ul_obj).before(box_content);
                 } else {
                     $(target).append(box_content);
                 }
+
                 // Insert the search button
                 $(ul_obj).after(save_button);
+
                 // Set the form save action
                 $('#' + save_id).click(function () {
                     save();

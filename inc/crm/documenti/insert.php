@@ -10,17 +10,15 @@ if ( ! wp_verify_nonce( $nonce, 'update_document' ) || ! current_user_can('manag
 	$d_table=WPsCRM_TABLE."documenti_dettaglio";
 	$s_table=WPsCRM_TABLE."subscriptionrules";
 	$a_table=WPsCRM_TABLE."agenda";
-	$post_sanitized=WPsCRM_sanitize($_POST);
-	foreach ( $post_sanitized as $chiave => $valore )
-		${$chiave}=$valore;
-	foreach ( $_GET as $chiave => $valore )
-		${$chiave}=$valore;
-	if (!$totale_netto||!isset($totale_netto))
+//	var_dump($_POST);
+//echo $_POST["totale"];
+	$totale=$_POST["totale"];
+	if (!isset($_POST["totale_netto"]) || !$_POST["totale_netto"])
 		$totale_netto=$totale;
-	if (isset($modalita_pagamento))
+	if (isset($_POST["modalita_pagamento"]))
 	{
-		$_modalita_pagamento=explode("~",$modalita_pagamento);
-		$_modalita_pagamento[1] !="" ? $modalita_pagamento=$_modalita_pagamento[0] : $modalita_pagamento=$modalita_pagamento;
+		$_modalita_pagamento=explode("~",$_POST["modalita_pagamento"]);
+		isset($_modalita_pagamento[1])  ? $modalita_pagamento=$_modalita_pagamento[0] : $modalita_pagamento=$_POST["modalita_pagamento"];
 	}
 	else
 		$modalita_pagamento="";
@@ -29,9 +27,9 @@ if ( ! wp_verify_nonce( $nonce, 'update_document' ) || ! current_user_can('manag
 	$type=$_GET["type"];
 	$document_options=get_option('CRM_documents_settings');
 	if ($type==1)
-		$document_start=$document_options['offers_start'];
+		$document_start=isset($document_options['offers_start']) ? $document_options['offers_start'] : "";
 	elseif ($type==2)
-		$document_start=$document_options['invoices_start'];
+		$document_start=isset($document_options['invoices_start']) ? $document_options['invoices_start'] : "";
 	if ($type==3)
 		$origine_proforma=1;
 	else
@@ -43,35 +41,25 @@ if ( ! wp_verify_nonce( $nonce, 'update_document' ) || ! current_user_can('manag
 	$data_inserimento=date("Y-m-d");
 
 	$data_timestamp=strtotime($data) ;
-	if (isset($_POST["testo_libero"]))
-		$testo_libero=str_replace(array("\r\n", "\r"), "<br />", $_POST["testo_libero"]);
-	else
-		$testo_libero="";
-	if (isset($_POST["notify_payment"]))
-		$notify_payment=(int)$_POST["notify_payment"];
-	else
-		$notify_payment=0;
-	if (isset($_POST["quotation_value"]))
-		$quotation_value=(float)$_POST["quotation_value"];
-	else
-		$quotation_value=0;
+	$testo_libero=isset($_POST["testo_libero"]) ? str_replace(array("\r\n", "\r"), "<br />", $_POST["testo_libero"]) : "";
+	$notify_payment=isset($_POST["notify_payment"])?(int)$_POST["notify_payment"]:0;
+	$notificationDays=isset($_POST["notificationDays"])?(int)$_POST["notificationDays"]:0;
+	$annotazioni=isset($_POST["annotazioni"])?$_POST["annotazioni"]:"";
+	$commento=isset($_POST["commento"])?$_POST["commento"]:"";
+	$oggetto=isset($_POST["oggetto"])?$_POST["oggetto"]:"";
+	$riferimento=isset($_POST["riferimento"])?$_POST["riferimento"]:"";
+	$totale_imponibile=isset($_POST["totale_imponibile"])?$_POST["totale_imponibile"]:0;
+	$totale_imposta=isset($_POST["totale_imposta"])?$_POST["totale_imposta"]:0;
+	$totale_cassa=isset($_POST["totale_cassa"])?$_POST["totale_cassa"]:0;
+	$ritenuta_acconto=isset($_POST["ritenuta_acconto"])?$_POST["ritenuta_acconto"]:0;
+	$pagato=isset($_POST["pagato"])?$_POST["pagato"]:0;
+	$perc_realizzo=isset($_POST["perc_realizzo"])?$_POST["perc_realizzo"]:0;
+	$quotation_value=isset($_POST["quotation_value"]) ? (int)$_POST["quotation_value"] : 0;
 	$num_righe=$_POST["num_righe"];
-	if (isset($_POST["tipo_sconto"]))
-		$tipo_sconto=(int)$_POST["tipo_sconto"];
-	else
-		$tipo_sconto=0;
-	if (!isset($fk_utenti_age))
-		$fk_utenti_age=0;
-	if (!isset($oggetto))
-		$oggetto="";
-	if (!isset($totale_cassa))
-		$totale_cassa=0;
-	if (!isset($ritenuta_acconto))
-		$ritenuta_acconto=0;
-	if (!isset($perc_realizzo))
-		$perc_realizzo="";
-		
-	if ($ID)
+	$tipo_sconto=isset($_POST["tipo_sconto"]) ? (int)$_POST["tipo_sconto"] : 0;
+	$fk_clienti=isset($_POST["fk_clienti"])?$_POST["fk_clienti"]:0;
+	$hidden_fk_clienti=isset($_POST["hidden_fk_clienti"])?$_POST["hidden_fk_clienti"]:0;
+	if ($ID=$_GET["ID"])
 	{
 		//delete scheduler, rules, emails associated to document
 		$wpdb->delete( WPsCRM_TABLE."emails", array( 'fk_documenti' => $ID ) );
@@ -85,9 +73,9 @@ if ( ! wp_verify_nonce( $nonce, 'update_document' ) || ! current_user_can('manag
 
 		$wpdb->update(
 		  $table,
-		  array('fk_utenti_age' => "$fk_utenti_age",'data' => "$data",'oggetto' => "$oggetto",'riferimento' => "$riferimento",'data' => "$data",'modalita_pagamento' => "$modalita_pagamento",'annotazioni' => "$annotazioni", 'totale_imponibile' => "$totale_imponibile", 'totale_imposta' => "$totale_imposta", 'totale' => "$totale", 'tot_cassa_inps' => "$totale_cassa", 'ritenuta_acconto' => "$ritenuta_acconto", 'totale_netto' => "$totale_netto",'commento' => "$commento",'testo_libero' => $testo_libero, 'giorni_pagamento' => $notificationDays, 'pagato' => $pagato, 'notifica_pagamento' => $notify_payment, 'perc_realizzo' => $perc_realizzo, 'valore_preventivo' => $quotation_value, 'data_scadenza' => $data_scadenza,'data_scadenza_timestamp'=>$data_scadenza_timestamp, 'tipo_sconto'=>$tipo_sconto),
+		  array('data' => "$data",'oggetto' => "$oggetto",'riferimento' => "$riferimento",'data' => "$data",'modalita_pagamento' => "$modalita_pagamento",'annotazioni' => "$annotazioni", 'totale_imponibile' => "$totale_imponibile", 'totale_imposta' => "$totale_imposta", 'totale' => "$totale", 'tot_cassa_inps' => "$totale_cassa", 'ritenuta_acconto' => "$ritenuta_acconto", 'totale_netto' => "$totale_netto",'commento' => "$commento",'testo_libero' => $testo_libero, 'giorni_pagamento' => $notificationDays, 'pagato' => $pagato, 'notifica_pagamento' => $notify_payment, 'perc_realizzo' => $perc_realizzo, 'valore_preventivo' => $quotation_value, 'data_scadenza' => $data_scadenza,'data_scadenza_timestamp'=>$data_scadenza_timestamp, 'tipo_sconto'=>$tipo_sconto),
 		array('id'=>$ID),
-		  array('%d','%s','%s','%s','%s','%s','%f','%f','%f','%f','%f','%f','%s','%s','%d','%d','%d','%s','%f','%s','%s', '%d')
+		  array('%s','%s','%s','%s','%s','%f','%f','%f','%f','%f','%f','%s','%s','%d','%d','%d','%s','%f','%s','%d', '%d')
 	  );
 
 	}
@@ -128,8 +116,8 @@ if ( ! wp_verify_nonce( $nonce, 'update_document' ) || ! current_user_can('manag
 		update_option('CRM_documents_settings', $document_options);
 		$wpdb->insert(
 		$table,
-		array('progressivo' => "$new_reg",'tipo' => "$type",'fk_clienti' => "$fk_clienti",'data' => "$data",'fk_utenti_ins' => "$user_id", 'fk_utenti_age' => "$fk_utenti_age",'oggetto' => "$oggetto",'riferimento' => "$riferimento",'modalita_pagamento' => "$modalita_pagamento",'annotazioni' => "$annotazioni", 'totale_imponibile' => "$totale_imponibile", 'totale_imposta' => "$totale_imposta", 'totale' => "$totale", 'tot_cassa_inps' => "$totale_cassa", 'ritenuta_acconto' => "$ritenuta_acconto", 'totale_netto' => "$totale_netto", 'data_inserimento' => "$data_inserimento",'commento' => "$commento",'testo_libero' => $testo_libero, 'giorni_pagamento' => $notificationDays, 'perc_realizzo' => $perc_realizzo, 'notifica_pagamento' => $notify_payment, 'valore_preventivo' => $quotation_value, 'data_scadenza' => $data_scadenza, 'data_timestamp'=>$data_timestamp,'data_scadenza_timestamp'=>$data_scadenza_timestamp,'origine_proforma'=>$origine_proforma, 'tipo_sconto'=>$tipo_sconto),
-		array('%d','%d','%d','%s','%d','%d','%s','%s','%s','%s','%f','%f','%f','%f','%f','%f','%s','%s','%s','%d','%s','%d','%f','%s','%s', '%d', '%d')
+		array('progressivo' => "$new_reg",'tipo' => "$type",'fk_clienti' => "$fk_clienti",'data' => "$data",'fk_utenti_ins' => "$user_id", 'oggetto' => "$oggetto",'riferimento' => "$riferimento",'modalita_pagamento' => "$modalita_pagamento",'annotazioni' => "$annotazioni", 'totale_imponibile' => "$totale_imponibile", 'totale_imposta' => "$totale_imposta", 'totale' => "$totale", 'tot_cassa_inps' => "$totale_cassa", 'ritenuta_acconto' => "$ritenuta_acconto", 'totale_netto' => "$totale_netto", 'data_inserimento' => "$data_inserimento",'commento' => "$commento",'testo_libero' => $testo_libero, 'giorni_pagamento' => $notificationDays, 'perc_realizzo' => $perc_realizzo, 'notifica_pagamento' => $notify_payment, 'valore_preventivo' => $quotation_value, 'data_scadenza' => $data_scadenza, 'data_timestamp'=>$data_timestamp,'data_scadenza_timestamp'=>$data_scadenza_timestamp,'origine_proforma'=>$origine_proforma, 'tipo_sconto'=>$tipo_sconto),
+		array('%d','%d','%d','%s','%d','%d','%s','%s','%s','%s','%f','%f','%f','%f','%f','%f','%s','%s','%s','%d','%s','%d','%f','%d','%d', '%d', '%d')
 	);
 	}
 	//var_dump( $wpdb->last_query );
@@ -146,13 +134,13 @@ if ( ! wp_verify_nonce( $nonce, 'update_document' ) || ! current_user_can('manag
 		$tipo=$_POST["tipo_".$i];
 		$codice=(string)$_POST["codice_".$i];
 		$descrizione=(string)("".$_POST["descrizione_".$i]);
-		$subscriptionrules=(int)$_POST["subscriptionrules_".$i];
+		$subscriptionrules=isset($_POST["subscriptionrules_".$i])?(int)$_POST["subscriptionrules_".$i]:0;
 		$prezzo=(float)$_POST["prezzo_".$i];
 		$qta=(float)$_POST["qta_".$i];
 		$sconto=(float)$_POST["sconto_".$i];
 		$totale=(float)$_POST["totale_".$i];
 		$iva=(int)$_POST["iva_".$i];
-		$delete=isset($_POST["delete_".$i])?$_POST["delete_".$i]:0;
+		$delete=isset($_POST["delete_".$i])?(int)$_POST["delete_".$i]:0;	
 		//echo "id_art=".$id_art."<br>";
 		if ($id_art)
 		{
@@ -174,6 +162,7 @@ if ( ! wp_verify_nonce( $nonce, 'update_document' ) || ! current_user_can('manag
 			  array('fk_documenti' => $ID_ret,'fk_articoli' => $id_art, 'prezzo' => $prezzo, 'sconto' => $sconto, 'qta' => $qta, 'totale' => $totale, 'n_riga' => $i, 'codice' => $codice, 'descrizione' => $descrizione, 'iva' => $iva, 'tipo' => $tipo, 'fk_subscriptionrules' => $subscriptionrules),
 			  array('%d','%d','%f','%f','%d','%f','%d','%s','%s','%d','%d','%d')
 		);
+//		var_dump( $wpdb->last_query );
 
 				$id_dd=$wpdb->insert_id;
 			}
@@ -206,7 +195,7 @@ if ( ! wp_verify_nonce( $nonce, 'update_document' ) || ! current_user_can('manag
 			  array('fk_documenti' => $ID_ret, 'prezzo' => $prezzo, 'sconto' => $sconto, 'qta' => $qta, 'totale' => $totale, 'n_riga' => $i, 'codice' => $codice, 'descrizione' => $descrizione, 'iva' => $iva, 'tipo' => $tipo, 'fk_subscriptionrules' => $subscriptionrules),
 			  array('%d','%f','%d','%d','%f','%d','%s','%s','%d','%d','%d')
 				);
-		//var_dump( $wpdb->last_query );
+//		var_dump( $wpdb->last_query );
 				$id_dd=$wpdb->insert_id;
 				//exit;
 			}
@@ -223,9 +212,9 @@ if ( ! wp_verify_nonce( $nonce, 'update_document' ) || ! current_user_can('manag
 	//die;
 	//echo "salvato<br>";
 	//subscription rules
-	if ($notify_payment&&$type==2)
+	$client_id=$fk_clienti?$fk_clienti:$hidden_fk_clienti;
+	if ( $notify_payment && $type ==2 )
 	{
-		$client_id=$fk_clienti?$fk_clienti:$hidden_fk_clienti;
 		$s_table=WPsCRM_TABLE."subscriptionrules";
 		$a_table=WPsCRM_TABLE."agenda";
 		$users=$_POST["selectedUsers"];
@@ -323,23 +312,63 @@ if ( ! wp_verify_nonce( $nonce, 'update_document' ) || ! current_user_can('manag
 	$mail= new CRM_mail(array("ID_doc"=> $ID_ret) );
 	
 }
+if (WPsCRM_advanced_print()) {
+	$sql="select filename from $table where id=$ID_ret";
+	$qf=$wpdb->get_row( $sql );
+	$old_file=$qf->filename;
+	$WOOmail= new CRM_mail(array("ID_doc"=> $ID_ret) );
+	$attachment=0;
+	ob_start();
+
+
+	$content= WPsCRM_generate_document_HTML($ID_ret);
+	//echo $content;exit;
+	$options=get_option('CRM_business_settings');
+
+	ob_end_clean();
+	ob_clean();
+	$html2pdf = new Html2Pdf('P', 'A4', 'it');
+	//$html2pdf->setModeDebug();
+	$html2pdf->pdf->SetDisplayMode('fullpage');
+	
+	$html2pdf->writeHTML($content, false);
+
+	$save_to_path = WPsCRM_UPLOADS;
+	if(!file_exists($save_to_path)) wp_mkdir_p($save_to_path);
+	if (file_exists($save_to_path."/".$old_file.".pdf"))
+	unlink($save_to_path."/".$old_file.".pdf");
+	$random_name=WPsCRM_gen_random_code(20);
+	$document_name=$client_id."_".$type."_".$ID_ret."_".$random_name;
+	$filename=$save_to_path."/".$document_name.".pdf";
+	//  echo $filename;
+	$html2pdf->Output($filename,'F');
+	$wpdb->update( 
+	$table, 
+	array('filename' => "$document_name"),
+	array('id'=>$ID_ret), 
+	array('%s') 
+	);
+//	$ret= WPsCRM_create_pdf_document($ID_ret, $content, $attachment, $old_file, $type, $WOOmail);
+	//include($plugin_dir."/inc/crm/documenti/document_print2.php");
+}
+ob_flush();
 if( isset($_REQUEST['layout'] ) && $_REQUEST['layout']=="iframe")
-	$layout="&layout=iframe";
+    $layout="&layout=iframe";
 if ($type==1)
 {
-	header("location: ".admin_url('admin.php?page=smart-crm&p=documenti/form_quotation.php')."&ID=$ID_ret&type=$type&saved=1");
+    header("location: ".admin_url('admin.php?page=smart-crm&p=documenti/form_quotation.php')."&ID=$ID_ret&type=$type&saved=1");
 }
 elseif ($type==2)
 {
-	header("location: ".admin_url('admin.php?page=smart-crm&p=documenti/form_invoice.php')."&ID=$ID_ret&type=$type&saved=1");
+    header("location: ".admin_url('admin.php?page=smart-crm&p=documenti/form_invoice.php')."&ID=$ID_ret&type=$type&saved=1");
 }
 elseif ($type==3)
 {
-	header("location: ".admin_url('admin.php?page=smart-crm&p=documenti/form_invoice_informal.php')."&ID=$ID_ret&type=$type&saved=1");
+    header("location: ".admin_url('admin.php?page=smart-crm&p=documenti/form_invoice_informal.php')."&ID=$ID_ret&type=$type&saved=1");
 }
 else
 {
-	header("location: ".admin_url('admin.php?page=smart-crm&p=documenti/form_credit_note.php')."&ID=$ID_ret&type=$type&saved=1");
+    header("location: ".admin_url('admin.php?page=smart-crm&p=documenti/form_credit_note.php')."&ID=$ID_ret&type=$type&saved=1");
 }
 exit;
 ?>

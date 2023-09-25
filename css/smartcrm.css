@@ -119,7 +119,7 @@ th.k-header {border-right:1px solid #ccc!important}
 th.k-header:empty{border-right:none!important}
 .form-control:not(._m){max-width:50%;height:20px}
 #tabstrip-1,#annotation-1{height:100%!important}
-#dialog-view table td{padding:2px;line-height:1em}
+#dialog-view table td{padding:3px;/*line-height:1em*/}
 .documentsContainer h4{background:#fafafa;padding:4px 10px}
 .documentsList{padding:6px;border:1px solid #ccc}
 .documentsList li{margin-bottom:4px;border-bottom:1px solid #e2e2e2}
@@ -133,8 +133,14 @@ th.k-header:empty{border-right:none!important}
     font-size: 1.4em !important;
     line-height: 1.7em;
     
-} 
-.wp-core-ui .button-primary:active{vertical-align:initial;text-shadow:none!important}
+}
+.k-grid-content tr, .k-grid-content-locked tr {
+    height: 37px !important;
+    max-height: 37px !important;
+}
+.k-grid-content td, .k-grid-content-locked td {
+border-bottom:1px solid
+}
 form[name=form_insert] .btn:hover{color:#fff}
 #btn_refund,#btn_refund:hover{color:firebrick!important;background-color:lightblue!important}
 .reverseCalulator {background:lightblue!important;color:firebrick!important;}
@@ -244,8 +250,8 @@ header h1 {
   position: absolute;
   top: 0;
   left: 0;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   box-shadow: 0 0 0 4px white, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05);
 }
@@ -749,6 +755,18 @@ border-bottom:1px solid #ccc;padding-bottom:8px
 }
 .WPsCRM_item {
 }
+.WPsCRM_price{
+    width:14%;
+}
+.WPsCRM_discount{
+    width:12%
+}
+.WPsCRM_qty{
+    width:11%
+}
+.WPsCRM_total{
+    width:15%
+}
 .WPsCRM-total {
     width: 90%;
     float: right;
@@ -777,14 +795,15 @@ border-bottom:1px solid #ccc;padding-bottom:8px
     font-size: 12px;
 }
 .WPsCRM_pdf-body {
-        float:left   
+    float:left;
+    width:100%;
 }
-.WPsCRM_document-header{float:left}
+.WPsCRM_document-header{float:left;width:100%}
 .size-a4 { width: 8.3in; height: 11.7in; }
 
 
 .WPsCRM_signatures {
-    padding-top: .3in;
+  /*  padding-top: .3in;*/
     float:right;
     width:300px;display:inline-block;
     clear:both;

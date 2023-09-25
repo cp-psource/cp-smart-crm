@@ -10,14 +10,14 @@ $payOptions=get_option('CRM_documents_settings');
 $arr_payments=maybe_unserialize($payOptions['delayedPayments']);
 $def_iva=$documentOptions['default_vat'];
 $accOptions = get_option( "CRM_acc_settings" );
-if ($ID=$_GET["id_invoice"])
+if (isset($_GET["id_invoice"])&&$ID=$_GET["id_invoice"])
 {
 	$plugin_dir  = dirname(dirname(dirname(dirname(__FILE__))));
 }
 else
 {
-    $ID=$_REQUEST["ID"];
-    $type=$_REQUEST["type"];
+    $ID=isset($_REQUEST["ID"])?$_REQUEST["ID"]:0;
+    //$type=isset($_REQUEST["$type"])?$_REQUEST["$type"]:0;
     $a_table=WPsCRM_TABLE."agenda";
     $d_table=WPsCRM_TABLE."documenti";
     $dd_table=WPsCRM_TABLE."documenti_dettaglio";
@@ -29,43 +29,44 @@ else
         $riga=$wpdb->get_row($sql, ARRAY_A);
         $type=$riga["tipo"];
         $data=WPsCRM_culture_date_format($riga["data"]);
-		$payment=$riga["modalita_pagamento"];
+        $payment=$riga["modalita_pagamento"];
         $data_scadenza=WPsCRM_culture_date_format($riga["data_scadenza"]);
 		//echo "db: ". $payment;
         $giorni_pagamento=$riga["giorni_pagamento"];
         //	$data=date("d-m-Y");
-        $data_consegna=WPsCRM_inverti_data($riga["data_consegna"]);
-        $tempi_chiusura_dal=WPsCRM_inverti_data($riga["tempi_chiusura_dal"]);
+        //$data_consegna=WPsCRM_inverti_data($riga["data_consegna"]);
+        isset( $riga["tempi_chiusura_dal"] ) ? $tempi_chiusura_dal=WPsCRM_inverti_data($riga["tempi_chiusura_dal"]) : "";
         $oggetto=$riga["oggetto"];
-        $iva=$riga["iva"];
+        $iva=isset($riga["iva"]) ? $riga["iva"] : "";
         $tot_imp=sprintf("%01.2f", $riga["totale_imponibile"]);
+        $tipo_sconto=$riga["tipo_sconto"];
     	$totale_imposta=sprintf("%01.2f", $riga["totale_imposta"]);
     	$tot_cassa=sprintf("%01.2f", $riga["tot_cassa_inps"]);
     	$ritenuta_acconto=sprintf("%01.2f", $riga["ritenuta_acconto"]);
-	    $totale=$riga["totale"];
-	    $totale_netto=$riga["totale_netto"];
+        $totale=$riga["totale"];
+        $totale_netto=$riga["totale_netto"];
 
-        $FK_contatti=$riga["FK_contatti"];
+       // $FK_contatti=$riga["FK_contatti"];
         if ($fk_clienti=$riga["fk_clienti"])
         {
             $sql="select ragione_sociale, nome, cognome, indirizzo, cap, localita, provincia, cod_fis, p_iva, tipo_cliente from $c_table where ID_clienti=".$fk_clienti;
             $rigac=$wpdb->get_row($sql, ARRAY_A);
             $cliente=$rigac["ragione_sociale"] ? $rigac["ragione_sociale"] : $rigac["nome"]." ".$rigac["cognome"];
 			$cliente=stripslashes($cliente);
-            $indirizzo=$rigac["indirizzo"];
+            $indirizzo=stripslashes($rigac["indirizzo"]);
             $cap=$rigac["cap"];
-            $localita=$rigac["localita"];
+            $localita=stripslashes($rigac["localita"]);
             $provincia=$rigac["provincia"];
-			$cod_fis=$rigac["cod_fis"];
-			$p_iva=$rigac["p_iva"];
-			$tipo_cliente=$rigac["tipo_cliente"];
+            $cod_fis=$rigac["cod_fis"];
+            $p_iva=$rigac["p_iva"];
+            $tipo_cliente=$rigac["tipo_cliente"];
         }
-        if ($riga["FK_contatti"])
+    /*    if ($riga["FK_contatti"])
         {
             $sql="select concat(nome,' ', cognome) as contatto from ana_contatti where ID_contatti=".$riga["FK_contatti"];
             $rigac=$wpdb->get_row($sql, ARRAY_A);
             $contatto=$rigac["contatto"];
-        }
+        }*/
     	$wpdb->update(
     	  $dd_table,
     	  array('eliminato' => 0),
@@ -88,19 +89,21 @@ else
     else
     {
         $data=WPsCRM_culture_date_format(date("d-m-Y") );
-        $oggetto=$type==1?"Preventivo":"Fattura";
-		$iva=$documentOptions['default_vat'];
+      //  $oggetto=__("Quote","cpsmartcrm");
+        $iva=$documentOptions['default_vat'];
         $tempi_chiusura_dal=WPsCRM_culture_date_format(date("d-m-Y") );
         $FK_clienti=0;
         $FK_contatti=0;
         $giorni_pagamento=$documentOptions['invoice_noty_days'];
-
+        $tipo_sconto=0;
+        $tot_imp=0;
+        $tot_cassa=0;
+        $totale_imposta=0;
+        $totale=0;
+        $ritenuta_acconto=0;
+        $totale_netto=0;
     }?>
 
-<?php
-    $where="FK_aziende=$ID_azienda";
-
-?>
 <style>
     #tabstrip div.k-content:not(first-child){padding-top:30px}
     h4.page-header{background:gainsboro;padding:10px 4px}
@@ -119,11 +122,13 @@ else
 <script>
 	var $format = "<?php echo WPsCRM_DATEFORMAT ?>";
 	var $formatTime = "<?php echo WPsCRM_DATETIMEFORMAT ?>";
-	var cliente = "<?php echo $cliente ?>";
+	var cliente = "<?php if (isset($cliente))echo $cliente ?>";
 </script>
-<form name="form_insert" action="<?php echo admin_url('admin.php?page=smart-crm&p=documenti/insert.php&type=3&ID='.$ID.'&security='.$update_nonce); echo isset($_REQUEST['layout']) ? "&layout=".$_REQUEST['layout'] : null?>" method="post" id="form_insert">
+<form name="form_insert" action="" method="post" id="form_insert">
     <!--<div class="modal_loader" style="background:#fff url(<?php echo WPsCRM_URL?>/css/img/loading-image.gif);background-repeat:no-repeat;background-position:center center"></div>-->
-	<input type="hidden" name="num_righe" id="num_righe" value="">
+        <input type="hidden" name="num_righe" id="num_righe" value="">
+	<input type="hidden" name="ID" id="ID" value="<?php echo $ID?>">
+	<input type="hidden" name="type" id="type" value="3">
     <h1 style="text-align:center;background-color:#ffd7d7"><?php _e('CREATE/EDIT INFORMAL INVOICE','cpsmartcrm')?> <i class="glyphicon glyphicon-list-alt"></i></h1>
     <div id="tabstrip">
         <ul>
@@ -139,7 +144,7 @@ else
                 <span style="float:right;margin-top: -7px;">
                     <label class="col-sm-2 control-label"><?php _e('Number','cpsmartcrm')?></label>
                     <span class="col-sm-2">
-                        <input name="progressivo" id="progressivo" class="form-control" data-placement="bottom" title="<?php _e('Number','cpsmartcrm')?>" value="<?php echo $riga["progressivo"]?>" readonly disabled />
+                        <input name="progressivo" id="progressivo" class="form-control" data-placement="bottom" title="<?php _e('Number','cpsmartcrm')?>" value="<?php if (isset($riga)) echo $riga["progressivo"]?>" readonly disabled />
                     </span>
                 </span>
             <span style="float:right;margin-top: -7px;" class="col-md-4">
@@ -163,11 +168,11 @@ else
                 </div>-->
                 <label class="col-sm-1 control-label"><?php _e('Reference','cpsmartcrm')?></label>
                 <div class="col-sm-3">
-                    <input type="text" class="form-control" name="riferimento" id="riferimento" maxlength='55' value="<?php echo $riga["riferimento"]?>">
+                    <input type="text" class="form-control" name="riferimento" id="riferimento" maxlength='55' value="<?php if (isset($riga)) echo $riga["riferimento"]?>">
                 </div>
                 <label class="col-sm-2 control  -label"><?php _e('Notes','cpsmartcrm')?></label>
                 <div class="col-sm-4">
-                    <textarea class="_form-control col-md-12" id="annotazioni" name="annotazioni" rows="5"><?php echo stripslashes($riga["annotazioni"])?></textarea><br />
+                    <textarea class="_form-control col-md-12" id="annotazioni" name="annotazioni" rows="5"><?php if (isset($riga)) echo stripslashes($riga["annotazioni"])?></textarea><br />
                     <small><i>(<?php _e('Will be shown in the document','cpsmartcrm')?>)</i></small>
                 </div>
             </div>
@@ -177,7 +182,7 @@ else
                 <div class="col-sm-2">
 
                     <select name="modalita_pagamento" id="modalita_pagamento" class="_form-control col-md-12">
-                        <option value="0" <?php if($payment==0) echo "selected"?>><?php _e('Select','cpsmartcrm')?></option>
+                        <option value="0" <?php if (isset($riga) && $payment==0) echo "selected"?>><?php _e('Select','cpsmartcrm')?></option>
                         <?php
 					foreach($arr_payments as $pay)
 					{
@@ -196,7 +201,7 @@ else
                 </div>
                 <label class="control-label"><?php _e('Payment exp. Date','cpsmartcrm')?></label>
                 <div class="col-sm-2">
-                    <input name="data_scadenza" id="data_scadenza" class="_m" data-placement="bottom"  value="<?php echo  $data_scadenza  ?>" style="border:none" />
+                    <input name="data_scadenza" id="data_scadenza" class="_m" data-placement="bottom"  value="<?php if (isset($riga)) echo  $data_scadenza  ?>" style="border:none" />
                 </div>
                 <?php
                 if ($ID)
@@ -211,7 +216,7 @@ else
                 ?>
                 <label class="control-label" style="margin-left:20px"><?php _e('Notify','cpsmartcrm')?>? </label>
                 <div class="col-sm-1">
-                    <input type="checkbox" name="notify_payment" id="notify_payment" value="1" <?php echo $riga["notifica_pagamento"] ? "checked" : ""?>>
+                    <input type="checkbox" name="notify_payment" id="notify_payment" value="1" <?php if (isset($riga)) echo $riga["notifica_pagamento"] ? "checked" : ""?>>
 					<span class="crmHelp crmHelp-dark" data-help="payment-notification"></span>
                 </div>
             </div>
@@ -231,7 +236,7 @@ else
             <h4 class="page-header">
                 <?php _e('CUSTOMER DATA','cpsmartcrm')?><span class="crmHelp" data-help="customer-data"></span>
                 <?php
-			if ($fk_clienti)
+			if (isset($fk_clienti))
 			{
 				echo "<a href=\"".admin_url('admin.php?page=smart-crm&p=clienti/form.php&ID='.$fk_clienti)."\" target=\"_blank\"><span class=\"header_customer\" >".$cliente."</span></a>";
 			}
@@ -264,20 +269,21 @@ else
 
                 </ul>
             </h4>
-            <div class="customer_data_partial" data-customer="<?php echo $fk_clienti?>">
-                <input type="hidden" id="tipo_cliente" name="tipo_cliente" value="<?php echo $tipo_cliente?>" data-value="<?php echo $tipo_cliente?>" />
+            <div class="customer_data_partial" data-customer="<?php if (isset($fk_clienti)) echo $fk_clienti?>">
+                <input type="hidden" id="tipo_cliente" name="tipo_cliente" value="<?php if (isset($tipo_cliente)) echo $tipo_cliente?>" data-value="<?php if (isset($tipo_cliente)) echo $tipo_cliente?>" />
                 <div class="row form-group">
                     <label class="col-sm-1 control-label"><?php _e('Customer','cpsmartcrm')?></label>
                     <div class="col-sm-3">
                         <?php
-						if ($fk_clienti)
+						if (isset($fk_clienti))
 						{
 						$disabled="disabled readonly";
-
 						} 
+                                                else
+							$disabled="";
 						?>
                         <select id="fk_clienti" name="fk_clienti"></select>
-						<input type="hidden" name="hidden_fk_clienti" id="hidden_fk_clienti" value="<?php echo $fk_clienti?>">
+						<input type="hidden" name="hidden_fk_clienti" id="hidden_fk_clienti" value="<?php if (isset($fk_clienti)) echo $fk_clienti?>">
 
                     </div>
                     <!--<label class="col-sm-1 control-label"><?php _e('Contact','cpsmartcrm')?></label>
@@ -286,25 +292,25 @@ else
                         
                     </div>-->
                     <div class="col-sm-2">
-                        <input type="button" class="btn btn-sm btn-success _flat" id="save_client_data" name="save_client_data" value="<? _e('Save','cpsmartcrm')?>" style="display:none" />
+                        <input type="button" class="btn btn-sm btn-success _flat" id="save_client_data" name="save_client_data" value="<?php _e('Save','cpsmartcrm')?>" style="display:none" />
                     </div>
                 </div>
                 <div class="row form-group">
                     <label class="col-sm-1 control-label"><?php _e('Address','cpsmartcrm')?></label>
                     <div class="col-sm-3">
 
-                        <input type="text" class="form-control _editable" name="indirizzo" id="indirizzo" maxlength='50' value="<?php echo $indirizzo?>" <?php echo $disabled?> data-value="<?php echo $indirizzo?>" />
+                        <input type="text" class="form-control _editable" name="indirizzo" id="indirizzo" maxlength='50' value="<?php if (isset($indirizzo)) echo $indirizzo?>" <?php echo $disabled?> data-value="<?php if (isset($indirizzo)) echo $indirizzo?>" />
 
                     </div>
                     <label class="col-sm-1 control-label"><?php _e('ZIP code','cpsmartcrm')?></label>
                     <div class="col-sm-2">
 
-                        <input type="text" class="form-control _editable" name="cap" id="cap" maxlength='10' value="<?php echo $cap?>" <?php echo $disabled?> data-value="<?php echo $cap?>">
+                        <input type="text" class="form-control _editable" name="cap" id="cap" maxlength='10' value="<?php if (isset($cap)) echo $cap?>" <?php echo $disabled?> data-value="<?php if (isset($cap)) echo $cap?>">
 
                     </div>
                     <label class="col-sm-1 control-label"><?php _e('C.F.','cpsmartcrm')?></label>
                     <div class="col-md-2">
-                        <input type="text" class="form-control _editable" name="cod_fis" id="cod_fis" maxlength='5' value="<?php echo $cod_fis?>" <?php echo $disabled?> data-value="<?php echo $cod_fis?>">
+                        <input type="text" class="form-control _editable" name="cod_fis" id="cod_fis" maxlength='5' value="<?php if (isset($cod_fis)) echo $cod_fis?>" <?php echo $disabled?> data-value="<?php if (isset($cod_fis)) echo $cod_fis?>">
                     </div>
 
                 </div>
@@ -312,18 +318,18 @@ else
                     <label class="col-sm-1 control-label"><?php _e('Town','cpsmartcrm')?></label>
                     <div class="col-sm-3">
 
-                        <input type="text" class="form-control _editable" name="localita" id="localita" maxlength='50' value="<?php echo $localita?>" <?php echo $disabled?> data-value="<?php echo $localita?>">
+                        <input type="text" class="form-control _editable" name="localita" id="localita" maxlength='50' value="<?php if (isset($localita)) echo $localita?>" <?php echo $disabled?> data-value="<?php if (isset($localita)) echo $localita?>">
 
                     </div>
                     <label class="col-sm-1 control-label"><?php _e('State/Prov.','cpsmartcrm')?></label>
                     <div class="col-sm-2">
 
-                        <input type="text" class="form-control _editable" name="provincia" id="provincia" maxlength='5' value="<?php echo $provincia?>" <?php echo $disabled?> data-value="<?php echo $provincia?>">
+                        <input type="text" class="form-control _editable" name="provincia" id="provincia" maxlength='5' value="<?php if (isset($provincia)) echo $provincia?>" <?php echo $disabled?> data-value="<?php if (isset($provincia)) echo $provincia?>">
 
                     </div>
                     <label class="col-sm-1 control-label"><?php _e('VAT code','cpsmartcrm')?></label>
                     <div class="col-md-2">
-                        <input type="text" class="form-control _editable" name="p_iva" id="p_iva" maxlength='5' value="<?php echo $p_iva?>" <?php echo $disabled?> data-value="<?php echo $p_iva?>">
+                        <input type="text" class="form-control _editable" name="p_iva" id="p_iva" maxlength='5' value="<?php if (isset($p_iva)) echo $p_iva?>" <?php echo $disabled?> data-value="<?php if (isset($p_iva)) echo $p_iva?>">
                     </div>
 
                 </div>
@@ -384,7 +390,7 @@ else
 	if ($ID)
 	{
 		$upload_dir = wp_upload_dir();
-		$document = $upload_dir['baseurl'] . "/CRMdocuments/".$filename.".pdf";
+		//$document = $upload_dir['baseurl'] . "/CRMdocuments/".$filename.".pdf";
         ?>
         <li class="btn btn-sm btn-info _flat" onclick="location.replace('?page=smart-crm&p=documenti/document_print.php&id_invoice=<?php echo $ID?>')">
             <i class="glyphicon glyphicon-print"></i>
@@ -577,12 +583,60 @@ else
 		}).data("kendoValidator");
 
 		$('#_submit').on('click', function (e) {
-			if (mainValidator.validate()) {
+                        if (mainValidator.validate()) {
 				showMouseLoader();
 				jQuery('#mouse_loader').offset({ left: e.pageX, top: e.pageY });
 				var n_row = jQuery('#t_art > tbody > tr').length;
 				jQuery('#num_righe').val(n_row);
-				jQuery('#form_insert').find(':submit').click();
+				//ajax save
+				var form = jQuery('form');
+				jQuery.ajax({
+					url: ajaxurl,
+					data: {
+						action: 'WPsCRM_save_document',
+						fields:form.serialize(),
+						security:'<?php echo $update_nonce; ?>'
+
+					},
+					type: "POST",
+					success: function (response) {
+						console.log(response);
+						if (response.indexOf('OK') != -1) {
+							var tmp=response.split("~");
+							var id_cli=tmp[1];
+							hideMouseLoader();
+							noty({
+								text: "<?php _e('Document has been saved','cpsmartcrm')?>",
+								layout: 'center',
+								type: 'success',
+								template: '<div class="noty_message"><span class="noty_text"></span></div>',
+								//closeWith: ['button'],
+								timeout: 1000
+							});
+							jQuery("#ID").val(id_cli);
+                                                        <?php if (isset($_REQUEST["layout"])&& $_REQUEST["layout"]=="iframe") {?>
+                                                        $(window.parent.document).find(".k-i-close").trigger("click");
+                                                        <?php } else if (! $ID) { ?>
+							setTimeout(function () {
+								location.href="<?php echo admin_url('admin.php?page=smart-crm&p=documenti/form_invoice_informal.php&ID=')?>" + id_cli;
+							}, 1000)
+							<?php } ?>
+
+						}
+						else {
+							noty({
+							text: "<?php _e('Something was wrong','cpsmartcrm')?>" + ": " + response,
+							layout: 'center',
+							type: 'error',
+							template: '<div class="noty_message"><span class="noty_text"></span></div>',
+							closeWith: ['button'],
+							//timeout: 1000
+						});
+						}
+
+					}
+				})
+				//jQuery('#form_insert').find(':submit').click();
 			}
 		})
 	//usato solo per i controlli sulle contabilit� avanzate che richiedono il tipo cliente per le ritenute d'acconto
@@ -825,7 +879,7 @@ else
       },
   }).data('kendoDropDownList');
 
-    $('#fk_clienti').data('kendoDropDownList').value([<?php echo $fk_clienti ?>]);
+    $('#fk_clienti').data('kendoDropDownList').value([<?php if (isset($fk_clienti)) echo $fk_clienti ?>]);
     //t_users.value([<?php echo wp_get_current_user()->ID ?>]);
 	<?php if ( isset($_GET['cliente'] ) ) { ?>
 		$('#fk_clienti').data('kendoDropDownList').value(<?php echo $_GET['cliente']?>)
@@ -901,12 +955,12 @@ else
           $('#selectedGroups').val(selectedGroups)
       }
   });
-	if (users='<?php echo $users?>')
+	if (users='<?php if (isset($users)) echo $users ?>')
 	{
 	    users = users.split(",");
         $("#remindToUser").data('kendoMultiSelect').value(users);
 	}
-	if (groups='<?php echo $groups?>')
+	if (groups='<?php if (isset($groups)) echo $groups ?>')
 	{
 	    groups = groups.split(",");
         $("#remindToGroup").data('kendoMultiSelect').value(groups);

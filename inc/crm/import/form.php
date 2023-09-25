@@ -1,7 +1,8 @@
 <?php
 	if ( ! defined( 'ABSPATH' ) ) exit;
 
-	$update_nonce= wp_create_nonce( "update_document" );
+	$import_nonce= wp_create_nonce( "import_customers" );
+	$revert_nonce= wp_create_nonce( "revert_import" );
 ?>
 <script type="text/javascript">
 
@@ -31,7 +32,7 @@ jQuery(document).ready(function ($) {
 		formData.append("override", chk);
 		formData.append("lists", lists);
 		formData.append('action', 'WPsCRM_import_customers');
-		formData.append('security','<?php echo $update_nonce ?>');
+		formData.append('security','<?php echo $import_nonce ?>');
 
 		//console.log(formData);
             $.ajax({
@@ -79,19 +80,19 @@ jQuery(document).ready(function ($) {
         <div id="d_anagrafica">
         <h4 class="page-header" style="background:#e2e2e2;padding:15px"><?php _e('Import customers from csv file','cpsmartcrm')?><span class="crmHelp crmHelp-dark" data-help="import-customers"></span></h4>
         <p><?php _e('Select a cvs file to import your customers. Note that the first row of the file must contain the following headers (named exactly as they are):','cpsmartcrm')?></p>
-            <label> first_name ; last_name ; company ; address ; zip ; city ; province ; vat ; tax_code ; phone1 ; mobile ; fax ; email ; website ; skype; birth_date ; birth_place ; country ; invoiceable ; type ; categories ; interests ; origins</label>
+            <label> firstname ; lastname ; company ; address ; zip ; city ; province ; vat ; taxcode ; phone1 ; mobile ; fax ; email ; website ; skype; birthdate ; birthplace ; country ; invoiceable ; type ; categories ; interests ; origins</label>
 		<p>
 			<?php _e('The fields must be separated by semicolon (;).','cpsmartcrm')?>
 		</p>
-        <p><?php _e('The only mandatory fields are: "first_name"+"last_name" or alternatively "company".','cpsmartcrm')?></p>
-        <p><?php _e('birth_date must be in yyyy-mm-dd format; invoiceable can be 1 or 0 (for yes/no); type can be 1 or 2 (for private/business); categories, interests and origins can contain string separated by commas (see example file) ','cpsmartcrm')?></p>
+        <p><?php _e('The only mandatory fields are: "firstname"+"lastname" or alternatively "company".','cpsmartcrm')?></p>
+        <p><?php _e('birthdate must be in yyyy-mm-dd format; invoiceable can be 1 or 0 (for yes/no); type can be 1 or 2 (for private/business); categories, interests and origins can contain string separated by commas (see example file) ','cpsmartcrm')?></p>
         <?php
 			is_multisite() ? $filter=get_blog_option(get_current_blog_id(), 'active_plugins' ) : $filter=get_option('active_plugins' );
 			if ( in_array( 'newsletter/plugin.php', apply_filters( 'active_plugins', $filter) ) ) 
 			{?>
 		<p><?php _e('Optionally you can import newsletter subscribers into one or more lists. To this purpose, you have to add one column to your csv file named "newsletter" (with values 1/0) and optionally check the list(s) in which  you want to import','cpsmartcrm')?></p>
 		<?php }?>
-		<p><?php _e('A report will show your import errors. You can find error logs in wp-content/plugins/cp-smart-crm/logs','cpsmartcrm')?></p>
+		<p><?php _e('A report will show your import errors. You can find error logs in wp-content/plugins/cpsmartcrm/logs','cpsmartcrm')?></p>
         <p style="color:red">***<?php _e('If you select the overwrite option, the existing records will be deleted. Be careful if you have done operations on your customers: all the activities previously saved will loose their customer association.','cpsmartcrm')?></p>
 			<p></p>
 			<p><a href="<?php echo WPsCRM_URL."examples/import.csv"?>"><?php _e('Download a csv example file','cpsmartcrm')?></a></p>
@@ -167,5 +168,5 @@ jQuery(document).ready(function ($) {
 	})
 </script>
 <?php 
-	do_action('WPsCRM_users_import',$update_nonce);
+	do_action('WPsCRM_users_import',$import_nonce, $revert_nonce);
 ?>

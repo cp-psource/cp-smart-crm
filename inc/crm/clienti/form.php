@@ -1,4 +1,4 @@
-<?php 
+<?php
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 $delete_nonce = wp_create_nonce( "delete_customer" );
@@ -7,17 +7,25 @@ $scheduler_nonce = wp_create_nonce( "update_scheduler" );
 $ID = isset($_REQUEST["ID"])?$_REQUEST["ID"]:0;
 $table = WPsCRM_TABLE."clienti";
 $ID_azienda = "1";
+$email="";
 $where = "FK_aziende=$ID_azienda";
 $current_user = wp_get_current_user();
-if ( WPsCRM_is_agent() && ! WPsCRM_agent_can() )
-{
-    $agent_disabled="disabled='disabled'";
-    $style_disabled="style='display:none'";
+$agent_disabled="";
+$style_disabled="";
+is_multisite() ? $filter=get_blog_option(get_current_blog_id(), 'active_plugins' ) : $filter=get_option('active_plugins' );
+if ( in_array( 'wp-smart-crm-agents/wp-smart-crm-agents.php', apply_filters( 'active_plugins', $filter) ) ) {
+    $agent_obj=new AGsCRM_agent();
+    if ($agent_obj->isAgent){
+        $agent_disabled="disabled='disabled'";
+        $style_disabled="style='display:none'";        
+    }
 }
-else
-{
-    $agent_disabled="";
-    $style_disabled="";
+else {
+    if ( WPsCRM_is_agent() && ! WPsCRM_agent_can() )
+    {
+        $agent_disabled="disabled='disabled'";
+        $style_disabled="style='display:none'";
+    }
 }
 if ( $ID )
 {
@@ -33,10 +41,24 @@ if ( $ID )
 
 if ( ! empty ( $custom_tax ) )
 	$_tax=json_encode($custom_tax);
-else
+else{
 	$_tax=json_encode("");
+    $custom_tax="";
+    }
 ?>
 <script>
+    <?php
+    if ( in_array( 'wp-smart-crm-agents/wp-smart-crm-agents.php', apply_filters( 'active_plugins', $filter) ) ) {
+    $agent_obj=new AGsCRM_agent();
+    ?>
+    var privileges = <?php echo json_encode($agent_obj->getCustomerPrivileges($ID, "array")) ?>;
+    <?php
+
+    } else{?> 
+    var privileges=null;
+    <?php } ?>
+
+
 	var customerTax = JSON.parse('<?php echo $_tax ?>');
 	var $format = "<?php echo WPsCRM_DATEFORMAT ?>";
 	var $formatTime = "<?php echo WPsCRM_DATETIMEFORMAT ?>";
@@ -76,7 +98,6 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
 	}
 ?>
 <script type="text/javascript">
-	//var $format="<?php echo WPsCRM_DATETIMEFORMAT ?>"
     var _datasource=new kendo.data.DataSource({
             transport: {
                 read: function (options) {
@@ -87,9 +108,8 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
                         id_cliente: '<?php if(isset($ID)) echo $ID?>'
                     },
                     success: function (result) {
-                        //console.log(result);
-                        jQuery("#grid").data("kendoGrid").dataSource.data(result.scheduler);
-
+                        if(jQuery("#grid").length)
+                            jQuery("#grid").data("kendoGrid").dataSource.data(result.scheduler);
                     },
                     error: function (errorThrown) {
                         console.log(errorThrown);
@@ -97,8 +117,6 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
                     })
                 }
             },
-        //serverSorting: true,
-        //sort: { field: "data_scadenza", dir: "desc" },
         schema: {
         model: {
             id: "id_agenda",
@@ -124,7 +142,6 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
 
 
       var _contacts = new kendo.data.DataSource({
-	    //type: "json",
 	    transport: {
 	                read: function (options) {
 	                    $.ajax({
@@ -134,8 +151,8 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
 	                            'client_id': '<?php echo $ID?>'
 	                        },
 	                        success: function (result) {
-	                            //console.log(result);
-	                            $("#grid_contacts").data("kendoGrid").dataSource.data(result.contacts);
+                                if($("#grid_contacts").length)
+	                                $("#grid_contacts").data("kendoGrid").dataSource.data(result.contacts);
 
 	                        },
 	                        error: function (errorThrown) {
@@ -154,8 +171,8 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
 	                            'row': options.data
 	                        },
 	                        success: function (result) {
-	                        	$("#grid_contacts").data("kendoGrid").dataSource.data(result.contacts);
-
+                                if(jQuery("#grid_contacts").length)
+                                    jQuery("#grid_contacts").data("kendoGrid").dataSource.data(result.scheduler);
 	                        },
 	                        error: function (errorThrown) {
 	                            console.log(errorThrown);
@@ -188,12 +205,11 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
 	                        url: ajaxurl,
 	                        data: {
 	                        	'action': 'WPsCRM_delete_client_contact',
-								'security':'<?php echo $update_nonce; ?>',
+								'security':'<?php echo $delete_nonce; ?>',
 	                            'client_id': '<?php echo $ID?>',
 	                            'row': options.data
 	                        },
 	                        success: function (result) {
-	                            //console.log(result);
 	                        	$("#grid_contacts").data("kendoGrid").dataSource.data(result.contacts);
 
 	                        },
@@ -315,7 +331,7 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
                 " - un codice fiscale deve essere lungo 16 caratteri o essere una p.iva corretta nel caso di aziende;\n\n"
             }
 
-            } //alert(err);
+            }
 			if (err =="")
 				return "ok";
             else
@@ -468,7 +484,7 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
     				hasName: "<?php _e('You should type customer First Name or Business Name.','cpsmartcrm')?>",
     				hasLastName: "<?php _e('You should type customer Last Name or Business Name.','cpsmartcrm')?>",
     				hasBusinessName: "<?php _e('You should type customer Business name or First Name and Last Name','cpsmartcrm')?>",
-    				hasVAT: "<?php _e('You should type customer VAT CODE if you use the \'Business name\' field','cpsmartcrm')?>",
+    				hasVAT: "<?php _e("You should type VAT CODE if you use the 'Business name' field",'cpsmartcrm')?>",
     				isUser:"<?php _e('To create a new WP user you must set Email, Username and Password','cpsmartcrm')?>",
     				isFiscallyDefined:"<?php _e('Please check private or business','cpsmartcrm')?>"
     			}
@@ -503,7 +519,7 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
 							jQuery("#ID").val(id_cli);
 							<?php if (! $ID) { ?>
 							setTimeout(function () {
-								location.href="<?php echo admin_url('admin.php?page=smart-crm&p=clienti/form.php&ID=')?>" + id_cli;
+                                                            location.href="<?php echo admin_url('admin.php?page=smart-crm&p=clienti/form.php&ID=')?>" + id_cli;
 							}, 1000)
 							<?php } ?>
 
@@ -542,20 +558,20 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
             <span class="crmHelp crmHelp-dark" data-help="customerForm" style="position:relative;top:-3px" data-role="tooltip"></span>
 		</li>
         <?php if ($ID){?>
-		<li class="btn btn-success btn-sm _flat _showLoader" onclick="save();return false;">
+		<li class="btn btn-success btn-sm _flat _showLoader saveForm" onclick="save();return false;">
 			<i class="glyphicon glyphicon-floppy-disk"></i>
 			<b>
 				<?php _e('Save','cpsmartcrm')?>
 			</b>
 		</li>
-        <li class="btn btn-warning btn-sm _flat">
+        <li onClick="annulla();return false;" class="btn btn-warning btn-sm _flat resetForm">
             <i class="glyphicon glyphicon-floppy-remove"></i>
-            <b onClick="annulla();return false;"> <?php _e('Reset','cpsmartcrm')?></b>
+            <b> <?php _e('Reset','cpsmartcrm')?></b>
         </li>
 
-        <li class="btn btn-danger btn-sm _flat" style="margin-right:10px">
+        <li onClick="elimina();return false;" class="btn btn-danger btn-sm _flat deleteForm" style="margin-right:10px">
             <i class="glyphicon glyphicon-remove"></i>
-            <b onClick="elimina();return false;"> <?php _e('Delete','cpsmartcrm')?></b>
+            <b> <?php _e('Delete','cpsmartcrm')?></b>
         </li>
         <li class="_tooltip"><i class="glyphicon glyphicon-menu-right"></i></li>
         <li class="btn btn-info btn-sm _flat btn_todo" style="margin-left:10px" title="<?php _e('NEW TODO','cpsmartcrm')?>">
@@ -588,7 +604,7 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
         </ul>
         <!-- TAB 1 -->
         <div>
-            <div id="d_anagrafica">
+            <div id="d_anagrafica" style="position:relative">
                 <div class="row form-group">
 					<label class="col-sm-1 control-label">
 						<?php _e('Date','cpsmartcrm')?>
@@ -605,7 +621,7 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
 					</label>
 					<div class="col-sm-4">
                         <span style="margin-right:20px"><input type="radio" name="fatturabile" id="fatturabile_1" value="1" <?php if (isset($riga) && $riga["fatturabile"]==1) echo "checked"?> /><?php _e('Yes','cpsmartcrm')?></span>
-                        <span><input type="radio" name="fatturabile" id="fatturabile_2" value="0" <?php if (isset($riga) && $riga["fatturabile"]==0) echo "checked"?> /><?php _e('No','cpsmartcrm')?></span>
+                        <span><input type="radio" name="fatturabile" id="fatturabile_2" value="0" <?php if ((isset($riga) && $riga["fatturabile"]==0) || !isset($riga)) echo "checked"?> /><?php _e('No','cpsmartcrm')?></span>
 					</div>
 
 					<label class="col-sm-1 control-label">
@@ -619,7 +635,7 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
                 <div class="row form-group">
                     <label class="col-sm-1 control-label"><?php _e('Country','cpsmartcrm')?></label>
                     <div class="col-sm-4">
-                        <select data-nazione="<?php if(isset($riga)) echo $riga["nazione"]?>" id="nazione" name="nazione" size="20" maxlength='50'><?php if(isset($riga)) echo stripslashes( WPsCRM_get_countries($riga["nazione"]) ); else echo stripslashes( WPsCRM_get_countries())?></select>
+                        <select data-nazione="<?php if(isset($riga)) echo $riga["nazione"]?>" id="nazione" name="nazione" size="20" maxlength='50'><?php if(isset($riga['nazione'])) echo stripslashes( WPsCRM_get_countries($riga["nazione"]) ); else echo stripslashes( WPsCRM_get_countries('IT'))?></select>
                     </div>
                     <label class="col-sm-1 control-label"><?php _e('Business Name','cpsmartcrm')?></label>
                     <div class="col-sm-4">
@@ -827,8 +843,9 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
 
 					</script>
                 </div>
-				<div>
-				<?php if ( $ID ) do_action('WPsCRM_add_rows_to_customer_form', $custom_tax , $ID, $email );?>
+				<div class="advanced" style="position:relative">
+				<?php //if ( $ID ) do_action('WPsCRM_add_rows_to_customer_form', $custom_tax , $ID, $email );?>
+				<?php do_action('WPsCRM_add_rows_to_customer_form', $custom_tax , $ID, $email );?>
 				</div>
                 <?
 				//if ( ! $riga["user_id"])
@@ -868,7 +885,11 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
             <!--<h2 style="text-align:center"><?php _e('Notes','cpsmartcrm')?></h2>-->
             <div style="min-height: 200px">
                 <div id="annotation">
-                    <h3 style="text-align:center"><?php _e('Notes Timeline','cpsmartcrm')?></h3>
+                    <h3 style="text-align:center"><?php _e('Notes Timeline','cpsmartcrm')?> 
+                        <span class="btn btn-primary btn-sm _flat btn_activity" title="<?php _e('NEW ANNOTATION','cpsmartcrm')?>">
+                            <i class="glyphicon glyphicon-option-horizontal"></i>
+                        </span>
+                    </h3>
                     <div>
 
                         <section id="cd-timeline" class="cd-container">
@@ -887,8 +908,8 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
         </div>
         <!-- END TAB 4 -->
         <?php
-			//do_action('WPsCRM_add_divs_to_customer_form',$email, $ID);
-		} ?>
+			do_action('WPsCRM_add_divs_to_customer_form',$email, $ID);
+              } ?>
     </div>
 
     <br>
@@ -896,16 +917,18 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
 
     <ul class="select-action">
 
-        <li class="btn btn-success btn-sm _flat _showLoader" onclick="save()">
+        <li class="btn btn-success btn-sm _flat _showLoader saveForm" onclick="save()">
             <i class="glyphicon glyphicon-floppy-disk"></i>
-            <b> <?php _e('Save','cpsmartcrm')?></b>
+            <b>
+                <?php _e('Save','cpsmartcrm')?>
+            </b>
         </li>
-        <li onClick="annulla();return false;" class="btn btn-warning btn-sm _flat">
+        <li onClick="annulla();return false;" class="btn btn-warning btn-sm _flat resetForm">
             <i class="glyphicon glyphicon-floppy-remove"></i>
             <b> <?php _e('Reset','cpsmartcrm')?></b>
         </li>
         <?php if ($ID){?>
-        <li class="btn btn-danger btn-sm _flat" style="margin-right:10px">
+        <li class="btn btn-danger btn-sm _flat deleteForm" style="margin-right:10px">
             <i class="glyphicon glyphicon-remove"></i>
             <b onClick="elimina();return false;"> <?php _e('Delete','cpsmartcrm')?></b>
         </li>
@@ -1076,7 +1099,8 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
                 	'action': 'WPsCRM_scheduler_update',
                     'ID': id,
                     'fatto': $('input[type="radio"][name="fatto"]:checked').val(),
-                    'esito': $('#esito').val()
+                    'esito': $('#esito').val(),
+                    'security':'<?php echo $scheduler_nonce; ?>'
                 },
                 success: function (response) {
                     var newDatasource = new kendo.data.DataSource({
@@ -1158,13 +1182,13 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
                     $.ajax({
                         url: ajaxurl,
                         data: {
-                        	'action': 'WPsCRM_get_CRM_users',
-                            'role': 'CRM_agent',
-                            'include_admin':true
+                        	'action': 'WPsCRM_get_CRM_users_customer'
+                           // 'role': 'CRM_agent',
+                           // 'include_admin':true
                         },
                         success: function (result) {
-                            //console.log(result);
-                            $("#selectAgent").data("kendoDropDownList").dataSource.data(result);
+                            if($("#selectAgent").length)
+                                $("#selectAgent").data("kendoDropDownList").dataSource.data(result);
 
                         },
                         error: function (errorThrown) {

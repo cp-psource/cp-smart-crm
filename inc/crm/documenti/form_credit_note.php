@@ -34,7 +34,7 @@ else
 		//echo "db: ". $payment;
         $giorni_pagamento=$riga["giorni_pagamento"];
         //	$data=date("d-m-Y");
-        $data_consegna=WPsCRM_inverti_data($riga["data_consegna"]);
+        //$data_consegna=WPsCRM_inverti_data($riga["data_consegna"]);
         $tempi_chiusura_dal=WPsCRM_inverti_data($riga["tempi_chiusura_dal"]);
         $oggetto=$riga["oggetto"];
         $iva=$riga["iva"];
@@ -52,9 +52,9 @@ else
             $rigac=$wpdb->get_row($sql, ARRAY_A);
             $cliente=$rigac["ragione_sociale"] ? $rigac["ragione_sociale"] : $rigac["nome"]." ".$rigac["cognome"];
 			$cliente=stripslashes($cliente);
-            $indirizzo=$rigac["indirizzo"];
+            $indirizzo=stripslashes($rigac["indirizzo"]);
             $cap=$rigac["cap"];
-            $localita=$rigac["localita"];
+            $localita=stripslashes($rigac["localita"]);
             $provincia=$rigac["provincia"];
 			$cod_fis=$rigac["cod_fis"];
 			$p_iva=$rigac["p_iva"];
@@ -119,7 +119,7 @@ else
 	var $formatTime = "<?php echo WPsCRM_DATETIMEFORMAT ?>";
 	var cliente = "<?php echo $cliente ?>";
 </script>
-<form name="form_insert" action="<?php echo admin_url('admin.php?page=smart-crm&p=documenti/insert.php&type=4&ID='.$ID.'&security='.$update_nonce); echo isset($_REQUEST['layout']) ? "&layout=".$_REQUEST['layout'] : null?>" method="post" id="form_insert">
+<form name="form_insert" action="" method="post" id="form_insert">
     <!--<div class="modal_loader" style="background:#fff url(<?php echo WPsCRM_URL?>/css/img/loading-image.gif);background-repeat:no-repeat;background-position:center center"></div>-->
 	<input type="hidden" name="num_righe" id="num_righe" value="">
     <h1 style="text-align:center"><?php _e('CREATE/EDIT CREDIT NOTE','cpsmartcrm')?> <i class="glyphicon glyphicon-fire"></i></h1>
@@ -284,7 +284,7 @@ else
             
                     </div>-->
                     <div class="col-sm-2">
-                        <input type="button" class="btn btn-sm btn-success _flat" id="save_client_data" name="save_client_data" value="<? _e('Save','cpsmartcrm')?>" style="display:none" />
+                        <input type="button" class="btn btn-sm btn-success _flat" id="save_client_data" name="save_client_data" value="<?php _e('Save','cpsmartcrm')?>" style="display:none" />
                     </div>
                 </div>
                 <div class="row form-group">

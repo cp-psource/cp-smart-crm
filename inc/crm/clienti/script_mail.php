@@ -18,22 +18,36 @@ function draw_list(id_cliente) {
 			},
 			success: function (result) {
 				console.log(result);
-				var documents = result.documents , html="",tipo="",icon="";
-				if(documents.length)
+				var documents = result.documents, html = "", tipo = "", icon = "";
+				var files = result.files;
+				if(documents.length > 0 || files.length > 0)
 				{
-					html += "<div class=\"documentsContainer col-md-11\"><h4><?php _e( 'Attach files', 'cpsmartcrm' ); ?></h4>";
+					html += "<div class=\"documentsContainer col-md-12\"><h4><?php _e( 'Attach files', 'cpsmartcrm'); ?></h4>";
 					html += "<ul class=\"documentsList\">";
+					// documents
 					for (var k = 0; k <documents.length ; k++)
-					{
-						documents[k].tipo == 1 ? tipo = "<?php _e( 'Quote', 'cpsmartcrm' ); ?>" : tipo = "<?php _e( 'Invoice', 'cpsmartcrm' ); ?>";
-						documents[k].filename == "" ? icon = "<span style=\"text-decoration:underline;cursor:pointer\" class=\"generatepdf\"><?php _e( 'Generate pdf', 'cpsmartcrm' ); ?> &raquo;</span>" : icon = "<a href=\"<?php echo content_url() ?>/uploads/CRMdocuments/" + documents[k].filename + "\" target=\"_blank\"><img src=\"<?php echo WPsCRM_URL.'css/img/pdf.png'?>\" alt=\"<?php _e( 'View document', 'cpsmartcrm' )?>\" title=\"<?php _e( 'View document', 'cpsmartcrm' )?>\" style=\"height:30px\"/></a> <small>Attach</small> <input type=\"checkbox\" class=\"to_attach\">";
-						html += "<li title=\"" + documents[k].testo_libero + "\" style=\"line-height:30px\" data-index=\"" + k + "\" data-document=\"" + documents[k].id + "\" data-filename=\"" + documents[k].filename + "\">";
-						html += "<span class=\"col-md-2\">" + tipo + " #" + documents[k].progressivo + "</span>&nbsp;<span class=\"col-md-2\"> <?php _e( 'Date', 'cpsmartcrm' ); ?>: " + documents[k].culture_data_inserimento + "</span> <span class=\"col-md-2\">" + " <?php _e( 'Amount', 'cpsmartcrm' )?>: " + documents[k].totale + " <?php echo WPsCRM_get_currency()->symbol?> </span> <span class=\"col-md-2\">" + icon + "</span>";
+					{ 
+
+						documents[k].tipo == 1 ? tipo = "<?php _e( 'Quote', 'cpsmartcrm'); ?>" : tipo = "<?php _e( 'Invoice', 'cpsmartcrm'); ?>";
+						documents[k].filename == "" ? icon = "<span style=\"text-decoration:underline;cursor:pointer\" class=\"generatepdf\"><?php _e( 'Generate pdf', 'cpsmartcrm'); ?> &raquo;</span>" : icon = "<a href=\"<?php echo content_url() ?>/uploads/CRMdocuments/" + documents[k].filename + "\" target=\"_blank\"><img src=\"<?php echo WPsCRM_URL.'css/img/pdf.png'?>\" alt=\"<?php _e( 'View document', 'cpsmartcrm')?>\" title=\"<?php _e( 'View document', 'cpsmartcrm')?>\" style=\"height:30px\"/></a> <small><?php _e( 'Attach', 'cpsmartcrm')?></small> <input type=\"checkbox\" class=\"to_attach\">";
+						html += "<li title=\"" + documents[k].testo_libero + "\" style=\"line-height:30px\" data-url=\"\" data-index=\"" + k + "\" data-document=\"" + documents[k].id + "\" data-filename=\"" + documents[k].filename + "\">";
+						html += "<span class=\"col-md-3\">" + tipo + " #" + documents[k].progressivo + "</span>&nbsp;<span class=\"col-md-2\">" + " <?php _e( 'Amount', 'cpsmartcrm')?>: " + documents[k].totale + " <?php echo WPsCRM_get_currency()->symbol?> </span>&nbsp;<span class=\"col-md-2\"> <?php _e( 'Date', 'cpsmartcrm'); ?>: " + documents[k].culture_data_inserimento + "</span>&nbsp;<span class=\"col-md-3\">" + icon + "</span>";
 						html += "</li>";
 					}
-
+					// files
+					for (var f = 0; f <files.length ; f++)
+					{
+                        k ++;
+						// files[f].tipo == 1 ? tipo = "<?php _e( 'Quote', 'cpsmartcrm'); ?>" : tipo = "<?php _e( 'Invoice', 'cpsmartcrm'); ?>";
+						//files[f].filename == "" ? icon = "<span style=\"text-decoration:underline;cursor:pointer\" class=\"generatepdf\"><?php _e( 'Generate pdf', 'cpsmartcrm'); ?> &raquo;</span>" : icon = "<a href=\"<?php echo content_url() ?>/uploads/CRMdocuments/" + files[k].filename + "\" target=\"_blank\"><img src=\"<?php echo WPsCRM_URL.'css/img/pdf.png'?>\" alt=\"<?php _e( 'View document', 'cpsmartcrm')?>\" title=\"<?php _e( 'View document', 'cpsmartcrm')?>\" style=\"height:30px\"/></a> <small>Attach</small> <input type=\"checkbox\" class=\"to_attach\">";
+						icon = '<img src="'+files[f].icon+'" style="height:30px">';
+						html += "<li style=\"line-height:30px\" data-index=\"" + k + "\" data-url=\""+ files[f].url +"\" data-filename=\""+ files[f].filename +"\">";
+						html += "<span class=\"col-md-5\" style=\"display: flex;justify-content: flex-start;padding-right:45px\"><a href=\"" + files[f].url + "\"  target=\"_blank\" style=\"overflow:hidden;white-space: nowrap;text-overflow:ellipsis;\"><i style=\"text-overflow:ellipsis; font-size:.8em;max-width:100%;overflow:hidden;white-space: nowrap;\">" + files[f].url + "</i></a></span>&nbsp;<span class=\"col-md-2\"> <?php _e( 'Date', 'cpsmartcrm'); ?>: " + kendo.toString(new Date(files[f].date), $format) + "</span>&nbsp;<span class=\"col-md-3\"><img src=\"" + files[f].thumbnail + "\" style=\"height:30px\"><small><?php _e( 'Attach', 'cpsmartcrm')?></small> <input type=\"checkbox\" class=\"to_attach\"></span>";
+						html += "</li>";
+					}
 					html += "</ul></div>";
 				}
+
 				jQuery('.attachments').html(html);
 			},
 			error: function (errorThrown) {
@@ -87,7 +101,7 @@ function draw_list(id_cliente) {
 		});
 
 		var M_users = $('#m_users').kendoMultiSelect({
-			placeholder: "<?php _e( 'Select user', 'cpsmartcrm' ); ?>...",
+			placeholder: "<?php _e( 'Select user', 'cpsmartcrm'); ?>...",
 			dataTextField: "display_name",
 			dataValueField: "ID",
 			autoBind: false,
@@ -103,7 +117,7 @@ function draw_list(id_cliente) {
 		}).data("kendoMultiSelect")
 
 		var M_groups = $('#m_groups').kendoMultiSelect({
-			placeholder: "<?php _e( 'Select group', 'cpsmartcrm' ); ?>...",
+			placeholder: "<?php _e( 'Select group', 'cpsmartcrm'); ?>...",
 			dataTextField: "name",
 			dataValueField: "role",
 			autoBind: false,
@@ -118,12 +132,18 @@ function draw_list(id_cliente) {
 			}
 		});
 
-	var attachments={}
+		var attachments = {}
+
 	$('.attachments').on('change', '.to_attach', function () {
-		if ($(this).is(':checked') ) {
-			attachments[$(this).closest('li').data('index')] = $(this).closest('li').data('filename');
+		if ($(this).is(':checked')) {
+			if ($(this).closest('li').data('url') == undefined) {
+				attachments[$(this).closest('li').data('index')] = $(this).closest('li').data('filename');
+			}
+			else {
+				attachments[$(this).closest('li').data('index')] = $(this).closest('li').data('filename');
+			}
 		}
-			//alert($(this).closest('li').data('filename'));
+
 		else {
 			delete attachments[$(this).closest('li').data('index')];
 		}
@@ -195,7 +215,6 @@ function draw_list(id_cliente) {
 		modal: true,
 		draggable: false,
 		pinned: true,
-		//open: function () { },
 		actions: [
 
 			"Close"
@@ -213,7 +232,7 @@ function draw_list(id_cliente) {
 	$("#createPdf").kendoWindow({
 		width: "90%",
 		height: "90%",
-		title: "<?php _e( 'Generate PDF', 'cpsmartcrm' ); ?>",
+		title: "<?php _e( 'Generate PDF', 'cpsmartcrm'); ?>",
 		iframe: true,
 		visible: false,
 		modal: true,
@@ -321,7 +340,6 @@ function draw_list(id_cliente) {
 				toUsers: $('#mailToUsers').val(),
 				Users: $('#m_users').data('kendoMultiSelect').value(),
 				Groups: $('#m_groups').data('kendoMultiSelect').value(),
-				//scheduled: schedule.value()
 				scheduled: $('#schedule').val(),
 				scheduledGMT:scheduledGMT,
 				attachments: $('#_attachments').val(),
@@ -345,6 +363,15 @@ function draw_list(id_cliente) {
 				$('._users').hide();
 				var mailWindow = $("#dialog_mail").data("kendoWindow");
 				mailWindow.close();
+				if ($('.documentGrid').length > 0) {
+					$('.documentGrid').each(function () {
+						var g = $(this).data('kendoGrid');
+						console.log(g)
+						g.dataSource.read();
+					})
+
+				}
+
 			},
 			error: function (errorThrown) {
 				console.log(errorThrown);

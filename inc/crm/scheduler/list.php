@@ -1,7 +1,7 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
 $delete_nonce= wp_create_nonce( "delete_activity" );
-$update_nonce= wp_create_nonce( "update_activity" );
+$update_nonce= wp_create_nonce( "update_scheduler" );
 ?>
 <script id="gridHeader" type="text/x-kendo-template">
 	<?php _e('Filter by date','cpsmartcrm') ?>:
@@ -42,7 +42,11 @@ jQuery(document).ready(function ($) {
 				security:'<?php echo $update_nonce?>'
             },
             success: function (result) {
-            	var grid = $("#grid").data("kendoGrid");
+            	var grid = $("#grid").data("kendoGrid"), _group=[];
+            console.log( grid.dataSource.group());
+                if(grid.dataSource.group().length){
+                     _group= { field: "tipo_agenda", dir: "asc" }
+                }
             	var newDatasource = new kendo.data.DataSource({
                     transport: {
                         read: function (options) {
@@ -64,6 +68,7 @@ jQuery(document).ready(function ($) {
                             })
                         }
                     },
+                    group: _group,
                     schema: {
                         model: {
                             id: "id_agenda",
@@ -80,10 +85,10 @@ jQuery(document).ready(function ($) {
             	setTimeout(function () {
             		grid.setDataSource(newDatasource);
             		grid.dataSource.read();
-                    
+
                 }, 20);
                 setTimeout(function () {
-                	grid.refresh()	
+                	grid.refresh()
                 }, 10);
                 setTimeout(function () {
                 	$('._modal').fadeOut('fast');
@@ -98,7 +103,7 @@ jQuery(document).ready(function ($) {
 
     })
 	$(document).on('click', '._reset', function () {
-		
+
         $('._modal').fadeOut('fast');
         $('input[type="reset"]').trigger('click');
     })

@@ -8,7 +8,7 @@ if ( ! wp_verify_nonce( $nonce, 'print_document' ) || ! current_user_can('manage
 
 } else {
 
-		$fileName = $_POST['fileName'];
+		$fileName = $_POST['fileName'].".pdf";
 		$contentType = $_POST['contentType'];
 		$base64 = $_POST['base64'];
 		$pdf = base64_decode($base64);

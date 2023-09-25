@@ -32,27 +32,23 @@ You should have received a copy of the GNU General Public License
 
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
- **************************************************************************/
+**************************************************************************/
 
-require 'psource/psource-plugin-update/psource-plugin-updater.php';
+/*require 'psource/psource-plugin-update/psource-plugin-updater.php';
 use Psource\PluginUpdateChecker\v5\PucFactory;
 $MyUpdateChecker = PucFactory::buildUpdateChecker(
-	'https://n3rds.work//wp-update-server/?action=get_metadata&slug=cp-smart-crm', 
-	__FILE__, 
-	'cp-smart-crm' 
-);
+    'https://n3rds.work//wp-update-server/?action=get_metadata&slug=cp-smart-crm', 
+    __FILE__, 
+    'cp-smart-crm' 
+);*/
 /**
  * @@@@@@@@@@@@@@@@@ LOCALIZATION @@@@@@@@@@@
  *
  **/
-
- function load_cpsmartcrm_l10n() {
-    load_plugin_textdomain( 'cpsmartcrm', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
-	//load_plugin_textdomain( 'cp-smart-crm-accountability', false, ABSPATH . 'wp-content/plugins/cp-smart-crm-accountability/languages/' );
+function WPsmartcrm_l10n(){
+    load_plugin_textdomain( 'cpsmartcrm', false, dirname(plugin_basename( __FILE__ )).'/languages/' );
 }
-add_action( 'init', 'load_cpsmartcrm_l10n' );
-
-
+add_action('plugins_loaded','WPsmartcrm_l10n');
 /**
  * @@@@@@@@@@@@@@@@@ MAIN SETUP @@@@@@@@@@@
  *
@@ -64,21 +60,35 @@ define('WPsCRM_DIR',dirname(__FILE__ ) );
 define('WPsCRM_URL',plugin_dir_url( __FILE__ ) );
 $upload_dir = wp_upload_dir();
 define('WPsCRM_UPLOADS', $upload_dir['basedir'] . '/CRMdocuments');
+define('WPsCRM_IMPORT_FILE',WPsCRM_DIR.'/logs/import.txt');
+
 require_once(__DIR__ . '/inc/setup.php');
 require_once(__DIR__ . '/inc/core.php');
 require_once(__DIR__ . '/inc/functions.php');
-//require_once(__DIR__ . '/inc/classes/html2pdf-4.4.0/html2pdf.class.php');
 require_once(__DIR__ . '/inc/classes/CRMcustomer.class.php');
 require_once(__DIR__ . '/inc/classes/CRMdocument.class.php');
 require_once(__DIR__ . '/inc/classes/CRMmail.class.php');
 require_once(__DIR__ . '/inc/options.php');
-require_once(__DIR__ . '/inc/layout.php');
-//require_once(__DIR__ . '/inc/plugin-installer.class.php');
-//require_once(__DIR__ . '/inc/dependencies.php');//required dependencies
+
 
 
 register_activation_hook( __FILE__, 'WPsCRM_crm_install' );
-//register_activation_hook(__FILE__,'WPsCRM_upgrade_taxonomies');
+register_activation_hook(__FILE__,'WPsCRM_create_doc_folder');
+
+function WPsCRM_create_doc_folder(){
+	$save_to_path = WPsCRM_UPLOADS;
+  if (!file_exists($save_to_path)){
+    wp_mkdir_p($save_to_path);
+		if(!file_exists($save_to_path.DIRECTORY_SEPARATOR.'.htaccess')){
+			$content = 'Options -Indexes' . "\n";
+			file_put_contents($save_to_path.DIRECTORY_SEPARATOR.'.htaccess', $content);
+		}
+	}
+	if(!file_exists($save_to_path.DIRECTORY_SEPARATOR.'.htaccess')){
+		$content = 'Options -Indexes' . "\n";
+		file_put_contents($save_to_path.DIRECTORY_SEPARATOR.'.htaccess', $content);
+	}
+}
 
 /**
  * @@@@@@@@@@@@@@@@@ LOAD SCRIPTS @@@@@@@@@@@
@@ -89,23 +99,24 @@ function WPsCRM_add_smartcrm_scripts(){
     if(isset($options['grid_style']) && $options['grid_style'] =="")
         $style='light';
     else{
-		if ( isset( $options['grid_style'] ) ) 
+		if ( isset( $options['grid_style'] ) )
 			$style=$options['grid_style'];
 		else
 			$style="light";
-		}
+    }
     wp_enqueue_style( 'k-commoncss',plugin_dir_url( __FILE__ ).'css/kendo.common.min.css');
-    wp_enqueue_style( 'k-common1',plugin_dir_url( __FILE__ ).'css/kendo.custom.min.css','','4.2.2');
+    wp_enqueue_style( 'k-common1',plugin_dir_url( __FILE__ ).'css/kendo.custom.min.css',array(),'4.2.2');
     wp_enqueue_style( 'bootstrap',plugin_dir_url( __FILE__ ).'inc/bootstrap/css/bootstrap-'.$style.'.min.css');
     wp_enqueue_style( 'extend',plugin_dir_url( __FILE__ ).'css/extend-'.$style.'.css');
     wp_enqueue_style( 'smartcrm',plugin_dir_url( __FILE__ ).'css/smartcrm.css');
-    wp_enqueue_script( 'kendoc', plugin_dir_url( __FILE__ ).'js/kendo.all.min.js',array('jquery'),"2.2",false );
+    wp_enqueue_script( 'kendoc', plugin_dir_url( __FILE__ ).'js/kendo.custom.min.js',array('jquery'),"2.2",false );
+    //wp_enqueue_script( 'kendoc', 'https://kendo.cdn.telerik.com/2017.2.621/js/kendo.all.min.js',array('jquery'),"2.2",false );
     wp_enqueue_script( 'mainjs', plugin_dir_url( __FILE__ ).'js/adminScript.min.js',array('jquery'),"1.1",true );
-
     wp_enqueue_script( 'signature',  plugin_dir_url( __FILE__ ).'js/signature.js',array('jquery'),"1.3",false );
     wp_enqueue_script( 'culture',  plugin_dir_url( __FILE__ ).'js/cultures/kendo.culture.'.WPsCRM_CULTURE.'.min.js',array(), "1.4",false );
     wp_enqueue_script( 'noty',  plugin_dir_url( __FILE__ ).'js/noty-2.3.8/js/noty/packaged/jquery.noty.packaged.min.js', array('jquery'),"1.4",false );
     wp_enqueue_script( 'pako',  plugin_dir_url( __FILE__ ).'js/pako/pako.min.js', array('jquery'),"1.4",false );
+	wp_enqueue_script('underscore',plugin_dir_url( __FILE__ ).'js/underscore.js',array('jquery'),false);
     wp_enqueue_media();
 }
 if ( isset( $_GET['page'] ) &&  ( $_GET['page'] == 'smart-crm'  || $_GET['page'] == 'smartcrm_custom-fields' || $_GET['page'] == 'smartcrm_subscription-rules' || $_GET['page'] == 'smartcrm_settings') )
@@ -113,66 +124,66 @@ if ( isset( $_GET['page'] ) &&  ( $_GET['page'] == 'smart-crm'  || $_GET['page']
 
 function WPsCRM_define_cultures(){
 
-  $local=get_locale() ;
+    $local=get_locale() ;
 
-  $european = array ( 'it_IT', 'fr_FR', 'es_ES', 'de_DE');
-  $culture = str_replace( "_" , "-", $local );
-  if(! defined('WPsCRM_CULTURE') ){
-	  define("WPsCRM_CULTURE", $culture );
+    $european = array ( 'it_IT', 'fr_FR', 'es_ES', 'de_DE');
+    $culture = str_replace( "_" , "-", $local );
+    if(! defined('WPsCRM_CULTURE') ){
+        define("WPsCRM_CULTURE", $culture );
 
-	  if (in_array( $local , $european )) {
-  		define('WPsCRM_DATEFORMAT','dd-MM-yyyy');
-  		define('WPsCRM_DATETIMEFORMAT','dd-MM-yyyy HH:mm');
-  		define('WPsCRM_DEFAULT_CURRENCY','EUR');
-  		define('WPsCRM_DEFAULT_CURRENCY_SYMBOL','&euro;');
-	  } elseif($local=="en_GB"){
-  		define('WPsCRM_DATEFORMAT','dd-MM-yyyy');
-  		define('WPsCRM_DATETIMEFORMAT','dd-MM-yyyy HH:mm');
-  		define('WPsCRM_DEFAULT_CURRENCY','GBP');
-  		define('WPsCRM_DEFAULT_CURRENCY_SYMBOL','&pound;');
-	  }
-	  elseif($local=="de_CH" || $local=="de_CH_informal"){
-		  define('WPsCRM_DATEFORMAT','dd-MM-yyyy');
-		  define('WPsCRM_DATETIMEFORMAT','dd-MM-yyyy HH:mm');
-		  define('WPsCRM_DEFAULT_CURRENCY','CHF');
-		  define('WPsCRM_DEFAULT_CURRENCY_SYMBOL','Fr.');
-	  }
-	  elseif($local=="el" || $local=='el_GR' ){
-		  define('WPsCRM_DATEFORMAT','dd-MM-yyyy');
-		  define('WPsCRM_DATETIMEFORMAT','dd-MM-yyyy HH:mm');
-		  define('WPsCRM_DEFAULT_CURRENCY','EUR');
-		  define('WPsCRM_DEFAULT_CURRENCY_SYMBOL','&euro;');
-	  }elseif($local=="pt_BR" ){
-		  define('WPsCRM_DATEFORMAT','dd-MM-yyyy');
-		  define('WPsCRM_DATETIMEFORMAT','dd-MM-yyyy HH:mm');
-		  define('WPsCRM_DEFAULT_CURRENCY','BRL');
-		  define('WPsCRM_DEFAULT_CURRENCY_SYMBOL','R$');
-	  }elseif($local=="as_IN" || $local=="in" || $local=="hi_IN"){
-		  define('WPsCRM_DATEFORMAT','dd-MM-yyyy');
-		  define('WPsCRM_DATETIMEFORMAT','dd-MM-yyyy HH:mm');
-		  define('WPsCRM_DEFAULT_CURRENCY','INR');
-		  define('WPsCRM_DEFAULT_CURRENCY_SYMBOL','&\\\#8377;');
-	  }elseif($local=="zh_HANS" || $local=="zh" || $local=="zh_HANT" || $local=="zh_CN"){
-		  define('WPsCRM_DATEFORMAT','yyyy-MM-dd');
-		  define('WPsCRM_DATETIMEFORMAT','yyyy-MM-dd HH:mm');
-		  define('WPsCRM_DEFAULT_CURRENCY','CNY');
-		  define('WPsCRM_DEFAULT_CURRENCY_SYMBOL','�');
-	  }elseif($local=="ya" || $local=="ya_JP"  ){
-		  define('WPsCRM_DATEFORMAT','dd-MM-yyyy');
-		  define('WPsCRM_DATETIMEFORMAT','dd-MM-yyyy HH:mm');
-		  define('WPsCRM_DEFAULT_CURRENCY','JPY ');
-		  define('WPsCRM_DEFAULT_CURRENCY_SYMBOL','�');
-	  }
+        if (in_array( $local , $european )) {
+            define('WPsCRM_DATEFORMAT','dd-MM-yyyy');
+            define('WPsCRM_DATETIMEFORMAT','dd-MM-yyyy HH:mm');
+            define('WPsCRM_DEFAULT_CURRENCY','EUR');
+            define('WPsCRM_DEFAULT_CURRENCY_SYMBOL','&euro;');
+        } elseif($local=="en_GB"){
+            define('WPsCRM_DATEFORMAT','dd-MM-yyyy');
+            define('WPsCRM_DATETIMEFORMAT','dd-MM-yyyy HH:mm');
+            define('WPsCRM_DEFAULT_CURRENCY','GBP');
+            define('WPsCRM_DEFAULT_CURRENCY_SYMBOL','&pound;');
+        }
+        elseif($local=="de_CH" || $local=="de_CH_informal"){
+            define('WPsCRM_DATEFORMAT','dd-MM-yyyy');
+            define('WPsCRM_DATETIMEFORMAT','dd-MM-yyyy HH:mm');
+            define('WPsCRM_DEFAULT_CURRENCY','CHF');
+            define('WPsCRM_DEFAULT_CURRENCY_SYMBOL','Fr.');
+        }
+        elseif($local=="el" || $local=='el_GR' ){
+            define('WPsCRM_DATEFORMAT','dd-MM-yyyy');
+            define('WPsCRM_DATETIMEFORMAT','dd-MM-yyyy HH:mm');
+            define('WPsCRM_DEFAULT_CURRENCY','EUR');
+            define('WPsCRM_DEFAULT_CURRENCY_SYMBOL','&euro;');
+        }elseif($local=="pt_BR" ){
+            define('WPsCRM_DATEFORMAT','dd-MM-yyyy');
+            define('WPsCRM_DATETIMEFORMAT','dd-MM-yyyy HH:mm');
+            define('WPsCRM_DEFAULT_CURRENCY','BRL');
+            define('WPsCRM_DEFAULT_CURRENCY_SYMBOL','R$');
+        }elseif($local=="as_IN" || $local=="in" || $local=="hi_IN"){
+            define('WPsCRM_DATEFORMAT','dd-MM-yyyy');
+            define('WPsCRM_DATETIMEFORMAT','dd-MM-yyyy HH:mm');
+            define('WPsCRM_DEFAULT_CURRENCY','INR');
+            define('WPsCRM_DEFAULT_CURRENCY_SYMBOL','&\\\#8377;');
+        }elseif($local=="zh_HANS" || $local=="zh" || $local=="zh_HANT" || $local=="zh_CN"){
+            define('WPsCRM_DATEFORMAT','yyyy-MM-dd');
+            define('WPsCRM_DATETIMEFORMAT','yyyy-MM-dd HH:mm');
+            define('WPsCRM_DEFAULT_CURRENCY','CNY');
+            define('WPsCRM_DEFAULT_CURRENCY_SYMBOL','¥');
+        }elseif($local=="ya" || $local=="ya_JP"  ){
+            define('WPsCRM_DATEFORMAT','dd-MM-yyyy');
+            define('WPsCRM_DATETIMEFORMAT','dd-MM-yyyy HH:mm');
+            define('WPsCRM_DEFAULT_CURRENCY','JPY ');
+            define('WPsCRM_DEFAULT_CURRENCY_SYMBOL','¥');
+        }
 
-	  else {
-		  //if no available cultures load en-US format
-  		define('WPsCRM_DATEFORMAT','MM-dd-yyyy');
-  		define('WPsCRM_DATETIMEFORMAT','MM-dd-yyyy HH:mm');
-  		define('WPsCRM_DEFAULT_CURRENCY','USD');
-  		define('WPsCRM_DEFAULT_CURRENCY_SYMBOL','$');
-	  }
-  define ('WPsCRM_TIMEFORMAT','HH:mm');
-  }
+        else {
+            //if no available cultures load en-US format
+            define('WPsCRM_DATEFORMAT','MM-dd-yyyy');
+            define('WPsCRM_DATETIMEFORMAT','MM-dd-yyyy HH:mm');
+            define('WPsCRM_DEFAULT_CURRENCY','USD');
+            define('WPsCRM_DEFAULT_CURRENCY_SYMBOL','$');
+        }
+        define ('WPsCRM_TIMEFORMAT','HH:mm');
+    }
 
 }
 add_action('admin_init','WPsCRM_define_cultures');
@@ -228,53 +239,57 @@ function WPsCRM_set_defaults(){
 		);
 	add_option('CRM_documents_settings',$defaults_documents);
 	add_option('CRM_general_settings',$defaults_general);
-
-
+	if( get_option('CRM_ColumnsWidth') ==null)
+		add_option('CRM_ColumnsWidth',array());
 }
 register_activation_hook( __FILE__, 'WPsCRM_set_defaults' );
 
- /**
+/**
  *
  * Hide Admin bar for CRM clients
  *
  **/
 function WPsCRM_hide_admin_bar(){
-    $current_user   = wp_get_current_user();
+    $current_user = wp_get_current_user();
 	if ( current_user_can('manage_crm') && isset( $_GET['layout'] ) &&  $_GET['layout'] =='modal' ){
 ?>
 <style>
     #wpadminbar, .term-slug-wrap, .term-parent-wrap, .term-description-wrap {
         display: none !important;
     }
+
     .tablenav.bottom {
         visibility: hidden;
     }
+
     #wpbody {
         padding-top: 0 !important;
     }
-    .update-nag,.notice-error,.notice-success,.notice-warning,.notice-info,.updated ,.settings-error{display:none!important}
 
+    .update-nag, .notice-error, .notice-success, .notice-warning, .notice-info, .updated, .settings-error {
+        display: none !important
+    }
 </style>
-	<?php
+<?php
 	}
-           return false;
+    return false;
 }
 add_action('admin_footer','WPsCRM_hide_admin_bar');
- /**
+/**
  *
  * Localization of Kendo controls
  *
  **/
 function WPsCRM_add_culture(){
 ?>
-	<script>
+<script>
         if (pagenow.search('smart-crm') != -1 || pagenow.search('smartcrm') != -1){
         	kendo.culture("<?php echo WPsCRM_CULTURE?>");
-		var localCulture="<?php echo WPsCRM_CULTURE?>";
-		var $format = "<?php echo WPsCRM_DATEFORMAT ?>";
-		var $formatTime = "<?php echo WPsCRM_DATETIMEFORMAT ?>";
+			var localCulture="<?php echo WPsCRM_CULTURE?>";
+			var $format = "<?php echo WPsCRM_DATEFORMAT ?>";
+			var $formatTime = "<?php echo WPsCRM_DATETIMEFORMAT ?>";
 		}
-    </script>
+</script>
 <?php
 }
 add_action( 'admin_head', 'WPsCRM_add_culture' );
@@ -285,39 +300,40 @@ add_action( 'admin_head', 'WPsCRM_add_culture' );
  *
  **/
 function WPsCRM_redirect_to_CRM($redirectTo, $request, $user) {
-
-        $options=get_option('CRM_general_settings');
-
-        if($options['smartcrm_redirect-'.$user->ID] ==1 && ! defined('DOING_AJAX')){
-
-            return(admin_url( ).'admin.php?page=smart-crm' );
-        }
+    if(!is_admin())
         return $redirectTo;
+    $options=get_option('CRM_general_settings');
+
+    if($options['smartcrm_redirect-'.$user->ID] ==1 && ! defined('DOING_AJAX')){
+
+        return(admin_url( ).'admin.php?page=smart-crm' );
     }
+    return $redirectTo;
+}
 add_filter('login_redirect', 'WPsCRM_redirect_to_CRM',10,3);
 
 /**
-	*
-	* REDIRECT TO REQUIRED SETTINGS PAGE ON ACTIVATION
-	*
-	**/
+ *
+ * REDIRECT TO REQUIRED SETTINGS PAGE ON ACTIVATION
+ *
+ **/
 function WPsCRM_notify_CRM_SETTINGS(){
 ?>
 <div class="notice notice-error">
-	<p>
-		<?php _e( 'Warning:  some basic settings are required','cpsmartcrm');?>
-		<a href="<?php echo admin_url("admin.php?page=smartcrm_settings&tab=CRM_business_settings" )?>">
-			<?php _e('on this page','cpsmartcrm');?>
-		</a>
-		<?php _e('to use CP Smart CRM ','cpsmartcrm')?>!
-	</p>
+    <p>
+        <?php _e( 'Warning:  some basic settings are required','cpsmartcrm');?>
+        <a href="<?php echo admin_url("admin.php?page=smartcrm_settings&tab=CRM_business_settings" )?>">
+            <?php _e('on this page','cpsmartcrm');?>
+        </a>
+        <?php _e('to use CP Smart CRM ','cpsmartcrm')?>!
+    </p>
 </div>
 <?php
 }
 function WPsCRM_redirect_to_CRM_SETTINGS() {
 
 	$options=get_option('CRM_business_settings');
-	if($options['CRM_required_settings'] !=1 && ! defined('DOING_AJAX') ){
+	if(!isset($options['CRM_required_settings']) || $options['CRM_required_settings'] !=1 && ! defined('DOING_AJAX') ){
 		add_filter('admin_notices', 'WPsCRM_notify_CRM_SETTINGS');
 		if( isset($_GET['page']) ){
 			if(strstr($_GET['page'],"smart-crm") || strstr($_GET['page'],"smartcrm") && ($_GET['tab'] !="CRM_business_settings") )
@@ -331,16 +347,16 @@ function WPsCRM_redirect_to_CRM_SETTINGS() {
 add_filter('admin_init','WPsCRM_redirect_to_CRM_SETTINGS',1);
 
 /**
-*
-* Optionally minimize WP main menu to use CRM fullpage
-*
-**/
+ *
+ * Optionally minimize WP main menu to use CRM fullpage
+ *
+ **/
 function WPsCRM_fullpage(){
     $user   = wp_get_current_user();
     $options=get_option('CRM_general_settings');
     if(isset($options['minimize_WP_menu-'.$user->ID]) && $options['minimize_WP_menu-'.$user->ID] ==1 ){
-	?>
-    <script>
+?>
+<script>
         jQuery(document).ready(function ($) {
             if (!$('body').hasClass('folded') && pagenow.search('smart-crm') != -1)
                 setTimeout(function () {
@@ -348,9 +364,31 @@ function WPsCRM_fullpage(){
                     //$('#collapse-button').trigger('click');
                 }, 10)
         })
-                    
-    </script>
-    <?php
+
+</script>
+<?php
     }
 }
 add_action( 'admin_head', 'WPsCRM_fullpage',11 );
+
+add_action('admin_menu', 'WPsCRM_documentation_link',99);
+
+function WPsCRM_documentation_link(){
+	if(class_exists('sitepress')){
+		if(ICL_LANGUAGE_CODE =="it")
+			$link='https://softrade.it/wordpress-crm-invoices-plugin/docs/';
+		else
+			$link='https://softrade.it/eng/wordpress-crm-invoices-plugin/docs/';
+		}
+		else{
+			$link='https://softrade.it/eng/wordpress-crm-invoices-plugin/docs/';
+		}
+	add_submenu_page(
+	'smart-crm',
+	__('Documentation', 'cpsmartcrm'),
+	__('Documentation', 'cpsmartcrm'),
+	'manage_crm',
+	$link,
+	''
+	);
+}

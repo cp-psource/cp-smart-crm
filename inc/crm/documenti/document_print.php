@@ -1,6 +1,18 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+?>
+<style>
+	<?php if(isset($_GET['layout']) && $_GET['layout']=="iframe") { ?>
+	#wpadminbar, #adminmenumain, #mainMenu,.wrap h1,.btn-warning,.select-action:first-of-type {
+        display: none;
+    }
+	#wpcontent, #wpfooter {
+    margin-left: 0;
+}
+		<?php } ?>
+</style>
+<?php
 $print_nonce=wp_create_nonce( "print_document" );
 $ID=$_GET['id_invoice'];
 global $document;
@@ -23,7 +35,6 @@ if( isset($general_options['print_logo']) && $general_options['print_logo'] =='1
     $logo='<img src="'.$general_options['company_logo'].'" class="WPsCRM_companylogo" />';
 else
     $logo="";
-//$intestazione=implode("<br>", $document->company_data);
 
 //document header
 $header =	'<section class="WPsCRM_pdf-header">
@@ -57,6 +68,7 @@ if ($ID)
 {
 	$sql="select * from $d_table where id=$ID";
 	$riga=$wpdb->get_row($sql, ARRAY_A);
+  $riga= stripslashes_deep($riga);
 	switch ($tipo=$riga["tipo"])
 	{
 		case 1:
@@ -91,6 +103,7 @@ if ($ID)
 
 			break;
 	}
+	$tipo_sconto=$riga["tipo_sconto"];
 	$riferimento=$riga["riferimento"];
 	$oggetto = $tipo ==1 ? $riga["oggetto"] : "";
 	if ($FK_clienti=$riga["fk_clienti"])
@@ -100,16 +113,17 @@ if ($ID)
 		$rigac=$wpdb->get_row($sql, ARRAY_A);
 		$cliente=$rigac["ragione_sociale"]?$rigac["ragione_sociale"]:$rigac["nome"]." ".$rigac["cognome"];
 		$cliente=stripslashes($cliente);
-		$indirizzo=$rigac["indirizzo"];
+		$indirizzo=stripslashes($rigac["indirizzo"]);
 		$tipo_cliente=$rigac["tipo_cliente"];
 		$cap=$rigac["cap"];
-		$localita=$rigac["localita"];
+		$localita=stripslashes($rigac["localita"]);
 		$provincia=$rigac["provincia"];
 		$email=$rigac["email"];
 		$p_iva=$rigac["p_iva"];
 		$cod_fis=$rigac["cod_fis"];
 	}
-	$pagamento=$riga["modalita_pagamento"];
+  $pagamento = $riga["modalita_pagamento"];
+  $data_scadenza = $riga["data_scadenza"]!="0000-00-00"?WPsCRM_culture_date_format($riga["data_scadenza"]):"";
     $n_offerta=$document_prefix;
     $n_offerta.=$progressivo."/".date("Y", strtotime($riga["data"]));
     $n_offerta.=$document_suffix;
@@ -122,7 +136,7 @@ if ($p_iva)
 if ($cod_fis)
 	$subheader.='<br>'.__('Fiscal code','cpsmartcrm').': '.$cod_fis;
 if ($riferimento)
-	$subheader.='<br>'.__('Reference #','cpsmartcrm').': '.$riferimento;
+	$subheader.='<br>'.__('Reference','cpsmartcrm').': '.$riferimento;
 $subheader.='</div>';
 $subheader .='<div class="col-md-6 WPsCRM_documentData"><b>'.$document_name.' # '.$n_offerta.' '.__("issued on",'cpsmartcrm').' '.WPsCRM_culture_date_format($riga["data"]).'</b></div>';
 $subheader .='</section>';
@@ -157,12 +171,6 @@ switch ($accontOptions['accountability']){
 		include (ACCsCRM_DIR.'/inc/crm/documenti/accountabilities/accountability_print_4.php');
 		break;
 }
-$tab_cond="";
-if ($pagamento)
-    $tab_cond.="<tr style=\"background:transparent!important\"><td style=\"background:transparent!important\">".__("Payment",'cpsmartcrm').":</td><td>".$pagamento."</td></tr>";
-if ($riga["annotazioni"])
-	$tab_cond.="<tr style=\"background:transparent!important\"><td colspan='1' style=\"background:transparent!important\">".__("Notes",'cpsmartcrm').":</td><td colspan='1' style='font-size:.9em;font-style:italic'>".stripslashes($riga["annotazioni"])."</td></tr>
-";
 $doc_body.=$t_articoli;
 //if ($tab_tot && $tipo==2)
 //if ($tab_tot)
@@ -172,18 +180,17 @@ $doc_body.='<div class="col-md-8 pull-right _total" style="padding:0;">
   <tbody>'.$tab_tot.'</tbody></table></div>
   ';
 //}
-if ($tab_cond)
-{
-    $doc_body.='<div class="col-md-5 pull-left" style="padding:0">
-		<table class="table WPsCRM_table-conditions">
-		<thead>
-				<th style="border:none">
-					<h4>'.__("Conditions",'cpsmartcrm').':</h4>
-				</th>
-			</thead>
-		<tbody>'.$tab_cond.'</tbody></table></div>
-';
-}
+  if ($pagamento)
+    $tab_cond .= "<p style='margin-top:20px'>" . __("Payment", 'cpsmartcrm') . ": " . $pagamento . "</p>";
+  if ($data_scadenza && $tipo==1)
+    $tab_cond .= "<p style='margin-top:20px'>" . __("Expiration date", 'cpsmartcrm') . ": " . $data_scadenza . "</p>";
+  if ($riga["annotazioni"]){
+//    $tab_cond .= "<p style='margin-top:20px'><b>" . __("Notes", 'cpsmartcrm') . "</b>: <i>" . stripslashes($riga["annotazioni"]) . "</i></p>";
+    $tab_cond .= "<p style='margin-top:20px;font-size:.9em;font-style:italic'>".stripslashes($riga["annotazioni"]) . "</p>";
+  }
+  if ($tab_cond) {
+    $doc_body .= '<div class="col-md-12 pull-left" style="padding:0"><h4>' . __("Conditions", 'cpsmartcrm') . '</h4>'.$tab_cond.'</div>';
+  }
 if ($riga["pagato"] && $tipo==2)
 {
 	$doc_body.='<div class="row"></div><div class="col-md-5 pull-left" style="padding:0"><table class="table _paid"><tr><td><img src="'.WPsCRM_URL.'css/img/paid_'.WPsCRM_CULTURE.'.png" class="WPsCRM_paid"/></h5></td></tr></table></div>';
@@ -202,13 +209,14 @@ if($tipo==1 && $document->use_formatted_signature()==true)
 	$doc_body.='<table class="WPsCRM_formatted-signature"><tr><td>'.$formatted_signature.'</td></tr></table>';
 $doc_body.="</div>";
 $doc_body.='</section>';
-//saving funcitons
+//saving functions
 if(!file_exists(WPsCRM_UPLOADS))
 	wp_mkdir_p(WPsCRM_UPLOADS);
 if (isset($old_file) && file_exists(WPsCRM_UPLOADS."/".$old_file.".pdf"))
 	unlink(WPsCRM_UPLOADS."/".$old_file.".pdf");
-$random_name=WPsCRM_gen_random_code(30).'.pdf';
-$filename=WPsCRM_UPLOADS."/".$random_name.".pdf";
+$random_name=WPsCRM_gen_random_code(20);
+$filename=$FK_clienti."_".$tipo."_".$ID."_".$random_name;
+
 $serverName=site_url();
 ?>
 
@@ -216,8 +224,8 @@ $serverName=site_url();
 
 	<div class="box-col row">
         <span class="crmHelp crmHelp-dark" data-help="document-print"></span>
-		<div class="col-md-2">
-			<h4>
+		<div class="col-md-3" style="margin:0">
+			<h4 >
 				<?php _e('Get PDF','cpsmartcrm')?>
 			</h4>
 			<button class="export-pdf btn _flat btn-success">
@@ -226,7 +234,7 @@ $serverName=site_url();
 			<?php if ($riga["registrato"]==0)
 			{
 			?>
-			<a href="<?php echo $edit_url ?>">
+                    <a href="<?php echo $edit_url ?>" target="_parent">
 				<span class="btn _flat btn-info">
 					<?php _e('Edit','cpsmartcrm')?>
 				</span>
@@ -234,16 +242,17 @@ $serverName=site_url();
 			<?php
 			}?>
 		</div>
-		<div class="col-md-9">
+		<div class="col-md-4 option_box"style="margin:0">
 			<h4>
 				<?php _e('Print options','cpsmartcrm') ?>
 			</h4>
 			<?php  do_action ('WPsCRM_totalBox', $tipo ) ?>
 		</div>
-		<div class="export-info" style="display:none">
-			<div style="background:#fff url('<?php echo WPsCRM_URL?>css/img/loading-image.gif');background-repeat:no-repeat;background-position:center center; position:relative;height:200px;width:100%"></div>
-
+		<div class="col-md-3" style="margin:0">
+            <div class="export-info" style="display:none">
+            </div>
 		</div>
+
 	</div>
 </div>
 
@@ -393,7 +402,7 @@ $serverName=site_url();
     				$('.total_net').toggle();
     				$('.total_gros').toggle();
     				$('.WPsCRM_item').each(function () {
-    					$(this).find('.tot_riga').html($(this).data('totalgros').toFixed(2))
+    					$(this).find('.tot_riga').html($(this).data('totalgros'))
     					$(this).find('.row_amount').html($(this).data('gros'))
 
     				})
@@ -411,8 +420,9 @@ $serverName=site_url();
 
 
     		var PDF;
-	     	$(".export-pdf").click(function() {
-
+    		$(".export-pdf").click(function (e) {
+    			showMouseLoader();
+	     		$('#mouse_loader').offset({ left: e.pageX, top: e.pageY });
     		$('.export-info').show();
 	     		kendo.drawing.drawDOM($('.page-container'), {
     			//paperSize: "auto",
@@ -433,7 +443,7 @@ $serverName=site_url();
         	PDF=data;
         	kendo.saveAs({
         		dataURI: data,
-        		fileName: "<?php echo $random_name?>",
+        		fileName: "<?php echo $filename?>",
 				//proxyURL:"<?php echo admin_url('admin.php?page=smart-crm&p='.urlencode('documenti/save_pdf.php').'&security='.$print_nonce ) ?>",
         		//forceProxy: true
         	});
@@ -442,7 +452,7 @@ $serverName=site_url();
 				method:'POST',
 				data: {
 					'action': 'WPsCRM_save_pdf_document',
-	        		fileName: "<?php echo $random_name?>",
+	        		fileName: "<?php echo $filename?>",
 					doc_id: "<?php echo $ID?>",
 					PDF: PDF,
 					security:"<?php echo $print_nonce?>",
@@ -456,9 +466,10 @@ $serverName=site_url();
 				}
 			})
         	setTimeout(function () {
-        		$('.export-info img').fadeOut('400')
-        		$('.export-info').html("<br><?php _e('The current document has been downloaded in your PC and saved on the server in','cpsmartcrm')?>:<br><small style=\"background:gold;font-size:small;padding:3px\"><a href=\"<?php echo content_url() ?>/uploads/CRMdocuments/<?php echo $random_name?>\" target=\"_blank\"><?php echo content_url() ?>/uploads/CRMdocuments/<?php echo $random_name?></a></small>")
+        		//$('.export-info img').fadeOut('400')
+        		$('.export-info').html("<br><?php _e('The current document has been downloaded in your PC and saved on the server in','cpsmartcrm')?>:<br><small style=\"background:gold;font-size:small;padding:3px\"><a href=\"<?php echo content_url() ?>/uploads/CRMdocuments/<?php echo $filename?>.pdf\" target=\"_blank\"><?php echo content_url() ?>/uploads/CRMdocuments/<?php echo $filename?>.pdf</a></small>")
         		//$('.export-info').append('<br><br><span class="btn btn-info _flat"><?php _e('Send to customer','cpsmartcrm')?></span>')
+        		hideMouseLoader()
         	}, 700)
 
         });
@@ -477,6 +488,14 @@ $serverName=site_url();
     });
 </script>
 <style>
+    .option_box label {
+    line-height:1em
+	}
+	.option_box{padding:0}
+	.option_box .col-md-3,.option_box .col-md-4,.option_box .col-md-6{
+		padding:0
+	}
+	.option_box h4{margin-bottom:0}
         table.WPsCRM-total td{padding:4px!important}
 
 		 .pdf-page {
@@ -564,5 +583,5 @@ $serverName=site_url();
 		<?php } ?>
 </style>
 <style>
-		<?php echo $document_options['document_custom_css']?>
+		<?php echo isset($document_options['document_custom_css']) ? $document_options['document_custom_css'] : null?>
 </style>

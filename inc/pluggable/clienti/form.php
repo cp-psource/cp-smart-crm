@@ -6,6 +6,26 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  */
 function WPsCRM_JS_display_grid_customer_scheduler($delete_nonce){
 	ob_start();?>
+    function agenda_databound(){
+<?php
+    is_multisite() ? $filter=get_blog_option(get_current_blog_id(), 'active_plugins' ) : $filter=get_option('active_plugins' );
+    if ( in_array( 'wp-smart-crm-agents/wp-smart-crm-agents.php', apply_filters( 'active_plugins', $filter) ) ) {
+?>
+        var gridRows = this.tbody.find("tr");
+        console.log(privileges);
+	    gridRows.each(function (e) {
+		    var commandsCell = jQuery(this).find("td:last-child");
+		    if(privileges.customer===1){
+			    commandsCell.html('');
+		    }
+	    })
+
+
+<?php
+
+    }
+
+?>}
 $("#grid").kendoGrid({
 			noRecords: {
 					template: "<h4 style=\"text-align:center;padding:5%\"><?php _e('No activity for this customer','cpsmartcrm')?></h4>"
@@ -156,36 +176,57 @@ add_action('WPsCRM_grid_customer_scheduler','WPsCRM_JS_display_grid_customer_sch
  */
 function WPsCRM_JS_grid_customer_contacts(){
 	ob_start();?>
-           $("#grid_contacts").kendoGrid({
-                dataSource: _contacts,
-				noRecords: {
-				template: "<h4 style=\"text-align:center;padding:5%\"><?php _e('No Contacts to show','cpsmartcrm')?></h4>"
-    			},
-                height: 550,
-                groupable: {
-                messages: {
-                    empty: "<?php _e('Drag columns headers and drop it here to group by that column','cpsmartcrm') ?>"
-					}
-				},
-                sortable: true,
-                serverPaging: true,
-                pageable:
+    function contact_databound(){
+    <?php
+        is_multisite() ? $filter=get_blog_option(get_current_blog_id(), 'active_plugins' ) : $filter=get_option('active_plugins' );
+        if ( in_array( 'wp-smart-crm-agents/wp-smart-crm-agents.php', apply_filters( 'active_plugins', $filter) ) ) {
+        ?>
+        var gridRows = this.tbody.find("tr");
+        console.log(privileges);
+	    gridRows.each(function (e) {
+		    var commandsCell = jQuery(this).find("td:last-child");
+		    if(privileges.customer===1){
+			    commandsCell.html('');
+		    }
+	    })
+
+
+    <?php
+    
+    }
+
+    ?>}
+    $("#grid_contacts").kendoGrid({
+        dataSource: _contacts,
+        dataBound:contact_databound,
+		noRecords: {
+		template: "<h4 style=\"text-align:center;padding:5%\"><?php _e('No Contacts to show','cpsmartcrm')?></h4>"
+    	},
+        height: 550,
+        groupable: {
+        messages: {
+            empty: "<?php _e('Drag columns headers and drop it here to group by that column','cpsmartcrm') ?>"
+			}
+		},
+        sortable: true,
+        serverPaging: true,
+        pageable:
+            {
+                pageSizes: [20, 50, 100],
+                messages:
                     {
-                        pageSizes: [20, 50, 100],
-                        messages:
-                            {
-                                display: "<?php _e('Showing','cpsmartcrm') ?> {0}-{1}  <?php _e('of','cpsmartcrm') ?> {2} <?php _e('total','cpsmartcrm') ?>",
-                                of: "<?php _e('of','cpsmartcrm') ?> {0}",
-                                itemsPerPage: "<?php _e('Posts per page','cpsmartcrm') ?>",
-                                first: "<?php _e('First page','cpsmartcrm') ?>",
-                                last: "<?php _e('Last page','cpsmartcrm') ?>",
-                                next: "<?php _e('Next','cpsmartcrm') ?>",
-                                previous: "<?php _e('Prev.','cpsmartcrm') ?>",
-                                refresh: "<?php _e('Reload','cpsmartcrm') ?>",
-                                morePages: "<?php _e('More','cpsmartcrm') ?>"
-                            },
+                        display: "<?php _e('Showing','cpsmartcrm') ?> {0}-{1}  <?php _e('of','cpsmartcrm') ?> {2} <?php _e('total','cpsmartcrm') ?>",
+                        of: "<?php _e('of','cpsmartcrm') ?> {0}",
+                        itemsPerPage: "<?php _e('Posts per page','cpsmartcrm') ?>",
+                        first: "<?php _e('First page','cpsmartcrm') ?>",
+                        last: "<?php _e('Last page','cpsmartcrm') ?>",
+                        next: "<?php _e('Next','cpsmartcrm') ?>",
+                        previous: "<?php _e('Prev.','cpsmartcrm') ?>",
+                        refresh: "<?php _e('Reload','cpsmartcrm') ?>",
+                        morePages: "<?php _e('More','cpsmartcrm') ?>"
                     },
-                filterable:
+            },
+        filterable:
 		{
         messages:
             {
@@ -202,48 +243,48 @@ function WPsCRM_JS_grid_customer_contacts(){
                         neq: "<?php _e('Not equal','cpsmartcrm') ?>"
                     }
             }
-    },
-    toolbar: [{ name: "create", text: "<?php _e('Add new contact','cpsmartcrm') ?>" }],  
-    columns: [
-      {
-        field: "id",
-        title: "<?php _e('ID','cpsmartcrm') ?>"
-      },
-      {
-        field: "nome",
-        title: "<?php _e('Name','cpsmartcrm') ?>"
-      },
-      {
-        field: "cognome",
-        title: "<?php _e('Last Name','cpsmartcrm') ?>"
-      },
-      {
-        field: "email",
-        title: "<?php _e('Email','cpsmartcrm') ?>"
-      },
-      {
-        field: "telefono",
-        title: "<?php _e('Telephone','cpsmartcrm') ?>"
-      },
-      {
-        field: "qualifica",
-        title: "<?php _e('Qualification','cpsmartcrm') ?>"
-      },
-        { command: [
-			{
-				name:"edit",
-				text: {edit:"<?php _e('Edit','cpsmartcrm') ?>", update:"<?php _e('Update','cpsmartcrm') ?>", cancel:"<?php _e('Cancel','cpsmartcrm') ?>"}
-			}, 
-			{
-				name:"destroy",
-				text:"<?php _e('Delete','cpsmartcrm') ?>"
-			}
-			], title: "&nbsp;", width: "250px" }],
+        },
+        toolbar: [{ name: "create", text: "<?php _e('Add new contact','cpsmartcrm') ?>" }],  
+        columns: [
+          {
+            field: "id",
+            title: "<?php _e('ID','cpsmartcrm') ?>"
+          },
+          {
+            field: "nome",
+            title: "<?php _e('Name','cpsmartcrm') ?>"
+          },
+          {
+            field: "cognome",
+            title: "<?php _e('Last Name','cpsmartcrm') ?>"
+          },
+          {
+            field: "email",
+            title: "<?php _e('Email','cpsmartcrm') ?>"
+          },
+          {
+            field: "telefono",
+            title: "<?php _e('Telephone','cpsmartcrm') ?>"
+          },
+          {
+            field: "qualifica",
+            title: "<?php _e('Qualification','cpsmartcrm') ?>"
+          },
+            { command: [
+			    {
+				    name:"edit",
+				    text: {edit:"<?php _e('Edit','cpsmartcrm') ?>", update:"<?php _e('Update','cpsmartcrm') ?>", cancel:"<?php _e('Cancel','cpsmartcrm') ?>"}
+			    }, 
+			    {
+				    name:"destroy",
+				    text:"<?php _e('Delete','cpsmartcrm') ?>"
+			    }
+		    ], title: "&nbsp;", width: "250px" }],
             editable: {
-				confirmation: "<?php _e('Confirm delete','cpsmartcrm') ?>?",
-				mode: "inline"
-			},
-    });
+			    confirmation: "<?php _e('Confirm delete','cpsmartcrm') ?>?",
+			    mode: "inline"
+		    },
+        });
 <?php
 	echo ob_get_clean();
 	return;

@@ -69,8 +69,13 @@ add_action('WPsCRM_scheduler_datasource','WPsCRM_JS_schedulerList_datasource',9)
  **/
 function WPsCRM_JS_display_schedulerGrid($delete_nonce){
 	ob_start();
+        $current_user = wp_get_current_user();
+        $user_id=$current_user->ID;
+        $options=get_option('CRM_general_settings');
 ?>
-
+    var c_user=parseInt(<?php echo $user_id?>);
+    var del_priv="<?php echo isset($options['deletion_privileges'])&& $options['deletion_privileges']=="1" ?>";
+    var is_admin="<?php echo current_user_can('administrator')?>";
     var grid = $("#grid").kendoGrid({
     	toolbar: kendo.template($("#gridHeader").html()),
     	dataSource: dataSource,
@@ -101,7 +106,7 @@ function WPsCRM_JS_display_schedulerGrid($delete_nonce){
     	sortable: true,
 		filterable:true,
         serverPaging: true,
-        dataBound: loadCellsAttributes,
+        dataBound: loadCellsAttributesScheduler,
         columns: [{ field: "id_agenda", title: "ID", hidden: true },
 				  { field: "fk_utenti_ins", title: "Ins", hidden: true },
 				  { field: "tipo_agenda", title: "<?php _e('Type','cpsmartcrm') ?>", width: 150 },
@@ -116,7 +121,8 @@ function WPsCRM_JS_display_schedulerGrid($delete_nonce){
 				  		}
 				  	}
 				  },
-				  { field: "destinatari", title: "<?php _e('Recipients','cpsmartcrm')?>" },
+				{ field: "destinatari", title: "<?php _e('Recipients','cpsmartcrm')?>" },
+                {field:"privileges",hidden:true},
 				{ command: [
 
 				{
@@ -129,7 +135,8 @@ function WPsCRM_JS_display_schedulerGrid($delete_nonce){
                         url: ajaxurl,
                         data: {
                         	'action': 'WPsCRM_view_activity_modal',
-                            'id': _row.id
+                            'id': _row.id,
+                            'report':$(e.currentTarget).data('report')
                         },
                         success: function (result) {
                             //console.log(result);
@@ -145,19 +152,22 @@ function WPsCRM_JS_display_schedulerGrid($delete_nonce){
                 },
                 className: "btn btn-inverse _flat"
             },
-			  {
-			 name: "<?php _e('Delete','cpsmartcrm') ?>",
-			 click: function (e) {
-			  if (!confirm("<?php _e('Confirm delete','cpsmartcrm') ?>?"))
-				  return false;
-				e.preventDefault();
-				var tr = $(e.target).closest("tr");
-				var data = this.dataItem(tr);
-				location.href="<?php echo admin_url('admin.php?page=smart-crm&p=scheduler/delete.php&ID=')?>"+data.id +"ref=scheduler&security=<?php echo $delete_nonce?>";
-
-			 },
-			className: "btn btn-danger _flat"
-			}
+            {
+            name: "<?php _e('Delete','cpsmartcrm') ?>",
+            click: function (e) {
+                var tr = $(e.target).closest("tr");
+                var data = this.dataItem(tr);
+                if ((is_admin=="" && del_priv==1) || (is_admin=="" && del_priv==""  && c_user!=parseInt(data.fk_utenti_ins))) {
+                    alert("<?php _e('You do not have the privilege to delete this event.','cpsmartcrm') ?>")
+                    return false;
+                }
+                if (!confirm("<?php _e('Confirm delete','cpsmartcrm') ?>?"))
+                    return false;
+                e.preventDefault();
+                location.href="<?php echo admin_url('admin.php?page=smart-crm&p=scheduler/delete.php&ID=')?>"+data.id +"ref=scheduler&security=<?php echo $delete_nonce?>";
+            },
+           className: "btn btn-danger _flat"
+           }
         ], width: 200
         }, { field: "esito", hidden: true }
 		, { field: "status", title: "<?php _e('Status','cpsmartcrm')?>", width: 100, "filterable":false }

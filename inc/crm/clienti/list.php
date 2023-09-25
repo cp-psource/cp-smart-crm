@@ -9,6 +9,7 @@ if(isset($options['customersGridHeight']) && $options['customersGridHeight'] !="
 	$gridHeight=$options['customersGridHeight'];
 else
 	$gridHeight="600";
+
 ?>
 <script>
 	var $format = "<?php echo WPsCRM_DATEFORMAT ?>";
@@ -49,20 +50,16 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
 include (WPsCRM_DIR."/inc/crm/clienti/script_mail.php" )
 ?>
 <script type="text/javascript" id="mainGrid">
-			var gridheight=<?php echo $gridHeight ?>;
-            	jQuery(document).ready(function ($) {
-            	//set datasource
-
-				//grid output
-					<?php do_action('WPsCRM_customerGrid',$delete_nonce) ?>
-
-
-            	});
+	var gridheight=<?php echo $gridHeight ?>;
+        jQuery(document).ready(function ($) {
+		//grid output
+			<?php do_action('WPsCRM_customerGrid',$delete_nonce) ?>
+        });
 </script>
-<div id="documentsTabstrip">
+<div id="tabstrip">
 	<ul>
 		<li class="k-state-active">
-			<i class="glyphicon glyphicon-fire"></i><?php _e('CUSTOMERS','cpsmartcrm')?>
+			<i class="glyphicon glyphicon-user"></i><?php _e('CUSTOMERS','cpsmartcrm')?>
 		</li>
 		<?php do_action('WPsCRM_add_tabs_to_customers_list'); ?>
 	</ul>

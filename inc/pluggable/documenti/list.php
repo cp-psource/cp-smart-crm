@@ -48,7 +48,15 @@ var dataSource_<?php echo $type?> = new kendo.data.DataSource(
 							}
 						}
 					},
-					data_scadenza: { editable: false, type: "date" },
+					data_scadenza: { 
+                        editable: false, 
+                        type: "date",
+						filterable: {
+							cell: {
+								template: '#= kendo.toString(kendo.parseDate(data_scadenza, "yyyy-MM-dd"), "' + $format + '") #'
+							}
+						} 
+                    },
 					cliente: { editable: false },
 					oggetto: { editable: false },
 					importo: { editable: false, type: "number", template: '#= kendo.toString(importo, "n") #'},
@@ -78,7 +86,7 @@ function WPsCRM_JS_display_documentsGrid($delete_nonce,$type){
 		toolbar: kendo.template($("#gridHeader_<?php echo $type?>").html()),
         dataSource: dataSource_<?php echo $type?>,
 		noRecords: {
-			template: "<h4 style=\"text-align:center;padding:5%\"><?php _e('No documents to show. You can create new documents from the above menu; be sure to have some customers archived before to create new documents','cpsmartcrm')?></h4>"
+			template: "<h4 style=\"text-align:center;padding:5%\"><?php _e('No documents to show. You can create new documents from the above menu; be sure to have some contacts archived before to create new documents','cpsmartcrm')?></h4>"
     	},
         height: gridheight,
         sortable: true,
@@ -105,33 +113,38 @@ function WPsCRM_JS_display_documentsGrid($delete_nonce,$type){
                 },
         },
 		filterable:{
-
             messages:
                 {
-        //            info: "<?php _e('Filter by','cpsmartcrm') ?> "
+                info: "<?php _e('Filter by','cpsmartcrm') ?> "
                 },
         	//filterMenuInit: filterMenu,
             extra: false,
             operators:
                 {
-                    string:
-                        {
-							contains: "<?php _e('Contains','cpsmartcrm') ?> ",
-							startswith: "<?php _e('Starts with','cpsmartcrm') ?>",
-                            eq: "<?php _e('Equal','cpsmartcrm') ?>",
-                            neq: "<?php _e('Not equal','cpsmartcrm') ?>",
-                        },
-                	date: {
-                		lte: "Precedente",
-                		gte: "Successiva"
-                	}
+                string:
+                    {
+					contains: "<?php _e('Contains','cpsmartcrm') ?> ",
+					startswith: "<?php _e('Starts with','cpsmartcrm') ?>",
+                    eq: "<?php _e('Equal','cpsmartcrm') ?>",
+                    neq: "<?php _e('Not equal','cpsmartcrm') ?>",
+                    },
+                date: {
+                	lte: "<?php _e('Earlier than','cpsmartcrm') ?>",
+                	gte: "<?php _e('Later than','cpsmartcrm') ?>",
+                    eq: "<?php _e('Equal','cpsmartcrm') ?>"
                 }
+            }
         },
 		selectable:true,
         dataBound:loadCellsAttributesForDocuments,
-        columns: [{ field: "ID", title: "#",width:20 },
-					{ field: "tipo", title: "<?php _e('Type','cpsmartcrm') ?>", width: 60,hidden:true },
-					{ field: "progressivo", title: " # ", width: 40,width:1 },
+        columns: [{ field: "ID", title: "ID", hidden: true,width:1 },
+				{ 
+				field: "tipo", 
+				title: "<?php _e('Type','cpsmartcrm') ?>", 
+				width: 60,
+				hidden:true
+				},
+                                { field: "progressivo", title: "#",width:20 },
 					{ field: "ID_clienti", title: "Id_cliente ", hidden:true,width:1 },
 					{ field: "datao", title: "<?php _e('Date','cpsmartcrm') ?>", width: 70, template: '#= kendo.toString(kendo.parseDate(datao, "yyyy-MM-dd"), "' + $format + '") #',
 						filterable:	{
@@ -142,7 +155,7 @@ function WPsCRM_JS_display_documentsGrid($delete_nonce,$type){
 							}
 						}
 					},
-					{ field: "cliente", title: "<?php _e('Customer','cpsmartcrm') ?>" , width: 150 },
+					{ field: "cliente", title: "<?php _e('Contact','cpsmartcrm') ?>" , width: 150 },
 					{ field: "importo", title: "<?php _e('Amount','cpsmartcrm') ?>", width: 80, template: '#= "<?php echo WPsCRM_get_currency()->symbol ?> " + kendo.toString(importo, "n") #', aggregates: ["sum"], footerTemplate: "Total : #= kendo.toString(parseFloat(sum) , 'n') #"  },
 					{ field: "filename", hidden: true },
 					{ field: "origine_proforma", title: "proforma", hidden: true},
@@ -164,6 +177,7 @@ function WPsCRM_JS_display_documentsGrid($delete_nonce,$type){
 					{ field: "registrato", title: "registrato", hidden: true,width:1 },
 				    { field: "documentSent", title: "sent", hidden: true,width:1 },
 					{ field: "agente", hidden: true,width:1 },
+                    {field:"privileges",hidden:true},
 					{ width: 240 ,command: [
 						{
 							name: "<?php _e('Print','cpsmartcrm') ?>",
@@ -204,7 +218,8 @@ function WPsCRM_JS_display_documentsGrid($delete_nonce,$type){
 									}
 								if (!confirm("<?php _e('Confirm delete','cpsmartcrm') ?>?"))
 									return false;
-								location.href="<?php echo admin_url('admin.php?page=smart-crm&p=documenti/delete.php&ID=')?>"+data.ID +"&security=<?php echo $delete_nonce?>";
+                  console.log("check");
+								location.href="<?php echo admin_url('admin.php?page=smart-crm&p=documenti/delete.php&ID=')?>"+data.ID +"&security=<?php echo $delete_nonce?>&fromGrid=<?php echo $type?>";
 							},
 							className: "btn btn-danger _flat"
 						}

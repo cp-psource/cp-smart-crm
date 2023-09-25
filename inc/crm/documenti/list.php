@@ -10,13 +10,13 @@
 		$gridHeight="600";
 ?>
 <ul class="select-action">
-	<li class="btn bg-info btn-sm _flat " onclick="location.href='<?php echo admin_url('admin.php?page=smart-crm&p=documenti/form_quotation.php')?>';return false;">
+	<li class="btn bg-info btn-sm _flat newQuote" onclick="location.href='<?php echo admin_url('admin.php?page=smart-crm&p=documenti/form_quotation.php')?>';return false;">
 		<i class="glyphicon glyphicon-send"></i>
 		<b>
 			<?php _e('NEW QUOTE','cpsmartcrm')?>
 		</b>
 	</li>
-	<li class="btn bg-danger btn-sm _flat btn_todo" onclick="location.href='<?php echo admin_url('admin.php?page=smart-crm&p=documenti/form_invoice.php')?>';return false;">
+	<li class="btn bg-danger btn-sm _flat btn_todo newInvoice" onclick="location.href='<?php echo admin_url('admin.php?page=smart-crm&p=documenti/form_invoice.php')?>';return false;">
 		<i class="glyphicon glyphicon-fire"></i>
 		<b>
 			<?php _e('NEW INVOICE','cpsmartcrm')?>
@@ -24,12 +24,18 @@
 	</li>
 	<?php 
 	is_multisite() ? $filter=get_blog_option(get_current_blog_id(), 'active_plugins' ) : $filter=get_option('active_plugins' );
-if ( in_array( 'cp-smart-crm-accountability/cp-smart-crm-accountability.php', apply_filters( 'active_plugins', $filter) ) ) {
+if ( in_array( 'wp-smart-crm-accountability/wp-smart-crm-accountability.php', apply_filters( 'active_plugins', $filter) ) ) {
 		?>
-	<li class="btn bg-danger btn-sm _flat btn_todo" onclick="location.href='<?php echo admin_url('admin.php?page=smart-crm&p=documenti/form_credit_note.php')?>';return false;">
+	<!--<li class="btn bg-danger btn-sm _flat btn_todo" onclick="location.href='<?php echo admin_url('admin.php?page=smart-crm&p=documenti/form_credit_note.php')?>';return false;">
 		<i class="glyphicon glyphicon-new-window"></i>
 		<b>
 			<?php _e('NEW CREDIT NOTE','cpsmartcrm')?>
+		</b>
+	</li>-->
+        <li class="btn bg-danger btn-sm _flat btn_todo" onclick="location.href='<?php echo admin_url('admin.php?page=smart-crm&p=documenti/form_invoice_informal.php')?>';return false;">
+		<i class="glyphicon glyphicon-new-window"></i>
+		<b>
+			<?php _e('NEW INFORMAL INVOICE','cpsmartcrm')?>
 		</b>
 	</li>
 		<?php
@@ -49,10 +55,10 @@ if ( in_array( 'cp-smart-crm-accountability/cp-smart-crm-accountability.php', ap
 
 <div id="documentsTabstrip">
 	<ul>
-		<li class="k-state-active">
+		<li class="k-state-active" id="tab-invoices">
 			<i class="glyphicon glyphicon-fire"></i><?php _e('INVOICES','cpsmartcrm')?>
 		</li>
-		<li>
+		<li id="tab-quotes">
 			<i class="glyphicon glyphicon-send"></i><?php _e('QUOTES','cpsmartcrm')?>
 		</li>
 		<?php do_action('WPsCRM_add_tabs_to_documents_list'); ?>
@@ -172,9 +178,10 @@ if ( in_array( 'cp-smart-crm-accountability/cp-smart-crm-accountability.php', ap
 							'include_admin': true
 						},
 						success: function (result) {
-							//console.log(result);
-							$("#selectAgent_1").data("kendoDropDownList").dataSource.data(result);
-							$("#selectAgent_2").data("kendoDropDownList").dataSource.data(result);
+                           if($("#selectAgent_1").length)
+							   $("#selectAgent_1").data("kendoDropDownList").dataSource.data(result);
+                           if($("#selectAgent_2").length)
+							   $("#selectAgent_2").data("kendoDropDownList").dataSource.data(result);
 						},
 						error: function (errorThrown) {
 							console.log(errorThrown);
@@ -184,12 +191,9 @@ if ( in_array( 'cp-smart-crm-accountability/cp-smart-crm-accountability.php', ap
 			}
 		});
 		$('#selectAgent_1').kendoDropDownList({
-			//placeholder: "Select User...",
-			optionLabel: "Select Agent...",
-			//valuePrimitive: true,
+			optionLabel: "<?php _e('Select Agent','cpsmartcrm')?>...",
 			dataTextField: "display_name",
 			dataValueField: "ID",
-			// autoBind: true,
 			dataSource: _users,
 			change: function (e) {
 				console.log(this.value())
@@ -227,12 +231,9 @@ if ( in_array( 'cp-smart-crm-accountability/cp-smart-crm-accountability.php', ap
 			}
 		});
 		$('#selectAgent_2').kendoDropDownList({
-			//placeholder: "Select User...",
-			optionLabel: "Select Agent...",
-			//valuePrimitive: true,
+			optionLabel: "<?php _e('Select Agent','cpsmartcrm')?>...",
 			dataTextField: "display_name",
 			dataValueField: "ID",
-			// autoBind: true,
 			dataSource: _users,
 			change: function (e) {
 				console.log(this.value())
@@ -268,11 +269,22 @@ if ( in_array( 'cp-smart-crm-accountability/cp-smart-crm-accountability.php', ap
 				]);
 			}
 		});
+        $('.documentGrid').on('click', '.noEdit', function (e) {
+          	showMouseLoader();
+            noty({
+                text: "<?php _e('You don\'t have permission to edit this record','cpsmartcrm')?>",
+                layout: 'topRight',
+                type: 'error',
+                template: '<div class="noty_message"><span class="noty_text"></span></div>',
+                timeout: 1500
+                });
+           });
 
-		$('.documentGrid').on('click', '.glyphicon', function (e) {
+		$('.documentGrid').on('click', '.togglePaid', function (e) {
 			if ($(this).hasClass('glyphicon-fire'))
 				return;
 			showMouseLoader();
+
 			var $this = $(this);
 			var tr = $(e.target).closest("tr"); // get the current table row (tr)
 			var el=$(e.target).closest(".documentGrid")
@@ -294,12 +306,8 @@ if ( in_array( 'cp-smart-crm-accountability/cp-smart-crm-accountability.php', ap
 				},
 				success: function (result) {
 					console.log(result);
-					if ($this.hasClass('glyphicon-remove')) {
-						$this.addClass('glyphicon-ok').removeClass('glyphicon-remove').css('color', 'green')
-					}
-					else if ($this.hasClass('glyphicon-ok')) {
-						$this.addClass('glyphicon-remove').removeClass('glyphicon-ok').css('color', 'red')
-					}
+    grid.dataSource.read();
+					
 					hideMouseLoader();
 				},
 				error: function (errorThrown) {
@@ -307,17 +315,23 @@ if ( in_array( 'cp-smart-crm-accountability/cp-smart-crm-accountability.php', ap
 				}
 			})
 		})
+    <?php if (isset($_GET["tab"])) {?>
+      setTimeout(function(){
+        $("#documentsTabstrip").data("kendoTabStrip").select(<?php echo $_GET["tab"]?>)
+      },500)
+  
+    <?php }?>
 	});
 
 </script>
 <ul class="select-action">
-	<li class="btn bg-info btn-sm _flat " onclick="location.href='<?php echo admin_url('admin.php?page=smart-crm&p=documenti/form_quotation.php')?>';return false;">
+	<li class="btn bg-info btn-sm _flat newQuote" onclick="location.href='<?php echo admin_url('admin.php?page=smart-crm&p=documenti/form_quotation.php')?>';return false;">
 		<i class="glyphicon glyphicon-send"></i>
 		<b>
 			<?php _e('NEW QUOTE','cpsmartcrm')?>
 		</b>
 	</li>
-	<li class="btn bg-danger btn-sm _flat btn_todo" onclick="location.href='<?php echo admin_url('admin.php?page=smart-crm&p=documenti/form_invoice.php')?>';return false;">
+	<li class="btn bg-danger btn-sm _flat btn_todo newInvoice" onclick="location.href='<?php echo admin_url('admin.php?page=smart-crm&p=documenti/form_invoice.php')?>';return false;">
 		<i class="glyphicon glyphicon-fire"></i>
 		<b>
 			<?php _e('NEW INVOICE','cpsmartcrm')?>
@@ -364,3 +378,8 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_mail.php" )
 	}
 
 </script>
+<style>
+    .noEdit {
+    color:darkgrey!important
+    }
+</style>

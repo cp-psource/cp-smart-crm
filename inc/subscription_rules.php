@@ -33,49 +33,49 @@ $num=$wpdb->num_rows;
 
 </script>
 <div class="wrap" style="height:100%!important">
-    <h1 style="text-align:center">CP Smart CRM & INVOICES <?php if(! isset($_GET['p'])){ ?><?php } ?></h1>
+    <h1 class="WPsCRM_plugin_title" style="text-align:center">CP Smart CRM <?php if(! isset($_GET['p'])){ ?><?php } ?></h1>
     <?php include($inc_dir."/crm/c_menu.php")?>
     
-    <div class="page-header" style="background-color:gainsboro;margin: 10px 0 20px;"><span class="crmHelp" data-help="subscription-rules" style="margin-top:8px"></span>
-        <h1><?php _e( 'WP smart CRM subscription rules', 'cpsmartcrm' ); ?><small id="addRule" class="btn _flat" style="margin-left:100px;background-color:#393939;color:#fafafa"><?php _e( 'Add rule', 'cpsmartcrm' ); ?></small></h1>
+    <div class="page-header" style="background-color:lightgrey;margin: 10px 0 20px;border-bottom:none"><span class="crmHelp" data-help="subscription-rules" style="margin-top:8px"></span>
+        <h1><?php _e( 'WP smart CRM subscription rules', 'cpsmartcrm'); ?><small id="addRule" class="btn _flat" style="margin-left:100px;background-color:#393939;color:#fafafa"><?php _e( 'Add rule', 'cpsmartcrm'); ?></small></h1>
     </div>
     <div class="panel panel-default col-md-12" style="border:none">
 
         <div id="newRule" style="display:none" data-edit="0">
-            <h3><?php _e( 'Add new rule', 'cpsmartcrm' ); ?></h3>
+            <h3><?php _e( 'Add new rule', 'cpsmartcrm'); ?></h3>
             <form id="addNewRule">
                 <div class="col-md-4">
-                    <label><?php _e( 'Rule Name', 'cpsmartcrm' ); ?></label><input class="form-control _m col-md-6" type="text" id="newRuleName" name="newRuleName" />
+                    <label><?php _e( 'Rule Name', 'cpsmartcrm'); ?></label><input class="form-control _m col-md-6" type="text" id="newRuleName" name="newRuleName" />
                 </div>
                 <div class="col-md-4">
-                    <label><?php _e( 'Months length', 'cpsmartcrm' ); ?></label>
-                    <select class="form-control _m _flat" style="width:100px" id="newRuleLength" name="newRuleLength"><option value="0"><?php _e( 'Select', 'cpsmartcrm' ); ?></option><?php for($k=1;$k<61;$k++){echo '<option value="'.$k.'">'.$k.'</option>'; } ?></select>
+                    <label><?php _e( 'Months length', 'cpsmartcrm'); ?></label>
+                    <select class="form-control _m _flat" style="width:100px" id="newRuleLength" name="newRuleLength"><option value="0"><?php _e( 'Select', 'cpsmartcrm'); ?></option><?php for($k=1;$k<61;$k++){echo '<option value="'.$k.'">'.$k.'</option>'; } ?></select>
                 </div>
                 <input type="hidden" id="" name="ruleSteps" />
-                <span class="btn btn-warning _flat reset" style="margin:30px"><?php _e( 'Reset', 'cpsmartcrm' ); ?></span>
-                <span class="btn btn-success _flat" id="saveNewRule" style="display:none;margin:30px"><?php _e( 'Save rule', 'cpsmartcrm' ); ?></span>
+                <span class="btn btn-warning _flat reset" style="margin:30px"><?php _e( 'Reset', 'cpsmartcrm'); ?></span>
+                <span class="btn btn-success _flat" id="saveNewRule" style="display:none;margin:30px"><?php _e( 'Save rule', 'cpsmartcrm'); ?></span>
             </form>
             <hr />
             <div class="row">
                 <div class="panel panel-default col-md-9" style="margin-top:30px;display:none" id="newRuleStepContainer">
-                    <h3 class="panel-heading"><?php _e( 'Rule steps', 'cpsmartcrm' ); ?><small id="addStep" class="button button-secondary" style="margin-left:100px;background-color:#393939;color:#fafafa"><?php _e( 'Add Step', 'cpsmartcrm' ); ?></small></h3>
+                    <h3 class="panel-heading"><?php _e( 'Rule steps', 'cpsmartcrm'); ?><small id="addStep" class="button button-secondary" style="margin-left:100px;background-color:#393939;color:#fafafa"><?php _e( 'Add Step', 'cpsmartcrm'); ?></small></h3>
                     <div id="existingSteps" style="display:none">
-                        <h4><?php _e( 'Existing steps', 'cpsmartcrm' ); ?></h4>
+                        <h4><?php _e( 'Existing steps', 'cpsmartcrm'); ?></h4>
                         <ul>
 
                         </ul>
                     </div>
                     <div id="addRuleStep" style="display:none" data-step="">
 
-                        <label> <?php _e( 'Days in advance', 'cpsmartcrm' ); ?></label><select class="form-control ruleActions" style="width:50px" id="ruleStep" name="ruleStep"><option value=""><?php _e( 'Select', 'cpsmartcrm' ); ?></option><?php for($k=1;$k<61;$k++){echo '<option value="'.$k.'">'.$k.'</option>'; } ?></select>
-                        <h4><?php _e( 'Actions', 'cpsmartcrm' ); ?>: </h4>
-                        <label><?php _e( 'Send mail to customer', 'cpsmartcrm' ); ?></label><input type="checkbox" class="ruleActions" id="remindToCustomer" name="remindToCustomer" /> <br /><hr />
-                        <div class="row" style="padding-bottom:20px;border-bottom:1px solid #ccc"><div class="col-md-6"><label><?php _e( 'Send mail to Users', 'cpsmartcrm' ); ?></label><input class="ruleActions" id="remindToUser" name="remindToUser" /></div><div class="col-md-4"><label><?php _e( 'Publish on dashboard', 'cpsmartcrm' ); ?>?</label> <input type="checkbox" class="ruleActions" name="userDashboard" id="userDashboard" /></div></div>
-                        <div class="row" style="padding-bottom:20px;border-bottom:1px solid #ccc"><div class="col-md-6"><label><?php _e( 'Send mail to Groups', 'cpsmartcrm' ); ?></label><input class="ruleActions" id="remindToGroup" name="remindToGroup" /></div><div class="col-md-4"><label><?php _e( 'Publish on dashboard', 'cpsmartcrm' ); ?>?</label><input type="checkbox" class="ruleActions" name="groupDashboard" id="groupDashboard" />   </div></div>
+                        <label> <?php _e( 'Days in advance', 'cpsmartcrm'); ?></label><select class="form-control ruleActions" style="width:50px" id="ruleStep" name="ruleStep"><option value=""><?php _e( 'Select', 'cpsmartcrm'); ?></option><?php for($k=1;$k<61;$k++){echo '<option value="'.$k.'">'.$k.'</option>'; } ?></select>
+                        <h4><?php _e( 'Actions', 'cpsmartcrm'); ?>: </h4>
+                        <label><?php _e( 'Send mail to customer', 'cpsmartcrm'); ?></label><input type="checkbox" class="ruleActions" id="remindToCustomer" name="remindToCustomer" /> <br /><hr />
+                        <div class="row" style="padding-bottom:20px;border-bottom:1px solid #ccc"><div class="col-md-6"><label><?php _e( 'Send mail to Users', 'cpsmartcrm'); ?></label><input class="ruleActions" id="remindToUser" name="remindToUser" /></div><div class="col-md-4"><label><?php _e( 'Publish on dashboard', 'cpsmartcrm'); ?>?</label> <input type="checkbox" class="ruleActions" name="userDashboard" id="userDashboard" /></div></div>
+                        <div class="row" style="padding-bottom:20px;border-bottom:1px solid #ccc"><div class="col-md-6"><label><?php _e( 'Send mail to Groups', 'cpsmartcrm'); ?></label><input class="ruleActions" id="remindToGroup" name="remindToGroup" /></div><div class="col-md-4"><label><?php _e( 'Publish on dashboard', 'cpsmartcrm'); ?>?</label><input type="checkbox" class="ruleActions" name="groupDashboard" id="groupDashboard" />   </div></div>
                         <input type="hidden" id="selectedUsers" name="selectedUsers" class="ruleActions" value="" />
                         <input type="hidden" id="selectedGroups" name="selectedGroups" class="ruleActions" value="" />
                         <div class="row">
-                            <span class="btn btn-success _flat" id="saveStep" onclick="check_form()"><?php _e( 'Save step', 'cpsmartcrm' ); ?></span>
+                            <span class="btn btn-success _flat" id="saveStep" onclick="check_form()"><?php _e( 'Save step', 'cpsmartcrm'); ?></span>
                             <input type="reset" id="configreset" value="Reset" style="display:none">
                         </div>
                     </div>
@@ -87,8 +87,8 @@ $num=$wpdb->num_rows;
         </div>
         <div id="existingRules" style="display:none">
             <div class="_loader"></div>
-            <div class="col-md-3"><h3 class="panel-heading"><?php _e( 'Existing rules', 'cpsmartcrm' ); ?></h3></div>
-            <div class="col-md-9" ><p style="display:none" class="icon_legend"><b><?php _e( 'Legend', 'cpsmartcrm' ); ?>:</b><br /> <i class="glyphicon glyphicon-calendar"></i>=<?php _e( 'Days in advance on the expiration to notify', 'cpsmartcrm' ); ?>; <i class="glyphicon glyphicon-envelope"></i>=<?php _e( 'Email notification to customer & / or CRM users selected', 'cpsmartcrm' ); ?>; <i class="glyphicon glyphicon-user"></i>=<?php _e( 'Scheduled on selected CRM users/groups', 'cpsmartcrm' ); ?>; <i class="glyphicon glyphicon-dashboard"></i>=<?php _e( 'Published on selected CRM users/groups dashboard for a quick reminder', 'cpsmartcrm' ); ?></p></div>
+            <div class="col-md-3"><h3 class="panel-heading"><?php _e( 'Existing rules', 'cpsmartcrm'); ?></h3></div>
+            <div class="col-md-9" ><p style="display:none" class="icon_legend"><b><?php _e( 'Legend', 'cpsmartcrm'); ?>:</b><br /> <i class="glyphicon glyphicon-calendar"></i>=<?php _e( 'Days in advance on the expiration to notify', 'cpsmartcrm'); ?>; <i class="glyphicon glyphicon-envelope"></i>=<?php _e( 'Email notification to customer & / or CRM users selected', 'cpsmartcrm'); ?>; <i class="glyphicon glyphicon-user"></i>=<?php _e( 'Scheduled on selected CRM users/groups', 'cpsmartcrm'); ?>; <i class="glyphicon glyphicon-dashboard"></i>=<?php _e( 'Published on selected CRM users/groups dashboard for a quick reminder', 'cpsmartcrm'); ?></p></div>
             <ul></ul>
 
         </div>
@@ -100,7 +100,7 @@ $num=$wpdb->num_rows;
     <form id="formEditStep">
         <div class="col-lg-10 col-xl-8 col-md-10 panel panel-primary _flat modal_inner" style="border: 1px solid rgb(102, 102, 102); text-align: left; margin: 50px auto; float: none; padding: 0px; top: 168px; background: rgb(255, 255, 255);">
             <div class="panel-heading" style="min-height:90px">
-                <h3 class="col-md-6"><div class="crmHelp" data-help="notification-steps"></div><b><?php _e( 'Edit Step', 'cpsmartcrm' ); ?></b><span style="display:none"></span> <?php _e( 'for rule', 'cpsmartcrm' ); ?>: <span></span></h3>
+                <h3 class="col-md-6"><div class="crmHelp" data-help="notification-steps"></div><b><?php _e( 'Edit Step', 'cpsmartcrm'); ?></b><span style="display:none"></span> <?php _e( 'for rule', 'cpsmartcrm'); ?>: <span></span></h3>
 				<div style="float:right;margin-top:16px" class="col-md-5"></div>
             </div>
             <div class="panel-body" style="padding:20px">
@@ -115,20 +115,20 @@ $num=$wpdb->num_rows;
                         </label>
                    </div>
 				</div>
-				<div class="row" style="padding-bottom:20px;border-bottom:1px solid #ccc"><div class="col-md-6"><label><?php _e( 'Notify to Users', 'cpsmartcrm' ); ?></label><input class="ruleActions" id="editRemindToUser" name="editRemindToUser" /></div><div class="col-md-4"><label><?php _e('Publish on Users dashboard','cpsmartcrm')?>?</label><br /><input type="checkbox" class="ruleActions" name="editUserDashboard" id="editUserDashboard" /></div></div>
-                <div class="row" style="padding-bottom:20px;border-bottom:1px solid #ccc"><div class="col-md-6"><label><?php _e( 'Notify to Groups', 'cpsmartcrm' ); ?></label><input class="ruleActions" id="editRemindToGroup" name="editRemindToGroup" /></div><div class="col-md-4"><label><?php _e('Publish on Groups dashboard','cpsmartcrm')?>?</label><br /><input type="checkbox" class="ruleActions" name="editGroupDashboard" id="editGroupDashboard" />   </div></div>
+				<div class="row" style="padding-bottom:20px;border-bottom:1px solid #ccc"><div class="col-md-6"><label><?php _e( 'Notify to Users', 'cpsmartcrm'); ?></label><input class="ruleActions" id="editRemindToUser" name="editRemindToUser" /></div><div class="col-md-4"><label><?php _e('Publish on Users dashboard','cpsmartcrm')?>?</label><br /><input type="checkbox" class="ruleActions" name="editUserDashboard" id="editUserDashboard" /></div></div>
+                <div class="row" style="padding-bottom:20px;border-bottom:1px solid #ccc"><div class="col-md-6"><label><?php _e( 'Notify to Groups', 'cpsmartcrm'); ?></label><input class="ruleActions" id="editRemindToGroup" name="editRemindToGroup" /></div><div class="col-md-4"><label><?php _e('Publish on Groups dashboard','cpsmartcrm')?>?</label><br /><input type="checkbox" class="ruleActions" name="editGroupDashboard" id="editGroupDashboard" />   </div></div>
                 <div class="row" style="background:#f7f2d9;padding-bottom:4px">
                     <div class="col-md-12 form-group">
                         <div class="col-md-6" style="text-align:right">
                             <label>
-                                <?php _e( 'Send mail to customer', 'cpsmartcrm' ); ?><br>
+                                <?php _e( 'Send mail to customer', 'cpsmartcrm'); ?><br>
                                 <input type="checkbox" class="ruleActions col-sm-2 alignright" id="editRemindToCustomer" name="editRemindToCustomer">
                             </label>
                         </div>
 
                         <div class="col-md-6">
                             <label>
-                                <?php _e( 'Send mail to selected recipients', 'cpsmartcrm' ); ?><br>
+                                <?php _e( 'Send mail to selected recipients', 'cpsmartcrm'); ?><br>
                                 <input type="checkbox" class="ruleActions" id="editMailToRecipients" name="editMailToRecipients">
                             </label>
                         </div>
@@ -137,8 +137,8 @@ $num=$wpdb->num_rows;
                 <input type="hidden" id="editSelectedUsers" name="editSelectedUsers" class="ruleActions" value="" />
                 <input type="hidden" id="editSelectedGroups" name="editSelectedGroups" class="ruleActions" value="" />
                 <div class="row" style="padding:20px;background:#fafafa">
-                    <span class="btn btn-success _flat" id="confirmEditStep" onclick="check_form()"><?php _e( 'Save step', 'cpsmartcrm' ); ?></span>
-                    <span class="btn btn-warning _flat reset"><?php _e( 'Reset', 'cpsmartcrm' ); ?></span>
+                    <span class="btn btn-success _flat" id="confirmEditStep" onclick="check_form()"><?php _e( 'Save step', 'cpsmartcrm'); ?></span>
+                    <span class="btn btn-warning _flat reset"><?php _e( 'Reset', 'cpsmartcrm'); ?></span>
                 </div>
 
             </div>
@@ -149,15 +149,15 @@ $num=$wpdb->num_rows;
 <div id="editRule" style="display:none;margin: 0 auto; text-align: center; z-index: 1000; width: 100%; height: 100%; background: url('<?php echo str_replace("inc","",plugin_dir_url( __FILE__ ))?>css/img/bg_w_tr.png');position: absolute;left: 0;top:0;padding-top: 100px;" data-rule="" data-step="" class="col-md-9 _modal">
     <div class="col-lg-8 col-xl-6 col-md-8 panel panel-primary _flat modal_inner" style="border: 1px solid rgb(102, 102, 102); text-align: left; margin: 50px auto; float: none; padding: 0px; top: 168px; background: rgb(255, 255, 255);">
         <div class="panel-heading" style="min-height:90px">
-            <h3><?php _e( 'Edit Rule', 'cpsmartcrm' ); ?> <span></span></h3>
+            <h3><?php _e( 'Edit Rule', 'cpsmartcrm'); ?> <span></span></h3>
 		</div>
         <div class="panel-body" style="padding:20px">
             <form id="formEditRule">
-                <label><?php _e( 'Rule  Name', 'cpsmartcrm' ); ?></label><input class="form-control _m" type="text" id="editRuleName" name="editRuleName" />
-                <label><?php _e( 'Months length', 'cpsmartcrm' ); ?></label><select class="form-control _m _flat" style="width:100px" id="editRuleLength" name="editRuleLength"><option value="0"><?php _e( 'Unlimited', 'cpsmartcrm' ); ?></option><?php for($k=1;$k<61;$k++){echo '<option value="'.$k.'">'.$k.'</option>'; } ?></select>
+                <label><?php _e( 'Rule  Name', 'cpsmartcrm'); ?></label><input class="form-control _m" type="text" id="editRuleName" name="editRuleName" />
+                <label><?php _e( 'Months length', 'cpsmartcrm'); ?></label><select class="form-control _m _flat" style="width:100px" id="editRuleLength" name="editRuleLength"><option value="0"><?php _e( 'Unlimited', 'cpsmartcrm'); ?></option><?php for($k=1;$k<61;$k++){echo '<option value="'.$k.'">'.$k.'</option>'; } ?></select>
                 <div class="row" style="padding:20px;background:#fafafa">
-                    <span class="btn btn-success _flat" id="confirmEditRule"><?php _e( 'Save rule', 'cpsmartcrm' ); ?></span>
-                    <span class="btn btn-warning _flat reset"><?php _e( 'Reset', 'cpsmartcrm' ); ?></span>
+                    <span class="btn btn-success _flat" id="confirmEditRule"><?php _e( 'Save rule', 'cpsmartcrm'); ?></span>
+                    <span class="btn btn-warning _flat reset"><?php _e( 'Reset', 'cpsmartcrm'); ?></span>
                 </div>
             </form>
 		</div>
@@ -232,26 +232,26 @@ $num=$wpdb->num_rows;
             var _html = "";
             var s = "[";
             var jQuerycount = 0;
-            _html += "<li class=\"sub_rule widget\" id=\"rule_" + currentStep.ID + "-step_" + stepID + "\">- <i class=\"fa fa-calendar\"></i><?php _e( "Days in advance", "cpsmartcrm" ); ?>: <span class=\"days\">" + currentStep.editRuleStep + "</span> - ";
+            _html += "<li class=\"sub_rule widget\" id=\"rule_" + currentStep.ID + "-step_" + stepID + "\">- <i class=\"fa fa-calendar\"></i><?php _e( "Days in advance", "cpsmartcrm"); ?>: <span class=\"days\">" + currentStep.editRuleStep + "</span> - ";
             if (currentStep.editRemindToCustomer == "on")
-            	_html +="<?php _e( "Send mail to Customer", "cpsmartcrm" ); ?>: <span class=\"_customer\">on</span> - ";
+            	_html +="<?php _e( "Send mail to Customer", "cpsmartcrm"); ?>: <span class=\"_customer\">on</span> - ";
             else
-            	_html += "<?php _e( "Email to Customer", "cpsmartcrm" ); ?>=<span class=\"_customer\">off</span> - ";
-            _html += "<?php _e( "Notify to Users", "cpsmartcrm" ); ?>:<span class=\"_users\">" + currentStep.editSelectedUsers + "</span>";
+            	_html += "<?php _e( "Email to Customer", "cpsmartcrm"); ?>=<span class=\"_customer\">off</span> - ";
+            _html += "<?php _e( "Notify to Users", "cpsmartcrm"); ?>:<span class=\"_users\">" + currentStep.editSelectedUsers + "</span>";
             if (currentStep.editUserDashboard == "on")
-            	_html += " - <?php _e( "Dashboard User Notification", "cpsmartcrm" ); ?>=<span class=\"dashUser\">on</span> - ";
+            	_html += " - <?php _e( "Dashboard User Notification", "cpsmartcrm"); ?>=<span class=\"dashUser\">on</span> - ";
             else
-            	_html += " - <?php _e( "Dashboard User Notification", "cpsmartcrm" ); ?>=<span class=\"dashUser\">off</span> - ";
-            _html += "<?php _e( "Notify to groups", "cpsmartcrm" ); ?>: <span class=\"_groups\">" + currentStep.editSelectedGroups + "</span>";
+            	_html += " - <?php _e( "Dashboard User Notification", "cpsmartcrm"); ?>=<span class=\"dashUser\">off</span> - ";
+            _html += "<?php _e( "Notify to groups", "cpsmartcrm"); ?>: <span class=\"_groups\">" + currentStep.editSelectedGroups + "</span>";
             if (currentStep.editGroupDashboard == "on")
-            	_html += " - <?php _e( "Dashboard Group Notification", "cpsmartcrm" ); ?>=<span class=\"dashGroup\">on</span>";
+            	_html += " - <?php _e( "Dashboard Group Notification", "cpsmartcrm"); ?>=<span class=\"dashGroup\">on</span>";
             else
-            	_html += " - <?php _e( "Dashboard Group Notification", "cpsmartcrm" ); ?>=<span class=\"dashGroup\">off</span>";
+            	_html += " - <?php _e( "Dashboard Group Notification", "cpsmartcrm"); ?>=<span class=\"dashGroup\">off</span>";
             if (currentStep.editMailToRecipients == "on")
-            	_html += " - <?php _e( "Email to Recipients", "cpsmartcrm" ); ?>=<span class=\"emailRecipients\">on</span> ";
+            	_html += " - <?php _e( "Email to Recipients", "cpsmartcrm"); ?>=<span class=\"emailRecipients\">on</span> ";
             else
-            	_html += " - <?php _e( "Email to Recipients", "cpsmartcrm" ); ?>=<span class=\"emailRecipients\">off</span>";
-            _html += " <span class=\"editSavedStep btn btn-info btn-sm _flat\" data-rule=\"" + currentStep.ID + "\" data-step=\"" + stepID + "\"><?php _e( "Edit", "cpsmartcrm" ); ?> &raquo;</span> <span class=\"deleteSavedStep btn btn-danger btn-sm _flat\" data-rule=\"" + currentStep.ID + "\" data-step=\"" + stepID + "\"> <?php _e( "Delete", "cpsmartcrm" ); ?> X </span><input type=\"hidden\"  value=\"" + encodeURIComponent(currentStep) + "\"/></li>";
+            	_html += " - <?php _e( "Email to Recipients", "cpsmartcrm"); ?>=<span class=\"emailRecipients\">off</span>";
+            _html += " <span class=\"editSavedStep btn btn-info btn-sm _flat\" data-rule=\"" + currentStep.ID + "\" data-step=\"" + stepID + "\"><?php _e( "Edit", "cpsmartcrm"); ?> &raquo;</span> <span class=\"deleteSavedStep btn btn-danger btn-sm _flat\" data-rule=\"" + currentStep.ID + "\" data-step=\"" + stepID + "\"> <?php _e( "Delete", "cpsmartcrm"); ?> X </span><input type=\"hidden\"  value=\"" + encodeURIComponent(currentStep) + "\"/></li>";
 
             jQuery("#rule_" + currentStep.ID + "-step_" + stepID).remove();
             jQuery("#rule-" + currentStep.ID).find("ul").append(_html).hide();
@@ -770,44 +770,44 @@ function drawRules(rules) {
 	var _html = "";
 	for (var i = 0; i < rules.length; i++) {
 
-    	_html += '<li id="rule-' + rules[i].ID + '"><div class=\"col-md-12\"><h4 style=\"width:100%;float:left;border-bottom:1px solid lavender;padding-bottom:4px\"><?php _e( "Subscription Rule", "cpsmartcrm" );?>: ' + rules[i].Name + '<small> - <?php _e( "Length", "cpsmartcrm" );?>: ' + rules[i].Length + ' <?php _e( "months", "cpsmartcrm" );?></small><b class="deleteRule btn btn-danger _flat" style="margin:0 40px" data-id="rule-' + rules[i].ID + '"><?php _e( "Delete", "cpsmartcrm" );?> X</b> <b class="editRule btn btn-info _flat" data-id="rule-' + rules[i].ID + '"><?php _e( "Edit", "cpsmartcrm" );?> &raquo;</b></h4></div>\n\
-			<div class=\"col-md-12\"> <h4><strong><?php _e( "Notification Steps", "cpsmartcrm" );?>:</strong></h4></div><div class=\"row\"><ul class=\"list_items\"  style=\"display: inline-flex;\">';
+    	_html += '<li id="rule-' + rules[i].ID + '"><div class=\"col-md-12\"><h4 style=\"width:100%;float:left;border-bottom:1px solid lavender;padding-bottom:4px\"><?php _e( "Subscription Rule", "cpsmartcrm");?>: ' + rules[i].Name + '<small> - <?php _e( "Length", "cpsmartcrm");?>: ' + rules[i].Length + ' <?php _e( "months", "cpsmartcrm");?></small><b class="deleteRule btn btn-danger _flat" style="margin:0 40px" data-id="rule-' + rules[i].ID + '"><?php _e( "Delete", "cpsmartcrm");?> X</b> <b class="editRule btn btn-info _flat" data-id="rule-' + rules[i].ID + '"><?php _e( "Edit", "cpsmartcrm");?> &raquo;</b></h4></div>\n\
+			<div class=\"col-md-12\"> <h4><strong><?php _e( "Notification Steps", "cpsmartcrm");?>:</strong></h4></div><div class=\"row\"><ul class=\"list_items\"  style=\"display: inline-flex;\">';
         for(var k=0;k<rules[i].Steps.length;k++)
         {
             var _users = rules[i].Steps[k].selectedUsers;
             var indexing = rules[i].Steps[k].ruleStep;
 
-            _html += "<li class=\"widget\" style=\"\" id=\"rule_" + rules[i].ID + "-step_"+ k +"\" data-position=\""+ indexing +"\"><span class=\"col-md-12\">  <i class=\"glyphicon glyphicon-calendar\"></i> <?php _e( "Days in advance", "cpsmartcrm" ); ?>: <span class=\"days\">" + rules[i].Steps[k].ruleStep + "</span><br/> ";
+            _html += "<li class=\"widget\" style=\"\" id=\"rule_" + rules[i].ID + "-step_"+ k +"\" data-position=\""+ indexing +"\"><span class=\"col-md-12\">  <i class=\"glyphicon glyphicon-calendar\"></i> <?php _e( "Days in advance", "cpsmartcrm"); ?>: <span class=\"days\">" + rules[i].Steps[k].ruleStep + "</span><br/> ";
             if (rules[i].Steps[k].remindToCustomer == "on")
-            	_html += "<i class=\"glyphicon glyphicon-envelope\"></i> <?php _e( "Email to customer", "cpsmartcrm" );?>: <span class=\"_customer\" style=\"display:none\">on</span><b></b><hr />";
+            	_html += "<i class=\"glyphicon glyphicon-envelope\"></i> <?php _e( "Email to customer", "cpsmartcrm");?>: <span class=\"_customer\" style=\"display:none\">on</span><b></b><hr />";
             else
-            	_html += "<div style=\"text-decoration:line-through\"><i class=\"glyphicon glyphicon-envelope\"></i> <?php _e( "Email to customer", "cpsmartcrm" ); ?>: <span class=\"_customer\"  style=\"display:none\">off</span><b></b></div><hr />";
+            	_html += "<div style=\"text-decoration:line-through\"><i class=\"glyphicon glyphicon-envelope\"></i> <?php _e( "Email to customer", "cpsmartcrm"); ?>: <span class=\"_customer\"  style=\"display:none\">off</span><b></b></div><hr />";
 			if(_users !="")
-				_html += "<i class=\"glyphicon glyphicon-user\"></i> <?php _e( "Notify to Users", "cpsmartcrm" ); ?>: <span class=\"_users\" style=\"display:none\">" + _users + "</span><span class=\"_username\" ></span><br/>";
+				_html += "<i class=\"glyphicon glyphicon-user\"></i> <?php _e( "Notify to Users", "cpsmartcrm"); ?>: <span class=\"_users\" style=\"display:none\">" + _users + "</span><span class=\"_username\" ></span><br/>";
 			else
-				_html += "<div style=\"text-decoration:line-through\"><i class=\"glyphicon glyphicon-user\"></i> <?php _e( "Notify to Users", "cpsmartcrm" ); ?>: <span class=\"_users\" style=\"display:none\">" + _users + "</span><span class=\"_username\" ></span><b></b></div>";
+				_html += "<div style=\"text-decoration:line-through\"><i class=\"glyphicon glyphicon-user\"></i> <?php _e( "Notify to Users", "cpsmartcrm"); ?>: <span class=\"_users\" style=\"display:none\">" + _users + "</span><span class=\"_username\" ></span><b></b></div>";
             if (rules[i].Steps[k].userDashboard == "on")
-            	_html += "<i class=\"glyphicon glyphicon-dashboard\"></i> <?php _e( "Dashboard Users Notification", "cpsmartcrm" ); ?>: <span class=\"dashUser\" style=\"display:none\">on</span><br/>";
+            	_html += "<i class=\"glyphicon glyphicon-dashboard\"></i> <?php _e( "Dashboard Users Notification", "cpsmartcrm"); ?>: <span class=\"dashUser\" style=\"display:none\">on</span><br/>";
             else
-            	_html += "<div style=\"text-decoration:line-through\"><i class=\"glyphicon glyphicon-dashboard\"></i> <?php _e( "Dashboard Users Notification", "cpsmartcrm" ); ?>: <span class=\"dashUser\" style=\"display:none\">off</span><b></b></div>";
+            	_html += "<div style=\"text-decoration:line-through\"><i class=\"glyphicon glyphicon-dashboard\"></i> <?php _e( "Dashboard Users Notification", "cpsmartcrm"); ?>: <span class=\"dashUser\" style=\"display:none\">off</span><b></b></div>";
         	if (rules[i].Steps[k].selectedGroups != "")
-				_html += "<i class=\"glyphicon glyphicon-user\"></i><i class=\"glyphicon glyphicon-user\"></i>  <?php _e( "Notify to groups", "cpsmartcrm" ); ?>: <span class=\"_groups\">" + rules[i].Steps[k].selectedGroups + "</span><br/>";
+				_html += "<i class=\"glyphicon glyphicon-user\"></i><i class=\"glyphicon glyphicon-user\"></i>  <?php _e( "Notify to groups", "cpsmartcrm"); ?>: <span class=\"_groups\">" + rules[i].Steps[k].selectedGroups + "</span><br/>";
 			else
-				_html += "<div style=\"text-decoration:line-through\"><i class=\"glyphicon glyphicon-user\"></i><i class=\"glyphicon glyphicon-user\"></i>  <?php _e( "Notify to groups", "cpsmartcrm" ); ?>:<span class=\"_groups\">" + rules[i].Steps[k].selectedGroups + "</span></div>";
+				_html += "<div style=\"text-decoration:line-through\"><i class=\"glyphicon glyphicon-user\"></i><i class=\"glyphicon glyphicon-user\"></i>  <?php _e( "Notify to groups", "cpsmartcrm"); ?>:<span class=\"_groups\">" + rules[i].Steps[k].selectedGroups + "</span></div>";
             if (rules[i].Steps[k].groupDashboard == "on")
-            	_html += "<i class=\"glyphicon glyphicon-dashboard\"></i> <?php _e( "Dashboard Group Notification", "cpsmartcrm" ); ?>: <span class=\"dashGroup\" style=\"display:none\">on</span><b></b><br/>";
+            	_html += "<i class=\"glyphicon glyphicon-dashboard\"></i> <?php _e( "Dashboard Group Notification", "cpsmartcrm"); ?>: <span class=\"dashGroup\" style=\"display:none\">on</span><b></b><br/>";
             else
-            	_html += "<div style=\"text-decoration:line-through\"><i class=\"glyphicon glyphicon-dashboard\"></i> <?php _e( "Dashboard Group Notification", "cpsmartcrm" ); ?>: <span class=\"dashGroup\" style=\"display:none\">off</span><b></b></div>";
+            	_html += "<div style=\"text-decoration:line-through\"><i class=\"glyphicon glyphicon-dashboard\"></i> <?php _e( "Dashboard Group Notification", "cpsmartcrm"); ?>: <span class=\"dashGroup\" style=\"display:none\">off</span><b></b></div>";
 
             if (rules[i].Steps[k].mailToRecipients == "on")
-            	_html += "<i class=\"glyphicon glyphicon-envelope\"></i> <?php _e( "Email Notification", "cpsmartcrm" ); ?>: <span class=\"emailRecipients\" style=\"display:none\">on</span><b></b><br/>";
+            	_html += "<i class=\"glyphicon glyphicon-envelope\"></i> <?php _e( "Email Notification", "cpsmartcrm"); ?>: <span class=\"emailRecipients\" style=\"display:none\">on</span><b></b><br/>";
             else
-            	_html += "<div style=\"text-decoration:line-through\"><i class=\"glyphicon glyphicon-envelope\"></i> <?php _e( "Email  Notification", "cpsmartcrm" ); ?>: <span class=\"emailRecipients\" style=\"display:none\">off</span><b></b></div>";
+            	_html += "<div style=\"text-decoration:line-through\"><i class=\"glyphicon glyphicon-envelope\"></i> <?php _e( "Email  Notification", "cpsmartcrm"); ?>: <span class=\"emailRecipients\" style=\"display:none\">off</span><b></b></div>";
 
-            _html += " <span class=\"editSavedStep btn btn-info btn-sm _flat\" data-rule=\"" + rules[i].ID + "\" data-step=\"" + k + "\"><?php _e( "Edit", "cpsmartcrm" ); ?> &raquo;</span> <span class=\"deleteSavedStep btn btn-danger btn-sm _flat\" data-rule=\"" + rules[i].ID + "\" data-step=\"" + k + "\"> <?php _e( "Delete", "cpsmartcrm" ); ?> X </span><input type=\"hidden\"  value=\"" + encodeURIComponent(JSON.stringify(rules[i].Steps[k])) + "\"/></span></li>";
+            _html += " <span class=\"editSavedStep btn btn-info btn-sm _flat\" data-rule=\"" + rules[i].ID + "\" data-step=\"" + k + "\"><?php _e( "Edit", "cpsmartcrm"); ?> &raquo;</span> <span class=\"deleteSavedStep btn btn-danger btn-sm _flat\" data-rule=\"" + rules[i].ID + "\" data-step=\"" + k + "\"> <?php _e( "Delete", "cpsmartcrm"); ?> X </span><input type=\"hidden\"  value=\"" + encodeURIComponent(JSON.stringify(rules[i].Steps[k])) + "\"/></span></li>";
         }
         _html += "</ul></div>"
-        _html += "<div class=\"col-md-12\"><small class=\"btn _flat addStep\" style=\"background-color:#393939;color:#fafafa;margin-top:24px\" data-rule=\"" + rules[i].ID + "\" data-step=\"" + k + "\"><?php _e( "Add Step", "cpsmartcrm" ); ?></small></div>";
+        _html += "<div class=\"col-md-12\"><small class=\"btn _flat addStep\" style=\"background-color:#393939;color:#fafafa;margin-top:24px\" data-rule=\"" + rules[i].ID + "\" data-step=\"" + k + "\"><?php _e( "Add Step", "cpsmartcrm"); ?></small></div>";
 		_html += "</li>";
 
     }

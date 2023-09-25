@@ -7,7 +7,7 @@ function WPsCRM_HTML_customersLegend(){
 	ob_start();
 ?>
 <ul class="select-action">
-	<li onclick="location.href='<?php echo admin_url('admin.php?page=smart-crm&p=clienti/form.php')?>';return false;" class="bg-success" style="color:#000">
+	<li onclick="location.href='<?php echo admin_url('admin.php?page=smart-crm&p=clienti/form.php')?>';return false;" class="_newCustomer bg-success" style="color:#000">
 		<i class="glyphicon glyphicon-user"></i>
 		<b>
 			<?php _e('New customer','cpsmartcrm') ?>
@@ -41,7 +41,6 @@ function WPsCRM_JS_display_customerGrid($delete_nonce){
 	$options=get_option('CRM_clients_settings');
 	ob_start();
 ?>
-
 	    $("#grid").kendoGrid({
         dataSource: dataSource,
 		scrollable: true,
@@ -109,7 +108,7 @@ function WPsCRM_JS_display_customerGrid($delete_nonce){
             },
             {
             field: "p_iva",
-            title: "<?php _e('VAT','cpsmartcrm') ?>",
+            title: "<?php _e('VAT number','cpsmartcrm') ?>",
                 width:"100px"
             },
             {
@@ -150,15 +149,15 @@ function WPsCRM_JS_display_customerGrid($delete_nonce){
             },
 		<?php
 		 endif;
-		?>
+		?>{field:"privileges",hidden:true},
             {width: "300px" ,
             command: [
 				{
 					name: "<?php _e('Edit','cpsmartcrm') ?>",
 					click: function(e) {
 						var tr = $(e.target).closest("tr"); // get the current table row (tr)
-					var data = this.dataItem(tr);
-					location.href="<?php echo admin_url('admin.php?page=smart-crm&p=clienti/form.php&ID=')?>"+data.ID_clienti;
+					    var data = this.dataItem(tr);
+					    location.href="<?php echo admin_url('admin.php?page=smart-crm&p=clienti/form.php&ID=')?>"+data.ID_clienti;
 					},
 
 					className: "btn _flat"
@@ -166,25 +165,25 @@ function WPsCRM_JS_display_customerGrid($delete_nonce){
 				{
 					name: "<?php _e('Delete','cpsmartcrm') ?>",
 					click: function(e) {
-				if (!confirm("<?php _e('Confirm delete','cpsmartcrm') ?>?"))
-					return false;
+				        if (!confirm("<?php _e('Confirm delete','cpsmartcrm') ?>?"))
+					        return false;
 						var tr = $(e.target).closest("tr"); // get the current table row (tr)
-					var data = this.dataItem(tr);
-					location.href="<?php echo admin_url('admin.php?page=smart-crm&p=clienti/delete.php&ID=')?>"+ data.ID_clienti + "&security=<?php echo $delete_nonce ?>";
+					    var data = this.dataItem(tr);
+					    location.href="<?php echo admin_url('admin.php?page=smart-crm&p=clienti/delete.php&ID=')?>"+ data.ID_clienti + "&security=<?php echo $delete_nonce ?>";
 					},
-
 					className: "btn btn-danger _flat"
 				},
 				{
 					name: "todo",
 					click: function(e) {
-					var tr = $(e.target).closest("tr"), data = this.dataItem(tr), i = $(e.target).offset();
-					$("#dialog_todo").attr('data-fkcliente', data.ID_clienti)
-					if ($('.nome_cliente').length)
-						$('.nome_cliente').html(data.ragione_sociale)
-					var todoWindow = $("#dialog_todo").data('kendoWindow')
-					todoWindow.title('<i class="glyphicon glyphicon-pushpin"></i>' + "<?php _e('Add todo for Customer:','cpsmartcrm') ?>" + data.ragione_sociale);
-					todoWindow.center().open();
+					    var tr = $(e.target).closest("tr"), data = this.dataItem(tr), i = $(e.target).offset();
+					    $("#dialog_todo").attr('data-fkcliente', data.ID_clienti);
+					    if ($('.nome_cliente').length){
+						    $('.nome_cliente').html(data.ragione_sociale);
+                        }
+					    var todoWindow = $("#dialog_todo").data('kendoWindow')
+					    todoWindow.title("<?php _e('Add todo for Customer:','cpsmartcrm') ?>" + data.ragione_sociale);
+					    todoWindow.center().open();
 					},
 
 					className: "btn btn-info _flat"
@@ -192,30 +191,29 @@ function WPsCRM_JS_display_customerGrid($delete_nonce){
 				{
 					name: "appointment",
 					click: function(e) {
-					var tr = $(e.target).closest("tr"), data = this.dataItem(tr), i = $(e.target).offset();
-					$("#dialog_appuntamento").attr('data-fkcliente', data.ID_clienti)
-					if ($('.nome_cliente').length)
-						$('.nome_cliente').html(data.ragione_sociale)
-					var appWindow = $("#dialog_appuntamento").data('kendoWindow')
-					appWindow.title('<i class="glyphicon glyphicon-pushpin"></i>' + "<?php _e('Add appointment for Customer:','cpsmartcrm') ?>" + data.ragione_sociale);
-					appWindow.center().open();
-
+					    var tr = $(e.target).closest("tr"), data = this.dataItem(tr), i = $(e.target).offset();
+					    $("#dialog_appuntamento").attr('data-fkcliente', data.ID_clienti);
+					    if ($('.nome_cliente').length){
+						    $('.nome_cliente').html(data.ragione_sociale);
+                        }
+					    var appWindow = $("#dialog_appuntamento").data('kendoWindow');
+					    appWindow.title("<?php _e('Add appointment for Customer:','cpsmartcrm') ?>" + data.ragione_sociale);
+					    appWindow.center().open();
 					},
-
 					className: "btn btn_appuntamento_1 _flat"
 				},
 				{
 					name: "activity",
 					click: function(e) {
 						var tr = $(e.target).closest("tr"), data = this.dataItem(tr), i = $(e.target).offset();
-						$("#dialog_attivita").attr('data-fkcliente', data.ID_clienti)
-						if ($('.nome_cliente').length)
-							$('.nome_cliente').html(data.ragione_sociale)
-						var actWindow = $("#dialog_attivita").data('kendoWindow')
-						actWindow.title('<i class="glyphicon glyphicon-pushpin"></i>' + "<?php _e('Add activity for Customer:','cpsmartcrm') ?>" + data.ragione_sociale);
+						$("#dialog_attivita").attr('data-fkcliente', data.ID_clienti);
+						if ($('.nome_cliente').length){
+							$('.nome_cliente').html(data.ragione_sociale);
+                        }
+						var actWindow = $("#dialog_attivita").data('kendoWindow');
+						actWindow.title("<?php _e('Add activity for Customer:','cpsmartcrm') ?>" + data.ragione_sociale);
 						actWindow.center().open();
 					},
-
 					className: "btn btn-primary _flat"
 				}
             ]
@@ -226,7 +224,6 @@ function WPsCRM_JS_display_customerGrid($delete_nonce){
 	echo ob_get_clean();
 }
 add_action('WPsCRM_customerGrid','WPsCRM_JS_display_customerGrid',9,1);
-
 
 /**
  * Sets the datasource used in customer grid
@@ -242,7 +239,6 @@ var dataSource = new kendo.data.DataSource({
 				type:'GET',
 	            data: {
 	                'action': 'WPsCRM_get_clients2',
-
 	            },
 	            success: function (result) {
 	                console.log(result);
@@ -259,7 +255,7 @@ var dataSource = new kendo.data.DataSource({
 				return  result.clients
 			},
 			total: function (data) {
-						return result.clients.length;
+				return result.clients.length;
 			}
 		}
 	},
@@ -280,7 +276,6 @@ function WPsCRM_JS_databound_customerGrid(){
 function clientsDatabound() {
 	var gridRows = this.tbody.find("tr:not(.k-grouping-row)");
 	gridRows.each(function (e) {
-
 		var cells = jQuery(this).find('td').length;
 		var commandsCell = jQuery(this).find("td:last-child");
 		var todo = commandsCell.find(':nth-child(3)').html();

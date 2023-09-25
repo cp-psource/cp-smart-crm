@@ -343,7 +343,7 @@ if ( !class_exists(UpdateChecker::class, false) ):
 			//Let plugins/themes modify the update.
 			$update = apply_filters($this->getUniqueName('request_update_result'), $update, $httpResult);
 
-			$this->fixSupportedClassicPressVersion($update);
+			$this->fixSupportedWordpressVersion($update);
 
 			if ( isset($update, $update->translations) ) {
 				//Keep only those translation updates that apply to this site.
@@ -362,7 +362,7 @@ if ( !class_exists(UpdateChecker::class, false) ):
 		 *
 		 * @param Metadata|null $update
 		 */
-		protected function fixSupportedClassicPressVersion(Metadata $update = null) {
+		protected function fixSupportedWordpressVersion(Metadata $update = null) {
 			if ( !isset($update->tested) || !preg_match('/^\d++\.\d++$/', $update->tested) ) {
 				return;
 			}

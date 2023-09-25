@@ -1,12 +1,14 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
 $view=isset($_GET["view"])? $_GET["view"] : "day";
-$update_nonce= wp_create_nonce( "update_activity" );
+$update_nonce= wp_create_nonce( "update_scheduler" );
 $delete_nonce= wp_create_nonce( "delete_activity" );
+$page="dashboard";
 ?>
 <script type="text/javascript">
 
     jQuery(document).ready(function ($) {
+
 			var $format = "<?php echo WPsCRM_DATETIMEFORMAT ?>";
           //update delle activity da modale
         $(document).on('click', '#save_activity_from_modal', function () {
@@ -38,8 +40,6 @@ $delete_nonce= wp_create_nonce( "delete_activity" );
                                     success: function (result) {
                                     	console.log(result);
                                     	jQuery("#grid_todo").data("kendoGrid").dataSource.data(result.scheduler);
-                                        //t_grid.dataSource.data(result.scheduler);
-
                                     },
                                     error: function (errorThrown) {
                                         console.log(errorThrown);
@@ -111,7 +111,7 @@ $delete_nonce= wp_create_nonce( "delete_activity" );
                     var t_grid = $('#grid_todo').data("kendoGrid");
                     var a_grid = $('#grid_appuntamenti').data("kendoGrid");
                     t_grid.setDataSource(t_Datasource);
-                    a_grid.setDataSource(a_Datasource);            
+                    a_grid.setDataSource(a_Datasource);
                     setTimeout(function () {
                     	t_grid.dataSource.read();
                     	a_grid.dataSource.read();
@@ -131,9 +131,9 @@ $delete_nonce= wp_create_nonce( "delete_activity" );
         })
 
         $(document).on('click', '._reset',function () {
-
             $('._modal').fadeOut('fast');
-        })
+        });
+
         $("#grid_todo").kendoGrid({
 		noRecords: {
 			template: "<h4 style=\"text-align:center;padding:5%\"><?php _e('No TODO to show','cpsmartcrm')?></h4>"
@@ -175,7 +175,7 @@ $delete_nonce= wp_create_nonce( "delete_activity" );
           },
           pageSize: 50,
         },
-        dataBound: loadCellsAttributes,
+        dataBound: loadCellsAttributesScheduler,
         groupable: true,
         sortable: true,
         serverPaging: true,
@@ -224,7 +224,7 @@ $delete_nonce= wp_create_nonce( "delete_activity" );
 				{ field: "oggetto", title: "<?php _e('Object','cpsmartcrm')?>" },
 				{ field: "annotazioni", title: "<?php _e('Description','cpsmartcrm')?>" },
 				{ field: "data_scadenza", title: "<?php _e('Expiration','cpsmartcrm')?>", template: '#= kendo.toString(kendo.parseDate(data_scadenza, "yyyy-MM-dd HH:mm:ss"), "' + $format + '") #' },
-				{ field: "destinatari", title: "<?php _e('Recipients','cpsmartcrm')?>" },
+				{ field: "destinatari", title: "<?php _e('Recipients','cpsmartcrm')?>" },{field:"privileges",hidden:true},
         { command: [
           {
               name: "<?php _e('Open','cpsmartcrm')?>",
@@ -233,28 +233,25 @@ $delete_nonce= wp_create_nonce( "delete_activity" );
               var position = $(e.target).offset();
               var tr = $(e.target).closest("tr"); // get the current table row (tr)
               var _row = this.dataItem(tr);
-                //location.href="?page=smart-crm&p=scheduler/view.php&ID="+data.id;
               $.ajax({
                   url: ajaxurl,
                   data: {
                   	'action': 'WPsCRM_view_activity_modal',
-                      'id': _row.id
+                      'id': _row.id,
+                      'report':$(e.currentTarget).data('report')
                   },
                   success: function (result) {
-
                       $('#dialog-view').show().html(result)
                       $('.modal_inner').animate({
                           'top': position.top -320 +'px',
                       }, 1000);
-                      //$("#grid").data("kendoGrid").dataSource.data(result.scheduler);
-
                   },
                   error: function (errorThrown) {
                       console.log(errorThrown);
                   }
               })
-
-            }
+            },
+            className: "btn _flat"
           },
           {
           	name: "<?php _e('Delete','cpsmartcrm')?>",
@@ -266,9 +263,10 @@ $delete_nonce= wp_create_nonce( "delete_activity" );
           var data = this.dataItem(tr);
 
          if (!confirm("<?php _e('Confirm delete','cpsmartcrm') ?>?"))
-          return false;
-		    location.href="<?php echo admin_url('admin.php?page=smart-crm&p=scheduler/delete.php&ID=')?>"+data.id +"&ref=dashboard&security=<?php echo $delete_nonce?>";
-         }
+            return false;
+		 location.href="<?php echo admin_url('admin.php?page=smart-crm&p=scheduler/delete.php&ID=')?>"+data.id +"&ref=dashboard&security=<?php echo $delete_nonce?>";
+         },
+        className: "btn btn-danger _flat"
         }
         ],width:200
         }, { field: "esito", hidden: true }
@@ -318,7 +316,7 @@ $delete_nonce= wp_create_nonce( "delete_activity" );
           },
           pageSize: 50,
         },
-        dataBound: loadCellsAttributes,
+        dataBound: loadCellsAttributesScheduler,
         groupable: {
             messages: {
             empty: "<?php _e('Drag columns headers and drop it here to group by that column','cpsmartcrm') ?>"
@@ -366,7 +364,7 @@ $delete_nonce= wp_create_nonce( "delete_activity" );
 				{ field: "oggetto", title: "<?php _e('Object','cpsmartcrm')?>" },
 				{ field: "annotazioni", title: "<?php _e('Description','cpsmartcrm')?>" },
 				{ field: "data_scadenza", title: "<?php _e('Expiration','cpsmartcrm')?>", template: '#= kendo.toString(kendo.parseDate(data_scadenza, "yyyy-MM-dd HH:mm:ss"), "' + $format + '") #' },
-				{ field: "destinatari", title: "<?php _e('Recipients','cpsmartcrm')?>" },
+				{ field: "destinatari", title: "<?php _e('Recipients','cpsmartcrm')?>" },{field:"privileges",hidden:true},
         { command: [
             {
             name: "<?php _e('Open','cpsmartcrm')?>",
@@ -381,7 +379,8 @@ $delete_nonce= wp_create_nonce( "delete_activity" );
                   url: ajaxurl,
                   data: {
                   	'action': 'WPsCRM_view_activity_modal',
-                      'id': _row.id
+                      'id': _row.id,
+                      'report':$(e.currentTarget).data('report')
                   },
                   success: function (result) {
                       //console.log(result);
@@ -395,8 +394,8 @@ $delete_nonce= wp_create_nonce( "delete_activity" );
                       console.log(errorThrown);
                   }
               })
-
-            }
+            },
+               className: "btn _flat"
           },
           {
             name: "<?php _e('Delete','cpsmartcrm')?>",
@@ -408,7 +407,8 @@ $delete_nonce= wp_create_nonce( "delete_activity" );
 				if (!confirm("<?php _e('Confirm delete','cpsmartcrm') ?>?"))
 					return false;
 				location.href="<?php echo admin_url('admin.php?page=smart-crm&p=scheduler/delete.php&ID=')?>"+data.id +"&ref=dashboard&security=<?php echo $delete_nonce?>";
-			}
+			},
+        className: "btn btn-danger _flat"
         }
         ],width:200
         }, { field: "esito", hidden: true }
@@ -421,20 +421,23 @@ $delete_nonce= wp_create_nonce( "delete_activity" );
 
 });
     </script> 
-
 <h4 class="page-header"><?php _e('Quick Menu','cpsmartcrm')?><!--<span class="crmHelp" data-help="quick-menu"></span>--></h4>
 <div class="col-md-12" style="border-bottom:8px solid #337ab7;margin-bottom:30px">
 <ul class="quick_menu" style="padding-bottom:10px;float: left;width: 100%;">
+    <?php if($privileges ==null || $privileges['agenda'] ==2){?>
     <li onClick="location.href='<?php echo admin_url()?>?page=smart-crm&p=scheduler/form.php&tipo_agenda=1';return false;">
         <i class="glyphicon glyphicon-tag"></i><br /><b ><?php _e('New Todo','cpsmartcrm')?><small></small></b>
     </li>
     <li onClick="location.href='<?php echo admin_url('admin.php?page=smart-crm&p=scheduler/form.php&tipo_agenda=2')?>';return false;">
         <i class="glyphicon glyphicon-pushpin"></i><br /><b ><?php _e('New appointment','cpsmartcrm')?><small></small></b>
     </li>
-
+    <?php } ?>
+    <?php if($privileges ==null || $privileges['customer'] ==2){?>
 	<li onclick="location.href='<?php echo admin_url('admin.php?page=smart-crm&p=clienti/form.php')?>';return false;">
         <i class="glyphicon glyphicon-user"></i><br /><b ><?php _e('New Customer','cpsmartcrm')?><small></small></b>
     </li>
+    <?php } ?>
+    <?php if($privileges ==null || $privileges['quote'] ==2){?>
     <li onClick="location.href='<?php echo admin_url('admin.php?page=smart-crm&p=documenti/form_quotation.php&type=1')?>';return false;">
 		<i class="glyphicon glyphicon-circle-arrow-right"></i>
 		<br />
@@ -443,9 +446,12 @@ $delete_nonce= wp_create_nonce( "delete_activity" );
 			<small></small>
 		</b>
 	</li>
+    <?php } ?>
+    <?php if($privileges ==null || $privileges['invoice'] ==2){?>
 	<li onclick="location.href='<?php echo admin_url('admin.php?page=smart-crm&p=documenti/form_invoice.php&type=2')?>';return false;">
         <i class="glyphicon glyphicon-open-file"></i><br /><b ><?php _e('New Invoice','cpsmartcrm')?><small></small></b>
     </li>
+    <?php } ?>
     <?php
 	if(current_user_can('manage_options') ){
 ?>
@@ -474,7 +480,7 @@ $delete_nonce= wp_create_nonce( "delete_activity" );
     <script id="tooltipTemplate" type="text/x-kendo-template">
         <div style="background-color:rgba(57,57,57,.8);border:2px solid rgb(204,204,204);color:rgb(250,250,250);border-radius:6px;display:block;width:240px;height:100px">#=target.data('title')#</div>
     </script>
-    
+    <?php if($privileges==null || $privileges['agenda'] >0){ ?>
 <h3 style="margin:0 20px"><?php _e('Todo','cpsmartcrm')?>
 	<ul class="select-action _llegend pull-right" style="width:initial">
 		<span style="float:right;font-size:.6em;background: none!important;">
@@ -496,7 +502,7 @@ $delete_nonce= wp_create_nonce( "delete_activity" );
 		</span>
 	</ul>
 
-    <p>seconda modifica stefy</p>
+
 
 </h3>
 <div id="grid_todo" class="datagrid" style="margin-bottom:24px"></div>
@@ -524,6 +530,8 @@ $delete_nonce= wp_create_nonce( "delete_activity" );
 	</h3>
 <div id="grid_appuntamenti" class="datagrid" style="margin-bottom:24px"></div> 
 </div>
+<?php } else{?> 
+<h3 style="color:crimson"><?php _e("You don't have permission to access the notification area","cpsmartcrm") ?></h3>
+<?php } ?>
 <div id="dialog-view" style="display:none;margin: 0 auto; text-align: center; z-index: 1000; width: 100%; height: 100%; position: absolute;left: 0;top:0;"  class="_modal">
-
 </div>

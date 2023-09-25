@@ -191,7 +191,7 @@ if ( !class_exists(UpdateChecker::class, false) ):
 			}
 
 			$pluginInfo = $this->requestInfo();
-			$this->fixSupportedClassicPressVersion($pluginInfo);
+			$this->fixSupportedWordpressVersion($pluginInfo);
 
 			$pluginInfo = apply_filters($this->getUniqueName('pre_inject_info'), $pluginInfo);
 			if ( $pluginInfo ) {

@@ -60,13 +60,13 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 			}
 		});
 	$("#a_data_scadenza_inizio").kendoDateTimePicker({
-		value: new Date(), format: $format
+		value: new Date(), format: $formatTime
 	});
 	$("#a_data_scadenza_fine").kendoDateTimePicker({
-		value: new Date(), format: $format
+		value: new Date(), format: $formatTime
 	});
 	var a_users = $('#a_remindToUser').kendoMultiSelect({
-		placeholder: "<?php _e( 'Select user', 'cpsmartcrm' ); ?>...",
+		placeholder: "<?php _e( 'Select user', 'cpsmartcrm'); ?>...",
 		dataTextField: "display_name",
 		dataValueField: "ID",
 		autoBind: false,
@@ -82,7 +82,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 	}).data("kendoMultiSelect")
 
 	$('#a_remindToGroup').kendoMultiSelect({
-		placeholder: "<?php _e( 'Select group', 'cpsmartcrm' ); ?>...",
+		placeholder: "<?php _e( 'Select group', 'cpsmartcrm'); ?>...",
 		dataTextField: "name",
 		dataValueField: "role",
 		autoBind: false,

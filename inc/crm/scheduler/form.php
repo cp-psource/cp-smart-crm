@@ -366,10 +366,10 @@ switch ($tipo_agenda)
             </div>
             <?php if ($tipo_agenda==2) {?>
             <div class="row form-group">
-                <label class="col-sm-4 control-label"><?php _e('Start', 'cpsmartcrm' ); ?>
+                <label class="col-sm-4 control-label"><?php _e('Start', 'cpsmartcrm'); ?>
                     <input name="data_scadenza_inizio" id='data_scadenza_inizio'  value="<?php echo $data_scadenza?>" class="" required validationMessage="<?php _e('You should select a start date/time for this appointment','cpsmartcrm')?>">
                 </label> 
-                <label class="col-sm-4 control-label"><?php _e('End', 'cpsmartcrm' ); ?>
+                <label class="col-sm-4 control-label"><?php _e('End', 'cpsmartcrm'); ?>
                     <input name="data_scadenza_fine" id='data_scadenza_fine'  value="<?php echo $data_scadenza?>" class="" required validationMessage="<?php _e('You should select an end date/time for this appointment','cpsmartcrm')?>">
                 </label>
             </div>
@@ -417,7 +417,7 @@ switch ($tipo_agenda)
                 <label class="col-sm-2 control-label"><?php _e('Send also instant notification','cpsmartcrm')?></label>
                 <div class="col-sm-4">
                     <input type="checkbox" class="ruleActions " id="instantNotification" name="instantNotification" />
-                    <small style="line-height:.8em">An email will be sent immediately to all selected users/groups if the option "send mail to recipients" below is active</small>
+                    <small style="line-height:.8em"><?php _e('An email will be sent immediately to all selected users/groups if the option "send mail to recipients" below is active','cpsmartcrm');?></small>
                 </div>
             </div>
             <!--<div class="row form group" style="padding-bottom:20px;border-bottom:1px solid #ccc">
@@ -451,7 +451,7 @@ switch ($tipo_agenda)
                 <div class="col-md-4">
                     <input class="ruleActions" id="remindToGroup" name="remindToGroup">
                 </div>
-                    <label class="col-sm-2 control-label"><?php _e('Publish on dashboard','cpsmartcrm')?>?</label>
+                    <label class="col-sm-2 control-label"><?php _e('Publish on Groups dashboard','cpsmartcrm')?>?</label>
                 <div class="col-md-4">
                     <input type="checkbox" class="ruleActions" name="groupDashboard" id="groupDashboard"/>
                 </div>

@@ -1,7 +1,7 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
 //global $WPsCRM_db_version;
-$WPsCRM_db_version = '1.5.16';
+$WPsCRM_db_version = '1.6.4';
 function WPsCRM_crm_install() {
 	global $wpdb;
 	global $table_prefix;
@@ -19,7 +19,7 @@ function WPsCRM_crm_install() {
   `indirizzo` varchar(200) DEFAULT NULL,
   `cap` varchar(10) DEFAULT NULL,
   `localita` varchar(55) NOT NULL DEFAULT '',
-  `provincia` varchar(5) DEFAULT NULL,
+  `provincia` varchar(100) DEFAULT NULL,
   `nazione` varchar(100) DEFAULT NULL,
   `telefono1` varchar(50) DEFAULT NULL,
   `telefono2` varchar(50) DEFAULT NULL,
@@ -77,6 +77,7 @@ function WPsCRM_crm_install() {
   `fk_subscriptionrules` int(10) unsigned NOT NULL,
   `eliminato` tinyint(3) unsigned NOT NULL,
   `visto` varchar(50)  DEFAULT NULL,
+  `timezone_offset` int(10) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_agenda`),
   KEY `FK_aziende` (`fk_aziende`),
   KEY `FK_utenti_ins` (`fk_utenti_ins`),
@@ -138,7 +139,7 @@ function WPsCRM_crm_install() {
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `fk_documenti` int(10) unsigned NOT NULL,
   `fk_articoli` int(10) unsigned NOT NULL,
-  `qta` int(10) unsigned NOT NULL,
+  `qta` float(5,2) unsigned NOT NULL,
   `n_riga` int(10) unsigned NOT NULL,
   `sconto` float(9,2) unsigned NOT NULL,
   `iva` tinyint(3) unsigned NOT NULL DEFAULT '0',
@@ -198,14 +199,6 @@ function WPsCRM_crm_install() {
   PRIMARY KEY (`ID`)
 ) ENGINE=MyISAM ".$charset_collate." AUTO_INCREMENT=1";
 
-	$sql[]="CREATE TABLE `".WPsCRM_SETUP_TABLE."values` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `fk_fields` int(10) unsigned NOT NULL,
-  `fk_table_name` int(10) unsigned NOT NULL,
-  `value` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM ".$charset_collate." AUTO_INCREMENT=1";
-
 	$sql[]="CREATE TABLE `".WPsCRM_SETUP_TABLE."email_templates` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `lingua` varchar(10) NOT NULL DEFAULT 'it',
@@ -225,210 +218,6 @@ function WPsCRM_crm_install() {
 		dbDelta( $q );
     };
 
-/*	try {
-		$alter_sql = "ALTER TABLE  `".WPsCRM_SETUP_TABLE."clienti` CHANGE  `categoria_merceologica`  `luogo_nascita` VARCHAR( 200 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ;";
-		$wpdb->query( $alter_sql);
-	}
-	catch (Exception $exc) {
-		$fo = fopen($myFile, 'a');
-		$msg="setup.php Line 232--";
-		fwrite($fo, $msg.$exc->getMessage().PHP_EOL);
-		fclose($fo);
-
-    };
-	try {
-		$alter_sql = "ALTER TABLE  `".WPsCRM_SETUP_TABLE."clienti` CHANGE  `indirizzo`  `indirizzo` VARCHAR( 200 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL ;";
-		$wpdb->query( $alter_sql);
-	}
-	catch (Exception $exc) {
-		$fo = fopen($myFile, 'a');
-		$msg="setup.php Line 243--";
-		fwrite($fo, $msg.$exc->getMessage().PHP_EOL);
-		fclose($fo);
-
-    };
-	try {
-		$alter_sql = "ALTER TABLE  `".WPsCRM_SETUP_TABLE."clienti` ADD  `data_nascita` DATE NULL DEFAULT NULL AFTER `luogo_nascita`;";
-		$wpdb->query( $alter_sql);
-	}
-	catch (Exception $exc) {
-		$msg="setup.php Line 254--";
-		fwrite($fo, $msg.$exc->getMessage().PHP_EOL);
-		fclose($fo);
-
-    };
-	try {
-		$alter_sql = "ALTER TABLE  `".WPsCRM_SETUP_TABLE."clienti` ADD  `nazione` VARCHAR( 100 ) DEFAULT NULL AFTER  `provincia` ;";
-		$wpdb->query( $alter_sql);
-	}
-	catch (Exception $exc) {
-		$msg="setup.php Line 264--";
-		fwrite($fo, $msg.$exc->getMessage().PHP_EOL);
-		fclose($fo);
-
-    };
-	try {
-		$alter_sql = "ALTER TABLE  `".WPsCRM_SETUP_TABLE."documenti` ADD  `tot_cassa_inps` FLOAT( 9, 2 ) UNSIGNED NOT NULL AFTER  `totale` ;";
-		$wpdb->query( $alter_sql);
-	}
-	catch (Exception $exc) {
-		$msg="setup.php Line 274--";
-		fwrite($fo, $msg.$exc->getMessage().PHP_EOL);
-		fclose($fo);
-	};
-	try {
-		$alter_sql = "ALTER TABLE  `".WPsCRM_SETUP_TABLE."documenti` ADD  `fk_woo_order` INT( 10 ) UNSIGNED NOT NULL AFTER  `notifica_pagamento` ;";
-		$wpdb->query( $alter_sql);
-	}
-	catch (Exception $exc) {
-		$msg="setup.php Line 283--";
-		fwrite($fo, $msg.$exc->getMessage().PHP_EOL);
-		fclose($fo);
-	};
-	try {
-		$alter_sql = "ALTER TABLE  `".WPsCRM_SETUP_TABLE."emails` ADD  `fk_clienti` INT UNSIGNED NOT NULL , ADD  `attachments` TEXT NOT NULL ;";
-		$wpdb->query( $alter_sql);
-	}
-	catch (Exception $exc) {
-		$msg="setup.php Line 292--";
-		fwrite($fo, $msg.$exc->getMessage().PHP_EOL);
-		fclose($fo);
-	};
-	try {
-		$alter_sql = "ALTER TABLE  `".WPsCRM_SETUP_TABLE."emails` CHANGE  `e_date`  `e_date` DATETIME NOT NULL ;";
-		$wpdb->query( $alter_sql);
-	}
-	catch (Exception $exc) {
-		$msg="setup.php Line 301--";
-		fwrite($fo, $msg.$exc->getMessage().PHP_EOL);
-		fclose($fo);
-	};
-	try {
-		$alter_sql = "ALTER TABLE  `".WPsCRM_SETUP_TABLE."documenti`  ADD  `ritenuta_acconto` FLOAT( 9, 2 ) UNSIGNED NOT NULL AFTER  `tot_cassa_inps` ;";
-		$wpdb->query( $alter_sql);
-	}
-	catch (Exception $exc) {
-		$msg="setup.php Line 310--";
-		fwrite($fo, $msg.$exc->getMessage().PHP_EOL);
-		fclose($fo);
-	};
-	try {
-		$alter_sql = "ALTER TABLE  `".WPsCRM_SETUP_TABLE."documenti` ADD  `totale_netto` FLOAT( 9, 2 ) UNSIGNED NOT NULL AFTER  `ritenuta_acconto` ;";
-		$wpdb->query( $alter_sql);
-	}
-	catch (Exception $exc) {
-		$msg="setup.php Line 319--";
-		fwrite($fo, $msg.$exc->getMessage().PHP_EOL);
-		fclose($fo);
-	};
-	try {
-		$alter_sql = "ALTER TABLE  `".WPsCRM_SETUP_TABLE."clienti` ADD  `interessi` VARCHAR( 100 ) NOT NULL DEFAULT  '';";
-		$wpdb->query( $alter_sql);
-	}
-	catch (Exception $exc) {
-		$msg="setup.php Line 327--";
-		fwrite($fo, $msg.$exc->getMessage().PHP_EOL);
-		fclose($fo);
-	};
-	try {
-		$alter_sql = "ALTER TABLE  `".WPsCRM_SETUP_TABLE."documenti`  ADD  `origine_proforma` TINYINT UNSIGNED NOT NULL DEFAULT  '0';";
-		$wpdb->query( $alter_sql);
-	}
-	catch (Exception $exc) {
-		$msg="setup.php Line 337--";
-		fwrite($fo, $msg.$exc->getMessage().PHP_EOL);
-		fclose($fo);
-	};
-	try {
-		$alter_sql = "ALTER TABLE  `".WPsCRM_SETUP_TABLE."clienti` ADD  `fatturabile` TINYINT( 1 ) UNSIGNED NOT NULL DEFAULT  '0';";
-		$wpdb->query( $alter_sql);
-	}
-	catch (Exception $exc) {
-		$msg="setup.php Line 346--";
-		fwrite($fo, $msg.$exc->getMessage().PHP_EOL);
-		fclose($fo);
-	};
-	try {
-		$alter_sql = "ALTER TABLE  `".WPsCRM_SETUP_TABLE."clienti` CHANGE  `agente`  `agente` INT( 10 ) UNSIGNED NULL ;";
-		$wpdb->query( $alter_sql);
-	}
-	catch (Exception $exc) {
-		$msg="setup.php Line 355--";
-		fwrite($fo, $msg.$exc->getMessage().PHP_EOL);
-		fclose($fo);
-	};
-	try {
-		$alter_sql = "ALTER TABLE  `".WPsCRM_SETUP_TABLE."clienti` ADD  `custom_fields` TEXT ;";
-		$wpdb->query( $alter_sql);
-	}
-	catch (Exception $exc) {
-		$msg="setup.php Line 362--";
-		fwrite($fo, $msg.$exc->getMessage().PHP_EOL);
-		fclose($fo);
-	};
-	try {
-		$alter_sql = "ALTER TABLE  `".WPsCRM_SETUP_TABLE."clienti` ADD  `custom_tax` TEXT ;";
-		$wpdb->query( $alter_sql);
-	}
-	catch (Exception $exc) {
-		$msg="setup.php Line 371--";
-		fwrite($fo, $msg.$exc->getMessage().PHP_EOL);
-		fclose($fo);
-	};
-	try {
-		$alter_sql = "ALTER TABLE  `".WPsCRM_SETUP_TABLE."fields`  ADD `multiple` TINYINT NOT NULL;";
-		$wpdb->query( $alter_sql);
-	}
-	catch (Exception $exc) {
-		$msg="setup.php Line 379--";
-		fwrite($fo, $msg.$exc->getMessage().PHP_EOL);
-		fclose($fo);
-	};
-	try {
-		$alter_sql = "ALTER TABLE  `".WPsCRM_SETUP_TABLE."documenti`  ADD  `tipo_sconto` tinyint(3) UNSIGNED NOT NULL DEFAULT  '0';";
-		$wpdb->query( $alter_sql);
-	}
-	catch (Exception $exc) {
-		$msg="setup.php Line 390--";
-		fwrite($fo, $msg.$exc->getMessage().PHP_EOL);
-		fclose($fo);
-	};
-	try {
-		$alter_sql = "ALTER TABLE  `".WPsCRM_SETUP_TABLE."fields`  ADD `show_grid` TINYINT UNSIGNED NOT NULL DEFAULT  '0';";
-		$wpdb->query( $alter_sql);
-	}
-	catch (Exception $exc) {
-		$msg="setup.php Line 401--";
-		fwrite($fo, $msg.$exc->getMessage().PHP_EOL);
-		fclose($fo);
-	};
-	try {
-		$alter_sql = "ALTER TABLE  `".WPsCRM_SETUP_TABLE."documenti_dettaglio` CHANGE  `sconto`  `sconto` FLOAT( 9, 2 ) UNSIGNED NOT NULL ;";
-		$wpdb->query( $alter_sql);
-	}
-	catch (Exception $exc) {
-		$msg="setup.php Line 410--";
-		fwrite($fo, $msg.$exc->getMessage().PHP_EOL);
-		fclose($fo);
-	};
-	try {
-		$alter_sql = "ALTER TABLE `".WPsCRM_SETUP_TABLE."clienti` ADD `uploads` TEXT NOT NULL ;";
-		$wpdb->query( $alter_sql);
-	}
-	catch (Exception $exc) {
-		$msg="setup.php Line 415--";
-		fwrite($fo, $msg.$exc->getMessage().PHP_EOL);
-		fclose($fo);
-	};
-	try {
-		$alter_sql = "ALTER TABLE `".WPsCRM_SETUP_TABLE."documenti` ADD `perc_realizzo` VARCHAR( 10 ) DEFAULT NULL ;";
-		$wpdb->query( $alter_sql);
-	}
-	catch (Exception $exc) {
-		$msg="setup.php Line 415--";
-		fwrite($fo, $msg.$exc->getMessage().PHP_EOL);
-		fclose($fo);
-	};*/
 	if ( $msg =="")
 		update_option( 'WPsCRM_db_version', $WPsCRM_db_version );
 
@@ -527,63 +316,6 @@ function WPsCRM_update_db_check() {
 }
 add_action( 'plugins_loaded', 'WPsCRM_update_db_check',13 );
 
-///**
-//Custom post type "services/products"
-// * */
-//function create_services() {
-
-//    register_post_type( 'services',
-//        array(
-//            'labels' => array(
-//                'name' => __( 'Services' ),
-//                'singular_name' => __( 'Service' ),
-//                'edit_item'         => __( 'Edit Service' ),
-//                'add_new_item'      => __( 'Add Service' ),
-//                'new_item_name'     => __( 'New Service' ),
-//            ),
-//        'public' => true,
-//        'has_archive' => true,
-//        'supports'=>array('thumbnail','author','title','editor','shortcode'),
-//        'show_ui' => true,
-//        'slug'=>'services',
-//        'show_in_menu' => 'admin.php?page=smart-crm'
-//        )
-//    );
-//}
-//add_action( 'init', 'create_services' );
-//function create_cat_services() {
-
-//    $labels=array(
-//    'name'              => _x( 'Category', 'taxonomy general name' ),
-//    'singular_name'     => _x( 'Category', 'taxonomy singular name' ),
-//    'search_items'      => __( 'Search category' ),
-//    'all_items'         => __( 'All Categories' ),
-//    'parent_item'       => __( 'Categoria superiore' ),
-//    'parent_item_colon' => __( 'Categoria superiore:' ),
-//    'edit_item'         => __( 'Edit Category' ),
-//    'update_item'       => __( 'Update Category' ),
-//    'add_new_item'      => __( 'Add Category' ),
-//    'new_item_name'     => __( 'New Category' ),
-//    'menu_name'         => __( 'Categories' ),
-//    );
-//    $args = array(
-//    'hierarchical'      => true,
-//    'labels'            => $labels,
-//    'show_ui'           => true,
-//    'show_admin_column' => true,
-//    'query_var'         => 'services_cat',
-//    'rewrite'           => array( 'slug' =>'cat'),
-//    'rewrite'           => false,
-//);
-//    register_taxonomy( 'services_cat', array(
-//                                         'services',
-
-//                                         ), $args );
-
-//}
-//add_action( 'init', 'create_cat_services' );
-
-
 
 add_action( 'plugins_loaded', 'WPsCRM_create_clienti',11 );
 function WPsCRM_create_clienti() {
@@ -601,7 +333,6 @@ function WPsCRM_create_clienti() {
         'has_archive' => false,
         'rewrite' => false,
         'supports'=>array('thumbnail','author','editor','title'),
-        //'taxonomies' => array('post_tag','localita'),
         'show_ui' => false,
         'publicly_queryable'=>true,
         'capability_type' => 'post'
@@ -614,13 +345,13 @@ function WPsCRM_customers_tax() {
     $labels=array(
     'name'              => _x( 'Interests', 'taxonomy general name' ),
     'singular_name'     => _x( 'Interest', 'taxonomy singular name' ),
-    'search_items'      => __( 'Search interest','cpsmartcrm' ),
-    'all_items'         => __( 'All interests','cpsmartcrm' ),
-    'edit_item'         => __( 'Edit interest','cpsmartcrm' ),
-    'update_item'       => __( 'Update interest','cpsmartcrm' ),
-    'add_new_item'      => __( 'Add interest','cpsmartcrm' ),
-    'new_item_name'     => __( 'New interest','cpsmartcrm' ),
-    'menu_name'         => __( 'Interests','cpsmartcrm' ),
+    'search_items'      => __( 'Search interest','cpsmartcrm'),
+    'all_items'         => __( 'All interests','cpsmartcrm'),
+    'edit_item'         => __( 'Edit interest','cpsmartcrm'),
+    'update_item'       => __( 'Update interest','cpsmartcrm'),
+    'add_new_item'      => __( 'Add interest','cpsmartcrm'),
+    'new_item_name'     => __( 'New interest','cpsmartcrm'),
+    'menu_name'         => __( 'Interests','cpsmartcrm'),
     );
     $args = array(
     'hierarchical'      => true,
@@ -635,13 +366,13 @@ function WPsCRM_customers_tax() {
 	$labels=array(
    'name'              => _x( 'Categories', 'taxonomy general name' ),
    'singular_name'     => _x( 'Category', 'taxonomy singular name' ),
-   'search_items'      => __( 'Search category','cpsmartcrm' ),
-   'all_items'         => __( 'All categories','cpsmartcrm' ),
-   'edit_item'         => __( 'Edit category','cpsmartcrm' ),
-   'update_item'       => __( 'Update category','cpsmartcrm' ),
-   'add_new_item'      => __( 'Add category','cpsmartcrm' ),
-   'new_item_name'     => __( 'New category','cpsmartcrm' ),
-   'menu_name'         => __( 'Categories','cpsmartcrm' ),
+   'search_items'      => __( 'Search category','cpsmartcrm'),
+   'all_items'         => __( 'All categories','cpsmartcrm'),
+   'edit_item'         => __( 'Edit category','cpsmartcrm'),
+   'update_item'       => __( 'Update category','cpsmartcrm'),
+   'add_new_item'      => __( 'Add category','cpsmartcrm'),
+   'new_item_name'     => __( 'New category','cpsmartcrm'),
+   'menu_name'         => __( 'Categories','cpsmartcrm'),
    );
     $args = array(
     'hierarchical'      => true,
@@ -656,13 +387,13 @@ function WPsCRM_customers_tax() {
 	$labels=array(
    'name'              => _x( 'Origins', 'taxonomy general name' ),
    'singular_name'     => _x( 'Origin', 'taxonomy singular name' ),
-   'search_items'      => __( 'Search origin','cpsmartcrm' ),
-   'all_items'         => __( 'All Origins','cpsmartcrm' ),
-   'edit_item'         => __( 'Edit Origin','cpsmartcrm' ),
-   'update_item'       => __( 'Update Origin','cpsmartcrm' ),
-   'add_new_item'      => __( 'Add Origin','cpsmartcrm' ),
-   'new_item_name'     => __( 'New Origin','cpsmartcrm' ),
-   'menu_name'         => __( 'Origins','cpsmartcrm' ),
+   'search_items'      => __( 'Search origin','cpsmartcrm'),
+   'all_items'         => __( 'All Origins','cpsmartcrm'),
+   'edit_item'         => __( 'Edit Origin','cpsmartcrm'),
+   'update_item'       => __( 'Update Origin','cpsmartcrm'),
+   'add_new_item'      => __( 'Add Origin','cpsmartcrm'),
+   'new_item_name'     => __( 'New Origin','cpsmartcrm'),
+   'menu_name'         => __( 'Origins','cpsmartcrm'),
    );
     $args = array(
     'hierarchical'      => true,
@@ -677,15 +408,20 @@ function WPsCRM_customers_tax() {
 
 
 /**
-menu page
- * */
+** adds menu pages in main wp menu
+ **/
 add_action('admin_menu', 'smart_crm_menu');
 function smart_crm_menu(){
-
+    is_multisite() ? $filter=get_blog_option(get_current_blog_id(), 'active_plugins' ) : $filter=get_option('active_plugins' );
+    if ( in_array( 'wp-smart-crm-agents/wp-smart-crm-agents.php', apply_filters( 'active_plugins', $filter) ) ) {
+        $agent_obj=new AGsCRM_agent();
+        $privileges=$agent_obj->getAllPrivileges();
+    }
+    else
+        $privileges=null;
 
     add_menu_page( 'WP SMART CRM', 'CP Smart CRM', 'manage_crm', 'smart-crm', 'WPsCRM_smartcrm', 'dashicons-analytics', 71 );
     add_submenu_page('SMART CRM', 'CP Smart CRM', 'manage_crm', 'smart-crm', 'WPsCRM_smartcrm', 'dashicons-analytics', 71);
-
 	add_submenu_page(
 			'smart-crm',
 			__('WP SMART CRM NOTIFICATION RULES', 'cpsmartcrm'),
@@ -694,35 +430,36 @@ function smart_crm_menu(){
 			'smartcrm_subscription-rules',
 			'smartcrm_subscription_rules'
 			);
-	add_submenu_page(
-			'smart-crm',
-			__('WP SMART CRM Customers', 'cpsmartcrm'),
-			__('Customers', 'cpsmartcrm'),
-			'manage_crm',
-			'admin.php?page=smart-crm&p=clienti/list.php',
-			''
-			);
-	add_submenu_page(
-			'smart-crm',
-			__('WP SMART CRM Scheduler', 'cpsmartcrm'),
-			__('Scheduler', 'cpsmartcrm'),
-			'manage_crm',
-			'admin.php?page=smart-crm&p=scheduler/list.php',
-			''
-			);
-	add_submenu_page(
-			'smart-crm',
-			__('WP SMART CRM Documents', 'cpsmartcrm'),
-			__('Documents', 'cpsmartcrm'),
-			'manage_crm',
-			'admin.php?page=smart-crm&p=documenti/list.php',
-			''
-			);
-	//function wpdocs_my_custom_submenu_page_callback() {
-	//    echo '<div class="wrap"><div id="icon-tools" class="icon32"></div>';
-	//    echo '<h2>My Custom Submenu Page</h2>';
-	//    echo '</div>';
-	//}
+    if($privileges ==null || $privileges['customer'] >0 ){
+        add_submenu_page(
+                'smart-crm',
+                __('WP SMART CRM Customers', 'cpsmartcrm'),
+                __('Customers', 'cpsmartcrm'),
+                'manage_crm',
+                'admin.php?page=smart-crm&p=clienti/list.php',
+                ''
+                );
+    }
+    if($privileges ==null || $privileges['agenda'] >0 ){
+        add_submenu_page(
+                'smart-crm',
+                __('WP SMART CRM Scheduler', 'cpsmartcrm'),
+                __('Scheduler', 'cpsmartcrm'),
+                'manage_crm',
+                'admin.php?page=smart-crm&p=scheduler/list.php',
+                ''
+                );
+    }
+    if($privileges ==null || $privileges['quote'] >0 || $privileges['invoice'] >0 ){
+        add_submenu_page(
+                'smart-crm',
+                __('WP SMART CRM Documents', 'cpsmartcrm'),
+                __('Documents', 'cpsmartcrm'),
+                'manage_crm',
+                'admin.php?page=smart-crm&p=documenti/list.php',
+                ''
+                );
+    }
 }
 //$options=get_option('CRM_general_settings');
 //if(isset($options['services']) && $options['services']==1)
@@ -737,10 +474,21 @@ function smart_crm_menu(){
 //            ''
 //            );
 //}
-add_action('wp_head', 'CRM_ajaxurl');
-function CRM_ajaxurl() {
-
-	echo '<script type="text/javascript">
-             var ajaxurl = "' . admin_url('admin-ajax.php') . '";
-</script>';
+add_action('admin_head', 'WPsCRM_JSVar');
+function WPsCRM_JSVar() {
+	if ( isset( $_GET['page'] ) &&  ( $_GET['page'] == 'smart-crm') )
+	{
+		$options=get_option('CRM_ColumnsWidth');
+		$grids=array();
+		$index=0;
+		if ($options)
+			foreach($options as $key=>$grid){
+				$grids[$index]=array('grid'=>$key,'columns'=>$grid);
+				$index ++;
+			}
+		echo '
+    <script type="text/javascript">
+        var columnsWidth='.json_encode($grids,JSON_UNESCAPED_SLASHES ).';
+    </script>';
+	}
 }

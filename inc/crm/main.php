@@ -29,21 +29,15 @@ if ( in_array( 'wp-smart-crm-agents/wp-smart-crm-agents.php', apply_filters( 'ac
 <?php } ?>
     </script>
 <div class="wrap">
-<h1 style="text-align:center" class="WPsCRM_plugin_title">CP Smart CRM<?php if(! isset($_GET['p'])){ ?><?php } ?></h1>
+<h1 style="text-align:center">CP Smart CRM & INVOICES<?php if(! isset($_GET['p'])){ ?><?php } ?></h1>
 		<?php include("c_menu.php")?>
 	<?php
     if(isset($_GET['p']))
 		$p=$_GET['p'];
-    if ($p=="dashboard-scheduler.php")
-        include(WP_CONTENT_DIR.'/plugins/wp-smart-crm-advanced/inc/crm/'.$p);
-    else
-        include(plugin_dir_path(__FILE__ ))."$p";
-    echo '<small style="text-align:center;top:30px;position:relative">Developed by SoftradeWEB snc <a href="https://n3rds.work">https://n3rds.work</a> [WP italian coders]. ' . __('Like this Plugin? A good Review is very much appreciated!','cpsmartcrm').'<a href="https://wordpress.org/support/plugin/cpsmartcrm/reviews/?filter=5" target="_blank"><span class="dashicons dashicons-star-filled" style="font-size:1em;margin-right:-6px;margin-top:4px"></span><span class="dashicons dashicons-star-filled" style="font-size:1em;margin-right:-6px;margin-top:4px"></span><span class="dashicons dashicons-star-filled" style="font-size:1em;margin-right:-6px;margin-top:4px"></span><span class="dashicons dashicons-star-filled" style="font-size:1em;margin-right:-6px;margin-top:4px"></span><span class="dashicons dashicons-star-filled" style="font-size:1em;margin-right:-6px;margin-top:4px"></span></a>  </small>';
+
+    include(plugin_dir_path(__FILE__ ))."$p";
+    echo '<small style="text-align:center;top:30px;position:relative">Developed by Webmaster-Community N3rds@Work <a href="https://n3rds.work">https://n3rds.work</a></small></div>';
 	?>
-	<div id="mouse_loader" style="display:none;position:absolute;width:30px;height:30px;border:1px solid #ccc;background:#fff url('<?php echo WPsCRM_URL?>css/img/ajax-loader.gif');background-position:center center;border-radius:4px;background-repeat:no-repeat;z-index:10004"></div>
-	<div id="dialog_interessi"></div>
-	<?php do_action('WPsCRM_css');?>
-</div>
 
 <!--CUSTOM POPUP EDITOR TEMPLATE-->
 <script type="text/x-kendo-template" id="customEditor" style="width:960px;height:760px!important">

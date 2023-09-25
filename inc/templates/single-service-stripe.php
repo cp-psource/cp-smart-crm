@@ -219,7 +219,7 @@ elseif($_SERVER['REQUEST_METHOD'] === 'POST')
           $admin_email = get_option( 'admin_email' );
           $header = 'MIME-Version: 1.0' . "\r\n";
           $header.= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-          $header.= 'From: info@softrade.it' . "\r\n";
+          $header.= 'From: info@smart-cms.n3rds.work/' . "\r\n";
 
           $data_scadenza=date("Y-m-d",mktime(0,0,0,date("m")+$months,date("d"),date("Y")));
 

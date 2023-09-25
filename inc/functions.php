@@ -25,7 +25,7 @@ class WPsCRM_crmObject {
 
 $document = new WPsCRM_crmObject(array(
 	//"pdfArgs"=>array('c','A4','','',15,15,60,25,16,13),
-	//"company_data" => array("Softradeweb SNC", "Via della Pura 12", "Pisa", "info@softrade.it"),
+	//"company_data" => array("Softradeweb SNC", "Via della Pura 12", "Pisa", "info@smart-cms.n3rds.work/"),
 	//"customer_title" => "Att.ne",
 	//"city" => "Pisa",
 	//"signature" => "Softradeweb SNC",
@@ -35,7 +35,7 @@ $document = new WPsCRM_crmObject(array(
 ));
 //$document = new stdClass(array(
 //    "pdfArgs"=>array('c','A4','','',15,15,60,25,16,13),
-//    "company_data" => array("Softradeweb SNC", "Via della Pura 12", "Pisa", "info@softrade.it"),
+//    "company_data" => array("Softradeweb SNC", "Via della Pura 12", "Pisa", "info@smart-cms.n3rds.work/"),
 //    "customer_title" => "Att.ne",
 //    "city" => "Pisa",
 //    "signature" => "Softradeweb SNC",
@@ -1761,7 +1761,7 @@ function WPsCRM_my_awesome_mail_content_type() {
 
 add_filter ("WPsCRM_p_mail_from", "WPsCRM_my_awesome_mail_from");
 function WPsCRM_my_awesome_mail_from() {
-	return "info@softrade.it";
+	return "info@smart-cms.n3rds.work/";
 }
 
 add_filter ("WPsCRM_wp_mail_from_name", "WPsCRM_my_awesome_mail_from_name");

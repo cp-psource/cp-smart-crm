@@ -1614,33 +1614,30 @@ class CRM_Options_Settings{
 </style>
 <script>
 	jQuery(document).ready(function ($) {
-		<?php if($_GET['tab']=="CRM_business_settings") { ?>
-
-		$('.form-table th').hide().remove();
-
-		<?php } ?>
-		<?php if($_GET['tab']=="CRM_documents_settings") { ?>
-			
-		$('.form-table th').hide().remove();
-		<?php } ?>
-        var getEffects = function () {
-            return ("expand:vertical fadeIn") || false;
-        };
-        var innerTabstrip = $("#innerTabstrip").kendoTabStrip({ animation: { open: { effects: getEffects() } } }).data('kendoTabStrip');
-		if(window.location.hash) {
-			var innerHash = window.location.hash.substring(9); //Puts hash in variable, and removes the # character
-			innerTabstrip.select(innerHash);
-			}
-        $(".editable").kendoEditor({
-            tools: [
-                "bold",
-                "italic",
-                "underline",
-                "createLink",
-                "unlink"
-            ],
-            change: editorChange
-        });
+    <?php if(isset($_GET['tab']) && $_GET['tab'] == "CRM_business_settings") { ?>
+        $('.form-table th').hide();
+    <?php } ?>
+    <?php if(isset($_GET['tab']) && $_GET['tab'] == "CRM_documents_settings") { ?>
+        $('.form-table th').hide();
+    <?php } ?>
+    var getEffects = function () {
+        return ("expand:vertical fadeIn") || false;
+    };
+    var innerTabstrip = $("#innerTabstrip").kendoTabStrip({ animation: { open: { effects: getEffects() } } }).data('kendoTabStrip');
+    if(window.location.hash) {
+        var innerHash = window.location.hash.substring(9); //Puts hash in variable, and removes the # character
+        innerTabstrip.select(innerHash);
+    }
+    $(".editable").kendoEditor({
+        tools: [
+            "bold",
+            "italic",
+            "underline",
+            "createLink",
+            "unlink"
+        ],
+        change: editorChange
+    });
         $(".editable_signature").kendoEditor({
         	tools: [
                 "bold",
@@ -1677,23 +1674,24 @@ class CRM_Options_Settings{
 	}
 	
 	/*
-	 * Renders our tabs in the plugin options page,
-	 * walks through the object's tabs array and prints
-	 * them one by one. Provides the heading for the
-	 * plugin_options_page method.
-	 */
+	* Renders our tabs in the plugin options page,
+	* walks through the object's tabs array and prints
+	* them one by one. Provides the heading for the
+	* plugin_options_page method.
+	*/
 	function plugin_options_tabs() {
 		$current_tab = isset( $_GET['tab'] ) ? $_GET['tab'] : $this->general_settings_key;
 
-		screen_icon();
 		echo '<h2 class="nav-tab-wrapper">';
 		foreach ( $this->plugin_settings_tabs as $tab_key => $tab_caption ) {
 			$active = $current_tab == $tab_key ? 'nav-tab-active' : '';
-			echo '<a class="nav-tab ' . $active . '" href="?page=' . $this->plugin_options_key . '&tab=' . $tab_key . '">' . $tab_caption . '</a>';	
+			// Hier verwenden wir das 'dashicons-business' Dashicon für das CRM-Tab.
+			echo '<a class="nav-tab ' . $active . '" href="?page=' . $this->plugin_options_key . '&tab=' . $tab_key . '"><span class="dashicons dashicons-business"></span>' . $tab_caption . '</a>';    
 		}
-		
+			
 		echo '</h2>';
 	}
+
 }
 add_action( 'plugins_loaded', function() {
     $wp_crm = new CRM_Options_Settings;

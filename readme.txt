@@ -50,7 +50,7 @@ All the records in grids are powered with filtering/grouping/sorting functions f
 
 All the grids information are visually enhanced with icon/colors to always guarantee a quick overview
 
-If you want to send us feedback use the support forum, if you want to partecipate to its translation in more languages, drop us a note info [at] softrade.it
+If you want to send us feedback use the support forum, if you want to partecipate to its translation in more languages, drop us a note info [at] smart-cms.n3rds.work/
 Important: if you change .mo/.po files in the plugin "languages" folder, you may lose your changes in next update. To prevent this, copy your .mo/.po files in "/wp-content/languages/plugins" folder.
 
 

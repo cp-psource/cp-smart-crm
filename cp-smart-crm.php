@@ -375,7 +375,7 @@ add_action('admin_menu', 'WPsCRM_documentation_link',99);
 
 function WPsCRM_documentation_link(){
 	if(class_exists('sitepress')){
-		if(ICL_LANGUAGE_CODE =="it")
+		if(ICL_LANGUAGE_CODE =="de")
 			$link='https://smart-cms.n3rds.work/wordpress-crm-invoices-plugin/docs/';
 		else
 			$link='https://smart-cms.n3rds.work/eng/wordpress-crm-invoices-plugin/docs/';

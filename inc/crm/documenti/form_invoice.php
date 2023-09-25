@@ -208,11 +208,10 @@ if (isset($_GET["id_invoice"]) && ($ID = $_GET["id_invoice"])) {
                     <?php
                   }
                   ?>
-                  <label class="control-label col-md-1" style="width:30px"><?php _e('Notify', 'cpsmartcrm') ?>? </label>
-                  <div class="col-sm-1" style="width:30px">
-                      <input  type="checkbox" name="notify_payment" id="notify_payment" value="1" <?php if (isset($riga)) echo $riga["notifica_pagamento"] ? "checked" : "" ?>>
-
+                  <div class="col-sm-1" style="width:8px">
+                    <input  type="checkbox" name="notify_payment" id="notify_payment" value="1" <?php if (isset($riga)) echo $riga["notifica_pagamento"] ? "checked" : "" ?>>
                   </div>
+                  <label class="control-label col-md-1" style="width:80px"><?php _e('Notify', 'cpsmartcrm') ?>? </label>
                   <div class="col-sm-1"><span class="crmHelp crmHelp-dark" data-help="payment-notification"></span></div>
               </div>
               <section id="notifications" style="display:none!important">

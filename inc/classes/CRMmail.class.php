@@ -717,7 +717,7 @@ class CRM_mail{
 	 * @param array $headers
 	 * @param array $attachments
 	 */
-	public function sendMailToCustomer($e_from,$e_to,$e_subject,$e_body, $e_date, $customerID, $headers="", $attachments){
+	public function sendMailToCustomer($e_from,$e_to,$e_subject,$e_body, $e_date, $customerID, $headers="", $attachments = null ){
 		global $wpdb;
 		$s_attachments=json_encode($attachments);
 		$table=WPsCRM_TABLE."emails";

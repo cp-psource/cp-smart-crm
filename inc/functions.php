@@ -3710,7 +3710,7 @@ function _WPsCRM_generate_document_HTML($ID) {
   return $content;
 }
 
-function WPsCRM_create_pdf_document($ID, $content, $attachment = 0, $old_file, $tipo, $WOOmail) {
+function WPsCRM_create_pdf_document($ID, $content, $attachment = 0, $old_file = null, $tipo = null, $WOOmail = null) {
   global $wpdb;
 
   $d_table = WPsCRM_TABLE . "documenti";

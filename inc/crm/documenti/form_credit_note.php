@@ -122,60 +122,60 @@ else
 <form name="form_insert" action="" method="post" id="form_insert">
     <!--<div class="modal_loader" style="background:#fff url(<?php echo WPsCRM_URL?>/css/img/loading-image.gif);background-repeat:no-repeat;background-position:center center"></div>-->
 	<input type="hidden" name="num_righe" id="num_righe" value="">
-    <h1 style="text-align:center"><?php _e('CREATE/EDIT CREDIT NOTE','cpsmartcrm')?> <i class="glyphicon glyphicon-fire"></i></h1>
+    <h1 style="text-align:center"><?php _e('GUTSCHRIFT ERSTELLEN/BEARBEITEN','cpsmartcrm')?> <i class="glyphicon glyphicon-fire"></i></h1>
     <div id="tabstrip">
         <ul>
-            <li id="tab1"><?php _e('CREDIT NOTE','cpsmartcrm')?></li>
-            <li onclick="aggiornatot();"><?php _e('COMMENTS AND INTERNAL DATA','cpsmartcrm')?></li>
+            <li id="tab1"><?php _e('GUTSCHRIFT','cpsmartcrm')?></li>
+            <li onclick="aggiornatot();"><?php _e('KOMMENTARE UND INTERNE DATEN','cpsmartcrm')?></li>
         </ul>
         <div>
             <h4 class="page-header" style="margin: 10px 0 20px;">
-                <?php _e('CREDIT NOTE DATA','cpsmartcrm')?><span class="crmHelp" data-help="document-data"></span>
+                <?php _e('GUTSCHRIFTSDATEN','cpsmartcrm')?><span class="crmHelp" data-help="document-data"></span>
                 <?php if ($ID) {?>
-                <span style="float:right;font-size:.8em;text-decoration:underline;cursor:pointer" class="_edit_header"><i class="glyphicon glyphicon-pencil"></i> <?php _e('Edit','cpsmartcrm')?></span>
+                <span style="float:right;font-size:.8em;text-decoration:underline;cursor:pointer" class="_edit_header"><i class="glyphicon glyphicon-pencil"></i> <?php _e('Bearbeiten','cpsmartcrm')?></span>
                 <?php } ?>
                 <span style="float:right;margin-top: -7px;">
-                    <label class="col-sm-2 control-label"><?php _e('Number','cpsmartcrm')?></label>
+                    <label class="col-sm-2 control-label"><?php _e('Nummer','cpsmartcrm')?></label>
                     <span class="col-sm-2">
-                        <input name="progressivo" id="progressivo" class="form-control" data-placement="bottom" title="<?php _e('Number','cpsmartcrm')?>" value="<?php echo $riga["progressivo"]?>" readonly disabled />
+                        <input name="progressivo" id="progressivo" class="form-control" data-placement="bottom" title="<?php _e('Nummer','cpsmartcrm')?>" value="<?php echo $riga["progressivo"]?>" readonly disabled />
                     </span>
                 </span>
             <span style="float:right;margin-top: -7px;" class="col-md-4">
-                <label class="control-label"><?php _e('Issue Date','cpsmartcrm')?></label>
+                <label class="control-label"><?php _e('Ausgabedatum','cpsmartcrm')?></label>
 				<?php if ($ID) {?>
 	            <span class="col-sm-4" style="margin-top: -4px;">
-					<input name="data" id="data" class="form-control  _m" data-placement="bottom" title="<?php _e('Date','cpsmartcrm')?>" value="<?php echo  $data ?>" style="border:none" />
+					<input name="data" id="data" class="form-control  _m" data-placement="bottom" title="<?php _e('Datum','cpsmartcrm')?>" value="<?php echo  $data ?>" style="border:none" />
 	            </span>
 				<?php } else {?>
                 <span class="col-sm-4" style="margin-top: -4px;">
-                    <input name="data" id="data" class="form-control _m" data-placement="bottom" title="<?php _e('Date','cpsmartcrm')?>" value="" style="border:none"  />
+                    <input name="data" id="data" class="form-control _m" data-placement="bottom" title="<?php _e('Datum','cpsmartcrm')?>" value="" style="border:none"  />
                     
                 </span>
 				<?php } ?>
 			</span>
-                <div class="row" id="edit_warning" style="display:none;font-size:.8em;color:red;margin-top:20px"><div class="col-md-4 pull-right"><?php _e('WARNING: edit date and number may cause incongruences in your accounting','cpsmartcrm')?></div></div>
+                <div class="row" id="edit_warning" style="display:none;font-size:.8em;color:red;margin-top:20px"><div class="col-md-4 pull-right"><?php _e('ACHTUNG: Das Bearbeiten von Datum und Nummer kann zu Unstimmigkeiten in Deiner Buchhaltung führen','cpsmartcrm')?></div></div>
             </h4>
             <div class="row form-group">
                 <!--<label class="col-sm-1 control-label"><?php //_e('Object','cpsmartcrm')?></label>
                 <div class="col-sm-3"><input type="text" class="form-control " name="oggetto" id="oggetto"  maxlength='50' value="<?php echo $oggetto?>">
                 </div>-->
-                <label class="col-sm-1 control-label"><?php _e('Reference','cpsmartcrm')?></label>
+                <label class="col-sm-1 control-label"><?php _e('Referenz','cpsmartcrm')?></label>
                 <div class="col-sm-3">
                     <input type="text" class="form-control" name="riferimento" id="riferimento" maxlength='55' value="<?php echo $riga["riferimento"]?>">
                 </div>
-                <label class="col-sm-2 control  -label"><?php _e('Notes','cpsmartcrm')?></label>
+                <label class="col-sm-2 control  -label"><?php _e('Anmerkungen','cpsmartcrm')?></label>
                 <div class="col-sm-4">
                     <textarea class="_form-control col-md-12" id="annotazioni" name="annotazioni" rows="5"><?php echo stripslashes($riga["annotazioni"])?></textarea><br />
-                    <small><i>(<?php _e('Will be shown in the document','cpsmartcrm')?>)</i></small>
+                    <small><i>(<?php _e('Wird im Dokument angezeigt','cpsmartcrm')?>)</i></small>
                 </div>
             </div>
             <div class="row form-group">
                 <hr />
-                <label class="col-sm-1 control-label"><?php _e('Payment methods','cpsmartcrm')?></label>
+                <label class="col-sm-1 control-label"><?php _e('Zahlungsarten','cpsmartcrm')?></label>
                 <div class="col-sm-2">
 
                     <select name="modalita_pagamento" id="modalita_pagamento" class="_form-control col-md-12">
-                        <option value="0" <?php if($payment==0) echo "selected"?>><?php _e('Select','cpsmartcrm')?></option>
+                        <option value="0" <?php if($payment==0) echo "selected"?>><?php _e('Wählen','cpsmartcrm')?></option>
                         <?php
 					foreach($arr_payments as $pay)
 					{
@@ -192,7 +192,7 @@ else
                     <?php } ?>
                     </select>
                 </div>
-                <label class="control-label"><?php _e('Payment exp. Date','cpsmartcrm')?></label>
+                <label class="control-label"><?php _e('Zahlung exp. Datum','cpsmartcrm')?></label>
                 <div class="col-sm-2">
                     <input name="data_scadenza" id="data_scadenza" class="_m" data-placement="bottom"  value="<?php echo  $data_scadenza  ?>" style="border:none" />
                 </div>
@@ -200,26 +200,26 @@ else
                 if ($ID)
                 {
                 ?>
-                <label class="control-label" style="margin-left:20px"><?php _e('Paid','cpsmartcrm')?>?</label>
+                <label class="control-label" style="margin-left:20px"><?php _e('Bezahlt','cpsmartcrm')?>?</label>
                 <div class="col-sm-1">
                     <input type="checkbox" name="pagato" value="1" <?php echo $riga["pagato"]?"checked":""?>>
                 </div>
                 <?php
                 }
                 ?>
-                <label class="control-label" style="margin-left:20px"><?php _e('Notify','cpsmartcrm')?>? </label>
+                <label class="control-label" style="margin-left:20px"><?php _e('Benachrichtigen','cpsmartcrm')?>? </label>
                 <div class="col-sm-1">
                     <input type="checkbox" name="notify_payment" id="notify_payment" value="1" <?php echo $riga["notifica_pagamento"] ? "checked" : ""?>>
 					<span class="crmHelp crmHelp-dark" data-help="payment-notification"></span>
                 </div>
             </div>
             <section id="notifications" style="display:none!important">
-                <h4 class="page-header"><?php _e('Credit note payment reminder','cpsmartcrm')?> </h4>
+                <h4 class="page-header"><?php _e('Zahlungserinnerung für die Gutschrift','cpsmartcrm')?> </h4>
 
                 <div class="row form-group">
-                    <label class="col-sm-1"><?php _e('Send to User','cpsmartcrm')?></label><div class="col-sm-2"><input class="ruleActions" id="remindToUser" name="remindToUser" /></div>
-                    <label class="col-sm-1"><?php _e('Send to Group','cpsmartcrm')?></label><div class="col-sm-2"><input class="ruleActions" id="remindToGroup" name="remindToGroup"></div>
-                    <label class="col-sm-1"><?php _e('Days after expiration','cpsmartcrm')?></label><div class="col-sm-2"><input class="ruleActions" id="notificationDays" name="notificationDays" type="number" value="<?php echo $giorni_pagamento?>"><small id="changeNoty"><a href="#" onclick="return false;"><?php _e('Edit default value','cpsmartcrm')?>&raquo;</a></small></div>
+                    <label class="col-sm-1"><?php _e('An Benutzer senden','cpsmartcrm')?></label><div class="col-sm-2"><input class="ruleActions" id="remindToUser" name="remindToUser" /></div>
+                    <label class="col-sm-1"><?php _e('An Gruppe senden','cpsmartcrm')?></label><div class="col-sm-2"><input class="ruleActions" id="remindToGroup" name="remindToGroup"></div>
+                    <label class="col-sm-1"><?php _e('Tage nach Ablauf','cpsmartcrm')?></label><div class="col-sm-2"><input class="ruleActions" id="notificationDays" name="notificationDays" type="number" value="<?php echo $giorni_pagamento?>"><small id="changeNoty"><a href="#" onclick="return false;"><?php _e('Standardwert bearbeiten','cpsmartcrm')?>&raquo;</a></small></div>
                     <input type="hidden" id="selectedUsers" name="selectedUsers" class="ruleActions" value="" />
                     <input type="hidden" id="selectedGroups" name="selectedGroups" class="ruleActions" value="" />
 
@@ -227,7 +227,7 @@ else
             </section>
 
             <h4 class="page-header">
-                <?php _e('CUSTOMER DATA','cpsmartcrm')?><span class="crmHelp" data-help="customer-data"></span>
+                <?php _e('KUNDENDATEN','cpsmartcrm')?><span class="crmHelp" data-help="customer-data"></span>
                 <?php
 			if ($fk_clienti)
 			{
@@ -238,22 +238,22 @@ else
                     <?php if ($ID) {?>
                     <li class="btn _edit _white btn-sm _flat">
                         <i class="glyphicon glyphicon-pencil"></i>
-                        <b> <?php _e('EDIT CUSTOMER DETAILS','cpsmartcrm')?></b>
+                        <b> <?php _e('KUNDENDATEN BEARBEITEN','cpsmartcrm')?></b>
                     </li>
                     <li style="display:none" class="btn btn-danger _quitEdit btn-sm _flat">
                         <i class="glyphicon glyphicon-close"></i>
-                        <b> <?php _e('QUIT EDITING','cpsmartcrm')?></b>
+                        <b> <?php _e('EDITIEREN BEENDEN','cpsmartcrm')?></b>
                     </li>
                     <li class="btn"><i class="_tooltip glyphicon glyphicon-menu-right"></i></li>
-                    <li class="btn btn-info btn-sm _flat btn_todo" style="margin-left:10px" title="<?php _e('NEW TODO','cpsmartcrm')?>">
+                    <li class="btn btn-info btn-sm _flat btn_todo" style="margin-left:10px" title="<?php _e('NEUES TODO','cpsmartcrm')?>">
                         <i class="glyphicon glyphicon-tag"></i>
                         <b> </b>
                     </li>
-                    <li class="btn  btn-sm _flat btn_appuntamento" title="<?php _e('NEW APPOINTMENT','cpsmartcrm')?>">
+                    <li class="btn  btn-sm _flat btn_appuntamento" title="<?php _e('NEUER TERMIN','cpsmartcrm')?>">
                         <i class="glyphicon glyphicon-pushpin"></i>
                         <b> </b>
                     </li>
-                    <li class="btn btn-primary btn-sm _flat btn_activity" title="<?php _e('NEW ANNOTATION','cpsmartcrm')?>">
+                    <li class="btn btn-primary btn-sm _flat btn_activity" title="<?php _e('NEUE ANMERKUNG','cpsmartcrm')?>">
                         <i class="glyphicon glyphicon-option-horizontal"></i>
                         <b> </b>
                     </li>
@@ -265,7 +265,7 @@ else
             <div class="customer_data_partial" data-customer="<?php echo $fk_clienti?>">
                 <input type="hidden" id="tipo_cliente" name="tipo_cliente" value="<?php echo $tipo_cliente?>" data-value="<?php echo $tipo_cliente?>" />
                 <div class="row form-group">
-                    <label class="col-sm-1 control-label"><?php _e('Customer','cpsmartcrm')?></label>
+                    <label class="col-sm-1 control-label"><?php _e('Kunde','cpsmartcrm')?></label>
                     <div class="col-sm-3">
                         <?php
 						if ($fk_clienti)
@@ -284,17 +284,17 @@ else
             
                     </div>-->
                     <div class="col-sm-2">
-                        <input type="button" class="btn btn-sm btn-success _flat" id="save_client_data" name="save_client_data" value="<?php _e('Save','cpsmartcrm')?>" style="display:none" />
+                        <input type="button" class="btn btn-sm btn-success _flat" id="save_client_data" name="save_client_data" value="<?php _e('Speichern','cpsmartcrm')?>" style="display:none" />
                     </div>
                 </div>
                 <div class="row form-group">
-                    <label class="col-sm-1 control-label"><?php _e('Address','cpsmartcrm')?></label>
+                    <label class="col-sm-1 control-label"><?php _e('Addresse','cpsmartcrm')?></label>
                     <div class="col-sm-3">
 
                         <input type="text" class="form-control _editable" name="indirizzo" id="indirizzo" maxlength='50' value="<?php echo $indirizzo?>" <?php echo $disabled?> data-value="<?php echo $indirizzo?>" />
 
                     </div>
-                    <label class="col-sm-1 control-label"><?php _e('ZIP code','cpsmartcrm')?></label>
+                    <label class="col-sm-1 control-label"><?php _e('Postleitzahl','cpsmartcrm')?></label>
                     <div class="col-sm-2">
 
                         <input type="text" class="form-control _editable" name="cap" id="cap" maxlength='10' value="<?php echo $cap?>" <?php echo $disabled?> data-value="<?php echo $cap?>">
@@ -307,26 +307,26 @@ else
 
                 </div>
                 <div class="row form-group">
-                    <label class="col-sm-1 control-label"><?php _e('Town','cpsmartcrm')?></label>
+                    <label class="col-sm-1 control-label"><?php _e('Stadt','cpsmartcrm')?></label>
                     <div class="col-sm-3">
 
                         <input type="text" class="form-control _editable" name="localita" id="localita" maxlength='50' value="<?php echo $localita?>" <?php echo $disabled?> data-value="<?php echo $localita?>">
 
                     </div>
-                    <label class="col-sm-1 control-label"><?php _e('State/Prov.','cpsmartcrm')?></label>
+                    <label class="col-sm-1 control-label"><?php _e('Staat/Prov.','cpsmartcrm')?></label>
                     <div class="col-sm-2">
 
                         <input type="text" class="form-control _editable" name="provincia" id="provincia" maxlength='5' value="<?php echo $provincia?>" <?php echo $disabled?> data-value="<?php echo $provincia?>">
 
                     </div>
-                    <label class="col-sm-1 control-label"><?php _e('VAT code','cpsmartcrm')?></label>
+                    <label class="col-sm-1 control-label"><?php _e('MwSt.-Code','cpsmartcrm')?></label>
                     <div class="col-md-2">
                         <input type="text" class="form-control _editable" name="p_iva" id="p_iva" maxlength='5' value="<?php echo $p_iva?>" <?php echo $disabled?> data-value="<?php echo $p_iva?>">
                     </div>
 
                 </div>
             </div>
-            <h4 class="page-header"><?php _e('Add Products to credit note','cpsmartcrm')?><span class="crmHelp" data-help="invoice-products"></span>
+            <h4 class="page-header"><?php _e('Produkte zur Gutschrift hinzufügen','cpsmartcrm')?><span class="crmHelp" data-help="invoice-products"></span>
 
 				<?php do_action("WPsCRM_show_WOO_products");?>
 				
@@ -360,7 +360,7 @@ else
         <!-- inizio secondo tab -->
         <div>
             <div class="row form-group">
-                <label class="col-sm-2 control-label"><?php _e('Comments','cpsmartcrm')?></label>
+                <label class="col-sm-2 control-label"><?php _e('Kommentare','cpsmartcrm')?></label>
                 <div class="col-sm-6">
                     <textarea class="_form-control" id="commento" name="commento" rows="10" cols="50"><?php echo stripslashes($riga["commento"])?></textarea>
                 </div>
@@ -373,11 +373,11 @@ else
     <ul class="select-action">
         <li class="btn btn-sm btn-success _flat" id="_submit">
             <i class="glyphicon glyphicon-floppy-disk"></i>
-            <b> <?php _e('Save','cpsmartcrm')?></b>
+            <b> <?php _e('Speichern','cpsmartcrm')?></b>
         </li>
         <li class="btn btn-warning btn-sm _flat" onClick="annulla();return false;">
             <i class="glyphicon glyphicon-floppy-remove"></i>
-            <b> <?php _e('Reset','cpsmartcrm')?></b>
+            <b> <?php _e('Zurücksetzen','cpsmartcrm')?></b>
         </li>
         <?php
 	if ($ID)
@@ -387,7 +387,7 @@ else
         ?>
         <li class="btn btn-sm btn-info _flat" onclick="location.replace('?page=smart-crm&p=documenti/document_print.php&id_invoice=<?php echo $ID?>')">
             <i class="glyphicon glyphicon-print"></i>
-            <b> <?php _e('Printable version','cpsmartcrm')?></b>
+            <b> <?php _e('Druckbare Version','cpsmartcrm')?></b>
         </li>
         <?php
 	}
@@ -397,12 +397,12 @@ else
 <div id="dialog-view" style="display:none;margin: 0 auto; text-align: center; z-index: 1000; width: 100%; height: 100%; background: url('<?php echo str_replace("inc/crm/documenti/","",plugin_dir_url( __FILE__ ))?>css/img/bg_w_tr.png');position: absolute;left: 0;top:0;"  class="_modal" data-from="documenti">
     <div class="col-md-6 panel panel-primary _flat modal_inner" style="border:1px solid #666;text-align:left;background:#fff;padding-bottom:20px;margin: 46px auto;float: none;padding:0;position:relative">
     <div class="panel-heading" style="padding: 3px 10px;">
-        <h3 style="text-align:center;margin-top: 8px;"><?php _e('Change default days','cpsmartcrm')?><span class="crmHelp" data-help="deafult-invoice-payment-noty"></span></h3>
+        <h3 style="text-align:center;margin-top: 8px;"><?php _e('Standardtage ändern','cpsmartcrm')?><span class="crmHelp" data-help="deafult-invoice-payment-noty"></span></h3>
     </div>
     <div class="panel-body" style="padding:50px">
-        <label><?php  _e('Change default value','cpsmartcrm')?></label><input class="ruleActions" name="new_default_noty" id="new_default_noty" type="number" value="<?php echo $documentOptions['invoice_noty_days']?>">
-        <span class="btn btn-success btn-sm _flat" id="notyConfirm"><?php _e('Confirm','cpsmartcrm')?></span>
-        <span class="btn btn-warning btn-sm _flat _reset" ><?php _e('Reset','cpsmartcrm')?></span>
+        <label><?php  _e('Standardwert ändern','cpsmartcrm')?></label><input class="ruleActions" name="new_default_noty" id="new_default_noty" type="number" value="<?php echo $documentOptions['invoice_noty_days']?>">
+        <span class="btn btn-success btn-sm _flat" id="notyConfirm"><?php _e('Bestätigen','cpsmartcrm')?></span>
+        <span class="btn btn-warning btn-sm _flat _reset" ><?php _e('Zurücksetzen','cpsmartcrm')?></span>
     </div>
     </div>
 </div>
@@ -444,13 +444,13 @@ else
 </style>
 <div id="reverseCalculator">
 	<div class="col-md-11">
-		<label><?php _e('Input full amount for reverse calculation:','cpsmartcrm') ?></label><input class="form-control" type="number" id="reverseAmount" />
+		<label><?php _e('Gib den vollen Betrag für die umgekehrte Berechnung ein:','cpsmartcrm') ?></label><input class="form-control" type="number" id="reverseAmount" />
 	</div>
     <div class="col-md-11">
-        <label><?php _e('Input refund for reverse calculation:','cpsmartcrm') ?></label><input class="form-control" type="number" id="reverseRefund" />
+        <label><?php _e('Eingabe der Erstattung für die umgekehrte Berechnung:','cpsmartcrm') ?></label><input class="form-control" type="number" id="reverseRefund" />
     </div>
     <div class="col-md-11"><br />
-        <input class="btn _flat btn-success" type="button" id="calculate" value="<?php _e('Calculate:','cpsmartcrm') ?>" />
+        <input class="btn _flat btn-success" type="button" id="calculate" value="<?php _e('Berechnung:','cpsmartcrm') ?>" />
     </div>
 </div>
 <script type="text/javascript">
@@ -459,7 +459,7 @@ else
 		$('#reverseCalculator').kendoWindow({
 		width: "400px",
 		height: "300px",
-		title: "<?php _e('Calculate from full amount:','cpsmartcrm') ?>",
+		title: "<?php _e('Aus Gesamtmenge berechnen:','cpsmartcrm') ?>",
 		visible: false,
 		modal: true,
 		draggable: false,
@@ -487,13 +487,13 @@ else
 			}
 		},
 		position:"top",
-    	content: "<h4><?php _e('BUTTONS LEGEND','cpsmartcrm')?>:</h4>\n\
+    	content: "<h4><?php _e('TASTEN-LEGENDE','cpsmartcrm')?>:</h4>\n\
 	<ul>\n\
 		<li class=\"no-link\">\n\
-			<span class=\"btn btn-info _flat\"><i class=\"glyphicon glyphicon-tag\"></i> = <?php _e('NEW TODO','cpsmartcrm')?></span>\n\
-			<span class=\"btn btn_appuntamento_1 _flat\"><i class=\"glyphicon glyphicon-pushpin\"></i> = <?php _e('NEW APPOINTMENT','cpsmartcrm')?></span>\n\
-			<span class=\"btn btn-primary _flat\"><i class=\"glyphicon glyphicon-option-horizontal\"></i> = <?php _e('NEW ACTIVITY','cpsmartcrm')?></span>\n\
-			<span class=\"btn btn-warning _flat\"><i class=\"glyphicon glyphicon-envelope\"></i> = <?php _e('NEW MAIL','cpsmartcrm')?></span>\n\
+			<span class=\"btn btn-info _flat\"><i class=\"glyphicon glyphicon-tag\"></i> = <?php _e('NEUES TODONEUES TODO','cpsmartcrm')?></span>\n\
+			<span class=\"btn btn_appuntamento_1 _flat\"><i class=\"glyphicon glyphicon-pushpin\"></i> = <?php _e('NEUER TERMIN','cpsmartcrm')?></span>\n\
+			<span class=\"btn btn-primary _flat\"><i class=\"glyphicon glyphicon-option-horizontal\"></i> = <?php _e('NEUE AKTIVITÄT','cpsmartcrm')?></span>\n\
+			<span class=\"btn btn-warning _flat\"><i class=\"glyphicon glyphicon-envelope\"></i> = <?php _e('NEUE MAIL','cpsmartcrm')?></span>\n\
 		</li>\n\
 	</ul>"
     });
@@ -559,11 +559,11 @@ else
 				}
 			},
 			messages: {
-				//hasExpiration: "<?php _e('You should select an expiration date; select today for a non-relevant ','cpsmartcrm')?>",
-				hasNoty: "<?php _e('You should select a user or a group of users to notify to','cpsmartcrm')?>",
-				hasClient: "<?php _e('You should select a customer','cpsmartcrm')?>",
-				hasRows: "<?php _e('You should add at least one row to this invoice','cpsmartcrm')?>",
-				hasDescription:"<?php _e('Description is mandatory','cpsmartcrm')?>"
+				//hasExpiration: "<?php _e('Du solltest ein Ablaufdatum auswählen; Wähle heute für eine nicht relevante aus ','cpsmartcrm')?>",
+				hasNoty: "<?php _e('Du solltest einen Benutzer oder eine Gruppe von Benutzern auswählen, die benachrichtigt werden sollen','cpsmartcrm')?>",
+				hasClient: "<?php _e('Du solltest einen Kunden auswählen','cpsmartcrm')?>",
+				hasRows: "<?php _e('Du solltest dieser Rechnung mindestens eine Zeile hinzufügen','cpsmartcrm')?>",
+				hasDescription:"<?php _e('Beschreibung ist obligatorisch','cpsmartcrm')?>"
 			}
 		}).data("kendoValidator");
 
@@ -598,7 +598,7 @@ else
 				}
 			},
 			messages: {
-				hasClient: "<?php _e('You should select a customer','cpsmartcrm')?>",
+				hasClient: "<?php _e('Du solltest einen Kunden auswählen','cpsmartcrm')?>",
 			}
 		}).data("kendoValidator");
 
@@ -698,7 +698,7 @@ else
 			$('._editable').attr('readonly', false).attr('disabled', false);
 			$('#_submit').css('visibility', 'hidden');
 			$('#save_client_data').show();
-			$('#save_client_data').parent().append("<br><small class=\"_notice notice notice-error \"><?php _e("You're editing the master data for this customer",'cpsmartcrm')?></small>")
+			$('#save_client_data').parent().append("<br><small class=\"_notice notice notice-error \"><?php _e("Du bearbeitest die Stammdaten für diesen Kunden",'cpsmartcrm')?></small>")
 			$('.customer_data_partial').addClass('edit_active');
 		});
 
@@ -731,7 +731,7 @@ else
 				success: function (result) {
 					console.log(result);
 					noty({
-						text: "<?php _e('Data has been saved','cpsmartcrm')?>",
+						text: "<?php _e('Daten wurden gespeichert','cpsmartcrm')?>",
 						layout: 'center',
 						type: 'success',
 						template: '<div class="noty_message"><span class="noty_text"></span></div>',
@@ -779,7 +779,7 @@ else
   });
 
   var clienti=$('#fk_clienti').kendoDropDownList({
-      placeholder: "<?php _e('Select Customer','cpsmartcrm')?>...",
+      placeholder: "<?php _e('Wähle Kunde aus','cpsmartcrm')?>...",
       dataTextField: "ragione_sociale",
       dataValueField: "ID_clienti",
       filter: "contains",
@@ -861,7 +861,7 @@ else
       }
   });
   $('#remindToUser').kendoMultiSelect({
-      placeholder: "<?php _e('Select User','cpsmartcrm')?>...",
+      placeholder: "<?php _e('Benutzer wählen','cpsmartcrm')?>...",
       dataTextField: "display_name",
       dataValueField: "ID",
       autoBind: false,
@@ -877,7 +877,7 @@ else
   })
 
   $('#remindToGroup').kendoMultiSelect({
-      placeholder: "<?php _e('Select Role','cpsmartcrm')?>...",
+      placeholder: "<?php _e('Wähle Rolle aus','cpsmartcrm')?>...",
       dataTextField: "name",
       dataValueField: "role",
       autoBind: false,
@@ -949,7 +949,7 @@ else
 	            if (isNaN(result) == false) {
 	                $('#notificationDays').val(result);
 	                noty({
-	                    text: "<?php _e('Option Saved','cpsmartcrm')?>",
+	                    text: "<?php _e('Option gespeichert','cpsmartcrm')?>",
 	                    layout: 'center',
 	                    type: 'success',
 	                    template: '<div class="noty_message"><span class="noty_text"></span><span class="noty_close glyphicons gypicons-close"></span></div>',
@@ -959,7 +959,7 @@ else
 	            }
 	            else {
 	                noty({
-	                    text: "<?php _e('An error occurred','cpsmartcrm')?>",
+	                    text: "<?php _e('Ein Fehler ist aufgetreten','cpsmartcrm')?>",
 	                    layout: 'center',
 	                    type: 'error',
 	                    template: '<div class="noty_message"><span class="noty_text"></span><span class="noty_close glyphicons gypicons-close"></span></div>',

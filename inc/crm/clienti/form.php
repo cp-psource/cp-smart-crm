@@ -596,7 +596,7 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
 			if ($ID){
             ?>
             <li id="tab2"><?php _e('Kontakte','cpsmartcrm')?></li>
-            <li id="tab3"><?php _e('Anmerkungen','cpsmartcrm')?></li>
+            <li id="tab3"><?php _e('Angeboten','cpsmartcrm')?></li>
             <li id="tab4"><?php _e('Zusammenfassung','cpsmartcrm')?></li>
             <?php 
 				do_action('WPsCRM_add_tabs_to_customer_form');
@@ -882,7 +882,7 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
         <!--TAB 3 -->
 
         <div>
-            <!--<h2 style="text-align:center"><?php _e('Anmerkungen','cpsmartcrm')?></h2>-->
+            <!--<h2 style="text-align:center"><?php _e('Angeboten','cpsmartcrm')?></h2>-->
             <div style="min-height: 200px">
                 <div id="annotation">
                     <h3 style="text-align:center"><?php _e('Notizen-Zeitleiste','cpsmartcrm')?> 

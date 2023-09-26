@@ -1021,15 +1021,15 @@ class CRM_Options_Settings{
                             <div>
                                 <div class="col-md-10">
                                     <label class="col-md-10">
-                                        <?php _e('Anmerkunge Präfix','cpsmartcrm')?>
+                                        <?php _e('Angebote Präfix','cpsmartcrm')?>
                                     </label>
                                     <input class="col-md-10" type="text" id="offers_prefix" name="<?php echo $this->documents_settings_key ?>[offers_prefix]" value="<?php echo isset( $document_options['offers_prefix']) ? $document_options['offers_prefix'] : null?>" />
                                     <label class="col-md-10">
-                                        <?php _e('Anmerkunge Suffix','cpsmartcrm')?>
+                                        <?php _e('Angebote Suffix','cpsmartcrm')?>
                                     </label>
                                     <input class="col-md-10" type="text" id="offers_suffix" name="<?php echo $this->documents_settings_key ?>[offers_suffix]" value="<?php echo isset( $document_options['offers_suffix']) ? $document_options['offers_suffix'] : null?>" />
                                     <label class="col-md-10">
-                                        <?php _e('Anmerkunge letzter Einsatz','cpsmartcrm')?>
+                                        <?php _e('Angebote letzter Einsatz','cpsmartcrm')?>
                                     </label>
                                     <input class="col-md-10" type="number" min="0" id="offers_start" name="<?php echo $this->documents_settings_key ?>[offers_start]" value="<?php echo isset( $document_options['offers_start']) ? $document_options['offers_start'] : null?>" />
 
@@ -1323,11 +1323,11 @@ class CRM_Options_Settings{
                             <input type="text" id="crm_offers_dear" name="<?php echo $this->documents_settings_key ?>[offers_dear]" value="<?php echo  isset( $document_options['offers_dear'] ) ? $document_options['offers_dear'] : null?>" class="form-control _m"/>
                         </div>
                         <div class="item">
-                            <label><?php _e('Anmerkunge vor dem Text','cpsmartcrm')?></label>
+                            <label><?php _e('Angebote vor dem Text','cpsmartcrm')?></label>
                             <textarea id="crm_offers_before" name="<?php echo $this->documents_settings_key ?>[offers_before]" class="_m" style="width:96%"><?php echo isset($document_options['offers_before'] ) ? $document_options['offers_before']: null ?></textarea>
                         </div>
                         <div class="item">
-                            <label><?php _e('Anmerkunge nach dem Text','cpsmartcrm')?></label>
+                            <label><?php _e('Angebote nach dem Text','cpsmartcrm')?></label>
                             <textarea id="crm_offers_after" name="<?php echo $this->documents_settings_key ?>[offers_after]" class="_m" style="width:96%"><?php echo isset($document_options['offers_after'] ) ? $document_options['offers_after'] : null ?></textarea>
                         </div>
                     </div>

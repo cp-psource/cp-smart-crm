@@ -1671,7 +1671,7 @@ msgstr ""
 #: inc/crm/documenti/form_invoice.php:124
 #: inc/crm/documenti/form_invoice_informal.php:131
 #: inc/crm/documenti/form_quotation.php:102
-msgid "COMMENTS AND INTERNAL DATA"
+msgid "KOMMENTARE UND INTERNE DATEN"
 msgstr ""
 
 #: inc/crm/documenti/form_credit_note.php:133
@@ -1773,7 +1773,7 @@ msgstr ""
 #: inc/crm/documenti/form_invoice.php:229
 #: inc/crm/documenti/form_invoice_informal.php:232
 #: inc/crm/documenti/form_quotation.php:138
-msgid "CUSTOMER DATA"
+msgid "KUNDENDATEN"
 msgstr ""
 
 #: inc/crm/documenti/form_credit_note.php:241
@@ -2001,7 +2001,7 @@ msgid "WARNING: you're working on an INFORMAL INVOICE"
 msgstr ""
 
 #: inc/crm/documenti/form_quotation.php:92
-msgid "CREATE/EDIT QUOTE"
+msgid "ANGEBOT ERSTELLEN/BEARBEITEN"
 msgstr ""
 
 #: inc/crm/documenti/form_quotation.php:95
@@ -2017,7 +2017,7 @@ msgid "SERVICES/PRODUCTS"
 msgstr ""
 
 #: inc/crm/documenti/form_quotation.php:107
-msgid "DOCUMENT DATA"
+msgid "DOKUMENTENDATEN"
 msgstr ""
 
 #: inc/crm/documenti/form_quotation.php:117
@@ -2030,7 +2030,7 @@ msgid "Accepted"
 msgstr ""
 
 #: inc/crm/documenti/form_quotation.php:238
-msgid "QUOTE TEXT"
+msgid "ANGEBOT TEXT"
 msgstr ""
 
 #: inc/crm/documenti/form_quotation.php:253

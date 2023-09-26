@@ -210,7 +210,7 @@ if ( in_array( 'wp-smart-crm-agents/wp-smart-crm-agents.php', apply_filters( 'ac
             </div>
         </div>
         <div class="row" style="padding-left:0">
-            <label for="esito" class="col-md-1"><?php _e('Anmerkungen','cpsmartcrm') ?></label>
+            <label for="esito" class="col-md-1"><?php _e('Angeboten','cpsmartcrm') ?></label>
             <div data-container-for="esito" class="k-edit-field">
                 <textarea class="k-textbox" cols="20" data-bind="value:esito" id="esito" name="esito" rows="2"></textarea>
             </div>

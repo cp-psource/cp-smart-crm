@@ -133,7 +133,7 @@ else
     <div id="tabstrip">
         <ul>
             <li id="tab1"><?php _e('INVOICE','cpsmartcrm')?></li>
-            <li onclick="aggiornatot();"><?php _e('COMMENTS AND INTERNAL DATA','cpsmartcrm')?></li>
+            <li onclick="aggiornatot();"><?php _e('KOMMENTARE UND INTERNE DATEN','cpsmartcrm')?></li>
         </ul>
         <div>
             <h4 class="page-header" style="margin: 10px 0 20px;">
@@ -234,7 +234,7 @@ else
             </section>
 
             <h4 class="page-header">
-                <?php _e('CUSTOMER DATA','cpsmartcrm')?><span class="crmHelp" data-help="customer-data"></span>
+                <?php _e('KUNDENDATEN','cpsmartcrm')?><span class="crmHelp" data-help="customer-data"></span>
                 <?php
 			if (isset($fk_clienti))
 			{

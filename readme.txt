@@ -39,7 +39,7 @@ Verwaltung von Rechnungen/Angeboten
 - Benutzerdefinierte Ausrichtung der Kopfelemente in der PDF-Vorlage
 - Konfigurierbare Fälligkeitsdaten für Zahlungen
 - Benachrichtigung bei Ablauf der Zahlung
-- Interne Kommentare und Anmerkungen
+- Interne Kommentare und Angeboten
 - Benutzerdefinierte Canvas-Signatur im Angebot (Touch-kompatibel)
 - Registrierung von Rechnungen
 - Benutzerdefinierter Startwert für die Nummerierung (Sie können zu jedem beliebigen Zeitpunkt des Jahres mit einer von 1 abweichenden Startnummer beginnen, in Übereinstimmung mit Ihrer Buchhaltung)

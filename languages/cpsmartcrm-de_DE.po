@@ -1835,7 +1835,7 @@ msgstr "Gutschrift"
 #: inc/crm/documenti/form_invoice_informal.php:131
 #: inc/crm/documenti/form_quotation.php:102
 #, fuzzy
-msgid "COMMENTS AND INTERNAL DATA"
+msgid "KOMMENTARE UND INTERNE DATEN"
 msgstr "KOMMENTARE UND INTERNE DATEN"
 
 #: inc/crm/documenti/form_credit_note.php:133
@@ -1947,7 +1947,7 @@ msgstr "Standardwert bearbeiten"
 #: inc/crm/documenti/form_invoice_informal.php:232
 #: inc/crm/documenti/form_quotation.php:138
 #, fuzzy
-msgid "CUSTOMER DATA"
+msgid "KUNDENDATEN"
 msgstr "KUNDENDATEN"
 
 #: inc/crm/documenti/form_credit_note.php:241
@@ -2200,7 +2200,7 @@ msgstr "WARNUNG: Du arbeitest an einer INFORMELLEN RECHNUNG"
 
 #: inc/crm/documenti/form_quotation.php:92
 #, fuzzy
-msgid "CREATE/EDIT QUOTE"
+msgid "ANGEBOT ERSTELLEN/BEARBEITEN"
 msgstr "ANGEBOT ERSTELLEN/BEARBEITEN"
 
 #: inc/crm/documenti/form_quotation.php:95
@@ -2218,7 +2218,7 @@ msgstr "DIENSTLEISTUNGEN/PRODUKTE"
 
 #: inc/crm/documenti/form_quotation.php:107
 #, fuzzy
-msgid "DOCUMENT DATA"
+msgid "DOKUMENTENDATEN"
 msgstr "DOKUMENTENDATEN"
 
 #: inc/crm/documenti/form_quotation.php:117
@@ -2232,8 +2232,8 @@ msgstr "Akzeptiert"
 
 #: inc/crm/documenti/form_quotation.php:238
 #, fuzzy
-msgid "QUOTE TEXT"
-msgstr "QUOTE TEXT"
+msgid "ANGEBOT TEXT"
+msgstr "ANGEBOT TEXT"
 
 #: inc/crm/documenti/form_quotation.php:253
 #, fuzzy

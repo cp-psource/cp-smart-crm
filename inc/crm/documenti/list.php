@@ -48,7 +48,7 @@ if ( in_array( 'wp-smart-crm-accountability/wp-smart-crm-accountability.php', ap
 		<li class="no-link" style="margin-top:4px">
 			<?php _e('Registered invoices (underlined) cannot be edited or deleted.','cpsmartcrm')?>
 			<i class="glyphicon glyphicon-fire"></i>= <?php _e('Invoice','cpsmartcrm')?>
-			<i class="glyphicon glyphicon-send"></i>= <?php _e('Quote','cpsmartcrm')?>
+			<i class="glyphicon glyphicon-send"></i>= <?php _e('Angebot','cpsmartcrm')?>
 		</li>
 	</span>
 </ul>
@@ -344,7 +344,7 @@ if ( in_array( 'wp-smart-crm-accountability/wp-smart-crm-accountability.php', ap
 		<li class="no-link" style="margin-top:4px">
 			<?php _e('Registered invoices (underlined) cannot be edited or deleted.','cpsmartcrm')?>
 			<i class="glyphicon glyphicon-fire"></i>= <?php _e('Invoice','cpsmartcrm')?>
-			<i class="glyphicon glyphicon-send"></i>= <?php _e('Quote','cpsmartcrm')?>
+			<i class="glyphicon glyphicon-send"></i>= <?php _e('Angebot','cpsmartcrm')?>
 		</li>
 	</span>
 </ul>

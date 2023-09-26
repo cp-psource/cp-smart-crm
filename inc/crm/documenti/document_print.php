@@ -73,7 +73,7 @@ if ($ID)
 	{
 		case 1:
 			$progressivo=$riga["progressivo"];
-			$document_name=__("Quote",'cpsmartcrm');
+			$document_name=__("Angebot",'cpsmartcrm');
 			$text_before=$document_messages['offers_before'];
 			$text_after=$document_messages['offers_after'];
 			$document_prefix=$document_numbering['offers_prefix'];

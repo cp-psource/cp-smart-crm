@@ -89,7 +89,7 @@ else
     else
     {
         $data=WPsCRM_culture_date_format(date("d-m-Y") );
-      //  $oggetto=__("Quote","cpsmartcrm");
+      //  $oggetto=__("Angebot","cpsmartcrm");
         $iva=$documentOptions['default_vat'];
         $tempi_chiusura_dal=WPsCRM_culture_date_format(date("d-m-Y") );
         $FK_clienti=0;

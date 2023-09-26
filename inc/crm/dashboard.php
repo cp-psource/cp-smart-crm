@@ -442,7 +442,7 @@ $page="dashboard";
 		<i class="glyphicon glyphicon-circle-arrow-right"></i>
 		<br />
 		<b>
-			<?php _e('Neue Anmerkung','cpsmartcrm')?>
+			<?php _e('Neues Angebot','cpsmartcrm')?>
 			<small></small>
 		</b>
 	</li>

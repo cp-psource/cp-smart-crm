@@ -112,7 +112,7 @@ $current_user = wp_get_current_user();
 		    <li role="presentation" <?php echo strstr($menu,"documenti") ? "class=\"active\"" :null  ?>>
 				<a href="<?php echo admin_url('admin.php?page=smart-crm&p=documenti/form_quotation.php')?>">
 					<i class="glyphicon  glyphicon-send"></i>
-				<?php _e('NEUE ANMERKUNG','cpsmartcrm') ?>&raquo;
+				<?php _e('NEUES ANGEBOT','cpsmartcrm') ?>&raquo;
 				</a>
 		    </li>
 

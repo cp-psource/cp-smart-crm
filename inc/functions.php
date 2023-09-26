@@ -2396,7 +2396,7 @@ function WPsCRM_view_activity_modal() {
   $html .= '></td>
     </tr>
     <tr>
-	    <td>' . __('Anmerkungen', 'cpsmartcrm') . '</td>
+	    <td>' . __('Angebote', 'cpsmartcrm') . '</td>
 	    <td colspan="2" style="padding-top:20px"><textarea rows="3" cols="50" name="esito" id="esito" ';
   $report == "false" ? $html .= " readonly" : $html .= "";
   $html .= '>' . stripslashes($riga->esito) . '</textarea></td>
@@ -3230,7 +3230,7 @@ function WPsCRM_generate_document_HTML($ID) {
     switch ($tipo = $riga["tipo"]) {
       case 1:
         $progressivo = $riga["progressivo"];
-        $document_name = __("Anmerkung", 'cpsmartcrm');
+        $document_name = __("Angebot", 'cpsmartcrm');
         $text_before = $document_messages['offers_before'];
         $text_after = $document_messages['offers_after'];
         $document_prefix = $document_numbering['offers_prefix'];
@@ -3362,7 +3362,7 @@ function WPsCRM_generate_document_HTML($ID) {
   if ($pagamento)
     $tab_cond .= "<tr style=\"background:transparent!important\"><td style=\"background:transparent!important\">" . __("Zahlung", 'cpsmartcrm') . ":</td><td>" . $pagamento . "</td></tr>";
   if ($riga["annotazioni"])
-    $tab_cond .= "<tr style=\"background:transparent!important\"><td style=\"background:transparent!important\">" . __("Anmerkungen", 'cpsmartcrm') . ":</td><td style='font-size:.9em;font-style:italic'>" . stripslashes($riga["annotazioni"]) . "ddd</td></tr>
+    $tab_cond .= "<tr style=\"background:transparent!important\"><td style=\"background:transparent!important\">" . __("Angebote", 'cpsmartcrm') . ":</td><td style='font-size:.9em;font-style:italic'>" . stripslashes($riga["annotazioni"]) . "ddd</td></tr>
 	";
   $doc_body .= $t_articoli;
   //if ($tab_tot && $tipo==2)
@@ -3560,7 +3560,7 @@ function _WPsCRM_generate_document_HTML($ID) {
     switch ($tipo = $riga["tipo"]) {
       case 1:
         $progressivo = $riga["progressivo"];
-        $document_name = __("Anmerkung", 'cpsmartcrm');
+        $document_name = __("Angebot", 'cpsmartcrm');
         $text_before = $document_messages['offers_before'];
         $text_after = $document_messages['offers_after'];
         $document_prefix = $document_numbering['offers_prefix'];
@@ -3670,7 +3670,7 @@ function _WPsCRM_generate_document_HTML($ID) {
   if ($pagamento)
     $tab_cond .= "<tr style=\"background:transparent!important\"><td style=\"background:transparent!important\">" . __("Zahlung", 'cpsmartcrm') . ":</td><td>" . $pagamento . "</td></tr>";
   if ($riga["annotazioni"])
-    $tab_cond .= "<tr style=\"background:transparent!important\"><td colspan='1' style=\"background:transparent!important\">" . __("Anmerkungen", 'cpsmartcrm') . ":</td><td colspan='1' style='font-size:.9em;font-style:italic'>" . stripslashes($riga["annotazioni"]) . "</td></tr>
+    $tab_cond .= "<tr style=\"background:transparent!important\"><td colspan='1' style=\"background:transparent!important\">" . __("Angebote", 'cpsmartcrm') . ":</td><td colspan='1' style='font-size:.9em;font-style:italic'>" . stripslashes($riga["annotazioni"]) . "</td></tr>
 	";
   $doc_body .= $t_articoli;
   //if ($tab_tot && $tipo==2)

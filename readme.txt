@@ -1,4 +1,4 @@
-﻿=== CP smart CRM ===
+﻿=== CP Smart CRM ===
 
 Contributors: DerN3rd
 Tags: crm, invoices, todo
@@ -8,60 +8,60 @@ Stable tag: 1.5.17
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
  
-CP smart CRM adds a powerful CRM with many functions to wp-admin. 
-Manage Customers, Invoices, TODO, Appointments and Notifications.
+CP Smart CRM erweitert Classic/WordPress um ein leistungsstarkes CRM mit vielen Funktionen. Verwalte Kunden, Rechnungen, TODO, Termine und Benachrichtigungen.
 
 == Description ==
 
 
-CP smart CRM covers lots of "office management features". 
+CP Smart CRM deckt eine Vielzahl von "Büroverwaltungsfunktionen" ab. 
 
-CRM management: 
+CRM-Verwaltung: 
 
-- Customers archive grid
-- "CRM agent" custom role
-- Todo and appointments scheduler
-- Annotation timeline
-- TODO / appointment Status update
-- Notification system ( email and dashboard )
-- Notification to single user(s)
-- Notification to specific WP role(s)
-- Custom notification rules
-- Successive notification steps ( for mid/long term expiring services )
-- Customers CSV import 
-
-
-INVOICES /QUOTATION management
-
-- Dynamic creation of invoices/quotation with multi-line products
-- Invoices/quotation creation in .pdf format
-- Download PDF and save on the server
-- Custom LOGO
-- Custom header elements alignment in pdf template
-- Configurable payment expiring dates
-- Notification at payment expiration
-- Internal comments and annotation
-- Custom canvas signature in quotation ( touch compatible )
-- Invoices registration
-- Custom numbering start value ( you can start to use it at any point of the year giving a starting number different from 1, conforming to your fiscal accounting )
+- Kundenarchiv-Raster
+- Benutzerdefinierte Rolle "CRM-Agent
+- Terminplaner für Aufgaben und Termine
+- Zeitleiste für Notizen
+- TODO / Termin Status Update
+- Benachrichtigungssystem (E-Mail und Dashboard)
+- Benachrichtigung an einzelne Benutzer(innen)
+- Benachrichtigung an bestimmte WP-Rolle(n)
+- Benutzerdefinierte Benachrichtigungsregeln
+- Aufeinanderfolgende Benachrichtigungsschritte (für mittel-/langfristig auslaufende Dienstleistungen)
+- Kunden CSV-Import 
 
 
-All the records in grids are powered with filtering/grouping/sorting functions for a quick usage.
+Verwaltung von Rechnungen/Angeboten
 
-All the grids information are visually enhanced with icon/colors to always guarantee a quick overview
+- Dynamische Erstellung von Rechnungen/Angeboten mit mehrzeiligen Produkten
+- Erstellung von Rechnungen/Angeboten im .pdf-Format
+- PDF herunterladen und auf dem Server speichern
+- Benutzerdefiniertes LOGO
+- Benutzerdefinierte Ausrichtung der Kopfelemente in der PDF-Vorlage
+- Konfigurierbare Fälligkeitsdaten für Zahlungen
+- Benachrichtigung bei Ablauf der Zahlung
+- Interne Kommentare und Anmerkungen
+- Benutzerdefinierte Canvas-Signatur im Angebot (Touch-kompatibel)
+- Registrierung von Rechnungen
+- Benutzerdefinierter Startwert für die Nummerierung (Sie können zu jedem beliebigen Zeitpunkt des Jahres mit einer von 1 abweichenden Startnummer beginnen, in Übereinstimmung mit Ihrer Buchhaltung)
 
-If you want to send us feedback use the support forum, if you want to partecipate to its translation in more languages, drop us a note info [at] smart-cms.smart-cms.n3rds.work/
-Important: if you change .mo/.po files in the plugin "languages" folder, you may lose your changes in next update. To prevent this, copy your .mo/.po files in "/wp-content/languages/plugins" folder.
+
+Alle Datensätze in den Rastern sind mit Filter-/Gruppierungs-/Sortierfunktionen für eine schnelle Nutzung ausgestattet.
+
+Alle Informationen in den Rastern sind mit Symbolen/Farben visuell aufgewertet, um immer einen schnellen Überblick zu gewährleisten.
+
+Wenn Sie uns Feedback schicken möchten, benutzen Sie das Support-Forum, wenn Sie an der Übersetzung in weitere Sprachen teilnehmen möchten, schreiben Sie uns eine Nachricht an info [at] smart-cms.smart-cms.n3rds.work/
+Wichtig: Wenn Sie .mo/.po-Dateien im Plugin-Ordner "languages" ändern, können Ihre Änderungen beim nächsten Update verloren gehen. Um dies zu verhindern, kopieren Sie Ihre .mo/.po-Dateien in den Ordner "/wp-content/languages/plugins".
 
 
 == Screenshots ==
 
-1. The agenda view with appointments and todo having different styles based on status ( to do, done, canceled)
-2. The Customer form with all the information and quick todo and summary of activities and related documents
-3. The document list grouped by type ( invoices / quotation )
-4. The pdf document that can be downloaded and saved on the server for future browsing
-5. The "notification rules" screeen by which you can create a set of notifications step to apply to a rule
-6. The "online help"  popup that contains information for every screen you're currently in
+1. Die Agenda-Ansicht mit Terminen und Aufgaben, die je nach Status unterschiedliche Stile haben (zu erledigen, erledigt, abgesagt)
+2. Das Kundenformular mit allen Informationen und Quick-ToDo sowie einer Zusammenfassung der Aktivitäten und der zugehörigen Dokumente
+3. Die Dokumentenliste gruppiert nach Typ (Rechnungen / Angebote)
+4. Das PDF-Dokument, das heruntergeladen und auf dem Server gespeichert werden kann, um es später zu durchsuchen
+5. Das "Benachrichtigungsregeln"-Screeen, mit dem Sie eine Reihe von Benachrichtigungsschritten erstellen können, die auf eine Regel anzuwenden sind
+6. Das Popup-Fenster "Online-Hilfe", das Informationen zu jedem Bildschirm enthält, auf dem Sie sich gerade befinden
+
 
 == Changelog ==
 

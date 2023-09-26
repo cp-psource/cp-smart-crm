@@ -126,7 +126,7 @@ class CRM_Options_Settings{
             <h1 class="WPsCRM_plugin_title" style="text-align:center">CP Smart CRM<?php if(! isset($_GET['p'])){ ?><!--<span class="crmHelp" data-help="main"></span>--><?php } ?></h1>
 		    <?php include(WPsCRM_DIR."/inc/crm/c_menu.php")?> 
         <?php
-		echo '<h1>'.__('CP smart CRM Optionen und Einstellungen','cpsmartcrm').'</h1>';
+		echo '<h1>'.__('CP Smart CRM Optionen und Einstellungen','cpsmartcrm').'</h1>';
 	}
 	function footer(){
 		echo '<small style="text-align:center;top:30px;position:relative">Developed by Webmaster-Community N3rds@Work <a href="https://smart-cms.n3rds.work">https://smart-cms.n3rds.work</a></small></div>';

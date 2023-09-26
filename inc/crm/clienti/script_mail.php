@@ -28,7 +28,7 @@ function draw_list(id_cliente) {
 					for (var k = 0; k <documents.length ; k++)
 					{ 
 
-						documents[k].tipo == 1 ? tipo = "<?php _e( 'Quote', 'cpsmartcrm'); ?>" : tipo = "<?php _e( 'Invoice', 'cpsmartcrm'); ?>";
+						documents[k].tipo == 1 ? tipo = "<?php _e( 'Angebot', 'cpsmartcrm'); ?>" : tipo = "<?php _e( 'Invoice', 'cpsmartcrm'); ?>";
 						documents[k].filename == "" ? icon = "<span style=\"text-decoration:underline;cursor:pointer\" class=\"generatepdf\"><?php _e( 'Generate pdf', 'cpsmartcrm'); ?> &raquo;</span>" : icon = "<a href=\"<?php echo content_url() ?>/uploads/CRMdocuments/" + documents[k].filename + "\" target=\"_blank\"><img src=\"<?php echo WPsCRM_URL.'css/img/pdf.png'?>\" alt=\"<?php _e( 'View document', 'cpsmartcrm')?>\" title=\"<?php _e( 'View document', 'cpsmartcrm')?>\" style=\"height:30px\"/></a> <small><?php _e( 'Attach', 'cpsmartcrm')?></small> <input type=\"checkbox\" class=\"to_attach\">";
 						html += "<li title=\"" + documents[k].testo_libero + "\" style=\"line-height:30px\" data-url=\"\" data-index=\"" + k + "\" data-document=\"" + documents[k].id + "\" data-filename=\"" + documents[k].filename + "\">";
 						html += "<span class=\"col-md-3\">" + tipo + " #" + documents[k].progressivo + "</span>&nbsp;<span class=\"col-md-2\">" + " <?php _e( 'Amount', 'cpsmartcrm')?>: " + documents[k].totale + " <?php echo WPsCRM_get_currency()->symbol?> </span>&nbsp;<span class=\"col-md-2\"> <?php _e( 'Date', 'cpsmartcrm'); ?>: " + documents[k].culture_data_inserimento + "</span>&nbsp;<span class=\"col-md-3\">" + icon + "</span>";
@@ -38,7 +38,7 @@ function draw_list(id_cliente) {
 					for (var f = 0; f <files.length ; f++)
 					{
                         k ++;
-						// files[f].tipo == 1 ? tipo = "<?php _e( 'Quote', 'cpsmartcrm'); ?>" : tipo = "<?php _e( 'Invoice', 'cpsmartcrm'); ?>";
+						// files[f].tipo == 1 ? tipo = "<?php _e( 'Angebot', 'cpsmartcrm'); ?>" : tipo = "<?php _e( 'Invoice', 'cpsmartcrm'); ?>";
 						//files[f].filename == "" ? icon = "<span style=\"text-decoration:underline;cursor:pointer\" class=\"generatepdf\"><?php _e( 'Generate pdf', 'cpsmartcrm'); ?> &raquo;</span>" : icon = "<a href=\"<?php echo content_url() ?>/uploads/CRMdocuments/" + files[k].filename + "\" target=\"_blank\"><img src=\"<?php echo WPsCRM_URL.'css/img/pdf.png'?>\" alt=\"<?php _e( 'View document', 'cpsmartcrm')?>\" title=\"<?php _e( 'View document', 'cpsmartcrm')?>\" style=\"height:30px\"/></a> <small>Attach</small> <input type=\"checkbox\" class=\"to_attach\">";
 						icon = '<img src="'+files[f].icon+'" style="height:30px">';
 						html += "<li style=\"line-height:30px\" data-index=\"" + k + "\" data-url=\""+ files[f].url +"\" data-filename=\""+ files[f].filename +"\">";

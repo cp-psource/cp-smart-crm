@@ -66,7 +66,7 @@ if (isset($_GET["id_invoice"]) && ($ID = $_GET["id_invoice"])) {
     $qd = $wpdb->get_results($sql, ARRAY_A);
   } else {
     $data = date("d-m-Y");
-    $oggetto = __("Quote", "cpsmartcrm");
+    $oggetto = __("Angebot", "cpsmartcrm");
     $iva = $documentOptions['default_vat'];
     $FK_clienti = 0;
     $FK_contatti = 0;
@@ -280,7 +280,7 @@ if (isset($_GET["id_invoice"]) && ($ID = $_GET["id_invoice"])) {
           <!-- SECONDO TAB-->
           <div>
               <div class="row form-group">
-                  <label class="col-sm-2 control-label"><?php _e('Quote value (required)', 'cpsmartcrm') ?> *</label>
+                  <label class="col-sm-2 control-label"><?php _e('Angebot value (required)', 'cpsmartcrm') ?> *</label>
                   <div class="col-sm-6">
                       <input class="numeric" id="quotation_value" name="quotation_value" value="<?php if (isset($riga)) echo $riga["valore_preventivo"] ?>" />
 

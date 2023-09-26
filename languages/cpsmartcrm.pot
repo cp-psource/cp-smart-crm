@@ -1332,7 +1332,7 @@ msgstr ""
 #: inc/crm/clienti/script_mail.php:28 inc/crm/documenti/document_print.php:64
 #: inc/crm/documenti/form_quotation.php:73 inc/crm/documenti/list.php:45
 #: inc/crm/documenti/list.php:333 inc/functions.php:3152
-msgid "Quote"
+msgid "Angebot"
 msgstr ""
 
 #: inc/crm/clienti/script_mail.php:28 inc/crm/documenti/document_print.php:74
@@ -2038,7 +2038,7 @@ msgid "Add Products to quote"
 msgstr ""
 
 #: inc/crm/documenti/form_quotation.php:342
-msgid "Quote value (required)"
+msgid "Angebot value (required)"
 msgstr ""
 
 #: inc/crm/documenti/form_quotation.php:354
@@ -2636,7 +2636,7 @@ msgid "6 Max"
 msgstr ""
 
 #: inc/options.php:110
-msgid "CP smart CRM options and Settings"
+msgid "CP Smart CRM options and Settings"
 msgstr ""
 
 #: inc/options.php:123

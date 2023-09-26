@@ -80,11 +80,11 @@ function WPsCRM_JS_display_schedulerGrid($delete_nonce){
     	toolbar: kendo.template($("#gridHeader").html()),
     	dataSource: dataSource,
 		noRecords: {
-			template: "<h4 style=\"text-align:center;padding:5%\"><?php _e('No ACTIVITIES to show; you can add new todo or new appointments, please be sure to have some customers available or create a new customer from the main menu','cpsmartcrm')?></h4>"
+			template: "<h4 style=\"text-align:center;padding:5%\"><?php _e('Keine AKTIVITÄTEN zum Anzeigen; Du kannst neue Aufgaben oder neue Termine hinzufügen. Stelle sicher, dass einige Kunden verfügbar sind, oder erstelle im Hauptmenü einen neuen Kunden','cpsmartcrm')?></h4>"
 		},
         groupable: {
             messages: {
-                empty: "<?php _e('Drag columns headers and drop it here to group by that column','cpsmartcrm') ?>"
+                empty: "<?php _e('Ziehe die Spaltenüberschriften und lege sie hier ab, um sie nach dieser Spalte zu gruppieren','cpsmartcrm') ?>"
             }
         },
 		pageable:
@@ -92,15 +92,15 @@ function WPsCRM_JS_display_schedulerGrid($delete_nonce){
             pageSizes: [20, 50, 100],
             messages:
                 {
-                    display: "<?php _e('Showing','cpsmartcrm') ?> {0}-{1}  <?php _e('of','cpsmartcrm') ?> {2} <?php _e('total','cpsmartcrm') ?>",
-                    of: "<?php _e('of','cpsmartcrm') ?> {0}",
-                    itemsPerPage: "<?php _e('Posts per page','cpsmartcrm') ?>",
-                    first: "<?php _e('First page','cpsmartcrm') ?>",
-                    last: "<?php _e('Last page','cpsmartcrm') ?>",
-                    next: "<?php _e('Next','cpsmartcrm') ?>",
-                    previous: "<?php _e('Prev.','cpsmartcrm') ?>",
-                    refresh: "<?php _e('Reload','cpsmartcrm') ?>",
-                    morePages: "<?php _e('More','cpsmartcrm') ?>"
+                    display: "<?php _e('Zeige','cpsmartcrm') ?> {0}-{1}  <?php _e('von','cpsmartcrm') ?> {2} <?php _e('gesamt','cpsmartcrm') ?>",
+                    of: "<?php _e('von','cpsmartcrm') ?> {0}",
+                    itemsPerPage: "<?php _e('Beiträge pro Seite','cpsmartcrm') ?>",
+                    first: "<?php _e('Erste Seite','cpsmartcrm') ?>",
+                    last: "<?php _e('Letzte Seite','cpsmartcrm') ?>",
+                    next: "<?php _e('Nächste','cpsmartcrm') ?>",
+                    previous: "<?php _e('Vorherige','cpsmartcrm') ?>",
+                    refresh: "<?php _e('Neu laden','cpsmartcrm') ?>",
+                    morePages: "<?php _e('Mehr','cpsmartcrm') ?>"
                 },
         },
     	sortable: true,
@@ -109,10 +109,10 @@ function WPsCRM_JS_display_schedulerGrid($delete_nonce){
         dataBound: loadCellsAttributesScheduler,
         columns: [{ field: "id_agenda", title: "ID", hidden: true },
 				  { field: "fk_utenti_ins", title: "Ins", hidden: true },
-				  { field: "tipo_agenda", title: "<?php _e('Type','cpsmartcrm') ?>", width: 150 },
-				  { field: "cliente", title: "<?php _e('Customer','cpsmartcrm') ?>" },
-				  { field: "oggetto", title: "<?php _e('Object','cpsmartcrm') ?>" },
-				  { field: "data_scadenza", title: "<?php _e('Expiration','cpsmartcrm') ?>", template: '#= kendo.toString(kendo.parseDate(data_scadenza, "yyyy-MM-dd HH:mm:ss"), "' + $format + '") #' ,
+				  { field: "tipo_agenda", title: "<?php _e('Typ','cpsmartcrm') ?>", width: 150 },
+				  { field: "cliente", title: "<?php _e('Kunde','cpsmartcrm') ?>" },
+				  { field: "oggetto", title: "<?php _e('Objekt','cpsmartcrm') ?>" },
+				  { field: "data_scadenza", title: "<?php _e('Ablauf','cpsmartcrm') ?>", template: '#= kendo.toString(kendo.parseDate(data_scadenza, "yyyy-MM-dd HH:mm:ss"), "' + $format + '") #' ,
 				  	filterable: {
 				  		ui: function (element) {
 				  			element.kendoDateTimePicker({
@@ -121,12 +121,12 @@ function WPsCRM_JS_display_schedulerGrid($delete_nonce){
 				  		}
 				  	}
 				  },
-				{ field: "destinatari", title: "<?php _e('Recipients','cpsmartcrm')?>" },
+				{ field: "destinatari", title: "<?php _e('Empfänger','cpsmartcrm')?>" },
                 {field:"privileges",hidden:true},
 				{ command: [
 
 				{
-                name: "<?php _e('Open','cpsmartcrm') ?>",
+                name: "<?php _e('Offen','cpsmartcrm') ?>",
                 click: function (e) {
                     e.preventDefault();
                     var tr = $(e.target).closest("tr"); // get the current table row (tr)
@@ -153,15 +153,15 @@ function WPsCRM_JS_display_schedulerGrid($delete_nonce){
                 className: "btn btn-inverse _flat"
             },
             {
-            name: "<?php _e('Delete','cpsmartcrm') ?>",
+            name: "<?php _e('Löschen','cpsmartcrm') ?>",
             click: function (e) {
                 var tr = $(e.target).closest("tr");
                 var data = this.dataItem(tr);
                 if ((is_admin=="" && del_priv==1) || (is_admin=="" && del_priv==""  && c_user!=parseInt(data.fk_utenti_ins))) {
-                    alert("<?php _e('You do not have the privilege to delete this event.','cpsmartcrm') ?>")
+                    alert("<?php _e('Du hast nicht die Berechtigung, dieses Ereignis zu löschen.','cpsmartcrm') ?>")
                     return false;
                 }
-                if (!confirm("<?php _e('Confirm delete','cpsmartcrm') ?>?"))
+                if (!confirm("<?php _e('Löschen bestätigen','cpsmartcrm') ?>?"))
                     return false;
                 e.preventDefault();
                 location.href="<?php echo admin_url('admin.php?page=smart-crm&p=scheduler/delete.php&ID=')?>"+data.id +"ref=scheduler&security=<?php echo $delete_nonce?>";

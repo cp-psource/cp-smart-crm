@@ -273,7 +273,7 @@ function WPsCRM_JS_grid_customer_contacts(){
             { command: [
 			    {
 				    name:"edit",
-				    text: {edit:"<?php _e('Edit','cpsmartcrm') ?>", update:"<?php _e('Update','cpsmartcrm') ?>", cancel:"<?php _e('Cancel','cpsmartcrm') ?>"}
+				    text: {edit:"<?php _e('Edit','cpsmartcrm') ?>", update:"<?php _e('Update','cpsmartcrm') ?>", cancel:"<?php _e('Abbrechen','cpsmartcrm') ?>"}
 			    }, 
 			    {
 				    name:"destroy",

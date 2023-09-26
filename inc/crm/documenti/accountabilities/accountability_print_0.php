@@ -18,12 +18,12 @@ if ($qd) {
     $desc_width = "40%";
   if ($count_c != 0)
     $_header .= "<th class=\"WPsCRM_items_header WPsCRM_cod\">" . __('Code', 'cpsmartcrm') . "</th>";
-  $_header .= "<th class=\"WPsCRM_items_header WPsCRM_desc\" style='width:" . $desc_width . "'>" . __('Description', 'cpsmartcrm') . "</th>";
-  $_header .= "<th class=\"WPsCRM_items_header WPsCRM_qty\">" . __('Quantity', 'cpsmartcrm') . "</th>
-	<th class=\"WPsCRM_items_header WPsCRM_price\">" . __('Unit Price', 'cpsmartcrm') . "</th>";
+  $_header .= "<th class=\"WPsCRM_items_header WPsCRM_desc\" style='width:" . $desc_width . "'>" . __('Beschreibung', 'cpsmartcrm') . "</th>";
+  $_header .= "<th class=\"WPsCRM_items_header WPsCRM_qty\">" . __('Menge', 'cpsmartcrm') . "</th>
+	<th class=\"WPsCRM_items_header WPsCRM_price\">" . __('Einzelpreis', 'cpsmartcrm') . "</th>";
   if ($count_d != 0)
-    $_header .= "<th class=\"WPsCRM_items_header WPsCRM_discount\">" . __('Discount', 'cpsmartcrm') . "</th>";
-  $_header .= "<th class=\"WPsCRM_items_header WPsCRM_total\">" . __('Total', 'cpsmartcrm') . "</th>";
+    $_header .= "<th class=\"WPsCRM_items_header WPsCRM_discount\">" . __('Rabatt', 'cpsmartcrm') . "</th>";
+  $_header .= "<th class=\"WPsCRM_items_header WPsCRM_total\">" . __('Gesamt', 'cpsmartcrm') . "</th>";
   $t_articoli = '
 		<table class="table table-bordered WPsCRM_document-table"><thead>
 		<tr class="WPsCRM_header-row">' . $_header . '
@@ -103,12 +103,12 @@ if ($totale_righe) {
   $totale_imposta = $riga["totale_imposta"];
   $totale_netto = $riga["totale_netto"];
   $tab_tot = "
-  	<tr class='total_net'><td>" . __("Amount", 'cpsmartcrm') . "</td><td align='right'>" . WPsCRM_get_currency()->symbol . " " . WPsCRM_number_format_locale($totale_imponibile) . "</td></tr>";
+  	<tr class='total_net'><td>" . __("Betrag", 'cpsmartcrm') . "</td><td align='right'>" . WPsCRM_get_currency()->symbol . " " . WPsCRM_number_format_locale($totale_imponibile) . "</td></tr>";
   //$tab_tot.="<tr class='total_gros' style='display:none'><td>".__("Price",'cpsmartcrm')."</td><td align='right'>".WPsCRM_get_currency()->symbol." ".number_format($totale_netto, 2, ',', '.')."</td></tr>";
-  $tab_tot .= "<tr class=\"print_tax\"><td >" . __("Tax", 'cpsmartcrm') . "</td><td align='right'>" . WPsCRM_get_currency()->symbol . " " . WPsCRM_number_format_locale($totale_imposta) . "</td></tr>";
+  $tab_tot .= "<tr class=\"print_tax\"><td >" . __("Steuer", 'cpsmartcrm') . "</td><td align='right'>" . WPsCRM_get_currency()->symbol . " " . WPsCRM_number_format_locale($totale_imposta) . "</td></tr>";
   if ($totale_rimborso != 0)
-    $tab_tot .= "<tr class=\"WPsCRM_rowRefund\"><td>" . __("Refund", 'cpsmartcrm') . "</td><td align='right'>" . WPsCRM_get_currency()->symbol . " " . WPsCRM_number_format_locale($totale_rimborso) . "</td></tr>
+    $tab_tot .= "<tr class=\"WPsCRM_rowRefund\"><td>" . __("Erstattung", 'cpsmartcrm') . "</td><td align='right'>" . WPsCRM_get_currency()->symbol . " " . WPsCRM_number_format_locale($totale_rimborso) . "</td></tr>
   	";
-  $tab_tot .= "<tr class=\"WPsCRM_grandTotal\"><td><h4>" . __("Grand Total", 'cpsmartcrm') . "</h4></td><td align='right'><h4>" . WPsCRM_get_currency()->symbol . " " . WPsCRM_number_format_locale($totale_netto) . "</h4></td></tr>
+  $tab_tot .= "<tr class=\"WPsCRM_grandTotal\"><td><h4>" . __("Gesamtsumme", 'cpsmartcrm') . "</h4></td><td align='right'><h4>" . WPsCRM_get_currency()->symbol . " " . WPsCRM_number_format_locale($totale_netto) . "</h4></td></tr>
   ";
 }

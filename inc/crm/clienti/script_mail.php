@@ -22,27 +22,27 @@ function draw_list(id_cliente) {
 				var files = result.files;
 				if(documents.length > 0 || files.length > 0)
 				{
-					html += "<div class=\"documentsContainer col-md-12\"><h4><?php _e( 'Attach files', 'cpsmartcrm'); ?></h4>";
+					html += "<div class=\"documentsContainer col-md-12\"><h4><?php _e( 'Dateien anhängen', 'cpsmartcrm'); ?></h4>";
 					html += "<ul class=\"documentsList\">";
 					// documents
 					for (var k = 0; k <documents.length ; k++)
 					{ 
 
-						documents[k].tipo == 1 ? tipo = "<?php _e( 'Angebot', 'cpsmartcrm'); ?>" : tipo = "<?php _e( 'Invoice', 'cpsmartcrm'); ?>";
-						documents[k].filename == "" ? icon = "<span style=\"text-decoration:underline;cursor:pointer\" class=\"generatepdf\"><?php _e( 'Generate pdf', 'cpsmartcrm'); ?> &raquo;</span>" : icon = "<a href=\"<?php echo content_url() ?>/uploads/CRMdocuments/" + documents[k].filename + "\" target=\"_blank\"><img src=\"<?php echo WPsCRM_URL.'css/img/pdf.png'?>\" alt=\"<?php _e( 'View document', 'cpsmartcrm')?>\" title=\"<?php _e( 'View document', 'cpsmartcrm')?>\" style=\"height:30px\"/></a> <small><?php _e( 'Attach', 'cpsmartcrm')?></small> <input type=\"checkbox\" class=\"to_attach\">";
+						documents[k].tipo == 1 ? tipo = "<?php _e( 'Angebot', 'cpsmartcrm'); ?>" : tipo = "<?php _e( 'Rechnung', 'cpsmartcrm'); ?>";
+						documents[k].filename == "" ? icon = "<span style=\"text-decoration:underline;cursor:pointer\" class=\"generatepdf\"><?php _e( 'PDF generieren', 'cpsmartcrm'); ?> &raquo;</span>" : icon = "<a href=\"<?php echo content_url() ?>/uploads/CRMdocuments/" + documents[k].filename + "\" target=\"_blank\"><img src=\"<?php echo WPsCRM_URL.'css/img/pdf.png'?>\" alt=\"<?php _e( 'Dokument ansehen', 'cpsmartcrm')?>\" title=\"<?php _e( 'Dokument ansehen', 'cpsmartcrm')?>\" style=\"height:30px\"/></a> <small><?php _e( 'Anfügen', 'cpsmartcrm')?></small> <input type=\"checkbox\" class=\"to_attach\">";
 						html += "<li title=\"" + documents[k].testo_libero + "\" style=\"line-height:30px\" data-url=\"\" data-index=\"" + k + "\" data-document=\"" + documents[k].id + "\" data-filename=\"" + documents[k].filename + "\">";
-						html += "<span class=\"col-md-3\">" + tipo + " #" + documents[k].progressivo + "</span>&nbsp;<span class=\"col-md-2\">" + " <?php _e( 'Amount', 'cpsmartcrm')?>: " + documents[k].totale + " <?php echo WPsCRM_get_currency()->symbol?> </span>&nbsp;<span class=\"col-md-2\"> <?php _e( 'Date', 'cpsmartcrm'); ?>: " + documents[k].culture_data_inserimento + "</span>&nbsp;<span class=\"col-md-3\">" + icon + "</span>";
+						html += "<span class=\"col-md-3\">" + tipo + " #" + documents[k].progressivo + "</span>&nbsp;<span class=\"col-md-2\">" + " <?php _e( 'Betrag', 'cpsmartcrm')?>: " + documents[k].totale + " <?php echo WPsCRM_get_currency()->symbol?> </span>&nbsp;<span class=\"col-md-2\"> <?php _e( 'Datum', 'cpsmartcrm'); ?>: " + documents[k].culture_data_inserimento + "</span>&nbsp;<span class=\"col-md-3\">" + icon + "</span>";
 						html += "</li>";
 					}
 					// files
 					for (var f = 0; f <files.length ; f++)
 					{
                         k ++;
-						// files[f].tipo == 1 ? tipo = "<?php _e( 'Angebot', 'cpsmartcrm'); ?>" : tipo = "<?php _e( 'Invoice', 'cpsmartcrm'); ?>";
-						//files[f].filename == "" ? icon = "<span style=\"text-decoration:underline;cursor:pointer\" class=\"generatepdf\"><?php _e( 'Generate pdf', 'cpsmartcrm'); ?> &raquo;</span>" : icon = "<a href=\"<?php echo content_url() ?>/uploads/CRMdocuments/" + files[k].filename + "\" target=\"_blank\"><img src=\"<?php echo WPsCRM_URL.'css/img/pdf.png'?>\" alt=\"<?php _e( 'View document', 'cpsmartcrm')?>\" title=\"<?php _e( 'View document', 'cpsmartcrm')?>\" style=\"height:30px\"/></a> <small>Attach</small> <input type=\"checkbox\" class=\"to_attach\">";
+						// files[f].tipo == 1 ? tipo = "<?php _e( 'Angebot', 'cpsmartcrm'); ?>" : tipo = "<?php _e( 'Rechnung', 'cpsmartcrm'); ?>";
+						//files[f].filename == "" ? icon = "<span style=\"text-decoration:underline;cursor:pointer\" class=\"generatepdf\"><?php _e( 'PDF generieren', 'cpsmartcrm'); ?> &raquo;</span>" : icon = "<a href=\"<?php echo content_url() ?>/uploads/CRMdocuments/" + files[k].filename + "\" target=\"_blank\"><img src=\"<?php echo WPsCRM_URL.'css/img/pdf.png'?>\" alt=\"<?php _e( 'Dokument ansehen', 'cpsmartcrm')?>\" title=\"<?php _e( 'Dokument ansehen', 'cpsmartcrm')?>\" style=\"height:30px\"/></a> <small>Attach</small> <input type=\"checkbox\" class=\"to_attach\">";
 						icon = '<img src="'+files[f].icon+'" style="height:30px">';
 						html += "<li style=\"line-height:30px\" data-index=\"" + k + "\" data-url=\""+ files[f].url +"\" data-filename=\""+ files[f].filename +"\">";
-						html += "<span class=\"col-md-5\" style=\"display: flex;justify-content: flex-start;padding-right:45px\"><a href=\"" + files[f].url + "\"  target=\"_blank\" style=\"overflow:hidden;white-space: nowrap;text-overflow:ellipsis;\"><i style=\"text-overflow:ellipsis; font-size:.8em;max-width:100%;overflow:hidden;white-space: nowrap;\">" + files[f].url + "</i></a></span>&nbsp;<span class=\"col-md-2\"> <?php _e( 'Date', 'cpsmartcrm'); ?>: " + kendo.toString(new Date(files[f].date), $format) + "</span>&nbsp;<span class=\"col-md-3\"><img src=\"" + files[f].thumbnail + "\" style=\"height:30px\"><small><?php _e( 'Attach', 'cpsmartcrm')?></small> <input type=\"checkbox\" class=\"to_attach\"></span>";
+						html += "<span class=\"col-md-5\" style=\"display: flex;justify-content: flex-start;padding-right:45px\"><a href=\"" + files[f].url + "\"  target=\"_blank\" style=\"overflow:hidden;white-space: nowrap;text-overflow:ellipsis;\"><i style=\"text-overflow:ellipsis; font-size:.8em;max-width:100%;overflow:hidden;white-space: nowrap;\">" + files[f].url + "</i></a></span>&nbsp;<span class=\"col-md-2\"> <?php _e( 'Datum', 'cpsmartcrm'); ?>: " + kendo.toString(new Date(files[f].date), $format) + "</span>&nbsp;<span class=\"col-md-3\"><img src=\"" + files[f].thumbnail + "\" style=\"height:30px\"><small><?php _e( 'Anfügen', 'cpsmartcrm')?></small> <input type=\"checkbox\" class=\"to_attach\"></span>";
 						html += "</li>";
 					}
 					html += "</ul></div>";
@@ -101,7 +101,7 @@ function draw_list(id_cliente) {
 		});
 
 		var M_users = $('#m_users').kendoMultiSelect({
-			placeholder: "<?php _e( 'Select user', 'cpsmartcrm'); ?>...",
+			placeholder: "<?php _e( 'Benutzer wählen', 'cpsmartcrm'); ?>...",
 			dataTextField: "display_name",
 			dataValueField: "ID",
 			autoBind: false,
@@ -117,7 +117,7 @@ function draw_list(id_cliente) {
 		}).data("kendoMultiSelect")
 
 		var M_groups = $('#m_groups').kendoMultiSelect({
-			placeholder: "<?php _e( 'Select group', 'cpsmartcrm'); ?>...",
+			placeholder: "<?php _e( 'Wähle Gruppe', 'cpsmartcrm'); ?>...",
 			dataTextField: "name",
 			dataValueField: "role",
 			autoBind: false,
@@ -210,7 +210,7 @@ function draw_list(id_cliente) {
 	$("#dialog_mail").kendoWindow({
 		width: "900px",
 		height: "86%",
-		title: "<?php _e('Send mail to Customer:','cpsmartcrm') ?>",
+		title: "<?php _e('E-Mail an den Kunden senden:','cpsmartcrm') ?>",
 		visible: false,
 		modal: true,
 		draggable: false,
@@ -220,7 +220,7 @@ function draw_list(id_cliente) {
 			"Close"
 		],
 		close: function () {
-			this.title("<?php _e('Send mail to Customer:','cpsmartcrm') ?>");
+			this.title("<?php _e('E-Mail an den Kunden senden:','cpsmartcrm') ?>");
 			$('#new_mail').find(':reset').click();
 			$('._schedule').hide();
 			$("#schedule").data("kendoDateTimePicker").value(new Date())
@@ -232,7 +232,7 @@ function draw_list(id_cliente) {
 	$("#createPdf").kendoWindow({
 		width: "90%",
 		height: "90%",
-		title: "<?php _e( 'Generate PDF', 'cpsmartcrm'); ?>",
+		title: "<?php _e( 'PDF generieren', 'cpsmartcrm'); ?>",
 		iframe: true,
 		visible: false,
 		modal: true,
@@ -302,8 +302,8 @@ function draw_list(id_cliente) {
 		},
 
 		messages: {
-			hasObject: "<?php _e('You should type a subject for this item','cpsmartcrm')?>",
-			hasContent:"<?php _e('You should write a content message','cpsmartcrm')?>"
+			hasObject: "<?php _e('Du solltest einen Betreff für dieses Element eingeben','cpsmartcrm')?>",
+			hasContent:"<?php _e('Du solltest eine Inhaltsnachricht schreiben','cpsmartcrm')?>"
 
 		}
 	}).data("kendoValidator");
@@ -348,7 +348,7 @@ function draw_list(id_cliente) {
 			success: function (result) {
 				console.log(result);
 				var $text
-				$('input[name=sendNow]:checked').val() == 0 ? $text = "<?php _e('Email has been scheduled','cpsmartcrm')?>" : $text = "<?php _e('Email has been sent','cpsmartcrm')?>";
+				$('input[name=sendNow]:checked').val() == 0 ? $text = "<?php _e('E-Mail wurde geplant','cpsmartcrm')?>" : $text = "<?php _e('Die Email wurde verschickt','cpsmartcrm')?>";
 				noty({
 					text: $text,
 					layout: 'center',

@@ -59,7 +59,7 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_mail.php" )
 <div id="tabstrip">
 	<ul>
 		<li class="k-state-active">
-			<i class="glyphicon glyphicon-user"></i><?php _e('CUSTOMERS','cpsmartcrm')?>
+			<i class="glyphicon glyphicon-user"></i><?php _e('KUNDEN','cpsmartcrm')?>
 		</li>
 		<?php do_action('WPsCRM_add_tabs_to_customers_list'); ?>
 	</ul>

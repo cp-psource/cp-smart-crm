@@ -52,10 +52,10 @@ var dataSource = new kendo.data.DataSource({
                 pageSizes: true,
                 buttonCount: 5
             },
-            columns: [{ field: "ID", title: "ID" }, { field: "codice", title: "<?php _e('Code','cpsmartcrm') ?>" }, { field: "descrizione", title: "<?php _e('Description','cpsmartcrm') ?>" }, { field: "listino1", title: "<?php _e('Price','cpsmartcrm') ?>" },
+            columns: [{ field: "ID", title: "ID" }, { field: "codice", title: "<?php _e('Code','cpsmartcrm') ?>" }, { field: "descrizione", title: "<?php _e('Beschreibung','cpsmartcrm') ?>" }, { field: "listino1", title: "<?php _e('Preis','cpsmartcrm') ?>" },
               { command: [
                 {
-                    name: "<?php _e('Edit','cpsmartcrm') ?>",
+                    name: "<?php _e('Bearbeiten','cpsmartcrm') ?>",
                  click: function(e) {
                      var tr = $(e.target).closest("tr"); // get the current table row (tr)
                   // get the data bound to the current table row
@@ -76,7 +76,7 @@ var dataSource = new kendo.data.DataSource({
     </script> 
 <ul class="select-action">
             <li  onClick="location.href='<?php echo home_url() ?>/wp-admin/post-new.php?post_type=services';return false;" class="bg-success" style="color:#000">
-         <i class="glyphicon glyphicon-plus"></i><b> <?php _e('New Item','cpsmartcrm') ?></b>
+         <i class="glyphicon glyphicon-plus"></i><b> <?php _e('Neuer Gegenstand','cpsmartcrm') ?></b>
             </li>
 
         </ul>

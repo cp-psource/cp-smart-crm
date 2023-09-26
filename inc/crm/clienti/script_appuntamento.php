@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 		$("#dialog_appuntamento").kendoWindow({
 			width: "86%",
 			height: "80%",
-			title: "<?php _e('Add appointment for Customer:','cpsmartcrm') ?>",
+			title: "<?php _e('Termin für Kunden hinzufügen:','cpsmartcrm') ?>",
 			visible: false,
 			modal: true,
 			draggable: false,
@@ -66,7 +66,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 		value: new Date(), format: $formatTime
 	});
 	var a_users = $('#a_remindToUser').kendoMultiSelect({
-		placeholder: "<?php _e( 'Select user', 'cpsmartcrm'); ?>...",
+		placeholder: "<?php _e( 'Nutzer wählen', 'cpsmartcrm'); ?>...",
 		dataTextField: "display_name",
 		dataValueField: "ID",
 		autoBind: false,
@@ -82,7 +82,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 	}).data("kendoMultiSelect")
 
 	$('#a_remindToGroup').kendoMultiSelect({
-		placeholder: "<?php _e( 'Select group', 'cpsmartcrm'); ?>...",
+		placeholder: "<?php _e( 'Wähle die Gruppe', 'cpsmartcrm'); ?>...",
 		dataTextField: "name",
 		dataValueField: "role",
 		autoBind: false,
@@ -210,7 +210,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
             }
             else {
 				noty({
-	                text: "<?php _e('Appointment has been added','cpsmartcrm')?>",
+	                text: "<?php _e('Termin wurde hinzugefügt','cpsmartcrm')?>",
 	                layout: 'center',
 	                type: 'success',
 	                template: '<div class="noty_message"><span class="noty_text"></span></div>',
@@ -348,11 +348,11 @@ if ( ! defined( 'ABSPATH' ) ) exit;
             },
 
         	messages: {
-				hasDays:"<?php _e('You should select how many days in advance to activate the notification','cpsmartcrm')?>",
-				hasNoty:"<?php _e('You should select a user or a group of users to notify to','cpsmartcrm')?>",
-                hasClients: "<?php _e('You should select a client','cpsmartcrm')?>",
-        		hasObject: "<?php _e('You should type a subject for this item','cpsmartcrm')?>",
-				hasExpiration:"<?php _e('You should select  date for this event','cpsmartcrm')?>"
+				hasDays:"<?php _e('Du solltest auswählen, wie viele Tage im Voraus Du die Benachrichtigung aktivieren möchtest','cpsmartcrm')?>",
+				hasNoty:"<?php _e('Du solltest einen Benutzer oder eine Gruppe von Benutzern auswählen, die benachrichtigt werden sollen','cpsmartcrm')?>",
+                hasClients: "<?php _e('Du solltest einen Kunden auswählen','cpsmartcrm')?>",
+        		hasObject: "<?php _e('Du solltest einen Betreff für dieses Element eingeben','cpsmartcrm')?>",
+				hasExpiration:"<?php _e('Du solltest ein Datum für diese Veranstaltung auswählen','cpsmartcrm')?>"
 
             }
 	}).data("kendoValidator");

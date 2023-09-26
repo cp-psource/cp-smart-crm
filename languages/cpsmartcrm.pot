@@ -1346,7 +1346,7 @@ msgid "Generate pdf"
 msgstr ""
 
 #: inc/crm/clienti/script_mail.php:29
-msgid "View document"
+msgid "Dokument ansehen"
 msgstr ""
 
 #: inc/crm/clienti/script_mail.php:31 inc/pluggable/documenti/list.php:146
@@ -1613,7 +1613,7 @@ msgstr ""
 #: inc/crm/documenti/form_invoice_informal.php:324
 #: inc/crm/documenti/form_quotation.php:226 inc/functions.php:3220
 #: inc/gateways/form.php:27
-msgid "VAT code"
+msgid "MwSt.-Code"
 msgstr ""
 
 #: inc/crm/documenti/document_print.php:123 inc/functions.php:3222

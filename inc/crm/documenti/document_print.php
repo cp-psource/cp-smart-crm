@@ -83,7 +83,7 @@ if ($ID)
 			break;
 		case 2:
 			$progressivo=$riga["progressivo"];
-			$document_name=  __("Invoice",'cpsmartcrm');
+			$document_name=  __("Rechnung",'cpsmartcrm');
 			$text_before=$document_messages['invoices_before'];
 			$text_after=$document_messages['invoices_after'];
 			$document_prefix=$document_numbering['invoices_prefix'];
@@ -93,7 +93,7 @@ if ($ID)
 			break;
 		case 3:
 			$progressivo=$riga["id"];
-			$document_name=  __("Informal invoice",'cpsmartcrm');
+			$document_name=  __("Informelle Rechnung",'cpsmartcrm');
 			$text_before=$document_messages['invoices_before'];
 			$text_after=$document_messages['invoices_after'];
 			$document_prefix=$document_numbering['invoices_prefix'];
@@ -132,18 +132,18 @@ if ($ID)
 $subheader  ='<section class="WPsCRM_subheader">';
 $subheader .='<div class="col-md-6 WPsCRM_customerData">'.$document_dear.' <b>'.$cliente.'</b><br>'.$indirizzo.'<br>'.$cap.'  '.$localita.'     ( '.$provincia.' )';
 if ($p_iva)
-	$subheader.='<br>'.__('VAT code','cpsmartcrm').': '.$p_iva;
+	$subheader.='<br>'.__('MwSt.-Code','cpsmartcrm').': '.$p_iva;
 if ($cod_fis)
-	$subheader.='<br>'.__('Fiscal code','cpsmartcrm').': '.$cod_fis;
+	$subheader.='<br>'.__('Steuernummer','cpsmartcrm').': '.$cod_fis;
 if ($riferimento)
-	$subheader.='<br>'.__('Reference','cpsmartcrm').': '.$riferimento;
+	$subheader.='<br>'.__('Referenz','cpsmartcrm').': '.$riferimento;
 $subheader.='</div>';
-$subheader .='<div class="col-md-6 WPsCRM_documentData"><b>'.$document_name.' # '.$n_offerta.' '.__("issued on",'cpsmartcrm').' '.WPsCRM_culture_date_format($riga["data"]).'</b></div>';
+$subheader .='<div class="col-md-6 WPsCRM_documentData"><b>'.$document_name.' # '.$n_offerta.' '.__("ausgegeben am",'cpsmartcrm').' '.WPsCRM_culture_date_format($riga["data"]).'</b></div>';
 $subheader .='</section>';
 //document body
 $doc_body='<section class="  ">';
 if ($oggetto)
-	$doc_body.='<h4 class="WPsCRM_document_subject">'.__('Subject','cpsmartcrm').': '.$oggetto.'</h4>';
+	$doc_body.='<h4 class="WPsCRM_document_subject">'.__('Betreff','cpsmartcrm').': '.$oggetto.'</h4>';
 //$doc_body.='<p>'.$document->opening_text[1].'</p>';
 if ($text_before)
 	$doc_body.='<table class="WPsCRM_text-before"><tr><td>'. stripslashes($text_before).'</td></tr></table>';
@@ -181,15 +181,15 @@ $doc_body.='<div class="col-md-8 pull-right _total" style="padding:0;">
   ';
 //}
   if ($pagamento)
-    $tab_cond .= "<p style='margin-top:20px'>" . __("Payment", 'cpsmartcrm') . ": " . $pagamento . "</p>";
+    $tab_cond .= "<p style='margin-top:20px'>" . __("Zahlung", 'cpsmartcrm') . ": " . $pagamento . "</p>";
   if ($data_scadenza && $tipo==1)
-    $tab_cond .= "<p style='margin-top:20px'>" . __("Expiration date", 'cpsmartcrm') . ": " . $data_scadenza . "</p>";
+    $tab_cond .= "<p style='margin-top:20px'>" . __("Verfallsdatum", 'cpsmartcrm') . ": " . $data_scadenza . "</p>";
   if ($riga["annotazioni"]){
 //    $tab_cond .= "<p style='margin-top:20px'><b>" . __("Notes", 'cpsmartcrm') . "</b>: <i>" . stripslashes($riga["annotazioni"]) . "</i></p>";
     $tab_cond .= "<p style='margin-top:20px;font-size:.9em;font-style:italic'>".stripslashes($riga["annotazioni"]) . "</p>";
   }
   if ($tab_cond) {
-    $doc_body .= '<div class="col-md-12 pull-left" style="padding:0"><h4>' . __("Conditions", 'cpsmartcrm') . '</h4>'.$tab_cond.'</div>';
+    $doc_body .= '<div class="col-md-12 pull-left" style="padding:0"><h4>' . __("Bedingungen", 'cpsmartcrm') . '</h4>'.$tab_cond.'</div>';
   }
 if ($riga["pagato"] && $tipo==2)
 {
@@ -226,7 +226,7 @@ $serverName=site_url();
         <span class="crmHelp crmHelp-dark" data-help="document-print"></span>
 		<div class="col-md-3" style="margin:0">
 			<h4 >
-				<?php _e('Get PDF','cpsmartcrm')?>
+				<?php _e('Hole PDF','cpsmartcrm')?>
 			</h4>
 			<button class="export-pdf btn _flat btn-success">
 				<?php _e('Download','cpsmartcrm')?>
@@ -236,7 +236,7 @@ $serverName=site_url();
 			?>
                     <a href="<?php echo $edit_url ?>" target="_parent">
 				<span class="btn _flat btn-info">
-					<?php _e('Edit','cpsmartcrm')?>
+					<?php _e('Bearbeiten','cpsmartcrm')?>
 				</span>
 			</a>
 			<?php
@@ -244,7 +244,7 @@ $serverName=site_url();
 		</div>
 		<div class="col-md-4 option_box"style="margin:0">
 			<h4>
-				<?php _e('Print options','cpsmartcrm') ?>
+				<?php _e('Druckoptionen','cpsmartcrm') ?>
 			</h4>
 			<?php  do_action ('WPsCRM_totalBox', $tipo ) ?>
 		</div>
@@ -467,7 +467,7 @@ $serverName=site_url();
 			})
         	setTimeout(function () {
         		//$('.export-info img').fadeOut('400')
-        		$('.export-info').html("<br><?php _e('The current document has been downloaded in your PC and saved on the server in','cpsmartcrm')?>:<br><small style=\"background:gold;font-size:small;padding:3px\"><a href=\"<?php echo content_url() ?>/uploads/CRMdocuments/<?php echo $filename?>.pdf\" target=\"_blank\"><?php echo content_url() ?>/uploads/CRMdocuments/<?php echo $filename?>.pdf</a></small>")
+        		$('.export-info').html("<br><?php _e('Das aktuelle Dokument wurde auf Ihren PC heruntergeladen und auf dem Server gespeichert','cpsmartcrm')?>:<br><small style=\"background:gold;font-size:small;padding:3px\"><a href=\"<?php echo content_url() ?>/uploads/CRMdocuments/<?php echo $filename?>.pdf\" target=\"_blank\"><?php echo content_url() ?>/uploads/CRMdocuments/<?php echo $filename?>.pdf</a></small>")
         		//$('.export-info').append('<br><br><span class="btn btn-info _flat"><?php _e('Send to customer','cpsmartcrm')?></span>')
         		hideMouseLoader()
         	}, 700)

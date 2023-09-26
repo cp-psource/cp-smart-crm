@@ -4,7 +4,7 @@
       $("#dialog_attivita").kendoWindow({
           width: "900px",
           height: "80%",
-          title: "<?php _e('Add activity for Customer:', 'cpsmartcrm') ?>",
+          title: "<?php _e('Aktivität für Kunde hinzufügen:', 'cpsmartcrm') ?>",
           visible: false,
           modal: true,
           draggable: false,
@@ -15,7 +15,7 @@
               "Close"
           ],
           close: function () {
-              this.title("<?php _e('Add activity for Customer:', 'cpsmartcrm') ?>");
+              this.title("<?php _e('Aktivität für Kunde hinzufügen:', 'cpsmartcrm') ?>");
               $('.modal_loader').hide();
               setTimeout(function () {
           $('.k-overlay').hide()
@@ -42,7 +42,7 @@
               }
           },
           messages: {
-              hasAnnotation: "<?php _e('You should type some text', 'cpsmartcrm') ?>",
+              hasAnnotation: "<?php _e('Du solltest etwas Text eingeben', 'cpsmartcrm') ?>",
           }
       }).data("kendoValidator");
       //$("._date").kendoDatePicker({
@@ -116,7 +116,7 @@
 
                       } else {
                           noty({
-                              text: "<?php _e('Annotation has been added', 'cpsmartcrm') ?>",
+                              text: "<?php _e('Anmerkung wurde hinzugefügt', 'cpsmartcrm') ?>",
                               layout: 'center',
                               type: 'success',
                               template: '<div class="noty_message"><span class="noty_text"></span></div>',

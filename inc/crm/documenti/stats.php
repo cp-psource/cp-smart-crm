@@ -6,10 +6,10 @@ do_action('WPsCRM_stats_grid_toolbar');
 <div id="statsTabstrip">
 	<ul>
 		<li class="k-state-active">
-			<i class="glyphicon glyphicon-signal"></i> <?php _e('INVOICES STATISTICS','cpsmartcrm')?>
+			<i class="glyphicon glyphicon-signal"></i> <?php _e('RECHNUNGSSTATISTIK','cpsmartcrm')?>
 		</li>
         <li>
-            <i class="glyphicon glyphicon-signal"></i> <?php _e('QUOTES STATISTICS','cpsmartcrm')?>
+            <i class="glyphicon glyphicon-signal"></i> <?php _e('ANGEBOTE STATISTIK','cpsmartcrm')?>
         </li>
 		<?php do_action('WPsCRM_add_tabs_to_stats_list'); ?>
 	</ul>
@@ -113,7 +113,7 @@ do_action('WPsCRM_stats_grid_toolbar');
 		});
 		$('#selectAgent_1').kendoDropDownList({
 			//placeholder: "Select User...",
-			optionLabel: "<?php _e('Select...','cpsmartcrm') ?>",
+			optionLabel: "<?php _e('Wählen...','cpsmartcrm') ?>",
 			dataTextField: "display_name",
 			dataValueField: "ID",
 			dataSource: _users,
@@ -138,7 +138,7 @@ do_action('WPsCRM_stats_grid_toolbar');
 		});
 		$('#selectAgent_2').kendoDropDownList({
 			//placeholder: "Select User...",
-			optionLabel: "<?php _e('Select...','cpsmartcrm') ?>",
+			optionLabel: "<?php _e('Wählen...','cpsmartcrm') ?>",
 			//valuePrimitive: true,
 			dataTextField: "display_name",
 			dataValueField: "ID",

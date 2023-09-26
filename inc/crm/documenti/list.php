@@ -13,13 +13,13 @@
 	<li class="btn bg-info btn-sm _flat newQuote" onclick="location.href='<?php echo admin_url('admin.php?page=smart-crm&p=documenti/form_quotation.php')?>';return false;">
 		<i class="glyphicon glyphicon-send"></i>
 		<b>
-			<?php _e('NEW QUOTE','cpsmartcrm')?>
+			<?php _e('NEUES ANGEBOT','cpsmartcrm')?>
 		</b>
 	</li>
 	<li class="btn bg-danger btn-sm _flat btn_todo newInvoice" onclick="location.href='<?php echo admin_url('admin.php?page=smart-crm&p=documenti/form_invoice.php')?>';return false;">
 		<i class="glyphicon glyphicon-fire"></i>
 		<b>
-			<?php _e('NEW INVOICE','cpsmartcrm')?>
+			<?php _e('NEUE RECHNUNG','cpsmartcrm')?>
 		</b>
 	</li>
 	<?php 
@@ -29,13 +29,13 @@ if ( in_array( 'wp-smart-crm-accountability/wp-smart-crm-accountability.php', ap
 	<!--<li class="btn bg-danger btn-sm _flat btn_todo" onclick="location.href='<?php echo admin_url('admin.php?page=smart-crm&p=documenti/form_credit_note.php')?>';return false;">
 		<i class="glyphicon glyphicon-new-window"></i>
 		<b>
-			<?php _e('NEW CREDIT NOTE','cpsmartcrm')?>
+			<?php _e('NEUE GUTSCHRIFT','cpsmartcrm')?>
 		</b>
 	</li>-->
         <li class="btn bg-danger btn-sm _flat btn_todo" onclick="location.href='<?php echo admin_url('admin.php?page=smart-crm&p=documenti/form_invoice_informal.php')?>';return false;">
 		<i class="glyphicon glyphicon-new-window"></i>
 		<b>
-			<?php _e('NEW INFORMAL INVOICE','cpsmartcrm')?>
+			<?php _e('NEUE FORMLOSE RECHNUNG','cpsmartcrm')?>
 		</b>
 	</li>
 		<?php
@@ -46,8 +46,8 @@ if ( in_array( 'wp-smart-crm-accountability/wp-smart-crm-accountability.php', ap
 	</li>
 	<span style="float:right;">
 		<li class="no-link" style="margin-top:4px">
-			<?php _e('Registered invoices (underlined) cannot be edited or deleted.','cpsmartcrm')?>
-			<i class="glyphicon glyphicon-fire"></i>= <?php _e('Invoice','cpsmartcrm')?>
+			<?php _e('Registrierte Rechnungen (unterstrichen) können nicht bearbeitet oder gelöscht werden.','cpsmartcrm')?>
+			<i class="glyphicon glyphicon-fire"></i>= <?php _e('Rechnung','cpsmartcrm')?>
 			<i class="glyphicon glyphicon-send"></i>= <?php _e('Angebot','cpsmartcrm')?>
 		</li>
 	</span>
@@ -56,10 +56,10 @@ if ( in_array( 'wp-smart-crm-accountability/wp-smart-crm-accountability.php', ap
 <div id="documentsTabstrip">
 	<ul>
 		<li class="k-state-active" id="tab-invoices">
-			<i class="glyphicon glyphicon-fire"></i><?php _e('INVOICES','cpsmartcrm')?>
+			<i class="glyphicon glyphicon-fire"></i><?php _e('RECHNUNGEN','cpsmartcrm')?>
 		</li>
 		<li id="tab-quotes">
-			<i class="glyphicon glyphicon-send"></i><?php _e('QUOTES','cpsmartcrm')?>
+			<i class="glyphicon glyphicon-send"></i><?php _e('ANGEBOTE','cpsmartcrm')?>
 		</li>
 		<?php do_action('WPsCRM_add_tabs_to_documents_list'); ?>
 	</ul>
@@ -191,7 +191,7 @@ if ( in_array( 'wp-smart-crm-accountability/wp-smart-crm-accountability.php', ap
 			}
 		});
 		$('#selectAgent_1').kendoDropDownList({
-			optionLabel: "<?php _e('Select Agent','cpsmartcrm')?>...",
+			optionLabel: "<?php _e('Wähle Agent aus','cpsmartcrm')?>...",
 			dataTextField: "display_name",
 			dataValueField: "ID",
 			dataSource: _users,
@@ -231,7 +231,7 @@ if ( in_array( 'wp-smart-crm-accountability/wp-smart-crm-accountability.php', ap
 			}
 		});
 		$('#selectAgent_2').kendoDropDownList({
-			optionLabel: "<?php _e('Select Agent','cpsmartcrm')?>...",
+			optionLabel: "<?php _e('Wähle Agent aus','cpsmartcrm')?>...",
 			dataTextField: "display_name",
 			dataValueField: "ID",
 			dataSource: _users,
@@ -272,7 +272,7 @@ if ( in_array( 'wp-smart-crm-accountability/wp-smart-crm-accountability.php', ap
         $('.documentGrid').on('click', '.noEdit', function (e) {
           	showMouseLoader();
             noty({
-                text: "<?php _e('You don\'t have permission to edit this record','cpsmartcrm')?>",
+                text: "<?php _e('Du hast keine Berechtigung zum Bearbeiten dieses Datensatzes','cpsmartcrm')?>",
                 layout: 'topRight',
                 type: 'error',
                 template: '<div class="noty_message"><span class="noty_text"></span></div>',
@@ -328,13 +328,13 @@ if ( in_array( 'wp-smart-crm-accountability/wp-smart-crm-accountability.php', ap
 	<li class="btn bg-info btn-sm _flat newQuote" onclick="location.href='<?php echo admin_url('admin.php?page=smart-crm&p=documenti/form_quotation.php')?>';return false;">
 		<i class="glyphicon glyphicon-send"></i>
 		<b>
-			<?php _e('NEW QUOTE','cpsmartcrm')?>
+			<?php _e('NEUES ANGEBOT','cpsmartcrm')?>
 		</b>
 	</li>
 	<li class="btn bg-danger btn-sm _flat btn_todo newInvoice" onclick="location.href='<?php echo admin_url('admin.php?page=smart-crm&p=documenti/form_invoice.php')?>';return false;">
 		<i class="glyphicon glyphicon-fire"></i>
 		<b>
-			<?php _e('NEW INVOICE','cpsmartcrm')?>
+			<?php _e('NEUE RECHNUNG','cpsmartcrm')?>
 		</b>
 	</li>
 	<li class="btn  btn-sm _flat" style="background:#ccc;">
@@ -342,7 +342,7 @@ if ( in_array( 'wp-smart-crm-accountability/wp-smart-crm-accountability.php', ap
 	</li>
 	<span style="float:right;">
 		<li class="no-link" style="margin-top:4px">
-			<?php _e('Registered invoices (underlined) cannot be edited or deleted.','cpsmartcrm')?>
+			<?php _e('Registrierte Rechnungen (unterstrichen) können nicht bearbeitet oder gelöscht werden.','cpsmartcrm')?>
 			<i class="glyphicon glyphicon-fire"></i>= <?php _e('Invoice','cpsmartcrm')?>
 			<i class="glyphicon glyphicon-send"></i>= <?php _e('Angebot','cpsmartcrm')?>
 		</li>

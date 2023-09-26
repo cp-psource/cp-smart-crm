@@ -2,10 +2,10 @@
 <div class="row form-group">
     <div class="col-md-12">
         <span id="btn_manual" class="btn btn-sm btn-add_desc_row _flat" onclick="add_manual_row();" style="margin-left:0px">
-            <?php _e('Add row with price', 'cpsmartcrm') ?> &raquo;
+            <?php _e('Zeile mit Preis hinzufügen', 'cpsmartcrm') ?> &raquo;
         </span>
         <span id="btn_descriptive" class="btn btn-sm btn-add_desc_row _flat" onclick="add_descriptive_row();">
-            <?php _e('Add descriptive row', 'cpsmartcrm') ?> &raquo;
+            <?php _e('Beschreibende Zeile hinzufügen', 'cpsmartcrm') ?> &raquo;
         </span>
         <?php do_action('WPsCRM_advanced_rows') ?>
         <?php
@@ -23,31 +23,31 @@
                     <?php _e('Code', 'cpsmartcrm') ?>
                 </th>
                 <th>
-                    <?php _e('Description', 'cpsmartcrm') ?>
+                    <?php _e('Beschreibung', 'cpsmartcrm') ?>
                 </th>
                 <th>
-                    <?php _e('Rule', 'cpsmartcrm') ?>
+                    <?php _e('Regel', 'cpsmartcrm') ?>
                 </th>
                 <th>
-                    <?php _e('Q.ty', 'cpsmartcrm') ?>
+                    <?php _e('Menge', 'cpsmartcrm') ?>
                 </th>
                 <th>
-                    <?php _e('Unit Price', 'cpsmartcrm') ?>
+                    <?php _e('Einzelpreis', 'cpsmartcrm') ?>
                 </th>
                 <th style="min-width:68px">
-                    <?php _e('Discount', 'cpsmartcrm') ?>
+                    <?php _e('Rabatt', 'cpsmartcrm') ?>
                     <i class="glyphicon glyphicon-info-sign" style="color:darkmagenta;font-size:1.2em"></i><br />
                     % <input type="radio" name="tipo_sconto" id="tipo_sconto0" value="0" <?php echo ((isset($riga) && $riga["tipo_sconto"] == 0) || !isset($riga)) ? "checked" : "" ?> onchange="aggiornatot();">
                     &euro; <input type="radio" name="tipo_sconto" id="tipo_sconto1" value="1" <?php echo (isset($riga) && $riga["tipo_sconto"] == 1) ? "checked" : "" ?> onchange="aggiornatot();">
                 </th>
                 <th>
-                    <?php _e('VAT', 'cpsmartcrm') ?>
+                    <?php _e('MwSt', 'cpsmartcrm') ?>
                 </th>
                 <th>
                     <?php _e('Total', 'cpsmartcrm') ?>
                 </th>
                 <th>
-                    <?php _e('Actions', 'cpsmartcrm') ?>
+                    <?php _e('Aktionen', 'cpsmartcrm') ?>
                 </th>
             </tr>
         </thead>
@@ -71,7 +71,7 @@
                       </td>
                       <td>
                           <a href="#" onclick="elimina_riga(<?php echo $rigad["id"] ?>, <?php echo $i ?>);return false;">
-                              <?php _e('Delete', 'cpsmartcrm') ?>
+                              <?php _e('Löschen', 'cpsmartcrm') ?>
                           </a>
                       </td>
                   </tr>
@@ -117,7 +117,7 @@
                       </td>
                       <td>
                           <button type="button" onclick="elimina_riga(<?php echo $rigad["id"] ?>, <?php echo $i ?>)">
-                              <?php _e('Delete', 'cpsmartcrm') ?>
+                              <?php _e('Löschen', 'cpsmartcrm') ?>
                           </button>
                       </td>
                   </tr>
@@ -133,19 +133,19 @@
 </div>
 <div class="row form-group">
     <label class="col-sm-1 control-label">
-        <?php _e('Total Net', 'cpsmartcrm') ?>
+        <?php _e('Gesamtnetto', 'cpsmartcrm') ?>
     </label>
     <div class="col-sm-3">
         <input class="numericreadonly" name="totale_imponibile" id='totale_imponibile' value="<?php if (isset($tot_imp)) echo $tot_imp ?>" readonly />
     </div>
     <label class="col-sm-1 control-label">
-        <?php _e('Total Tax', 'cpsmartcrm') ?>
+        <?php _e('Gesamtsteuer', 'cpsmartcrm') ?>
     </label>
     <div class="col-sm-2">
         <input data-role="numerictextbox" class="numericreadonly" name="totale_imposta" id='totale_imposta' value="<?php if (isset($totale_imposta)) echo $totale_imposta ?>" readonly />
     </div>
     <label class="col-sm-1 control-label">
-        <?php _e('Total', 'cpsmartcrm') ?>
+        <?php _e('Gesamt', 'cpsmartcrm') ?>
     </label>
     <div class="col-sm-2">
         <input data-role="numerictextbox" class="numericreadonly" name="totale" id='totale' value="<?php if (isset($totale)) echo $totale ?>" readonly />
@@ -157,7 +157,7 @@
       var tooltip = $(".glyphicon-info-sign").kendoTooltip({
           width: 460,
           position: "top",
-          content: "<?php _e('The discount mode ( % or value) will apply to the entire document and obviously takes in account of the row quantities ( e.g. 5 Eur discount on 10 items = 50)', 'cpsmartcrm') ?>"
+          content: "<?php _e('Der Rabattmodus ( % oder Wert) gilt für das gesamte Dokument und berücksichtigt selbstverständlich die Zeilenmengen (z. B. 5 Euro Rabatt auf 10 Artikel = 50)', 'cpsmartcrm') ?>"
       }).data("kendoTooltip");
 
       $('.numeric').each(function () {
@@ -209,7 +209,7 @@
                       } else {
                           var n_row = 1;
                       }
-                      jQuery('#t_art').append('<tr class="riga" id="r_' + n_row + '"><td><input type="hidden" name="tipo_' + n_row + '" id="tipo_' + n_row + '" value="2"><input type="text" size="10" name="codice_' + n_row + '" id="codice_' + n_row + '" value=""></td><td><textarea rows="1" style="width:93%"  name="descrizione_' + n_row + '" id="descrizione_' + n_row + '" class="descriptive_row"></textarea></td><td></td><td><input data-role="numerictextbox" class="numeric" name="qta_' + n_row + '" id="qta_' + n_row + '" onblur="aggiornatot()" oninput="aggiornatot()" value="1"  style="width:80px"></td><td><input data-role="numerictextbox" class="numeric" name="prezzo_' + n_row + '" id="prezzo_' + n_row + '" value="' + result + '"  onblur="aggiornatot()"  oninput="aggiornatot()"  style="width:130px"></td><td><input data-role="numerictextbox" class="numeric" name="sconto_' + n_row + '" id="sconto_' + n_row + '"  onblur="aggiornatot()"  oninput="aggiornatot()"  style="width:80px"></td><td><input data-role="numerictextbox" class="numeric" name="iva_' + n_row + '" id="iva_' + n_row + '" value="' + def_iva + '"  onblur="aggiornatot()" oninput="aggiornatot()"  style="width:80px"></td><td><input data-role="numerictextbox" class="numeric" name="totale_' + n_row + '" id="totale_' + n_row + '" value=""  style="width:130px"></td><td><button type="button"  onclick="elimina_riga(0,' + n_row + ')"><?php _e('Delete', 'cpsmartcrm') ?></button></td></tr>');
+                      jQuery('#t_art').append('<tr class="riga" id="r_' + n_row + '"><td><input type="hidden" name="tipo_' + n_row + '" id="tipo_' + n_row + '" value="2"><input type="text" size="10" name="codice_' + n_row + '" id="codice_' + n_row + '" value=""></td><td><textarea rows="1" style="width:93%"  name="descrizione_' + n_row + '" id="descrizione_' + n_row + '" class="descriptive_row"></textarea></td><td></td><td><input data-role="numerictextbox" class="numeric" name="qta_' + n_row + '" id="qta_' + n_row + '" onblur="aggiornatot()" oninput="aggiornatot()" value="1"  style="width:80px"></td><td><input data-role="numerictextbox" class="numeric" name="prezzo_' + n_row + '" id="prezzo_' + n_row + '" value="' + result + '"  onblur="aggiornatot()"  oninput="aggiornatot()"  style="width:130px"></td><td><input data-role="numerictextbox" class="numeric" name="sconto_' + n_row + '" id="sconto_' + n_row + '"  onblur="aggiornatot()"  oninput="aggiornatot()"  style="width:80px"></td><td><input data-role="numerictextbox" class="numeric" name="iva_' + n_row + '" id="iva_' + n_row + '" value="' + def_iva + '"  onblur="aggiornatot()" oninput="aggiornatot()"  style="width:80px"></td><td><input data-role="numerictextbox" class="numeric" name="totale_' + n_row + '" id="totale_' + n_row + '" value=""  style="width:130px"></td><td><button type="button"  onclick="elimina_riga(0,' + n_row + ')"><?php _e('Löschen', 'cpsmartcrm') ?></button></td></tr>');
                       jQuery("#r_" + n_row + " .numeric").kendoNumericTextBox({
                           decimals: 2,
                           format: "n2",
@@ -229,7 +229,7 @@
                           } else {
                               var n_row = 1;
                           }
-                          jQuery('#t_art').append('<tr class="riga riga_refund" id="r_' + n_row + '"><td colspan="3"><input type="hidden" name="tipo_' + n_row + '" id="tipo_' + n_row + '" value="4"><textarea rows="1" style="width:93%"  name="descrizione_' + n_row + '" id="descrizione_' + n_row + '" class="descriptive_row"></textarea></td><td><input data-role="numerictextbox" class="numeric" name="qta_' + n_row + '" id="qta_' + n_row + '" onblur="aggiornatot()" oninput="aggiornatot()" value="1"  style="width:80px"></td><td><input data-role="numerictextbox" class="numeric" name="prezzo_' + n_row + '" id="prezzo_' + n_row + '"  value="' + refund + '" onblur="aggiornatot()"  oninput="aggiornatot()"  style="width:130px"></td><td></td><td></td><td><input data-role="numerictextbox" class="numeric" name="totale_' + n_row + '" id="totale_' + n_row + '" value="' + refund + '"  style="width:80px"></td><td><button type="button"  onclick="elimina_riga(0,' + n_row + ')"><?php _e('Delete', 'cpsmartcrm') ?></button></td></tr>');
+                          jQuery('#t_art').append('<tr class="riga riga_refund" id="r_' + n_row + '"><td colspan="3"><input type="hidden" name="tipo_' + n_row + '" id="tipo_' + n_row + '" value="4"><textarea rows="1" style="width:93%"  name="descrizione_' + n_row + '" id="descrizione_' + n_row + '" class="descriptive_row"></textarea></td><td><input data-role="numerictextbox" class="numeric" name="qta_' + n_row + '" id="qta_' + n_row + '" onblur="aggiornatot()" oninput="aggiornatot()" value="1"  style="width:80px"></td><td><input data-role="numerictextbox" class="numeric" name="prezzo_' + n_row + '" id="prezzo_' + n_row + '"  value="' + refund + '" onblur="aggiornatot()"  oninput="aggiornatot()"  style="width:130px"></td><td></td><td></td><td><input data-role="numerictextbox" class="numeric" name="totale_' + n_row + '" id="totale_' + n_row + '" value="' + refund + '"  style="width:80px"></td><td><button type="button"  onclick="elimina_riga(0,' + n_row + ')"><?php _e('Löschen', 'cpsmartcrm') ?></button></td></tr>');
                           jQuery("#r_" + n_row + " .numeric").kendoNumericTextBox({
                               decimals: 2,
                               format: "n2",
@@ -414,7 +414,7 @@
   }
 
   function elimina_riga(id_art, riga) {
-      if (!confirm("<?php _e('Confirm delete? Deletion will not have effect until you save the document', 'cpsmartcrm') ?>"))
+      if (!confirm("<?php _e('Löschen bestätigen? Der Löschvorgang wird erst wirksam, wenn Du das Dokument speicherst', 'cpsmartcrm') ?>"))
           return false;
 
       if (id_art) {
@@ -476,7 +476,7 @@
                       s_select += '<option value="' + arr_rules[i].ID + '">' + arr_rules[i].name + '</option>';
                   }
               s_select += '</select>';
-              jQuery('#t_art').append('<tr class="riga" id="r_' + n_row + '"><td><input type="hidden" name="tipo_' + n_row + '"  id="tipo_' + n_row + '" value="2"><input type="text" size="10" name="codice_' + n_row + '" id="codice_' + n_row + '" value=""></td><td><textarea rows="1" style="width:93%"  name="descrizione_' + n_row + '" id="descrizione_' + n_row + '" class="descriptive_row"></textarea></td><td>' + s_select + '</td><td><input class="numeric" size="4" name="qta_' + n_row + '" id="qta_' + n_row + '" onblur="aggiornatot()"  oninput="aggiornatot()" style="width:80px"></td><td><input class="numeric" size="10" name="prezzo_' + n_row + '" id="prezzo_' + n_row + '" value=""  onblur="aggiornatot()"  oninput="aggiornatot()"  style="width:130px"></td><td><input class="numeric" size="4" name="sconto_' + n_row + '" id="sconto_' + n_row + '" size="5"  onblur="aggiornatot()"  oninput="aggiornatot()" style="width:80px"></td><td><input class="numeric" size="4" name="iva_' + n_row + '" id="iva_' + n_row + '" value="' + iva + '" size="5"  onblur="aggiornatot()" oninput="aggiornatot()" style="width:80px"></td><td><input class="numeric" size="4" name="totale_' + n_row + '" id="totale_' + n_row + '" style="width:130px"></td><td><button type="button"  onclick="elimina_riga(0,' + n_row + ')"><?php _e('Delete', 'cpsmartcrm') ?></button></td></tr>');
+              jQuery('#t_art').append('<tr class="riga" id="r_' + n_row + '"><td><input type="hidden" name="tipo_' + n_row + '"  id="tipo_' + n_row + '" value="2"><input type="text" size="10" name="codice_' + n_row + '" id="codice_' + n_row + '" value=""></td><td><textarea rows="1" style="width:93%"  name="descrizione_' + n_row + '" id="descrizione_' + n_row + '" class="descriptive_row"></textarea></td><td>' + s_select + '</td><td><input class="numeric" size="4" name="qta_' + n_row + '" id="qta_' + n_row + '" onblur="aggiornatot()"  oninput="aggiornatot()" style="width:80px"></td><td><input class="numeric" size="10" name="prezzo_' + n_row + '" id="prezzo_' + n_row + '" value=""  onblur="aggiornatot()"  oninput="aggiornatot()"  style="width:130px"></td><td><input class="numeric" size="4" name="sconto_' + n_row + '" id="sconto_' + n_row + '" size="5"  onblur="aggiornatot()"  oninput="aggiornatot()" style="width:80px"></td><td><input class="numeric" size="4" name="iva_' + n_row + '" id="iva_' + n_row + '" value="' + iva + '" size="5"  onblur="aggiornatot()" oninput="aggiornatot()" style="width:80px"></td><td><input class="numeric" size="4" name="totale_' + n_row + '" id="totale_' + n_row + '" style="width:130px"></td><td><button type="button"  onclick="elimina_riga(0,' + n_row + ')"><?php _e('Löschen', 'cpsmartcrm') ?></button></td></tr>');
               jQuery("#r_" + n_row + " .numeric").kendoNumericTextBox({
                   decimals: 2,
                   format: "n2",
@@ -500,7 +500,7 @@
           n_row = 1;
       }
 
-      jQuery('#t_art').append('<tr class="riga" id="r_' + n_row + '"><td colspan="7"><input type="hidden" name="tipo_' + n_row + '" value="3"><textarea  rows="1" style="width:93%" name="descrizione_' + n_row + '" id="descrizione_' + n_row + '"  class="descriptive_row"></textarea></td><td><button type="button"  onclick="elimina_riga(0,' + n_row + ')"><?php _e('Delete', 'cpsmartcrm') ?></button></td></tr>');
+      jQuery('#t_art').append('<tr class="riga" id="r_' + n_row + '"><td colspan="7"><input type="hidden" name="tipo_' + n_row + '" value="3"><textarea  rows="1" style="width:93%" name="descrizione_' + n_row + '" id="descrizione_' + n_row + '"  class="descriptive_row"></textarea></td><td><button type="button"  onclick="elimina_riga(0,' + n_row + ')"><?php _e('Löschen', 'cpsmartcrm') ?></button></td></tr>');
   }
   function annulla()
   {
@@ -516,7 +516,7 @@
       } else {
           n_row = 1;
       }
-      jQuery('#t_art').append('<tr class="riga refund_row" id="r_' + n_row + '"><td colspan="3"><input type="hidden" name="tipo_' + n_row + '" id="tipo_' + n_row + '" value="4"><textarea rows="1" style="width:93%"  name="descrizione_' + n_row + '" id="descrizione_' + n_row + '" class="descriptive_row"></textarea></td><td><input class="numeric" name="qta_' + n_row + '" id="qta_' + n_row + '" onblur="aggiornatot()" oninput="aggiornatot()" style="width:80px"></td><td><input class="numeric" name="prezzo_' + n_row + '" id="prezzo_' + n_row + '" value=""  onblur="aggiornatot()"  oninput="aggiornatot()" style="width:130px"></td><td></td><td></td><td><input class="numeric" name="totale_' + n_row + '" id="totale_' + n_row + '" style="width:130px"></td><td><button type="button"  onclick="elimina_riga(0,' + n_row + ')"><?php _e('Delete', 'cpsmartcrm') ?></button></td></tr>');
+      jQuery('#t_art').append('<tr class="riga refund_row" id="r_' + n_row + '"><td colspan="3"><input type="hidden" name="tipo_' + n_row + '" id="tipo_' + n_row + '" value="4"><textarea rows="1" style="width:93%"  name="descrizione_' + n_row + '" id="descrizione_' + n_row + '" class="descriptive_row"></textarea></td><td><input class="numeric" name="qta_' + n_row + '" id="qta_' + n_row + '" onblur="aggiornatot()" oninput="aggiornatot()" style="width:80px"></td><td><input class="numeric" name="prezzo_' + n_row + '" id="prezzo_' + n_row + '" value=""  onblur="aggiornatot()"  oninput="aggiornatot()" style="width:130px"></td><td></td><td></td><td><input class="numeric" name="totale_' + n_row + '" id="totale_' + n_row + '" style="width:130px"></td><td><button type="button"  onclick="elimina_riga(0,' + n_row + ')"><?php _e('Löschen', 'cpsmartcrm') ?></button></td></tr>');
       jQuery("#r_" + n_row + " .numeric").kendoNumericTextBox({
           decimals: 2,
           format: "n2",

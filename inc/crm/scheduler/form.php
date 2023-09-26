@@ -13,13 +13,13 @@ switch ($tipo_agenda)
 {
     case 1:
         
-        $icon='<i class="glyphicon glyphicon-tag"></i> '.__('New TODO','cpsmartcrm');
+        $icon='<i class="glyphicon glyphicon-tag"></i> '.__('NEUES TODO','cpsmartcrm');
         break;
     case 2:
-        $icon='<i class="glyphicon glyphicon-pushpin"></i> '.__('New Appointment','cpsmartcrm');
+        $icon='<i class="glyphicon glyphicon-pushpin"></i> '.__('NEUER TERMIN','cpsmartcrm');
         break;
     case 3:
-        $icon='<i class="glyphicon glyphicon-option-horizontal"></i> '.__('New Activity','cpsmartcrm');
+        $icon='<i class="glyphicon glyphicon-option-horizontal"></i> '.__('NEUE AKTIVITÄT','cpsmartcrm');
         break;
     default:
         $tipo="";
@@ -51,7 +51,7 @@ switch ($tipo_agenda)
 			}
 		});
 		$('#fk_clienti').kendoDropDownList({
-			optionLabel : "<?php _e('Select Customer','cpsmartcrm') ?>...",
+			optionLabel : "<?php _e('Wähle Kunde aus','cpsmartcrm') ?>...",
 			dataSource: _clients,
 			dataTextField: "ragione_sociale",
 			dataValueField: "ID_clienti",
@@ -82,7 +82,7 @@ switch ($tipo_agenda)
 			}
 		});
 		var users=$('#remindToUser').kendoMultiSelect({
-			placeholder: "<?php _e('Select User','cpsmartcrm') ?>...",
+			placeholder: "<?php _e('Benutzer wählen','cpsmartcrm') ?>...",
 			dataTextField: "display_name",
 			dataValueField: "ID",
 			autoBind: true,
@@ -116,7 +116,7 @@ switch ($tipo_agenda)
 			}
 		});
 		$('#remindToGroup').kendoMultiSelect({
-			placeholder: "<?php _e('Select Role','cpsmartcrm') ?>...",
+			placeholder: "<?php _e('Wähle Rolle aus','cpsmartcrm') ?>...",
 			dataTextField: "name",
 			dataValueField: "role",
 			autoBind: true,
@@ -198,11 +198,11 @@ switch ($tipo_agenda)
 			},
 
 			messages: {
-				hasDays:"<?php _e('You should select how many days in advance to activate the notification','cpsmartcrm')?>",
-				hasNoty:"<?php _e('You should select a user or a group of users to notify to','cpsmartcrm')?>",
-				hasClients: "<?php _e('You should select a customer','cpsmartcrm')."."; $tipo_agenda==1 ? "<br /> "._e('To send an internal communication select you company','cpsmartcrm') :null ?>",
-				hasObject: "<?php _e('You should type a subject for this Eevent','cpsmartcrm')?>",
-				//hasUsers: "<?php _e('You should select at least one user','cpsmartcrm')?>",
+				hasDays:"<?php _e('Du solltest auswählen, wie viele Tage im Voraus Du die Benachrichtigung aktivieren möchtest','cpsmartcrm')?>",
+				hasNoty:"<?php _e('Du solltest einen Benutzer oder eine Gruppe von Benutzern auswählen, die benachrichtigt werden sollen','cpsmartcrm')?>",
+				hasClients: "<?php _e('Du solltest einen Kunden auswählen','cpsmartcrm')."."; $tipo_agenda==1 ? "<br /> "._e('Um eine interne Mitteilung zu versenden, wähle Dein Unternehmen aus','cpsmartcrm') :null ?>",
+				hasObject: "<?php _e('Du solltest einen Betreff für dieses Ereignis eingeben','cpsmartcrm')?>",
+				//hasUsers: "<?php _e('Du solltest mindestens einen Benutzer auswählen','cpsmartcrm')?>",
 			}
 		}).data("kendoValidator");
 
@@ -212,7 +212,7 @@ switch ($tipo_agenda)
 		$("form").validate({
 			submitHandler: function () {
 				showMouseLoader();
-				$('#btn_save b').html("<?php _e('Saving...','cpsmartcrm')?>");
+				$('#btn_save b').html("<?php _e('Speichern...','cpsmartcrm')?>");
 				id_cliente = $("#fk_clienti").data("kendoDropDownList").value();
 				tipo_agenda = '<?php echo $tipo_agenda?>';
 				scadenza_inizio = $("#data_scadenza_inizio").val();
@@ -357,7 +357,7 @@ switch ($tipo_agenda)
         <div id="d_anagrafica">
 
             <div class="row form-group">
-                <label class="col-sm-2 control-label"><?php _e('Customer','cpsmartcrm')?> *</label>
+                <label class="col-sm-2 control-label"><?php _e('Kunde','cpsmartcrm')?> *</label>
                 
                 <div class="col-md-4">
 	                  <select id="fk_clienti" name="fk_clienti" class="form-control" ></select>
@@ -367,37 +367,37 @@ switch ($tipo_agenda)
             <?php if ($tipo_agenda==2) {?>
             <div class="row form-group">
                 <label class="col-sm-4 control-label"><?php _e('Start', 'cpsmartcrm'); ?>
-                    <input name="data_scadenza_inizio" id='data_scadenza_inizio'  value="<?php echo $data_scadenza?>" class="" required validationMessage="<?php _e('You should select a start date/time for this appointment','cpsmartcrm')?>">
+                    <input name="data_scadenza_inizio" id='data_scadenza_inizio'  value="<?php echo $data_scadenza?>" class="" required validationMessage="<?php _e('Du solltest ein Startdatum/eine Startzeit für diesen Termin auswählen','cpsmartcrm')?>">
                 </label> 
-                <label class="col-sm-4 control-label"><?php _e('End', 'cpsmartcrm'); ?>
-                    <input name="data_scadenza_fine" id='data_scadenza_fine'  value="<?php echo $data_scadenza?>" class="" required validationMessage="<?php _e('You should select an end date/time for this appointment','cpsmartcrm')?>">
+                <label class="col-sm-4 control-label"><?php _e('Ende', 'cpsmartcrm'); ?>
+                    <input name="data_scadenza_fine" id='data_scadenza_fine'  value="<?php echo $data_scadenza?>" class="" required validationMessage="<?php _e('Du solltest ein Enddatum/eine Endzeit für diesen Termin auswählen','cpsmartcrm')?>">
                 </label>
             </div>
             <?php } ?>
             <?php if ($tipo_agenda==1) { ?>
             <div class="row form-group">
-                <label class="col-sm-2 control-label"><?php _e('TODO Date','cpsmartcrm')?> *</label>
+                <label class="col-sm-2 control-label"><?php _e('TODO Datum','cpsmartcrm')?> *</label>
                 <div class="col-sm-4">
-                    <input type="text" name="data_scadenza_inizio" id='data_scadenza_inizio' value="<?php echo $data_scadenza?>"  required validationMessage="<?php _e('You should select an expiration date for this event','cpsmartcrm')?>">
+                    <input type="text" name="data_scadenza_inizio" id='data_scadenza_inizio' value="<?php echo $data_scadenza?>"  required validationMessage="<?php _e('Du solltest ein Ablaufdatum für dieses Ereignis auswählen','cpsmartcrm')?>">
                 </div>
             </div>
             <?php } ?>
-        <h4 class="page-header" style="background:#e2e2e2;padding:15px"><?php _e('Contents','cpsmartcrm')?></h4>
+        <h4 class="page-header" style="background:#e2e2e2;padding:15px"><?php _e('Inhalt','cpsmartcrm')?></h4>
             <div class="row form-group">
-	            <label class="col-sm-2 control-label"><?php _e('Subject','cpsmartcrm')?> *</label>
+	            <label class="col-sm-2 control-label"><?php _e('Betreff','cpsmartcrm')?> *</label>
 	            <div class="col-sm-4">
-                    <input type="text" value="<?php if(isset($oggetto)) echo $oggetto?>" name="oggetto" id="oggetto" class="form-control  k-textbox _m" placeholder="<?php _e('Type a subject for this Event','cpsmartcrm')?>" >
+                    <input type="text" value="<?php if(isset($oggetto)) echo $oggetto?>" name="oggetto" id="oggetto" class="form-control  k-textbox _m" placeholder="<?php _e('Gib einen Betreff für dieses Ereignis ein','cpsmartcrm')?>" >
 	            </div>
 	        
             </div>
             <div class="row form-group">
-                <label class="col-sm-2 control-label"><?php _e('Description','cpsmartcrm')?></label>
+                <label class="col-sm-2 control-label"><?php _e('Beschreibung','cpsmartcrm')?></label>
 	            <div class="col-sm-4">
                     <textarea  class="col-md-12" id="annotazioni" name="annotazioni" rows="5" cols="50"><?php if(isset($annotazioni)) echo $annotazioni?></textarea>
 	            </div>
             </div>
             <div class="row form-group">
-                <label class="col-sm-2 control-label"><?php _e('Priority','cpsmartcrm')?></label>
+                <label class="col-sm-2 control-label"><?php _e('Priorität','cpsmartcrm')?></label>
                 <div class="col-sm-4">
                 <?php if(isset($riga["priorita"])) WPsCRM_priorita($riga["priorita"]); else WPsCRM_priorita()?> 
                 </div>
@@ -407,51 +407,51 @@ switch ($tipo_agenda)
 
 
             <div class="row form group" style="padding-bottom:20px;border-bottom:1px solid #ccc">
-               <label class="col-sm-2 control-label"><?php _e('Days in advance','cpsmartcrm')?> *</label>
+               <label class="col-sm-2 control-label"><?php _e('Tage im Voraus','cpsmartcrm')?> *</label>
                 <div class="col-sm-4">
                     <select class="form-control ruleActions _m k-dropdown _flat" style="width:150px" id="ruleStep" name="ruleStep">
                         <option value=""><?php _e("Sel","cpsmartcrm")?></option><?php for($k=0;$k<31;$k++){echo '<option value="'.$k.'">'.$k.'</option>'; } ?>
 
                     </select>
                 </div>
-                <label class="col-sm-2 control-label"><?php _e('Send also instant notification','cpsmartcrm')?></label>
+                <label class="col-sm-2 control-label"><?php _e('Sende auch eine Sofortbenachrichtigung','cpsmartcrm')?></label>
                 <div class="col-sm-4">
                     <input type="checkbox" class="ruleActions " id="instantNotification" name="instantNotification" />
-                    <small style="line-height:.8em"><?php _e('An email will be sent immediately to all selected users/groups if the option "send mail to recipients" below is active','cpsmartcrm');?></small>
+                    <small style="line-height:.8em"><?php _e('Eine E-Mail wird sofort an alle ausgewählten Benutzer/Gruppen gesendet, wenn die Option "E-Mail an Empfänger senden" unten aktiv ist','cpsmartcrm');?></small>
                 </div>
             </div>
             <!--<div class="row form group" style="padding-bottom:20px;border-bottom:1px solid #ccc">
                
             </div>-->
             <div class="row form-group" style="border:1px solid red;line-height: 3.2em;<?php echo $tipo_agenda==1 ? "display:none" : false ?>">
-                <label class="col-sm-2 control-label" style="font-size:1.2em"><?php _e('Send email to customer','cpsmartcrm')?></label>
+                <label class="col-sm-2 control-label" style="font-size:1.2em"><?php _e('E-Mail an den Kunden senden','cpsmartcrm')?></label>
                 <div class="col-md-4">
                 <input type="checkbox" class="ruleActions " id="remindToCustomer" name="remindToCustomer"/> 
                 </div>
             </div>
             <div class="row for-group">
-              <label class="col-sm-2 control-label"  style="line-height:20px"><?php _e('Send mail to recipients','cpsmartcrm')?></label>
+              <label class="col-sm-2 control-label"  style="line-height:20px"><?php _e('Sende E-Mails an Empfänger','cpsmartcrm')?></label>
                 <div class="col-md-4">
                 <input type="checkbox" class="ruleActions " id="mailToRecipients" name="mailToRecipients"/>
                 </div>
             </div>
             <div class="row form-group" style="margin-top:10px">
-                <label class="col-sm-2 control-label" style="line-height:20px"><?php if($tipo_agenda==2) _e('Select Account for this appointment','cpsmartcrm'); else _e('Send to User','cpsmartcrm')?></label>
+                <label class="col-sm-2 control-label" style="line-height:20px"><?php if($tipo_agenda==2) _e('Wähle Konto für diesen Termin aus','cpsmartcrm'); else _e('An Benutzer senden','cpsmartcrm')?></label>
                 <div class="col-md-4">
                     <input class="ruleActions" id="remindToUser" name="remindToUser" />
                 </div>
 
-                 <label class="col-sm-2 control-label" style="line-height:20px"><?php if($tipo_agenda==2) _e('Publish on Account dashboard','cpsmartcrm'); else _e('Publish on User dashboard','cpsmartcrm')?>?</label> 
+                 <label class="col-sm-2 control-label" style="line-height:20px"><?php if($tipo_agenda==2) _e('Im Konto-Dashboard veröffentlichen','cpsmartcrm'); else _e('Im Benutzer-Dashboard veröffentlichen','cpsmartcrm')?>?</label> 
                  <div class="col-md-4">
                 <input type="checkbox" class="ruleActions" name="userDashboard" id="userDashboard" />
                  </div>
             </div>
             <div class="row form-group"  <?php if($tipo_agenda==2) echo ' style="display:none"'?> >
-                <label class="col-sm-2 control-label"><?php _e('Send to Group','cpsmartcrm')?></label>
+                <label class="col-sm-2 control-label"><?php _e('An Gruppe senden','cpsmartcrm')?></label>
                 <div class="col-md-4">
                     <input class="ruleActions" id="remindToGroup" name="remindToGroup">
                 </div>
-                    <label class="col-sm-2 control-label"><?php _e('Publish on Groups dashboard','cpsmartcrm')?>?</label>
+                    <label class="col-sm-2 control-label"><?php _e('Im Gruppen-Dashboard veröffentlichen','cpsmartcrm')?>?</label>
                 <div class="col-md-4">
                     <input type="checkbox" class="ruleActions" name="groupDashboard" id="groupDashboard"/>
                 </div>
@@ -462,10 +462,10 @@ switch ($tipo_agenda)
              <div class="row form-group">
                  <ul class="select-action" style="margin-left:8px">
                     <li class="btn btn-success btn-sm _flat" id="btn_save"><i class="glyphicon glyphicon-floppy-disk"></i> 
-                        <b onClick="return false;"> <?php _e('Save','cpsmartcrm')?></b>
+                        <b onClick="return false;"> <?php _e('Speichern','cpsmartcrm')?></b>
                     </li>
                     <li class="btn btn-warning btn-sm _flat"><i class="glyphicon glyphicon-floppy-remove"></i>
-                        <b onClick="window.location.replace('<?php echo admin_url('admin.php?page=smart-crm&p=scheduler/list.php')?>');return false;"> <?php _e('Reset','cpsmartcrm')?></b>
+                        <b onClick="window.location.replace('<?php echo admin_url('admin.php?page=smart-crm&p=scheduler/list.php')?>');return false;"> <?php _e('Zurücksetzen','cpsmartcrm')?></b>
                     </li>
                      
                 </ul>

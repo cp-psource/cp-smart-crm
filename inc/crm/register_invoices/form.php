@@ -83,7 +83,7 @@ jQuery(document).ready(function ($) {
 				 <p><?php _e('WARNING: registered invoices cannot be edited any longer. These invoices exists as.pdf files in the folder: uploads/CRMdocuments','cpsmartcrm')?></p>
                  <ul class="select-action" style="margin-left:8px">
                     <li class="btn btn-success btn-sm _flat" id="btn_save"><i class="glyphicon glyphicon-floppy-disk"></i> 
-                        <b onClick="return false;"> <?php _e('Save','cpsmartcrm')?></b>
+                        <b onClick="return false;"> <?php _e('Speichern','cpsmartcrm')?></b>
                     </li>
                     <li class="btn btn-warning btn-sm _flat"><i class="glyphicon glyphicon-floppy-remove"></i>
 						<b onclick="window.location.replace('<?php echo admin_url( 'admin.php?page=smart-crm&p=scheduler/list.php' )?>');return false;">

@@ -324,7 +324,7 @@ class CRM_Options_Settings{
                 </div>
                 <input type="hidden" id="CRM_required_settings" name="CRM_business_settings[CRM_required_settings]" value="<?php echo isset( $options['CRM_required_settings']) ? $options['CRM_required_settings'] : "" ?>" />
 
-                <span  class="_flat btn btn-success" value="Save" style="margin: 30px;" onclick="saveBusiness()"><?php _e('Save', 'wp-smart-crm-invoices-pro') ?></span> 
+                <span  class="_flat btn btn-success" value="Save" style="margin: 30px;" onclick="saveBusiness()"><?php _e('Speichern', 'wp-smart-crm-invoices-pro') ?></span> 
             </div>
 			<style>
 				#sortable-handlers label:not(.toRight){float:left;line-height:2em}

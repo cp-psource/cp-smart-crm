@@ -96,10 +96,10 @@ if (isset($_GET["id_invoice"]) && ($ID = $_GET["id_invoice"])) {
       <h1 style="text-align:center"><?php _e('ANGEBOT ERSTELLEN/BEARBEITEN', 'cpsmartcrm') ?> <i class="glyphicon glyphicon-send"></i></h1>
       <div id="tabstrip">
           <ul>
-              <li id="tab1"><?php _e('DOCUMENT', 'cpsmartcrm') ?></li>
+              <li id="tab1"><?php _e('DOKUMENT', 'cpsmartcrm') ?></li>
               <!--<li><?php _e('BODY', 'cpsmartcrm') ?></li>-->
               <?php //if($generalOptions['services']==1){   ?>
-              <!--<li><?php _e('SERVICES/PRODUCTS', 'cpsmartcrm') ?></li>-->
+              <!--<li><?php _e('DIENSTLEISTUNGEN/PRODUKTE', 'cpsmartcrm') ?></li>-->
               <?php // }    ?>
               <li  id="tab2" onclick="aggiornatot();"><?php _e('KOMMENTARE UND INTERNE DATEN', 'cpsmartcrm') ?></li>
           </ul>
@@ -108,33 +108,33 @@ if (isset($_GET["id_invoice"]) && ($ID = $_GET["id_invoice"])) {
 
               <h4 class="page-header" style="margin: 10px 0 20px;"><?php _e('DOKUMENTENDATEN', 'cpsmartcrm') ?><span class="crmHelp" data-help="document-data"></span>
                   <span style="float:right;margin-top: -7px;">
-                      <label class="col-sm-2 control-label"><?php _e('Number', 'cpsmartcrm') ?></label><span class="col-sm-2"><input id="progressivo" name="progressivo" class="form-control" data-placement="bottom" title="<?php _e('Number', 'cpsmartcrm') ?>" value="<?php if (isset($riga)) echo $riga["progressivo"] ?>" readonly disabled/>
+                      <label class="col-sm-2 control-label"><?php _e('Nummer', 'cpsmartcrm') ?></label><span class="col-sm-2"><input id="progressivo" name="progressivo" class="form-control" data-placement="bottom" title="<?php _e('Nummer', 'cpsmartcrm') ?>" value="<?php if (isset($riga)) echo $riga["progressivo"] ?>" readonly disabled/>
                       </span></span></h4>
 
               <div class="row form-group">
-                  <label class="col-sm-1 control-label"><?php _e('Date', 'cpsmartcrm') ?></label>
-                  <div class="col-sm-2"><input name="data" id="data" class="_m" data-placement="bottom" title="<?php _e('Date', 'cpsmartcrm') ?>" value="<?php echo $data ?>" style="border:none"/>
+                  <label class="col-sm-1 control-label"><?php _e('Datum', 'cpsmartcrm') ?></label>
+                  <div class="col-sm-2"><input name="data" id="data" class="_m" data-placement="bottom" title="<?php _e('Datum', 'cpsmartcrm') ?>" value="<?php echo $data ?>" style="border:none"/>
                   </div>
                   <!--<div class="col-sm-2 hide_sm"></div>-->
-                  <label class="col-sm-2 control-label" style="color:firebrick"><?php _e('Expiration date', 'cpsmartcrm') ?></label>
+                  <label class="col-sm-2 control-label" style="color:firebrick"><?php _e('Verfallsdatum', 'cpsmartcrm') ?></label>
                   <div class="col-sm-2"><input type="text" class="_m" name="data_scadenza" value="<?php if (isset($data_scadenza)) echo $data_scadenza ?>"  id='data_scadenza' style="border:none">
                   </div>
-                  <label class="control-label" style="margin-left:20px"><?php _e('Accepted', 'cpsmartcrm') ?>?</label>
+                  <label class="control-label" style="margin-left:20px"><?php _e('Akzeptiert', 'cpsmartcrm') ?>?</label>
                   <div class="col-sm-1">
                       <input type="checkbox" name="pagato" value="1" <?php if (isset($riga)) echo $riga["pagato"] ? "checked" : "" ?>>
                   </div>
               </div>
               <div class="row form-group">
-                  <label class="col-sm-1 control-label"><?php _e('Subject', 'cpsmartcrm') ?></label>
+                  <label class="col-sm-1 control-label"><?php _e('Betreff', 'cpsmartcrm') ?></label>
                   <div class="col-sm-2"><input type="text" class="form-control col-md-10" name="oggetto" id="oggetto"  value="<?php if (isset($riga)) echo $oggetto ?>">
                   </div>
                   <!--<div class="col-sm-2 hide_sm"></div>-->
-                  <label class="col-sm-2 control-label"><?php _e('Reference', 'cpsmartcrm') ?></label>
+                  <label class="col-sm-2 control-label"><?php _e('Referenz', 'cpsmartcrm') ?></label>
                   <div class="col-sm-4"><input type="text" class="form-control" name="riferimento" id="riferimento" maxlength='55' value="<?php if (isset($riga)) echo $riga["riferimento"] ?>">
                   </div>
               </div>
               <div class="row form-group">
-                  <label class="col-sm-2 control-label"><?php _e('Notes', 'cpsmartcrm') ?></label><br />
+                  <label class="col-sm-2 control-label"><?php _e('Anmerkungen', 'cpsmartcrm') ?></label><br />
                   <div class="col-sm-8"><textarea id="annotazioni" style="width:100%" name="annotazioni" rows="5"><?php if (isset($riga)) echo stripslashes($riga["annotazioni"]) ?></textarea></div>
               </div>
               <h4 class="page-header"><?php _e('KUNDENDATEN', 'cpsmartcrm') ?><span class="crmHelp" data-help="customer-data"></span>
@@ -146,21 +146,21 @@ if (isset($_GET["id_invoice"]) && ($ID = $_GET["id_invoice"])) {
                   <ul class="select-action" style="float:right;transform:scale(.8);background-color:transparent;margin-top:-10px;width:inherit">
                       <?php if ($ID) { ?>
                         <li class="btn _edit _white btn-sm _flat"><i class="glyphicon glyphicon-pencil"></i>
-                            <b> <?php _e('EDIT CUSTOMER DETAILS', 'cpsmartcrm') ?></b>
+                            <b> <?php _e('KUNDENDATEN BEARBEITEN', 'cpsmartcrm') ?></b>
                         </li>
                         <li  style="display:none" class="btn btn-danger _quitEdit btn-sm _flat"><i class="glyphicon glyphicon-close"></i>
-                            <b> <?php _e('QUIT EDITING', 'cpsmartcrm') ?></b>
+                            <b> <?php _e('EDITIEREN BEENDEN', 'cpsmartcrm') ?></b>
                         </li>
                         <li class="btn"><i class="_tooltip glyphicon glyphicon-menu-right"></i></li>
-                        <li class="btn btn-info btn-sm _flat btn_todo" style="margin-left:10px" title="<?php _e('NEW TODO', 'cpsmartcrm') ?>">
+                        <li class="btn btn-info btn-sm _flat btn_todo" style="margin-left:10px" title="<?php _e('NEUES TODO', 'cpsmartcrm') ?>">
                             <i class="glyphicon glyphicon-tag"></i>
                             <b> </b>
                         </li>
-                        <li class="btn  btn-sm _flat btn_appuntamento" title="<?php _e('NEW APPOINTMENT', 'cpsmartcrm') ?>">
+                        <li class="btn  btn-sm _flat btn_appuntamento" title="<?php _e('NEUER TERMIN', 'cpsmartcrm') ?>">
                             <i class="glyphicon glyphicon-pushpin"></i>
                             <b> </b>
                         </li>
-                        <li class="btn btn-primary btn-sm _flat btn_activity" title="<?php _e('NEW ANNOTATION', 'cpsmartcrm') ?>">
+                        <li class="btn btn-primary btn-sm _flat btn_activity" title="<?php _e('NEUE ANMERKUNG', 'cpsmartcrm') ?>">
                             <i class="glyphicon glyphicon-option-horizontal"></i>
                             <b> </b>
                         </li>
@@ -170,7 +170,7 @@ if (isset($_GET["id_invoice"]) && ($ID = $_GET["id_invoice"])) {
               </h4>
               <div class="customer_data_partial" data-customer="<?php if (isset($fk_clinti)) echo $fk_clienti ?>">
                   <input type="hidden" id="tipo_cliente" name="tipo_cliente" value="<?php if (isset($tipo_cliente)) echo $tipo_cliente ?>" data-value="<?php if (isset($tipo_cliente)) echo $tipo_cliente ?>" />                  <div class="row form-group">
-                      <label class="col-sm-1 control-label"><?php _e('Customer', 'cpsmartcrm') ?></label>
+                      <label class="col-sm-1 control-label"><?php _e('Kunde', 'cpsmartcrm') ?></label>
                       <div class="col-sm-3">
                           <?php
                           if (isset($fk_clienti)) {
@@ -182,22 +182,22 @@ if (isset($_GET["id_invoice"]) && ($ID = $_GET["id_invoice"])) {
                           <input type="hidden" name="hidden_fk_clienti" value="<?php if (isset($fk_clienti)) echo $fk_clienti ?>">
 
                       </div>
-                      <!--<label class="col-sm-1 control-label"><?php _e('Contact', 'cpsmartcrm') ?></label>
+                      <!--<label class="col-sm-1 control-label"><?php _e('Kontakt', 'cpsmartcrm') ?></label>
                       <div class="col-sm-3">
                           <input type="hidden" id="FK_contatti" name="FK_contatti" value="<?php if (isset($FK_contatti)) echo $FK_contatti ?>" data-value="<?php if (isset($FK_contatti)) echo $FK_contatti ?>" />
                       </div>-->
                       <div class="col-sm-2">
-                          <input type="button" class="btn btn-sm btn-success _flat" id="save_client_data" name="save_client_data" value="<?php _e('Save', 'cpsmartcrm') ?>" style="display:none" />
+                          <input type="button" class="btn btn-sm btn-success _flat" id="save_client_data" name="save_client_data" value="<?php _e('Speichern', 'cpsmartcrm') ?>" style="display:none" />
                       </div>
                   </div>
                   <div class="row form-group">
-                      <label class="col-sm-1 control-label"><?php _e('Address', 'wp-smart-crm-invoices-pro') ?></label>
+                      <label class="col-sm-1 control-label"><?php _e('Addresse', 'wp-smart-crm-invoices-pro') ?></label>
                       <div class="col-sm-2 col-md-2 col-lg-3">
 
                           <input type="text" class="form-control _editable" name="indirizzo" id="indirizzo" maxlength='50' value="<?php if (isset($indirizzo)) echo $indirizzo ?>" <?php echo $disabled ?> data-value="<?php if (isset($indirizzo)) echo $indirizzo ?>" />
 
                       </div>
-                      <label class="col-sm-1 control-label"><?php _e('ZIP code', 'wp-smart-crm-invoices-pro') ?></label>
+                      <label class="col-sm-1 control-label"><?php _e('PLZ', 'wp-smart-crm-invoices-pro') ?></label>
                       <div class="col-sm-2">
 
                           <input type="text" class="form-control _editable" name="cap" id="cap" maxlength='10' value="<?php if (isset($cap)) echo $cap ?>" <?php echo $disabled ?> data-value="<?php if (isset($cap)) echo $cap ?>">
@@ -210,19 +210,19 @@ if (isset($_GET["id_invoice"]) && ($ID = $_GET["id_invoice"])) {
 
                   </div>
                   <div class="row form-group">
-                      <label class="col-sm-1 control-label"><?php _e('Town', 'wp-smart-crm-invoices-pro') ?></label>
+                      <label class="col-sm-1 control-label"><?php _e('Stadt', 'wp-smart-crm-invoices-pro') ?></label>
                       <div class="col-sm-2 col-md-2 col-lg-3">
 
                           <input type="text" class="form-control _editable" name="localita" id="localita" maxlength='50' value="<?php if (isset($localita)) echo $localita ?>" <?php echo $disabled ?> data-value="<?php if (isset($localita)) echo $localita ?>">
 
                       </div>
-                      <label class="col-sm-1 control-label"><?php _e('State/Prov.', 'wp-smart-crm-invoices-pro') ?></label>
+                      <label class="col-sm-1 control-label"><?php _e('Staat/Prov.', 'wp-smart-crm-invoices-pro') ?></label>
                       <div class="col-sm-2">
 
                           <input type="text" class="form-control _editable" name="provincia" id="provincia" maxlength='20' value="<?php if (isset($provincia)) echo $provincia ?>" <?php echo $disabled ?> data-value="<?php if (isset($provincia)) echo $provincia ?>">
 
                       </div>
-                      <label class="col-sm-1 control-label"><?php _e('VAT code', 'wp-smart-crm-invoices-pro') ?></label>
+                      <label class="col-sm-1 control-label"><?php _e('MwSt.-Code', 'wp-smart-crm-invoices-pro') ?></label>
                       <div class="col-md-2">
                           <input type="text" class="form-control _editable" name="p_iva" id="p_iva" maxlength='20' value="<?php if (isset($p_iva)) echo $p_iva ?>" <?php echo $disabled ?> data-value="<?php if (isset($p_iva)) echo $p_iva ?>">
                       </div>
@@ -280,19 +280,19 @@ if (isset($_GET["id_invoice"]) && ($ID = $_GET["id_invoice"])) {
           <!-- SECONDO TAB-->
           <div>
               <div class="row form-group">
-                  <label class="col-sm-2 control-label"><?php _e('Angebot value (required)', 'cpsmartcrm') ?> *</label>
+                  <label class="col-sm-2 control-label"><?php _e('Angebotswert (erforderlich)', 'cpsmartcrm') ?> *</label>
                   <div class="col-sm-6">
                       <input class="numeric" id="quotation_value" name="quotation_value" value="<?php if (isset($riga)) echo $riga["valore_preventivo"] ?>" />
 
                   </div>
               </div>
               <div class="row form-group">
-                  <label class="col-sm-2 control-label"><?php _e('Comments', 'cpsmartcrm') ?></label>
+                  <label class="col-sm-2 control-label"><?php _e('Kommentare', 'cpsmartcrm') ?></label>
                   <div class="col-sm-6"><textarea class="_form-control" id="commento" name="commento" rows="10" cols="50"><?php if (isset($riga)) echo stripslashes($riga["commento"]) ?></textarea>
                   </div>
               </div>
               <div class="row form-group">
-                  <label class="col-sm-2 control-label"><?php _e('Forecast success percentage', 'cpsmartcrm') ?> % </label>
+                  <label class="col-sm-2 control-label"><?php _e('Prognostizierter Erfolgsprozentsatz', 'cpsmartcrm') ?> % </label>
                   <div class="col-sm-4">
                       <select name="perc_realizzo">
                           <option value=""></option>
@@ -315,11 +315,11 @@ if (isset($_GET["id_invoice"]) && ($ID = $_GET["id_invoice"])) {
 
       <li onClick="aggiornatot();return false;" class="btn btn-sm btn-success _flat" id="_submit">
           <i class="glyphicon glyphicon-floppy-disk"></i>
-          <b> <?php _e('Save', 'cpsmartcrm') ?></b>
+          <b> <?php _e('Speichern', 'cpsmartcrm') ?></b>
       </li>
       <li class="btn btn-warning btn-sm _flat" onClick="annulla();return false;">
           <i class="glyphicon glyphicon-floppy-remove"></i>
-          <b> <?php _e('Cancel', 'cpsmartcrm') ?></b>
+          <b> <?php _e('Abbrechen', 'cpsmartcrm') ?></b>
       </li>
       <?php
       if ($ID) {
@@ -327,12 +327,12 @@ if (isset($_GET["id_invoice"]) && ($ID = $_GET["id_invoice"])) {
           ?>
           <li class="btn btn-sm btn-info _flat" onclick="location.replace('?page=smart-crm&p=documenti/advanced_print.php&id_invoice=<?php echo $ID ?>')">
               <i class="glyphicon glyphicon-print"></i>
-              <b> <?php _e('Printable version', 'cpsmartcrm') ?></b>
+              <b> <?php _e('Druckbare Version', 'cpsmartcrm') ?></b>
           </li>
         <?php } else { ?>
           <li class="btn btn-sm btn-info _flat" onclick="location.replace('?page=smart-crm&p=documenti/document_print.php&id_invoice=<?php echo $ID ?>')">
               <i class="glyphicon glyphicon-print"></i>
-              <b> <?php _e('Printable version', 'cpsmartcrm') ?></b>
+              <b> <?php _e('Druckbare Version', 'cpsmartcrm') ?></b>
           </li>
 
           <?php
@@ -386,13 +386,13 @@ if (isset($_GET["id_invoice"]) && ($ID = $_GET["id_invoice"])) {
                 }
             },
             position: "top",
-            content: "<h4><?php _e('BUTTONS LEGEND', 'cpsmartcrm') ?>:</h4>\n\
+            content: "<h4><?php _e('BUTTONS LEGENDE', 'cpsmartcrm') ?>:</h4>\n\
       <ul>\n\
           <li class=\"no-link\">\n\
-              <span class=\"btn btn-info _flat\"><i class=\"glyphicon glyphicon-tag\"></i> = <?php _e('NEW TODO', 'cpsmartcrm') ?></span>\n\
-              <span class=\"btn btn_appuntamento_1 _flat\"><i class=\"glyphicon glyphicon-pushpin\"></i> = <?php _e('NEW APPOINTMENT', 'cpsmartcrm') ?></span>\n\
-              <span class=\"btn btn-primary _flat\"><i class=\"glyphicon glyphicon-option-horizontal\"></i> = <?php _e('NEW ACTIVITY', 'cpsmartcrm') ?></span>\n\
-              <span class=\"btn btn-warning _flat\"><i class=\"glyphicon glyphicon-envelope\"></i> = <?php _e('NEW MAIL', 'cpsmartcrm') ?></span>\n\
+              <span class=\"btn btn-info _flat\"><i class=\"glyphicon glyphicon-tag\"></i> = <?php _e('NEUE TODO', 'cpsmartcrm') ?></span>\n\
+              <span class=\"btn btn_appuntamento_1 _flat\"><i class=\"glyphicon glyphicon-pushpin\"></i> = <?php _e('NEUER TERMIN', 'cpsmartcrm') ?></span>\n\
+              <span class=\"btn btn-primary _flat\"><i class=\"glyphicon glyphicon-option-horizontal\"></i> = <?php _e('NEUE AKTIVITÄT', 'cpsmartcrm') ?></span>\n\
+              <span class=\"btn btn-warning _flat\"><i class=\"glyphicon glyphicon-envelope\"></i> = <?php _e('NEUE MAIL', 'cpsmartcrm') ?></span>\n\
           </li>\n\
       </ul>"
         });
@@ -429,7 +429,7 @@ if (isset($_GET["id_invoice"]) && ($ID = $_GET["id_invoice"])) {
 
         $('#_submit').css('visibility', 'hidden');
         $('#save_client_data').show();
-        $('#save_client_data').parent().append("<br><small class=\"_notice notice notice-error \"><?php _e("You're editing the master data for this customer", 'cpsmartcrm') ?></small>");
+        $('#save_client_data').parent().append("<br><small class=\"_notice notice notice-error \"><?php _e("Du bearbeitest die Stammdaten für diesen Kunden", 'cpsmartcrm') ?></small>");
         $('.customer_data_partial').addClass('edit_active');
     });
 
@@ -462,7 +462,7 @@ if (isset($_GET["id_invoice"]) && ($ID = $_GET["id_invoice"])) {
             },
             success: function (result) {
                 noty({
-                    text: "<?php _e('Data has been saved', 'cpsmartcrm') ?>",
+                    text: "<?php _e('Daten wurden gespeichert', 'cpsmartcrm') ?>",
                     layout: 'center',
                     type: 'success',
                     template: '<div class="noty_message"><span class="noty_text"></span></div>',
@@ -735,8 +735,8 @@ if (isset($_GET["id_invoice"]) && ($ID = $_GET["id_invoice"])) {
         },
 
         messages: {
-            hasClient: "<?php _e('You should select a customer', 'cpsmartcrm') ?>",
-            hasValue: "<?php _e('This quote should have a value', 'cpsmartcrm') ?>",
+            hasClient: "<?php _e('Du solltest einen Kunden auswählen', 'cpsmartcrm') ?>",
+            hasValue: "<?php _e('Dieses Zitat sollte einen Wert haben', 'cpsmartcrm') ?>",
         }
     }).data("kendoValidator");
 
@@ -776,7 +776,7 @@ if (isset($_GET["id_invoice"]) && ($ID = $_GET["id_invoice"])) {
                             var id_cli = tmp[1];
                             hideMouseLoader();
                             noty({
-                            text: "<?php _e('Document has been saved', 'cpsmartcrm') ?>",
+                            text: "<?php _e('Dokument wurde gespeichert', 'cpsmartcrm') ?>",
                                     layout: 'center',
                                     type: 'success',
                                     template: '<div class="noty_message"><span class="noty_text"></span></div>',
@@ -794,7 +794,7 @@ if (isset($_GET["id_invoice"]) && ($ID = $_GET["id_invoice"])) {
 
                     } else {
                     noty({
-                    text: "<?php _e('Something was wrong', 'cpsmartcrm') ?>" + ": " + response,
+                    text: "<?php _e('Etwas war falsch', 'cpsmartcrm') ?>" + ": " + response,
                             layout: 'center',
                             type: 'error',
                             template: '<div class="noty_message"><span class="noty_text"></span></div>',

@@ -126,7 +126,7 @@ class CRM_Options_Settings{
             <h1 class="WPsCRM_plugin_title" style="text-align:center">CP Smart CRM<?php if(! isset($_GET['p'])){ ?><!--<span class="crmHelp" data-help="main"></span>--><?php } ?></h1>
 		    <?php include(WPsCRM_DIR."/inc/crm/c_menu.php")?> 
         <?php
-		echo '<h1>'.__('WP smart CRM options and Settings','cpsmartcrm').'</h1>';
+		echo '<h1>'.__('CP smart CRM Optionen und Einstellungen','cpsmartcrm').'</h1>';
 	}
 	function footer(){
 		echo '<small style="text-align:center;top:30px;position:relative">Developed by Webmaster-Community N3rds@Work <a href="https://smart-cms.n3rds.work">https://smart-cms.n3rds.work</a></small></div>';
@@ -139,44 +139,44 @@ class CRM_Options_Settings{
 	function register_business_settings() {
 		$this->plugin_settings_tabs[$this->business_settings_key] =  __('Business' , 'cpsmartcrm');
 		register_setting( $this->business_settings_key, $this->business_settings_key );
-		add_settings_section( 'section_business', __( 'Business Settings', 'cpsmartcrm'), array( &$this, 'section_business_desc' ), $this->business_settings_key );
+		add_settings_section( 'section_business', __( 'Business Einstellungen', 'cpsmartcrm'), array( &$this, 'section_business_desc' ), $this->business_settings_key );
 		add_settings_field( 'business', __( '', 'cpsmartcrm'), array( &$this, 'smartcrm_business_info' ), $this->business_settings_key, 'section_business' );
 	}
 	
 	function register_general_settings() {
-		$this->plugin_settings_tabs[$this->general_settings_key] =  __('General' , 'cpsmartcrm');
+		$this->plugin_settings_tabs[$this->general_settings_key] =  __('Allgemein' , 'cpsmartcrm');
 		register_setting( $this->general_settings_key, $this->general_settings_key );
-		add_settings_section( 'section_general', __('General CRM Settings' , 'cpsmartcrm').'<span class="crmHelp crmHelp-dark _options" data-help="general-options"></span>', array( &$this, 'section_general_desc' ), $this->general_settings_key );
-		add_settings_field( 'redirect', __( 'Redirect to CRM', 'cpsmartcrm'), array( &$this, 'smartcrm_redirect' ), $this->general_settings_key, 'section_general' );
-		add_settings_field( 'minimize', __( 'Minimize WP Menu', 'cpsmartcrm'), array( &$this, 'smartcrm_minimize_WP_menu' ), $this->general_settings_key, 'section_general' );
+		add_settings_section( 'section_general', __('Allgemeine CRM-Einstellungen' , 'cpsmartcrm').'<span class="crmHelp crmHelp-dark _options" data-help="general-options"></span>', array( &$this, 'section_general_desc' ), $this->general_settings_key );
+		add_settings_field( 'redirect', __( 'Weiterleitung zu CRM', 'cpsmartcrm'), array( &$this, 'smartcrm_redirect' ), $this->general_settings_key, 'section_general' );
+		add_settings_field( 'minimize', __( 'CMS-Menü minimieren', 'cpsmartcrm'), array( &$this, 'smartcrm_minimize_WP_menu' ), $this->general_settings_key, 'section_general' );
 		//add_settings_field('services', __( 'Activate Services Module', 'cpsmartcrm'), array( &$this, 'smartcrm_checkbox_services'),$this->general_settings_key,'section_general' );
-		add_settings_field('company_logo', __( 'Company Logo', 'cpsmartcrm'),array( &$this, 'smartcrm_company_logo'), $this->general_settings_key, 'section_general' );
-		add_settings_field('print_logo', __( 'Use Logo in documents (invoices, quotes)', 'cpsmartcrm'),array( &$this, 'smartcrm_print_logo'), $this->general_settings_key, 'section_general' );
-		add_settings_field('show_all_for_administrators', __( 'Show all notifications to administrators', 'cpsmartcrm'),array( &$this, 'smartcrm_administrator_noty'), $this->general_settings_key, 'section_general' );
-		add_settings_field('future_activity', __( 'Do not show closed past activities  in scheduler and dashboard', 'cpsmartcrm'),array( &$this, 'smartcrm_show_future_activity'), $this->general_settings_key, 'section_general' );
-		add_settings_field('activity_deletion', __( 'Allow deletion of activities ( todo, appointments )', 'cpsmartcrm'),array( &$this, 'smartcrm_activity_deletion_privileges'), $this->general_settings_key, 'section_general' );
-		add_settings_field( 'agent_can', __( 'Extend agent capabilities' , 'cpsmartcrm'), array( &$this, 'smartcrm_agent_can' ), $this->general_settings_key, 'section_general' );
-		add_settings_field( 'emailfrom', __( 'Set email  sender for notification', 'cpsmartcrm'), array( &$this, 'smartcrm_sender_email' ), $this->general_settings_key, 'section_general' );
-		add_settings_field( 'emailfromLabel', __( 'Set sender name for notification' , 'cpsmartcrm'), array( &$this, 'smartcrm_sender_name' ), $this->general_settings_key, 'section_general' );
-		add_settings_field( 'customersGridHeight', __( 'Set grid height for customers' , 'cpsmartcrm'), array( &$this, 'smartcrm_customers_grid_height' ), $this->general_settings_key, 'section_general' );
-		add_settings_field( 'documentsGridHeight', __( 'Set grid height for documents' , 'cpsmartcrm'), array( &$this, 'smartcrm_documents_grid_height' ), $this->general_settings_key, 'section_general' );
+		add_settings_field('company_logo', __( 'Firmenlogo', 'cpsmartcrm'),array( &$this, 'smartcrm_company_logo'), $this->general_settings_key, 'section_general' );
+		add_settings_field('print_logo', __( 'Logo in Dokumenten (Rechnungen, Angebote) verwenden', 'cpsmartcrm'),array( &$this, 'smartcrm_print_logo'), $this->general_settings_key, 'section_general' );
+		add_settings_field('show_all_for_administrators', __( 'Alle Benachrichtigungen für Administratoren anzeigen', 'cpsmartcrm'),array( &$this, 'smartcrm_administrator_noty'), $this->general_settings_key, 'section_general' );
+		add_settings_field('future_activity', __( 'Geschlossene vergangene Aktivitäten nicht im Planer und Dashboard anzeigen', 'cpsmartcrm'),array( &$this, 'smartcrm_show_future_activity'), $this->general_settings_key, 'section_general' );
+		add_settings_field('activity_deletion', __( 'Löschen von Aktivitäten (Aufgaben, Termine) zulassen', 'cpsmartcrm'),array( &$this, 'smartcrm_activity_deletion_privileges'), $this->general_settings_key, 'section_general' );
+		add_settings_field( 'agent_can', __( 'Erweitere die Agentenfunktionen' , 'cpsmartcrm'), array( &$this, 'smartcrm_agent_can' ), $this->general_settings_key, 'section_general' );
+		add_settings_field( 'emailfrom', __( 'E-Mail-Absender für Benachrichtigung festlegen', 'cpsmartcrm'), array( &$this, 'smartcrm_sender_email' ), $this->general_settings_key, 'section_general' );
+		add_settings_field( 'emailfromLabel', __( 'Lege den Absendernamen für die Benachrichtigung fest' , 'cpsmartcrm'), array( &$this, 'smartcrm_sender_name' ), $this->general_settings_key, 'section_general' );
+		add_settings_field( 'customersGridHeight', __( 'Rasterhöhe für Kunden festlegen' , 'cpsmartcrm'), array( &$this, 'smartcrm_customers_grid_height' ), $this->general_settings_key, 'section_general' );
+		add_settings_field( 'documentsGridHeight', __( 'Rasterhöhe für Dokumente festlegen' , 'cpsmartcrm'), array( &$this, 'smartcrm_documents_grid_height' ), $this->general_settings_key, 'section_general' );
 
 		do_action('WPsCRM_register_additional_general_options');
 	}
 
 	function register_clients_settings() {
-		$this->plugin_settings_tabs[$this->clients_settings_key] = __('Customers' , 'cpsmartcrm') ;
+		$this->plugin_settings_tabs[$this->clients_settings_key] = __('Kunden' , 'cpsmartcrm') ;
 		register_setting( $this->clients_settings_key, $this->clients_settings_key );
-		add_settings_section( 'section_clients', __( 'Customers Settings', 'cpsmartcrm') , array( &$this, 'section_clients_desc' ), $this->clients_settings_key );
-		add_settings_field('clientsCategories',__( 'Customers categories', 'cpsmartcrm').'<span class="crmHelp crmHelp-dark" data-help="customer-categories" style="margin:0"></span>', array( &$this, 'smartcrm_add_client_category'), $this->clients_settings_key, 'section_clients' );
+		add_settings_section( 'section_clients', __( 'Kundeneinstellungen', 'cpsmartcrm') , array( &$this, 'section_clients_desc' ), $this->clients_settings_key );
+		add_settings_field('clientsCategories',__( 'Kundenkategorien', 'cpsmartcrm').'<span class="crmHelp crmHelp-dark" data-help="customer-categories" style="margin:0"></span>', array( &$this, 'smartcrm_add_client_category'), $this->clients_settings_key, 'section_clients' );
 		//add_settings_field('clientsTax',__( 'Show taxonomies in grid', 'cpsmartcrm'), array( &$this, 'smartcrm_tax_columns'), $this->clients_settings_key, 'section_clients' );
 		do_action('WPsCRM_register_additional_clients_options');
 	}
 
 	function register_documents_settings() {
-		$this->plugin_settings_tabs[$this->documents_settings_key] =  __( 'Documents', 'cpsmartcrm');
+		$this->plugin_settings_tabs[$this->documents_settings_key] =  __( 'Dokumente', 'cpsmartcrm');
 		register_setting( $this->documents_settings_key, $this->documents_settings_key );
-		add_settings_section( 'section_documents', __( 'Documents Settings', 'cpsmartcrm'), array( &$this, 'section_documents_desc' ), $this->documents_settings_key );
+		add_settings_section( 'section_documents', __( 'Dokumenteinstellungen', 'cpsmartcrm'), array( &$this, 'section_documents_desc' ), $this->documents_settings_key );
 		//add_settings_field( 'delayedPayments', __( '', 'cpsmartcrm'),  array( &$this,'smartcrm_add_payment_description'), $this->documents_settings_key, 'section_documents' );
 		add_settings_field( 'document_header', __( '', 'cpsmartcrm'),  array( &$this,'smart_crm_documents_settings'), $this->documents_settings_key, 'section_documents' );
 		
@@ -192,32 +192,33 @@ class CRM_Options_Settings{
 			 * Section services removed until next release
 			 **/
 			//add_settings_section( 'section_services', __( 'Services Settings', 'cpsmartcrm'), array( &$this, 'section_services_desc' ), $this->services_settings_key );
-			add_settings_field('currency', __( 'Currency', 'cpsmartcrm'), array( &$this,'smartcrm_currency_select' ),$this->services_settings_key,'section_services' );
-			add_settings_field('gateways',__( 'Payment gateways', 'cpsmartcrm'), array( &$this,'smartcrm_gateway_select' ),$this->services_settings_key,'section_services' );
+			add_settings_field('currency', __( 'Währung', 'cpsmartcrm'), array( &$this,'smartcrm_currency_select' ),$this->services_settings_key,'section_services' );
+			add_settings_field('gateways',__( 'Zahlungsgateways', 'cpsmartcrm'), array( &$this,'smartcrm_gateway_select' ),$this->services_settings_key,'section_services' );
 		}
 	}
 	function register_woo_settings(){
-		$this->plugin_settings_tabs[$this->woo_settings_key] =  __( 'Woocommerce settings', 'cpsmartcrm');
+		$this->plugin_settings_tabs[$this->woo_settings_key] =  __( 'Woocommerce Einstellungen', 'cpsmartcrm');
 		register_setting( $this->woo_settings_key, $this->woo_settings_key );
-		add_settings_section( 'section_woocommerce', __( 'Woocommerce Settings', 'cpsmartcrm'), array( &$this, 'section_woo_desc' ), $this->woo_settings_key );
+		add_settings_section( 'section_woocommerce', __( 'Woocommerce Einstellungen', 'cpsmartcrm'), array( &$this, 'section_woo_desc' ), $this->woo_settings_key );
 		do_action('WPsCRM_add_woo_settings_fields');
 	}
+	//ToDo PSeCommerce_Settings
 	function register_acc_settings(){
-		$this->plugin_settings_tabs[$this->acc_settings_key] =  __( 'Accountability settings', 'cpsmartcrm');
+		$this->plugin_settings_tabs[$this->acc_settings_key] =  __( 'Verantwortlichkeitseinstellungen', 'cpsmartcrm');
 		register_setting( $this->acc_settings_key, $this->acc_settings_key );
-		add_settings_section( 'section_accountability', __( 'Accountability Settings', 'cpsmartcrm'), array( &$this, 'section_acc_desc' ), $this->acc_settings_key );
+		add_settings_section( 'section_accountability', __( 'Verantwortlichkeitseinstellungen', 'cpsmartcrm'), array( &$this, 'section_acc_desc' ), $this->acc_settings_key );
 		do_action('WPsCRM_add_acc_settings_fields');
 	}
 	function register_adv_settings(){
-		$this->plugin_settings_tabs[$this->adv_settings_key] =  __( 'Advanced settings', 'cpsmartcrm');
+		$this->plugin_settings_tabs[$this->adv_settings_key] =  __( 'Erweiterte Einstellungen', 'cpsmartcrm');
 		register_setting( $this->adv_settings_key, $this->adv_settings_key );
-		add_settings_section( 'section_advanced', __( 'Advanced Settings', 'cpsmartcrm'), array( &$this, 'section_adv_desc' ), $this->adv_settings_key );
+		add_settings_section( 'section_advanced', __( 'Erweiterte Einstellungen', 'cpsmartcrm'), array( &$this, 'section_adv_desc' ), $this->adv_settings_key );
 		do_action('WPsCRM_add_adv_settings_fields');
 	}
     function register_ag_settings(){
-		$this->plugin_settings_tabs[$this->ag_settings_key] =  __( 'Agents settings', 'cpsmartcrm');
+		$this->plugin_settings_tabs[$this->ag_settings_key] =  __( 'Agenteneinstellungen', 'cpsmartcrm');
 		register_setting( $this->ag_settings_key, $this->ag_settings_key );
-		add_settings_section( 'section_agents', __( 'Agents Settings', 'cpsmartcrm'), array( &$this, 'section_ag_desc' ), $this->ag_settings_key );
+		add_settings_section( 'section_agents', __( 'Agenteneinstellungen', 'cpsmartcrm'), array( &$this, 'section_ag_desc' ), $this->ag_settings_key );
 		do_action('WPsCRM_add_ag_settings_fields');
 	}
 	/*
@@ -250,38 +251,38 @@ class CRM_Options_Settings{
 		$options=get_option($this->business_settings_key);
         ?>
         <div id="pages" class="col-md-12">
-            <div id="pages-title"><h4 class="page-header" style="text-align:center"><span class="crmHelp crmHelp-dark" data-help="business-data" data-role="tooltip"></span><?php _e('Business main data', 'wp-smart-crm-invoices-pro') ?><small style="font-size:small"> - <?php _e('These info will create contact # 1 (for self todo) at plugin activation and will be used in documents ( invoices, quotes, etc)', 'wp-smart-crm-invoices-pro') ?></small></h4></div>
+            <div id="pages-title"><h4 class="page-header" style="text-align:center"><span class="crmHelp crmHelp-dark" data-help="business-data" data-role="tooltip"></span><?php _e('Business main data', 'wp-smart-crm-invoices-pro') ?><small style="font-size:small"> - <?php _e('Mit diesen Informationen wird bei der Plugin-Aktivierung Kontakt Nr. 1 (zur Selbsterledigung) erstellt und in Dokumenten (Rechnungen, Kostenvoranschläge usw.) verwendet.', 'wp-smart-crm-invoices-pro') ?></small></h4></div>
             <div id="sortable-handlers">
                 <div class="item xml_mandatory">
-                    <label><?php _e('Business Name', 'wp-smart-crm-invoices-pro') ?> ( <span style="color:red"> * </span> )</label><br />
+                    <label><?php _e('Firmenname', 'wp-smart-crm-invoices-pro') ?> ( <span style="color:red"> * </span> )</label><br />
                     <input type="text" id="crm_business_name" name="CRM_business_settings[business_name]" value="<?php echo isset( $options['business_name']) ? $options['business_name'] : "" ?>"  class="form-control _m" />
 
                 </div>
                 <?php do_action("business_extra_field"); ?>
                 <div class="item xml_mandatory">
-                    <label><?php _e('Address (street)', 'wp-smart-crm-invoices-pro') ?> ( <span style="color:red"> * </span> )</label><br />
+                    <label><?php _e('Adresse (Straße)', 'wp-smart-crm-invoices-pro') ?> ( <span style="color:red"> * </span> )</label><br />
 
                     <input type="text" id="crm_business_address" name="CRM_business_settings[business_address]"  value="<?php echo isset($options['business_address']) ? $options['business_address'] : "" ?>"  class="form-control _m"/>
                 </div>
               <div class="item">
-                <label><?php _e('Address (number)', 'wp-smart-crm-invoices-pro') ?> </label><br />
+                <label><?php _e('Adresse (Nummer)', 'wp-smart-crm-invoices-pro') ?> </label><br />
 
                 <input type="text" id="crm_business_number" name="CRM_business_settings[business_number]" value="<?php echo isset($options['business_number']) ? $options['business_number'] : "" ?>" class="form-control _m" />
               </div>
                 <div class="item xml_mandatory">
-                    <label><?php _e('Town', 'wp-smart-crm-invoices-pro') ?> ( <span style="color:red"> * </span> )</label><br />
+                    <label><?php _e('Stadt', 'wp-smart-crm-invoices-pro') ?> ( <span style="color:red"> * </span> )</label><br />
                     <input type="text" id="crm_business_town" name="CRM_business_settings[business_town]"  value="<?php echo isset($options['business_town']) ? $options['business_town'] : "" ?>"  class="form-control _m"/>
                 </div>
                 <div class="item xml_mandatory">
-                    <label><?php _e('ZIP code', 'wp-smart-crm-invoices-pro') ?> ( <span style="color:red"> * </span> )</label><br />
+                    <label><?php _e('PLZ', 'wp-smart-crm-invoices-pro') ?> ( <span style="color:red"> * </span> )</label><br />
                     <input type="text" id="crm_business_zip" name="CRM_business_settings[business_zip]"  value="<?php echo isset($options['business_zip']) ? $options['business_zip'] : "" ?>"  class="form-control _m"/>
                 </div>
               <div class="item xml_mandatory">
-                <label><?php _e('State/province', 'wp-smart-crm-invoices-pro') ?> ( <span style="color:red"> * </span> )</label><br />
+                <label><?php _e('Staat/Provinz', 'wp-smart-crm-invoices-pro') ?> ( <span style="color:red"> * </span> )</label><br />
                 <input type="text" id="crm_business_provincia" name="CRM_business_settings[crm_business_provincia]" value="<?php echo isset($options['crm_business_provincia']) ? $options['crm_business_provincia'] : "" ?>" class="form-control _m" />
               </div>
                 <div class="item xml_mandatory">
-                    <label><?php _e('Country', 'wp-smart-crm-invoices-pro') ?> ( <span style="color:red"> * </span> )</label><br />
+                    <label><?php _e('Land', 'wp-smart-crm-invoices-pro') ?> ( <span style="color:red"> * </span> )</label><br />
                     <select data-nazione="<?php if (isset($options['business_country'])) echo $options['business_country'] ?>" id="nazione" name="CRM_business_settings[business_country]" size="20" maxlength='50'><?php
                         if (isset($options['business_country']))
                           echo stripslashes(WPsCRM_get_countries($options['business_country']));
@@ -290,7 +291,7 @@ class CRM_Options_Settings{
                           ?></select>                         
                 </div>
                 <div class="item xml_mandatory">
-                    <label><?php _e('Vat Code', 'wp-smart-crm-invoices-pro') ?>  ( <span style="color:red"> * </span> )</label><br />
+                    <label><?php _e('Ust-ID', 'wp-smart-crm-invoices-pro') ?>  ( <span style="color:red"> * </span> )</label><br />
                     <input type="text" id="crm_business_iva" name="CRM_business_settings[business_iva]" value="<?php echo isset($options['business_iva'] ) ? $options['business_iva']: "" ?>"  class="form-control _m"/>
                 </div>
                 <div class="item">
@@ -298,28 +299,28 @@ class CRM_Options_Settings{
                     <input type="text" id="crm_business_cf" name="CRM_business_settings[business_cf]" value="<?php echo isset( $options['business_cf'] ) ?  $options['business_cf'] :""?>"  class="form-control _m"/>
                 </div>
                 <div class="item">
-                    <label><?php _e('Phone', 'wp-smart-crm-invoices-pro') ?></label><br />
-                    <input type="text" id="crm_business_phone" name="CRM_business_settings[business_phone]" value="<?php echo isset($options['business_phone']) ? $options['business_phone'] :"" ?>"  class="form-control _m" /><label class="toRight"><?php _e('Show in document header', 'wp-smart-crm-invoices-pro') ?>?<input type="checkbox" value="1" name="CRM_business_settings[show_phone]" <?php echo (isset($options['show_phone']) && $options['show_phone'] == "1" ? 'checked' : null) ?>/></label><br />
+                    <label><?php _e('Telefon', 'wp-smart-crm-invoices-pro') ?></label><br />
+                    <input type="text" id="crm_business_phone" name="CRM_business_settings[business_phone]" value="<?php echo isset($options['business_phone']) ? $options['business_phone'] :"" ?>"  class="form-control _m" /><label class="toRight"><?php _e('Im Dokumentkopf anzeigen', 'wp-smart-crm-invoices-pro') ?>?<input type="checkbox" value="1" name="CRM_business_settings[show_phone]" <?php echo (isset($options['show_phone']) && $options['show_phone'] == "1" ? 'checked' : null) ?>/></label><br />
                 </div>
                 <div class="item">
                     <label><?php _e('Fax', 'wp-smart-crm-invoices-pro') ?></label><br />
-                    <input type="text" id="crm_business_fax" name="CRM_business_settings[business_fax]" value="<?php echo isset($options['business_fax']) ? $options['business_fax'] :"" ?>"  class="form-control _m" /><label class="toRight"><?php _e('Show in document header', 'wp-smart-crm-invoices-pro') ?>?<input type="checkbox" value="1" name="CRM_business_settings[show_fax]" <?php echo (isset($options['show_fax']) && $options['show_fax'] == "1" ? 'checked' : null) ?>/></label><br />
+                    <input type="text" id="crm_business_fax" name="CRM_business_settings[business_fax]" value="<?php echo isset($options['business_fax']) ? $options['business_fax'] :"" ?>"  class="form-control _m" /><label class="toRight"><?php _e('Im Dokumentkopf anzeigen', 'wp-smart-crm-invoices-pro') ?>?<input type="checkbox" value="1" name="CRM_business_settings[show_fax]" <?php echo (isset($options['show_fax']) && $options['show_fax'] == "1" ? 'checked' : null) ?>/></label><br />
                 </div>
                 <div class="item">
                     <label><?php _e('Email', 'wp-smart-crm-invoices-pro') ?></label><br />
-                    <input type="text" id="crm_business_email" name="CRM_business_settings[business_email]" value="<?php echo isset($options['business_email'] ) ? $options['business_email'] : "" ?>"  class="form-control _m" /><label class="toRight"><?php _e('Show in document header', 'wp-smart-crm-invoices-pro') ?>?<input type="checkbox" value="1" name="CRM_business_settings[show_email]" <?php echo (isset($options['show_email']) && $options['show_email'] == "1" ? 'checked' : null) ?>/></label><br />
+                    <input type="text" id="crm_business_email" name="CRM_business_settings[business_email]" value="<?php echo isset($options['business_email'] ) ? $options['business_email'] : "" ?>"  class="form-control _m" /><label class="toRight"><?php _e('Im Dokumentkopf anzeigen', 'wp-smart-crm-invoices-pro') ?>?<input type="checkbox" value="1" name="CRM_business_settings[show_email]" <?php echo (isset($options['show_email']) && $options['show_email'] == "1" ? 'checked' : null) ?>/></label><br />
                 </div>
                 <div class="item">
-                    <label><?php _e('Web Site', 'wp-smart-crm-invoices-pro') ?></label><br />
-                    <input type="text" id="crm_business_web" name="CRM_business_settings[business_web]" value="<?php echo isset( $options['business_web']) ? $options['business_web'] : "" ?>"  class="form-control _m"><label class="toRight"><?php _e('Show in document header', 'wp-smart-crm-invoices-pro') ?>?<input type="checkbox" value="1" name="CRM_business_settings[show_web]" <?php echo (isset($options['show_web']) && $options['show_web'] == "1" ? 'checked' : null) ?>/></label><br />
+                    <label><?php _e('Webseite', 'wp-smart-crm-invoices-pro') ?></label><br />
+                    <input type="text" id="crm_business_web" name="CRM_business_settings[business_web]" value="<?php echo isset( $options['business_web']) ? $options['business_web'] : "" ?>"  class="form-control _m"><label class="toRight"><?php _e('Im Dokumentkopf anzeigen', 'wp-smart-crm-invoices-pro') ?>?<input type="checkbox" value="1" name="CRM_business_settings[show_web]" <?php echo (isset($options['show_web']) && $options['show_web'] == "1" ? 'checked' : null) ?>/></label><br />
                 </div>
                 <div class="item">
-                    <label><?php _e('Bank account code (IBAN)', 'wp-smart-crm-invoices-pro') ?></label><br />
-                    <input type="text" id="crm_business_iban" name="CRM_business_settings[business_iban]"  value="<?php echo isset( $options['business_iban']) ? $options['business_iban'] : "" ?>"  class="form-control _m"/><label class="toRight"><?php _e('Show in document header', 'wp-smart-crm-invoices-pro') ?>?<input type="checkbox" value="1" name="CRM_business_settings[show_iban]" <?php echo (isset($options['show_iban']) && $options['show_iban'] == "1" ? 'checked' : null) ?>/></label><br />
+                    <label><?php _e('Bankkontonummer (IBAN)', 'wp-smart-crm-invoices-pro') ?></label><br />
+                    <input type="text" id="crm_business_iban" name="CRM_business_settings[business_iban]"  value="<?php echo isset( $options['business_iban']) ? $options['business_iban'] : "" ?>"  class="form-control _m"/><label class="toRight"><?php _e('Im Dokumentkopf anzeigen', 'wp-smart-crm-invoices-pro') ?>?<input type="checkbox" value="1" name="CRM_business_settings[show_iban]" <?php echo (isset($options['show_iban']) && $options['show_iban'] == "1" ? 'checked' : null) ?>/></label><br />
                 </div>
                 <div class="item">
-                    <label><?php _e('Int. account code (SWIFT)', 'wp-smart-crm-invoices-pro') ?></label><br />
-                    <input type="text" id="crm_business_swift" name="CRM_business_settings[business_swift]" value="<?php echo isset( $options['business_swift']) ? $options['business_swift'] : "" ?>" class="form-control _m" /><label class="toRight"><?php _e('Show in document header', 'wp-smart-crm-invoices-pro') ?>?<input type="checkbox" value="1" name="CRM_business_settings[show_swift]" <?php echo (isset($options['show_swift']) && $options['show_swift'] == "1" ? 'checked' : null) ?> /></label><br />
+                    <label><?php _e('Int. Kontocode (SWIFT)', 'wp-smart-crm-invoices-pro') ?></label><br />
+                    <input type="text" id="crm_business_swift" name="CRM_business_settings[business_swift]" value="<?php echo isset( $options['business_swift']) ? $options['business_swift'] : "" ?>" class="form-control _m" /><label class="toRight"><?php _e('Im Dokumentkopf anzeigen', 'wp-smart-crm-invoices-pro') ?>?<input type="checkbox" value="1" name="CRM_business_settings[show_swift]" <?php echo (isset($options['show_swift']) && $options['show_swift'] == "1" ? 'checked' : null) ?> /></label><br />
                 </div>
                 <input type="hidden" id="CRM_required_settings" name="CRM_business_settings[CRM_required_settings]" value="<?php echo isset( $options['CRM_required_settings']) ? $options['CRM_required_settings'] : "" ?>" />
 
@@ -331,7 +332,7 @@ class CRM_Options_Settings{
 			</style>
 			<script>
                 jQuery('#nazione').kendoDropDownList({
-    	            placeholder: "<?php _e('Select country','cpsmartcrm') ?>...",
+    	            placeholder: "<?php _e('Land auswählen','cpsmartcrm') ?>...",
                     value: "<?php if(isset($options['business_country'])) echo $options['business_country']; else echo 'IT'?>"
                 });
 				function saveBusiness(e) {
@@ -414,12 +415,12 @@ class CRM_Options_Settings{
 				},
 
 				messages: {
-					hasName: "<?php _e('Business name is required','cpsmartcrm')?>",
-					hasAddress: "<?php _e('Address is required','cpsmartcrm')?>",
-					hasTown: "<?php _e('Town is required','cpsmartcrm')?>",
-					hasZip: "<?php _e('Zip code is required','cpsmartcrm')?>",
-					hasCF: "<?php _e('Vat Code is required','cpsmartcrm')?>",
-                                        hasMail: "<?php _e('Email is required','cpsmartcrm')?>",
+					hasName: "<?php _e('Firmenname ist erforderlich','cpsmartcrm')?>",
+					hasAddress: "<?php _e('Adresse ist erforderlich','cpsmartcrm')?>",
+					hasTown: "<?php _e('Stadt ist erforderlich','cpsmartcrm')?>",
+					hasZip: "<?php _e('Postleitzahl ist erforderlich','cpsmartcrm')?>",
+					hasCF: "<?php _e('Umsatzsteuer-Code ist erforderlich','cpsmartcrm')?>",
+                                        hasMail: "<?php _e('E-Mail ist erforderlich','cpsmartcrm')?>",
 
 				}
 				}).data("kendoValidator");
@@ -441,7 +442,7 @@ class CRM_Options_Settings{
 			<script>
             	jQuery(document).ready(function ($) {
             		noty({
-            			text: "<?php _e('PLEASE SOME BASIC INFORMATION ARE REQUIRED TO PROCEED','cpsmartcrm')?>",
+            			text: "<?php _e('ES SIND EINIGE GRUNDLEGENDE INFORMATIONEN ERFORDERLICH, UM FORTFAHREN ZU KÖNNEN','cpsmartcrm')?>",
             			layout: 'center',
             			type: 'error',
             			template: '<div class="noty_message"><span class="noty_text"></span><span class="noty_close glyphicons gypicons-close"></span></div>',
@@ -480,9 +481,9 @@ class CRM_Options_Settings{
 		$options = get_option(  $this->general_settings_key );
 		
 		$html = '<div class="col-md-4"><select id="grid_style" name="'.$this->general_settings_key.'[grid_style]" class="form-control">';
-		$html .= '<option value="default">' . __( 'Select a style...', 'cpsmartcrm') . '</option>';
-		$html .= '<option value="dark" ' . selected( $options['grid_style'], 'dark', false) . '>' . __( 'Dark', 'cpsmartcrm') . '</option>';
-		$html .= '<option value="light" ' . selected( $options['grid_style'], 'light', false) . '>' . __( 'Light', 'cpsmartcrm') . '</option>';
+		$html .= '<option value="default">' . __( 'Wähle einen Stil...', 'cpsmartcrm') . '</option>';
+		$html .= '<option value="dark" ' . selected( $options['grid_style'], 'dark', false) . '>' . __( 'Dunkel', 'cpsmartcrm') . '</option>';
+		$html .= '<option value="light" ' . selected( $options['grid_style'], 'light', false) . '>' . __( 'Hell', 'cpsmartcrm') . '</option>';
 		$html .= '</select></div>';
 		echo $html;
 
@@ -501,7 +502,7 @@ class CRM_Options_Settings{
 		else
 			$html = '<input type="checkbox" id="redirect_to_crm" name="'.$this->general_settings_key.'[smartcrm_redirect-'.$userID.']" value="1" class="form-control"/>';
 		$html .= '&nbsp;';
-		$html .= '<label>'.__('Redirect to CRM dashboard on login','cpsmartcrm').'</label>';
+		$html .= '<label>'.__('Bei der Anmeldung zum CRM-Dashboard weiterleiten','cpsmartcrm').'</label>';
 		
 		echo $html;
 		
@@ -521,7 +522,7 @@ class CRM_Options_Settings{
 		else
 			$html = '<input type="checkbox" id="minimize_Wp_menu" name="'.$this->general_settings_key.'[minimize_WP_menu-'.$userID.']" value="1" class="form-control"/>';
 		$html .= '&nbsp;';
-		$html .= '<label>'.__('Minimize Wp Main menu and use CRM fullpage ( Recommended )','cpsmartcrm').'</label>';
+		$html .= '<label>'.__('Minimiere das Wp-Hauptmenü und verwende CRM ganzseitig (empfohlen)','cpsmartcrm').'</label>';
 		
 		echo $html;
 		
@@ -539,7 +540,7 @@ class CRM_Options_Settings{
 		else
 			$html = '<input type="checkbox" id="administrator_all" name="'.$this->general_settings_key.'[administrator_all]" value="1" class="form-control"/>';
 		$html .= '&nbsp;';
-		$html .= '<label>'.__('Show notifications for all agents/users to site Administrators','cpsmartcrm').'</label>';
+		$html .= '<label>'.__('Zeige Administratoren Benachrichtigungen für alle Agenten/Benutzer an','cpsmartcrm').'</label>';
 		
 		echo $html;
 
@@ -557,7 +558,7 @@ class CRM_Options_Settings{
 		else
 			$html = '<input type="checkbox" id="future_activities" name="'.$this->general_settings_key.'[future_activities]" value="1" class="form-control"/>';
 		$html .= '&nbsp;';
-		$html .= '<label>'.__('Do not show activities marked as DONE or CANCELED older than one day in dashboard and scheduler','cpsmartcrm').'</label>';
+		$html .= '<label>'.__('Zeige im Dashboard und im Planer keine Aktivitäten an, die als FERTIG oder ABGESAGT markiert sind und älter als einen Tag sind','cpsmartcrm').'</label>';
 		
 		echo $html;
 
@@ -572,18 +573,18 @@ class CRM_Options_Settings{
 		$options = get_option( $this->general_settings_key );
 		if (isset($options['deletion_privileges']))
 		{
-			$html = '<label>'.__('Allow deletion of activities to administrators only','cpsmartcrm');
+			$html = '<label>'.__('Erlaube das Löschen von Aktivitäten nur Administratoren','cpsmartcrm');
 			$html .= '<input type="radio" id="deletion_privileges" name="'.$this->general_settings_key.'[deletion_privileges]" value="1"' . checked( 1, $options['deletion_privileges'], false ) . ' /></label>';
 			$html .= '<br>';
-			$html .= '<label>'.__('Allow deletion of activities to administrators and creator','cpsmartcrm');
+			$html .= '<label>'.__('Erlaube Administratoren und Erstellern das Löschen von Aktivitäten','cpsmartcrm');
 			$html .= '<input type="radio" id="deletion_privileges" name="'.$this->general_settings_key.'[deletion_privileges]" value="0"' . checked( 0, $options['deletion_privileges'], false ) . ' /></label>';
 		}
 		else
 		{
-			$html = '<label>'.__('Allow deletion of activities to administrators only','cpsmartcrm');
+			$html = '<label>'.__('Erlaube das Löschen von Aktivitäten nur Administratoren','cpsmartcrm');
 			$html .= '<input type="radio" id="deletion_privileges" name="'.$this->general_settings_key.'[deletion_privileges]" value="1" /></label>';
 			$html .= '<br>';
-			$html .= '<label>'.__('Allow deletion of activities to administrators and creator','cpsmartcrm');
+			$html .= '<label>'.__('Erlaube Administratoren und Erstellern das Löschen von Aktivitäten','cpsmartcrm');
 			$html .= '<input type="radio" id="deletion_privileges" name="'.$this->general_settings_key.'[deletion_privileges]" value="0" /></label>';
 		}
 		echo $html;
@@ -599,18 +600,18 @@ class CRM_Options_Settings{
 		$options = get_option( $this->general_settings_key );
 		if (isset($options['crm_agent_can']))
 		{
-			$html = '<label>'.__('Allow agents to see documents and customers associated to other CRM Agents','cpsmartcrm');
+			$html = '<label>'.__('Ermögliche Agenten, Dokumente und Kunden anzuzeigen, die anderen CRM-Agenten zugeordnet sind','cpsmartcrm');
 			$html .= '<input type="radio" id="crm_agent_can" name="'.$this->general_settings_key.'[crm_agent_can]" value="1"' . checked( 1, $options['crm_agent_can'], false ) . ' /></label>';
 			$html .= '<br>';
-			$html .= '<label>'.__('Allow an agent to see only documents and customers associated to himself','cpsmartcrm');
+			$html .= '<label>'.__('Erlaube einem Agenten, nur Dokumente und Kunden zu sehen, die ihm zugeordnet sind','cpsmartcrm');
 			$html .= '<input type="radio" id="crm_agent_can" name="'.$this->general_settings_key.'[crm_agent_can]" value="0"' . checked( 0, $options['crm_agent_can'], false ) . ' /></label>';
 		}
 		else
 		{
-			$html = '<label>'.__('Allow agents to see documents and customers associated to other CRM Agents','cpsmartcrm');
+			$html = '<label>'.__('Ermögliche Agenten, Dokumente und Kunden anzuzeigen, die anderen CRM-Agenten zugeordnet sind','cpsmartcrm');
 			$html .= '<input type="radio" id="crm_agent_can" name="'.$this->general_settings_key.'[crm_agent_can]" value="1" /></label>';
 			$html .= '<br>';
-			$html .= '<label>'.__('Allow an agent to see only documents and customers associated to himself','cpsmartcrm');
+			$html .= '<label>'.__('Erlaube einem Agenten, nur Dokumente und Kunden zu sehen, die ihm zugeordnet sind','cpsmartcrm');
 			$html .= '<input type="radio" id="crm_agent_can" name="'.$this->general_settings_key.'[crm_agent_can]" value="0" /></label>';
 		}
 		echo $html;
@@ -629,7 +630,7 @@ class CRM_Options_Settings{
 				<input id="companyLogo" name="<?php echo $this->general_settings_key ?>[company_logo]" type="text" value="<?php echo isset($options['company_logo'])?$options['company_logo']:'' ?>"  class="form-control _m"/>
 				<input style="margin-top:10px;text-align:center" class="button button-primary" value="<?php _e('Upload', 'cpsmartcrm')?>" onClick="open_media_uploader_images()"/>
 			</div>
-			<span style="width:100%;float:left;margin-top:10px;color:#999"><?php _e('Select your Company Logo to be used in documents ( invoices, quotes, etc..) best results with a square image 100px x 100px','cpsmartcrm')?></span>
+			<span style="width:100%;float:left;margin-top:10px;color:#999"><?php _e('Wähle Dein Firmenlogo aus, das in Dokumenten (Rechnungen, Kostenvoranschlägen usw.) verwendet werden soll. Beste Ergebnisse erhätst Du mit einem quadratischen Bild von 100 x 100 Pixel','cpsmartcrm')?></span>
 			</div>
     <span class="thumbContainer row"><?php if(isset($options['company_logo'])) {?> <img src="<?php echo $options['company_logo'] ?>" /><?php } ?></span>
     <script>
@@ -672,7 +673,7 @@ class CRM_Options_Settings{
 		else
 			$html = '<input type="checkbox" id="print_logo" name="'.$this->general_settings_key.'[print_logo]" value="1" class="form-control"/>';
 		$html .= '&nbsp;';
-		$html .= '<label>'.__('Use Logo in documents','cpsmartcrm').'</label>';
+		$html .= '<label>'.__('Logo in Dokumenten verwenden','cpsmartcrm').'</label>';
 		
 		echo $html;
 
@@ -689,7 +690,7 @@ class CRM_Options_Settings{
 		else
 			$html = '<div class="col-md-4"><input type="email" id="emailFrom" name="'.$this->general_settings_key.'[emailFrom]" value="" class=" form-control _m"/>';
 		$html .= '&nbsp;';
-		$html .= '<label style="line-height:1em">'.__('Set a sender email address for CRM notification emails','cpsmartcrm').' <small><br />'.__('If blank the admin email will be used','cpsmartcrm').'</small></label></div>';
+		$html .= '<label style="line-height:1em">'.__('Lege eine Absender-E-Mail-Adresse für CRM-Benachrichtigungs-E-Mails fest','cpsmartcrm').' <small><br />'.__('Wenn leer, wird die Administrator-E-Mail verwendet','cpsmartcrm').'</small></label></div>';
 		
 		echo $html;
 	}
@@ -705,7 +706,7 @@ class CRM_Options_Settings{
 		else
 			$html = '<div class="col-md-4"><input type="text" id="nameFrom" name="'.$this->general_settings_key.'[nameFrom]" value="" class=" form-control _m"/>';
 		$html .= '&nbsp;';
-		$html .= '<label style="line-height:1em">'.__('Set a sender name for CRM notification emails','cpsmartcrm').' <small><br />'.__('If blank the site name will be used','cpsmartcrm').'</small></label></div>';
+		$html .= '<label style="line-height:1em">'.__('Lege einen Absendernamen für CRM-Benachrichtigungs-E-Mails fest','cpsmartcrm').' <small><br />'.__('Wenn leer, wird der Webseiten-Name verwendet','cpsmartcrm').'</small></label></div>';
 		
 		echo $html;
 	}
@@ -720,7 +721,7 @@ class CRM_Options_Settings{
 		else
 			$html = '<div class="col-md-4"><input type="number" id="customersGridHeight" name="'.$this->general_settings_key.'[customersGridHeight]" value="" class=" form-control _m" style="width:200px"/>';
 		$html .= '&nbsp;';
-		$html .= '<label style="line-height:1em">'.__('Set grid height ( in px ) for customers','cpsmartcrm').'</label></div>';
+		$html .= '<label style="line-height:1em">'.__('Lege die Rasterhöhe (in px) für Kunden fest','cpsmartcrm').'</label></div>';
 		
 		echo $html;
 
@@ -735,7 +736,7 @@ class CRM_Options_Settings{
 		else
 			$html = '<div class="col-md-4"><input type="number" id="documentsGridHeight" name="'.$this->general_settings_key.'[documentsGridHeight]" value="" class=" form-control _m" style="width:200px"/>';
 		$html .= '&nbsp;';
-		$html .= '<label style="line-height:1em">'.__('Set grid height ( in px ) for documents','cpsmartcrm').'</label></div>';
+		$html .= '<label style="line-height:1em">'.__('Lege die Rasterhöhe (in px) für Dokumente fest','cpsmartcrm').'</label></div>';
 		
 		echo $html;
 
@@ -766,7 +767,7 @@ class CRM_Options_Settings{
 		$options= get_option( $this->services_settings_key );
 		$html= '<div class="row"><div class="col-md-3">';
 		$html .= '<select id="gateways" name="'.$this->services_settings_key .'[gateways]" class="form-control"/>';
-		$html .= '<option value="">'. __('Select','cpsmartcrm').'</option>';
+		$html .= '<option value="">'. __('Wählen','cpsmartcrm').'</option>';
 		$html .= '<option value="STRIPE"' . selected( $options['gateways'], 'STRIPE', false) . '>STRIPE</option>';
 		$html .= '<option value="PAYPAL"' . selected( $options['gateways'], 'PAYPAL', false) . '>PAYPAL</option>';
 		$html .= '</select></div></div>';
@@ -776,8 +777,8 @@ class CRM_Options_Settings{
 <div class="row">
     <div class="panel panel-default col-md-9" style="margin:20px;padding-bottom:20px">
         <div id="stripe_config" style="display:none">
-                <h3><?php _e('Stripe Configuration','cpsmartcrm')?></h3>
-                <p><?php _e('Use your stripe account settings here','cpsmartcrm')?></p>
+                <h3><?php _e('Stripe-Konfiguration','cpsmartcrm')?></h3>
+                <p><?php _e('Verwende hier Deine Stripe-Kontoeinstellungen','cpsmartcrm')?></p>
             
                 <h4>Test mode &raquo;<input type="radio" name="<?php echo $this->services_settings_key; ?>[stripe_mode]" id="test_mode" value="test_mode" <?php echo checked( $options['stripe_mode'], 'test_mode', false) ?>/></h4>
                 <label>Secret key for <span style="color:red">test mode</span></label><input class="test_mode" type="text" style="width:300px" name="<?php echo $this->services_settings_key; ?>[stripe_test_secret_key]" value="<?php echo esc_attr( $this->services_settings['stripe_test_secret_key'] ); ?>" />
@@ -865,7 +866,7 @@ class CRM_Options_Settings{
             <div class="col-md-1"></div>
 			<div class="col-md-4">
                 <label>
-                    <?php _e('Show customers Category in grid','cpsmartcrm')?>?
+                    <?php _e('Kundenkategorie im Raster anzeigen','cpsmartcrm')?>?
                 </label>
                 <input type="checkbox" value="1" name="<?php echo $this->clients_settings_key ?>[gridShowCat]" <?php echo checked( 1, $showCategories, false ) ?> />
             </div>
@@ -876,7 +877,7 @@ class CRM_Options_Settings{
 			</div>
             <div class="col-md-1"></div>
             <div class="col-md-4">
-                <label><?php _e('Show customers Interests in grid','cpsmartcrm')?>?
+                <label><?php _e('Zeige Kundeninteressen am Raster','cpsmartcrm')?>?
                 </label>
                 <input type="checkbox" value="1" name="<?php echo $this->clients_settings_key ?>[gridShowInt]" <?php echo checked( 1, $showInterests, false ) ?> />
             </div>
@@ -887,7 +888,7 @@ class CRM_Options_Settings{
 			</div>
             <div class="col-md-1"></div>
             <div class="col-md-4">
-                <label><?php _e('Show customers Origin in grid','cpsmartcrm')?>?
+                <label><?php _e('Kundenherkunft im Raster anzeigen','cpsmartcrm')?>?
                 </label>
                 <input type="checkbox" value="1" name="<?php echo $this->clients_settings_key ?>[gridShowOr]" <?php echo checked( 1, $showOrigins, false ) ?> />
             </div>
@@ -912,23 +913,23 @@ class CRM_Options_Settings{
 	<div id="innerTabstrip">
         <ul>
 			<li class="k-state-active">
-				<?php _e('Documents settings','cpsmartcrm')?>
+				<?php _e('Dokumenteinstellungen','cpsmartcrm')?>
 			</li>
             <li >
-                <?php _e('Document header','cpsmartcrm')?>
+                <?php _e('Dokumentkopf','cpsmartcrm')?>
             </li>
             
             <li>
-                <?php _e('Payment methods','cpsmartcrm')?>
+                <?php _e('Zahlungsarten','cpsmartcrm')?>
             </li>
             <li>
                 <?php _e('Messages','cpsmartcrm')?>
             </li>
             <li>
-                <?php _e('Signature','cpsmartcrm')?>
+                <?php _e('Signatur','cpsmartcrm')?>
             </li>
             <li>
-                <?php _e('Custom Style','cpsmartcrm')?>
+                <?php _e('Benutzerdefinierter Stil','cpsmartcrm')?>
             </li>
 			<?php
 		do_action('WPsCRM_add_tabs_to_document_settings')
@@ -939,7 +940,7 @@ class CRM_Options_Settings{
                     <div id="global_vat">
                         <div class="widget col-md-5 pull-left">
                             <h3><span class="crmHelp crmHelp-dark" data-help="default-vat"></span>
-                                <?php _e('Default VAT and Currency','cpsmartcrm')?>
+                                <?php _e('Standardmäßige Mehrwertsteuer und Währung','cpsmartcrm')?>
                             </h3>
                             <div>
                                 <div class="col-md-4 pull-left">
@@ -947,7 +948,7 @@ class CRM_Options_Settings{
                                     <input class="col-md-4" type="number" id="default_vat" name="<?php echo $this->documents_settings_key ?>[default_vat]" value="<?php echo $document_options['default_vat']?>" />
                                 </div>
                                 <div class="col-md-6 pull-right">
-                                    <label style="font-size:1.4em; position:relative;top:-15px"><?php _e('Currency','cpsmartcrm')?> </label>
+                                    <label style="font-size:1.4em; position:relative;top:-15px"><?php _e('Währung','cpsmartcrm')?> </label>
 									<?php
 									if(!isset($document_options['crm_currency']))
 										$document_options['crm_currency']="";
@@ -974,7 +975,7 @@ class CRM_Options_Settings{
                     <div id="payment_notification">
                         <div class="widget col-md-5 pull-right">
                             <h3><span class="crmHelp crmHelp-dark" data-help="payment-notification"></span>
-                                <?php _e('Days after payment notification','cpsmartcrm')?>
+                                <?php _e('Tage nach Zahlungsbenachrichtigung','cpsmartcrm')?>
                             </h3>
 
                             <div>
@@ -988,21 +989,21 @@ class CRM_Options_Settings{
                     <div id="_header_invoices_numbering">
                         <div class="widget col-md-5 pull-left">
                             <h3><span class="crmHelp crmHelp-dark" data-help="document-numbering"></span>
-                                <?php _e('Invoices Numbering settings','cpsmartcrm')?>
+                                <?php _e('Nummerierungseinstellungen für Rechnungen','cpsmartcrm')?>
                             </h3>
 
                             <div>
                                 <div class="col-md-10">
                                     <label class="col-md-10">
-                                        <?php _e('Invoice prefix','cpsmartcrm')?>
+                                        <?php _e('Rechnungspräfix','cpsmartcrm')?>
                                     </label>
                                     <input class="col-md-10" type="text" id="invoices_prefix" name="<?php echo $this->documents_settings_key ?>[invoices_prefix]" value="<?php echo isset( $document_options['invoices_prefix']) ? $document_options['invoices_prefix'] : null ?>" />
                                     <label class="col-md-10">
-                                        <?php _e('Invoice suffix','cpsmartcrm')?>
+                                        <?php _e('Rechnungssuffix','cpsmartcrm')?>
                                     </label>
                                     <input class="col-md-10" type="text" id="invoices_suffix" name="<?php echo $this->documents_settings_key ?>[invoices_suffix]" value="<?php echo isset( $document_options['invoices_suffix']) ? $document_options['invoices_suffix'] : null?>" />
                                     <label class="col-md-10">
-                                        <?php _e('Invoices last insert','cpsmartcrm')?>
+                                        <?php _e('Rechnungen letzte Beilage','cpsmartcrm')?>
                                     </label>
                                     <input class="col-md-10" type="number" min="0" id="invoices_start" name="<?php echo $this->documents_settings_key ?>[invoices_start]" value="<?php echo isset( $document_options['invoices_start']) ? $document_options['invoices_start'] : null?>" />
 
@@ -1014,21 +1015,21 @@ class CRM_Options_Settings{
                     <div id="_header_offers_numbering">
                         <div class="widget col-md-5 pull-right">
                             <h3><span class="crmHelp crmHelp-dark" data-help="document-numbering"></span>
-                                <?php _e('Quotes Numbering settings','cpsmartcrm')?>
+                                <?php _e('Einstellungen für die Nummerierung von Angeboten','cpsmartcrm')?>
                             </h3>
 
                             <div>
                                 <div class="col-md-10">
                                     <label class="col-md-10">
-                                        <?php _e('Quotes prefix','cpsmartcrm')?>
+                                        <?php _e('Zitate Präfix','cpsmartcrm')?>
                                     </label>
                                     <input class="col-md-10" type="text" id="offers_prefix" name="<?php echo $this->documents_settings_key ?>[offers_prefix]" value="<?php echo isset( $document_options['offers_prefix']) ? $document_options['offers_prefix'] : null?>" />
                                     <label class="col-md-10">
-                                        <?php _e('Quotes suffix','cpsmartcrm')?>
+                                        <?php _e('Zitate Suffix','cpsmartcrm')?>
                                     </label>
                                     <input class="col-md-10" type="text" id="offers_suffix" name="<?php echo $this->documents_settings_key ?>[offers_suffix]" value="<?php echo isset( $document_options['offers_suffix']) ? $document_options['offers_suffix'] : null?>" />
                                     <label class="col-md-10">
-                                        <?php _e('Quotes last insert','cpsmartcrm')?>
+                                        <?php _e('Zitate letzter Einsatz','cpsmartcrm')?>
                                     </label>
                                     <input class="col-md-10" type="number" min="0" id="offers_start" name="<?php echo $this->documents_settings_key ?>[offers_start]" value="<?php echo isset( $document_options['offers_start']) ? $document_options['offers_start'] : null?>" />
 
@@ -1040,11 +1041,11 @@ class CRM_Options_Settings{
                     	jQuery(document).ready(function($){
                     		$('#invoices_start').on('input', function () {
                     			if( $(this).val() < <?php echo (isset($document_options['invoices_start']) && $document_options['invoices_start']!="" ) ? $document_options['invoices_start'] : '0' ?> )
-									alert("<?php _e('Warning: you\'re inputing a number lower than last invoice issued, be careful, this can cause problems with duplicated id','cpsmartcrm')?>");
+									alert("<?php _e('Warnung: Du gibst eine Nummer ein, die niedriger ist als die der zuletzt ausgestellten Rechnung. Sei vorsichtig, dies kann zu Problemen mit doppelten IDs führen','cpsmartcrm')?>");
                     		})
                     		$('#offers_start').on('input', function () {
                     			if( $(this).val() < <?php echo (isset($document_options['invoices_start']) && $document_options['invoices_start'] !="")  ? $document_options['invoices_start'] : '0' ?> )
-									alert("<?php _e('Warning: you\'re inputing a number lower than last quote issued, be careful, this can cause problems with duplicated id','cpsmartcrm')?>");
+									alert("<?php _e('Warnung: Du gibst eine Zahl ein, die niedriger ist als die zuletzt ausgegebene Zahl. Sei vorsichtig, dies kann zu Problemen mit doppelten i führend','cpsmartcrm')?>");
                     		})
                     	})
                     </script>
@@ -1054,7 +1055,7 @@ class CRM_Options_Settings{
 
             <div id="_header_align">
                 <div class="dash-head hidden-on-narrow">
-                    <h4 style="text-align: center;" class="page-header"><span class="crmHelp crmHelp-dark" data-help="header-align"></span><?php _e('Drag elements (left-right) to align them in documents ','cpsmartcrm')?> </h4>
+                    <h4 style="text-align: center;" class="page-header"><span class="crmHelp crmHelp-dark" data-help="header-align"></span><?php _e('Ziehe Elemente (von links nach rechts), um sie in Dokumenten auszurichten ','cpsmartcrm')?> </h4>
                 </div>
                 <div class="panel-wrap hidden-on-narrow row">
                     <div id="sortable-horizontal">
@@ -1071,7 +1072,7 @@ class CRM_Options_Settings{
 
                                 </div>
                                 <a href="<?php echo admin_url( '/admin.php?page=smartcrm_settings&tab=CRM_general_settings' )?>">
-                                    <?php _e('Edit','cpsmartcrm')?>&raquo;
+                                    <?php _e('Bearbeiten','cpsmartcrm')?>&raquo;
                                 </a>
                             </div>
 
@@ -1105,7 +1106,7 @@ class CRM_Options_Settings{
                                         ?>
                                 </div>
                                 <a href="<?php echo admin_url( '/admin.php?page=smartcrm_settings&tab=CRM_business_settings' )?>">
-                                    <?php _e('Edit','cpsmartcrm')?>&raquo;
+                                    <?php _e('Bearbeiten','cpsmartcrm')?>&raquo;
                                 </a>
                             </div>
 
@@ -1139,7 +1140,7 @@ class CRM_Options_Settings{
                                 ?>
                                 </div>
                                 <a href="<?php echo admin_url( '/admin.php?page=smartcrm_settings&tab=CRM_business_settings' )?>">
-                                    <?php _e('Edit','cpsmartcrm')?>&raquo;
+                                    <?php _e('Bearbeiten','cpsmartcrm')?>&raquo;
                                 </a>
                             </div>
 
@@ -1156,7 +1157,7 @@ class CRM_Options_Settings{
 
                                 </div>
                                 <a href="<?php echo admin_url( '/admin.php?page=smartcrm_settings&tab=CRM_general_settings' )?>">
-                                    <?php _e('Edit','cpsmartcrm')?>&raquo;
+                                    <?php _e('Bearbeiten','cpsmartcrm')?>&raquo;
                                 </a>
                             </div>
 
@@ -1212,7 +1213,7 @@ class CRM_Options_Settings{
 		<div id="_payments">
 			<div class="dash-head hidden-on-narrow">
                 <h4 style="text-align: center;margin:30px auto" class="page-header" >
-                    <?php _e('Payment methods definitions','cpsmartcrm')?><span class="crmHelp crmHelp-dark" data-help="options-payments-definitions"></span>
+                    <?php _e('Definitionen der Zahlungsmethoden','cpsmartcrm')?><span class="crmHelp crmHelp-dark" data-help="options-payments-definitions"></span>
                 </h4>
             </div>
             <div class="panel-wrap hidden-on-narrow row">
@@ -1223,11 +1224,11 @@ class CRM_Options_Settings{
                             <input type="text" id="addPayment" class="form-control _m" />
                         </label>
                         <label>
-                            <?php _e('Days','cpsmartcrm')?>
+                            <?php _e('Tage','cpsmartcrm')?>
                             <input type="number" id="daysPayment" class="form-control _m" />
                         </label>
 						<span class="input-group-btn">
-						<button class="btn btn-default" id="_savePayment" type="button" style="margin-top:40px"><?php _e('Add','cpsmartcrm')?> &raquo;</button>
+						<button class="btn btn-default" id="_savePayment" type="button" style="margin-top:40px"><?php _e('Hinzufügen','cpsmartcrm')?> &raquo;</button>
 						</span>
 					</div>
 					</div>
@@ -1294,16 +1295,16 @@ class CRM_Options_Settings{
                 <div class="panel-wrap hidden-on-narrow row">
                     <div class="col-md-12 _messages">
                         <div class="item">
-                            <label><?php _e('Dear','cpsmartcrm')?></label>
+                            <label><?php _e('Hallo','cpsmartcrm')?></label>
                             <input type="text" id="crm_invoices_dear" name="<?php echo $this->documents_settings_key ?>[invoices_dear]" value="<?php echo  isset($document_options['invoices_dear'] ) ? $document_options['invoices_dear'] : null?>" class="form-control _m"/>
                         </div>
                         <div class="item">
-                            <label><?php _e('Invoices before text','cpsmartcrm')?></label>
+                            <label><?php _e('Rechnungen vor Text','cpsmartcrm')?></label>
                             
                             <textarea id="crm_invoices_before" name="<?php echo $this->documents_settings_key ?>[invoices_before]" class="_m" style="width:96%"><?php echo isset($document_options['invoices_before'] ) ? $document_options['invoices_before'] : null ?></textarea>
                         </div>
                         <div class="item">
-                            <label><?php _e('Invoices after text','cpsmartcrm')?></label>
+                            <label><?php _e('Rechnungen nach Text','cpsmartcrm')?></label>
                             <textarea  id="crm_invoices_after" name="<?php echo $this->documents_settings_key ?>[invoices_after]" class="_m" style="width:96%"><?php echo isset($document_options['invoices_after'] ) ? $document_options['invoices_after'] : null ?></textarea>
                         </div>
                     </div>
@@ -1312,21 +1313,21 @@ class CRM_Options_Settings{
 
             <div id="_header_offers_messages">
                 <div class="dash-head hidden-on-narrow">
-					<h4 style="text-align: center;margin:30px auto" class="page-header"><span class="crmHelp crmHelp-dark" data-help="document-messages"></span><?php _e('QUOTES MESSAGES SETTINGS','cpsmartcrm')?> </h4>
+					<h4 style="text-align: center;margin:30px auto" class="page-header"><span class="crmHelp crmHelp-dark" data-help="document-messages"></span><?php _e('ZITATE NACHRICHTEN EINSTELLUNGEN','cpsmartcrm')?> </h4>
 				</div>
                 <div class="panel-wrap hidden-on-narrow row _messages">
                     <div class="col-md-12">
 
                         <div class="item">
-                            <label><?php _e('Dear','cpsmartcrm')?></label>
+                            <label><?php _e('Hallo','cpsmartcrm')?></label>
                             <input type="text" id="crm_offers_dear" name="<?php echo $this->documents_settings_key ?>[offers_dear]" value="<?php echo  isset( $document_options['offers_dear'] ) ? $document_options['offers_dear'] : null?>" class="form-control _m"/>
                         </div>
                         <div class="item">
-                            <label><?php _e('Quotes before text','cpsmartcrm')?></label>
+                            <label><?php _e('Zitate vor dem Text','cpsmartcrm')?></label>
                             <textarea id="crm_offers_before" name="<?php echo $this->documents_settings_key ?>[offers_before]" class="_m" style="width:96%"><?php echo isset($document_options['offers_before'] ) ? $document_options['offers_before']: null ?></textarea>
                         </div>
                         <div class="item">
-                            <label><?php _e('Quotes after text','cpsmartcrm')?></label>
+                            <label><?php _e('Zitate nach dem Text','cpsmartcrm')?></label>
                             <textarea id="crm_offers_after" name="<?php echo $this->documents_settings_key ?>[offers_after]" class="_m" style="width:96%"><?php echo isset($document_options['offers_after'] ) ? $document_options['offers_after'] : null ?></textarea>
                         </div>
                     </div>
@@ -1340,10 +1341,10 @@ class CRM_Options_Settings{
 
                 <div class="dash-head hidden-on-narrow">
                     <h1 style="text-align:center">
-                        <?php _e('Signature settings','cpsmartcrm')?>
+                        <?php _e('Signatureinstellungen','cpsmartcrm')?>
                     </h1>
                     <h4 style="text-align: center; padding: 12px;background-color:gainsboro;">
-                        <?php _e('Draw your signature (mouse or touch) to be used in quotes','cpsmartcrm')?>
+                        <?php _e('Zeichne Deine Signatur (Maus oder Touch), um sie in Anführungszeichen zu verwenden','cpsmartcrm')?>
                     </h4>
                 </div>
                 <div class="panel-wrap hidden-on-narrow row" style="margin-top:20px">
@@ -1356,14 +1357,14 @@ class CRM_Options_Settings{
                         <div class="m-signature-pad--footer">
                             <br />
                             <button type="button" class="btn btn-warning btn-sm _flat" data-action="clear">
-                                <?php _e('Reset','cpsmartcrm')?>
+                                <?php _e('Zurücksetzen','cpsmartcrm')?>
                             </button>
                             <button type="button" class="btn btn-success btn-sm _flat" data-action="save">
-                                <?php _e('Save','cpsmartcrm')?>
+                                <?php _e('Speichern','cpsmartcrm')?>
                             </button>
                             <div style="float:right;margin-right:100px">
                                 <label>
-                                    <?php _e('Use this Signature','cpsmartcrm')?>?
+                                    <?php _e('Verwende diese Signatur','cpsmartcrm')?>?
                                 </label>
                                 <input type="checkbox" value="1" name="<?php echo $this->documents_settings_key ?>[use_crm_signature]" <?php echo checked( 1, isset($document_options['use_crm_signature']) ? $document_options['use_crm_signature'] : 0, false ) ?> />
                                 <input type="hidden" id="crm_signature" name="<?php echo $this->documents_settings_key ?>[crm_signature]" value="<?php echo  isset($document_options['crm_signature'] ) ? $document_options['crm_signature'] : null?>" />
@@ -1372,7 +1373,7 @@ class CRM_Options_Settings{
                     </div>
 
                     <h4 style="text-align: center; padding: 12px;background-color:gainsboro;">
-                        <?php _e('Formatted signature ( i.e. company name)','cpsmartcrm')?>
+                        <?php _e('Formatierte Signatur (z. B. Firmenname)','cpsmartcrm')?>
                     </h4>
 
                     <div style="text-align:center" id="signature_formatted">
@@ -1384,15 +1385,15 @@ class CRM_Options_Settings{
                     <div class="m-signature-pad--footer">
                         <br />
                         <button type="button" class="btn btn-warning btn-sm _flat" onclick="jQuery('#editor_signature_formatted').html(''); jQuery('#crm_formatted_signature').val('');">
-                            <?php _e('Reset','cpsmartcrm')?>
+                            <?php _e('Zurücksetzen','cpsmartcrm')?>
                         </button>
                         <button type="button" class="btn btn-success btn-sm _flat" onclick="jQuery('#submit').trigger('click');">
-                            <?php _e('Save','cpsmartcrm')?>
+                            <?php _e('Speichern','cpsmartcrm')?>
                         </button>
                         <div style="float:right;margin-right:100px">
 
                             <label>
-                                <?php _e('Use this Signature','cpsmartcrm')?>?
+                                <?php _e('Verwende diese Signatur','cpsmartcrm')?>?
                             </label>
                             <input type="checkbox" value="1" name="<?php echo $this->documents_settings_key ?>[use_crm_formatted_signature]" <?php echo checked( 1, isset($document_options['use_crm_formatted_signature'] ) ? $document_options['use_crm_formatted_signature'] : 0 , false ) ?> />
                         </div>
@@ -1417,17 +1418,17 @@ class CRM_Options_Settings{
                     <div id="_custom_css">
                         <div class="dash-head hidden-on-narrow">
                             <h1 style="text-align:center">
-                                <?php _e('Custom css','cpsmartcrm')?>
+                                <?php _e('Benutzerdefinierte CSS','cpsmartcrm')?>
                             </h1>
                             <h4 style="text-align: center; padding: 12px;background-color:gainsboro;">
-                                <?php _e('Add or overwrite existing style in PDF documents','cpsmartcrm')?>
+                                <?php _e('Füge einen vorhandenen Stil in PDF-Dokumenten hinzu oder überschreibe ihn','cpsmartcrm')?>
                             </h4>
                         </div>
                         <div class="panel-wrap hidden-on-narrow row" style="margin-top:20px">
                             <div class="col-md-12">
                                 <textarea name="<?php echo $this->documents_settings_key ?>[document_custom_css]" style="width:100%;height:200px"><?php echo isset($document_options['document_custom_css'] ) ? $document_options['document_custom_css'] : null?></textarea>
                             </div>
-							<p><?php _e('Use these CSS rules to adjust the layout of the printable version of your documents (available after a document has been created)','cpsmartcrm')?>. </p>
+							<p><?php _e('Verwende diese CSS-Regeln, um das Layout der druckbaren Version Deiner Dokumente anzupassen (verfügbar, nachdem ein Dokument erstellt wurde).','cpsmartcrm')?>. </p>
 						</div>
                     </div>
                 </div><!--END CUSTOM CSS-->
@@ -1460,7 +1461,7 @@ class CRM_Options_Settings{
 
     saveButton.addEventListener("click", function (event) {
         if (signaturePad.isEmpty()) {
-            alert("Please provide signature first.");
+            alert("Bitte gib zuerst Deine Unterschrift ein.");
         } else {
             //window.open(signaturePad.toDataURL());
             var Pic = signaturePad.toDataURL();
@@ -1479,8 +1480,8 @@ class CRM_Options_Settings{
 		
 		add_submenu_page(
 			'smart-crm',
-			'WP SMART CRM SETTINGS',
-			__('Settings','cpsmartcrm'),
+			__('CP SMART CRM EINSTELLUNGEN','cpsmartcrm'),
+			__('Einstellungen','cpsmartcrm'),
 			'manage_options', 
 			'smartcrm_settings',
 			array( $this, 'plugin_options_page' )
@@ -1510,7 +1511,7 @@ class CRM_Options_Settings{
 				    <?php wp_nonce_field( 'update-options' ); ?>
 				    <?php settings_fields( $tab ); ?>
 				    <?php do_settings_sections( $tab ); ?>
-                    <span class="" style="padding:12px"><input type="submit" name="submit" id="submit" class="_flat btn btn-success" value="<?php _e('Save','cpsmartcrm')?>" style="margin: 30px;<?php if(isset($_GET['tab']) && $_GET['tab']=="CRM_business_settings") { ?>display:none;<?php } ?>" ></span>
+                    <span class="" style="padding:12px"><input type="submit" name="submit" id="submit" class="_flat btn btn-success" value="<?php _e('Speichern','cpsmartcrm')?>" style="margin: 30px;<?php if(isset($_GET['tab']) && $_GET['tab']=="CRM_business_settings") { ?>display:none;<?php } ?>" ></span>
 			    </form>
                 </div>
 

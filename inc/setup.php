@@ -343,15 +343,15 @@ add_action( 'plugins_loaded', 'WPsCRM_customers_tax' ,12);
 function WPsCRM_customers_tax() {
 
     $labels=array(
-    'name'              => _x( 'Interests', 'taxonomy general name', 'cpsmartcrm' ),
-    'singular_name'     => _x( 'Interest', 'taxonomy singular name', 'cpsmartcrm' ),
-    'search_items'      => __( 'Search interest','cpsmartcrm'),
-    'all_items'         => __( 'All interests','cpsmartcrm'),
-    'edit_item'         => __( 'Edit interest','cpsmartcrm'),
-    'update_item'       => __( 'Update interest','cpsmartcrm'),
-    'add_new_item'      => __( 'Add interest','cpsmartcrm'),
-    'new_item_name'     => __( 'New interest','cpsmartcrm'),
-    'menu_name'         => __( 'Interests','cpsmartcrm'),
+    'name'              => _x( 'Interessen', 'taxonomy general name', 'cpsmartcrm' ),
+    'singular_name'     => _x( 'Interesse', 'taxonomy singular name', 'cpsmartcrm' ),
+    'search_items'      => __( 'Suche Interesse','cpsmartcrm'),
+    'all_items'         => __( 'Alle Interessen','cpsmartcrm'),
+    'edit_item'         => __( 'Interesse bearbeiten','cpsmartcrm'),
+    'update_item'       => __( 'Interesse aktualisieren','cpsmartcrm'),
+    'add_new_item'      => __( 'Interesse hinzufügen','cpsmartcrm'),
+    'new_item_name'     => __( 'Neues Interesse','cpsmartcrm'),
+    'menu_name'         => __( 'Interessen','cpsmartcrm'),
     );
     $args = array(
     'hierarchical'      => true,
@@ -364,15 +364,15 @@ function WPsCRM_customers_tax() {
 	register_taxonomy( 'WPsCRM_customersInt', array('clienti'), $args );
 
 	$labels=array(
-   'name'              => _x( 'Categories', 'taxonomy general name' ),
-   'singular_name'     => _x( 'Category', 'taxonomy singular name' ),
-   'search_items'      => __( 'Search category','cpsmartcrm'),
-   'all_items'         => __( 'All categories','cpsmartcrm'),
-   'edit_item'         => __( 'Edit category','cpsmartcrm'),
-   'update_item'       => __( 'Update category','cpsmartcrm'),
-   'add_new_item'      => __( 'Add category','cpsmartcrm'),
-   'new_item_name'     => __( 'New category','cpsmartcrm'),
-   'menu_name'         => __( 'Categories','cpsmartcrm'),
+   'name'              => _x( 'Kategorien', 'taxonomy general name' ),
+   'singular_name'     => _x( 'Kategorie', 'taxonomy singular name' ),
+   'search_items'      => __( 'Suche Kategorie','cpsmartcrm'),
+   'all_items'         => __( 'Alle Kategorien','cpsmartcrm'),
+   'edit_item'         => __( 'Kategorie bearbeiten','cpsmartcrm'),
+   'update_item'       => __( 'Kategorie aktualisieren','cpsmartcrm'),
+   'add_new_item'      => __( 'Kategorie hinzufügen','cpsmartcrm'),
+   'new_item_name'     => __( 'Neue Kategorie','cpsmartcrm'),
+   'menu_name'         => __( 'Kategorien','cpsmartcrm'),
    );
     $args = array(
     'hierarchical'      => true,
@@ -384,17 +384,17 @@ function WPsCRM_customers_tax() {
 	);
 	register_taxonomy( 'WPsCRM_customersCat', array('clienti'), $args );
 
-	$labels=array(
-   'name'              => _x( 'Origins', 'taxonomy general name' ),
-   'singular_name'     => _x( 'Origin', 'taxonomy singular name' ),
-   'search_items'      => __( 'Search origin','cpsmartcrm'),
-   'all_items'         => __( 'All Origins','cpsmartcrm'),
-   'edit_item'         => __( 'Edit Origin','cpsmartcrm'),
-   'update_item'       => __( 'Update Origin','cpsmartcrm'),
-   'add_new_item'      => __( 'Add Origin','cpsmartcrm'),
-   'new_item_name'     => __( 'New Origin','cpsmartcrm'),
-   'menu_name'         => __( 'Origins','cpsmartcrm'),
-   );
+  $labels = array(
+    'name'              => _x( 'Quellen', 'taxonomy general name' ),
+    'singular_name'     => _x( 'Quelle', 'taxonomy singular name' ),
+    'search_items'      => __( 'Quelle suchen','cpsmartcrm'),
+    'all_items'         => __( 'Alle Quellen','cpsmartcrm'),
+    'edit_item'         => __( 'Quelle bearbeiten','cpsmartcrm'),
+    'update_item'       => __( 'Quelle aktualisieren','cpsmartcrm'),
+    'add_new_item'      => __( 'Neue Quelle hinzufügen','cpsmartcrm'),
+    'new_item_name'     => __( 'Neue Quelle','cpsmartcrm'),
+    'menu_name'         => __( 'Quellen','cpsmartcrm'),
+ );
     $args = array(
     'hierarchical'      => true,
     'labels'            => $labels,

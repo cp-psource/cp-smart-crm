@@ -787,7 +787,7 @@ msgstr ""
 
 #: inc/crm/clienti/form.php:632 inc/crm/clienti/form.php:636
 #: inc/crm/clienti/form.php:1197 inc/crm/clienti/form.php:1204
-msgid "Select country first"
+msgid "Wähle zuerst das Land aus"
 msgstr ""
 
 #: inc/crm/clienti/form.php:634 inc/crm/clienti/form_non-modal.php:316
@@ -2744,7 +2744,7 @@ msgid "Advanced Settings"
 msgstr ""
 
 #: inc/options.php:227
-msgid "Business main data"
+msgid "Geschäftliche Hauptdaten"
 msgstr ""
 
 #: inc/options.php:227

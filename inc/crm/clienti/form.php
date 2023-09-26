@@ -252,7 +252,7 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
 	}
 	function elimina()
 	{
-		if (!confirm("<?php _e('Confirm delete? It will still be possible to recover the deleted Customer ','cpsmartcrm')?>"))
+		if (!confirm("<?php _e('Löschen bestätigen? Es ist weiterhin möglich, den gelöschten Kunden wiederherzustellen ','cpsmartcrm')?>"))
 			return;
 		location.href="<?php echo admin_url('admin.php?page=smart-crm&p=clienti/delete.php&ID='.$ID)?>&security=<?php echo $delete_nonce?>";
 	}
@@ -479,14 +479,14 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
     			},
 
     			messages: {
-					hasCountry: "<?php _e('You should select customer country','cpsmartcrm')?>",
-    				hasFiscalCode: "<?php _e('You should type customer VALID Tax Code or Vat Number','cpsmartcrm')?>",
-    				hasName: "<?php _e('You should type customer First Name or Business Name.','cpsmartcrm')?>",
-    				hasLastName: "<?php _e('You should type customer Last Name or Business Name.','cpsmartcrm')?>",
-    				hasBusinessName: "<?php _e('You should type customer Business name or First Name and Last Name','cpsmartcrm')?>",
-    				hasVAT: "<?php _e("You should type VAT CODE if you use the 'Business name' field",'cpsmartcrm')?>",
-    				isUser:"<?php _e('To create a new WP user you must set Email, Username and Password','cpsmartcrm')?>",
-    				isFiscallyDefined:"<?php _e('Please check private or business','cpsmartcrm')?>"
+					hasCountry: "<?php _e('Du solltest das Kundenland auswählen','cpsmartcrm')?>",
+    				hasFiscalCode: "<?php _e('Du solltest die GÜLTIGE Steuernummer oder Umsatzsteuer-Identifikationsnummer des Kunden eingeben','cpsmartcrm')?>",
+    				hasName: "<?php _e('Du solltest den Vornamen oder den Firmennamen des Kunden eingeben.','cpsmartcrm')?>",
+    				hasLastName: "<?php _e('Du solltest den Nachnamen oder den Firmennamen des Kunden eingeben.','cpsmartcrm')?>",
+    				hasBusinessName: "<?php _e('Du solltest den Firmennamen oder den Vornamen und Nachnamen des Kunden eingeben','cpsmartcrm')?>",
+    				hasVAT: "<?php _e('Wenn Du das Feld "Firmenname" verwendest, solltest Du die Umsatzsteuer-Identifikationsnummer eingeben','cpsmartcrm')?>",
+    				isUser:"<?php _e('Um einen neuen Benutzer zu erstellen, musst Du E-Mail, Benutzername und Passwort festlegen','cpsmartcrm')?>",
+    				isFiscallyDefined:"<?php _e('Bitte privat oder geschäftlich ankreuzen','cpsmartcrm')?>"
     			}
     		}).data("kendoValidator");
 
@@ -509,7 +509,7 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
 							var id_cli=tmp[1];
 							hideMouseLoader();
 							noty({
-								text: "<?php _e('Customer has been saved','cpsmartcrm')?>",
+								text: "<?php _e('Der Kunde wurde gespeichert','cpsmartcrm')?>",
 								layout: 'center',
 								type: 'success',
 								template: '<div class="noty_message"><span class="noty_text"></span></div>',
@@ -526,7 +526,7 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
 						}
 						else {
 							noty({
-							text: "<?php _e('Something was wrong','cpsmartcrm')?>" + ": " + response,
+							text: "<?php _e('Etwas war falsch','cpsmartcrm')?>" + ": " + response,
 							layout: 'center',
 							type: 'error',
 							template: '<div class="noty_message"><span class="noty_text"></span></div>',
@@ -548,9 +548,9 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
 <form name="form_insert" method="post" id="form_insert">
 <input type="hidden" name="ID" id="ID" value="<?php echo $ID?>">
     
-    <h3><?php if ($ID) { ?> <?php _e('Customer','cpsmartcrm')?>: <?php echo "<span class=\"header_customer\">".stripslashes($cliente)."</span>";
+    <h3><?php if ($ID) { ?> <?php _e('Kunde','cpsmartcrm')?>: <?php echo "<span class=\"header_customer\">".stripslashes($cliente)."</span>";
 			  } else{
-        ?> <?php _e('New Customer','cpsmartcrm')?> <?php } ?>
+        ?> <?php _e('Neukunde','cpsmartcrm')?> <?php } ?>
     </h3>
 
     <ul class="select-action">
@@ -561,28 +561,28 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
 		<li class="btn btn-success btn-sm _flat _showLoader saveForm" onclick="save();return false;">
 			<i class="glyphicon glyphicon-floppy-disk"></i>
 			<b>
-				<?php _e('Save','cpsmartcrm')?>
+				<?php _e('Speichern','cpsmartcrm')?>
 			</b>
 		</li>
         <li onClick="annulla();return false;" class="btn btn-warning btn-sm _flat resetForm">
             <i class="glyphicon glyphicon-floppy-remove"></i>
-            <b> <?php _e('Reset','cpsmartcrm')?></b>
+            <b> <?php _e('Zurücksetzen','cpsmartcrm')?></b>
         </li>
 
         <li onClick="elimina();return false;" class="btn btn-danger btn-sm _flat deleteForm" style="margin-right:10px">
             <i class="glyphicon glyphicon-remove"></i>
-            <b> <?php _e('Delete','cpsmartcrm')?></b>
+            <b> <?php _e('Löschen','cpsmartcrm')?></b>
         </li>
         <li class="_tooltip"><i class="glyphicon glyphicon-menu-right"></i></li>
-        <li class="btn btn-info btn-sm _flat btn_todo" style="margin-left:10px" title="<?php _e('NEW TODO','cpsmartcrm')?>">
+        <li class="btn btn-info btn-sm _flat btn_todo" style="margin-left:10px" title="<?php _e('NEUE TODO','cpsmartcrm')?>">
             <i class="glyphicon glyphicon-tag"></i>
             <b> </b>
         </li>
-        <li class="btn  btn-sm _flat btn_appuntamento" title="<?php _e('NEW APPOINTMENT','cpsmartcrm')?>">
+        <li class="btn  btn-sm _flat btn_appuntamento" title="<?php _e('NEUER TERMIN','cpsmartcrm')?>">
             <i class="glyphicon glyphicon-pushpin"></i>
             <b> </b>
         </li>
-        <li class="btn btn-primary btn-sm _flat btn_activity" title="<?php _e('NEW ANNOTATION','cpsmartcrm')?>">
+        <li class="btn btn-primary btn-sm _flat btn_activity" title="<?php _e('NEUE ANMERKUNG','cpsmartcrm')?>">
             <i class="glyphicon glyphicon-option-horizontal"></i>
             <b> </b>
         </li>
@@ -591,13 +591,13 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
     </ul>
     <div id="tabstrip" style="margin-top:14px">
         <ul>
-            <li id="tab1"><?php _e('Master Data','cpsmartcrm')?></li>
+            <li id="tab1"><?php _e('Stammdaten','cpsmartcrm')?></li>
             <?php
 			if ($ID){
             ?>
-            <li id="tab2"><?php _e('Contacts','cpsmartcrm')?></li>
-            <li id="tab3"><?php _e('Notes','cpsmartcrm')?></li>
-            <li id="tab4"><?php _e('Summary','cpsmartcrm')?></li>
+            <li id="tab2"><?php _e('Kontakte','cpsmartcrm')?></li>
+            <li id="tab3"><?php _e('Anmerkungen','cpsmartcrm')?></li>
+            <li id="tab4"><?php _e('Zusammenfassung','cpsmartcrm')?></li>
             <?php 
 				do_action('WPsCRM_add_tabs_to_customer_form');
 			} ?>
@@ -607,7 +607,7 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
             <div id="d_anagrafica" style="position:relative">
                 <div class="row form-group">
 					<label class="col-sm-1 control-label">
-						<?php _e('Date','cpsmartcrm')?>
+						<?php _e('Datum','cpsmartcrm')?>
 					</label>
 					<div class="col-sm-2">
 						<input type="text" id="data_inserimento" name="data_inserimento" />
@@ -617,74 +617,74 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
                 </div>
 				<div class="row form-group">
 					<label class="col-sm-1 control-label">
-						<?php _e('Invoiceable?','cpsmartcrm')?>
+						<?php _e('Rechnungspflichtig?','cpsmartcrm')?>
 					</label>
 					<div class="col-sm-4">
-                        <span style="margin-right:20px"><input type="radio" name="fatturabile" id="fatturabile_1" value="1" <?php if (isset($riga) && $riga["fatturabile"]==1) echo "checked"?> /><?php _e('Yes','cpsmartcrm')?></span>
-                        <span><input type="radio" name="fatturabile" id="fatturabile_2" value="0" <?php if ((isset($riga) && $riga["fatturabile"]==0) || !isset($riga)) echo "checked"?> /><?php _e('No','cpsmartcrm')?></span>
+                        <span style="margin-right:20px"><input type="radio" name="fatturabile" id="fatturabile_1" value="1" <?php if (isset($riga) && $riga["fatturabile"]==1) echo "checked"?> /><?php _e('Ja','cpsmartcrm')?></span>
+                        <span><input type="radio" name="fatturabile" id="fatturabile_2" value="0" <?php if ((isset($riga) && $riga["fatturabile"]==0) || !isset($riga)) echo "checked"?> /><?php _e('Nein','cpsmartcrm')?></span>
 					</div>
 
 					<label class="col-sm-1 control-label">
-						<?php _e('Type','cpsmartcrm')?>
+						<?php _e('Typ','cpsmartcrm')?>
 					</label>
 					<div class="col-sm-4">
-						<input type="radio" name="tipo_cliente" value="1" <?php if (isset($riga) && $riga["tipo_cliente"]==1) echo "checked"?> /><?php _e('Private','cpsmartcrm')?>
+						<input type="radio" name="tipo_cliente" value="1" <?php if (isset($riga) && $riga["tipo_cliente"]==1) echo "checked"?> /><?php _e('Privat','cpsmartcrm')?>
 						<input type="radio" name="tipo_cliente" value="2" <?php if (isset($riga) && $riga["tipo_cliente"]==2) echo "checked"?> /><?php _e('Business','cpsmartcrm')?>
 					</div>
 				</div>
                 <div class="row form-group">
-                    <label class="col-sm-1 control-label"><?php _e('Country','cpsmartcrm')?></label>
+                    <label class="col-sm-1 control-label"><?php _e('Land','cpsmartcrm')?></label>
                     <div class="col-sm-4">
                         <select data-nazione="<?php if(isset($riga)) echo $riga["nazione"]?>" id="nazione" name="nazione" size="20" maxlength='50'><?php if(isset($riga['nazione'])) echo stripslashes( WPsCRM_get_countries($riga["nazione"]) ); else echo stripslashes( WPsCRM_get_countries('IT'))?></select>
                     </div>
-                    <label class="col-sm-1 control-label"><?php _e('Business Name','cpsmartcrm')?></label>
+                    <label class="col-sm-1 control-label"><?php _e('Firmenname','cpsmartcrm')?></label>
                     <div class="col-sm-4">
                         <input type="text" name="ragione_sociale" maxlength='250' value="<?php if(isset($riga)) echo stripslashes($riga["ragione_sociale"])?>" class="form-control">
                     </div>
                 </div>
                 <div class="row form-group">
-                    <label class="col-sm-1 control-label"><?php _e('Tax code','cpsmartcrm')?></label>
+                    <label class="col-sm-1 control-label"><?php _e('Steuer-Code','cpsmartcrm')?></label>
                     <div class="col-sm-4">
-                        <input type="text" name="cod_fis" id="cod_fis" value="<?php if(isset($riga)) echo $riga["cod_fis"]?>" class="form-control _toCheck"  readonly title="<?php _e('Select country first','cpsmartcrm') ?>...">
+                        <input type="text" name="cod_fis" id="cod_fis" value="<?php if(isset($riga)) echo $riga["cod_fis"]?>" class="form-control _toCheck"  readonly title="<?php _e('Wähle zuerst das Land aus','cpsmartcrm') ?>...">
                     </div>
-                    <label class="col-sm-1 control-label"><?php _e('VAT number','cpsmartcrm')?></label>
+                    <label class="col-sm-1 control-label"><?php _e('Umsatzsteuer-Identifikationsnummer','cpsmartcrm')?></label>
                     <div class="col-sm-4">
-                        <input type="text" name="p_iva" id="p_iva" value="<?php if(isset($riga)) echo $riga["p_iva"]?>" class="form-control _toCheck"  readonly title="<?php _e('Select country first','cpsmartcrm') ?>...">
+                        <input type="text" name="p_iva" id="p_iva" value="<?php if(isset($riga)) echo $riga["p_iva"]?>" class="form-control _toCheck"  readonly title="<?php _e('Wähle zuerst das Land aus','cpsmartcrm') ?>...">
                     </div>
                 </div>
                 <div class="row form-group">
-                    <label class="col-sm-1 control-label"><?php _e('First Name','cpsmartcrm')?></label>
+                    <label class="col-sm-1 control-label"><?php _e('Vorname','cpsmartcrm')?></label>
                     <div class="col-sm-4">
                         <input type="text" name="nome" value="<?php if(isset($riga)) echo stripslashes($riga["nome"])?>" class="form-control">
                     </div>
-                    <label class="col-sm-1 control-label"><?php _e('Last Name','cpsmartcrm')?></label>
+                    <label class="col-sm-1 control-label"><?php _e('Nachname','cpsmartcrm')?></label>
                     <div class="col-sm-4">
                         <input type="text" name="cognome" value="<?php if(isset($riga)) echo stripslashes($riga["cognome"])?>" class="form-control">
                     </div>
                 </div>
                 <div class="row form-group">
-                    <label class="col-sm-1 control-label"><?php _e('Address','cpsmartcrm')?></label>
+                    <label class="col-sm-1 control-label"><?php _e('Addresse','cpsmartcrm')?></label>
                     <div class="col-sm-4">
                         <input type="text" name="indirizzo" size="50" maxlength='50' value="<?php if(isset($riga)) echo stripslashes($riga["indirizzo"])?>" class="form-control">
                     </div>
-                    <label class="col-sm-1 control-label"><?php _e('ZIP Code','cpsmartcrm')?></label>
+                    <label class="col-sm-1 control-label"><?php _e('PLZ','cpsmartcrm')?></label>
                     <div class="col-sm-4">
                         <input type="text" name="cap" size="10" maxlength='10' value="<?php if(isset($riga)) echo $riga["cap"]?>" class="form-control">
                     </div>
                 </div>
                 <div class="row form-group">
-                    <label class="col-sm-1 control-label"><?php _e('Town','cpsmartcrm')?></label>
+                    <label class="col-sm-1 control-label"><?php _e('Stadt','cpsmartcrm')?></label>
                     <div class="col-sm-4">
                         <input type="text" name="localita" size="50" maxlength='55' value="<?php if(isset($riga)) echo stripslashes($riga["localita"])?>" class="form-control">
                     </div>
-                    <label class="col-sm-1 control-label"><?php _e('State/prov.','cpsmartcrm')?></label>
+                    <label class="col-sm-1 control-label"><?php _e('Staat/Prov.','cpsmartcrm')?></label>
                     <div class="col-sm-4">
                         <input type="text" name="provincia" size="5" maxlength='5' value="<?php if(isset($riga)) echo $riga["provincia"]?>" class="form-control">
                     </div>
                 </div>
                 <div class="row form-group">
 
-                    <label class="col-sm-1 control-label"><?php _e('Phone','cpsmartcrm')?></label>
+                    <label class="col-sm-1 control-label"><?php _e('Telefon','cpsmartcrm')?></label>
                     <div class="col-sm-4">
                         <input type="text" name="telefono1" size="20" maxlength='50' value="<?php if(isset($riga)) echo $riga["telefono1"]?>" class="form-control">
                     </div>
@@ -697,7 +697,7 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
                    
                 </div>
                 <div class="row form-group">
-                    <label class="col-sm-1 control-label"><?php _e('Mobile','cpsmartcrm')?></label>
+                    <label class="col-sm-1 control-label"><?php _e('Mobil','cpsmartcrm')?></label>
                     <div class="col-sm-4">
                         <input type="text" name="telefono2" size="20" maxlength='50' value="<?php if(isset($riga)) echo $riga["telefono2"]?>" class="form-control">
                     </div>
@@ -710,7 +710,7 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
                     
                 </div>
                 <div class="row form-group">
-                    <label class="col-sm-1 control-label"><?php _e('Place of birth','cpsmartcrm')?></label>
+                    <label class="col-sm-1 control-label"><?php _e('Geburtsort','cpsmartcrm')?></label>
                     <div class="col-sm-4">
                         <input type="text" name="luogo_nascita" size="20" maxlength='50' value="<?php if(isset($riga)) echo stripslashes($riga["luogo_nascita"] )?>" class="form-control">
                     </div>
@@ -722,11 +722,11 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
 					</div>
                 </div>
                 <div class="row form-group">
-                    <label class="col-sm-1 control-label"><?php _e('Date of birth','cpsmartcrm')?></label>
+                    <label class="col-sm-1 control-label"><?php _e('Geburtsdatum','cpsmartcrm')?></label>
                     <div class="col-sm-4">
                         <input type="text" id="data_nascita" name="data_nascita" value="<?php if(isset($riga)) echo WPsCRM_inverti_data($riga["data_nascita"])?>">
                     </div>
-                    <label class="col-sm-1 control-label"><?php _e('Category','cpsmartcrm')?></label>
+                    <label class="col-sm-1 control-label"><?php _e('Kategorie','cpsmartcrm')?></label>
                     <div class="col-sm-4">
 						<input id="customerCategory"  name="customerCategory" value="<?php if(isset($riga)) echo $riga["categoria"]?>" /> 
                         <?php
@@ -750,8 +750,8 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
 								dataTextField: "text",
 								dataValueField: "id",
 								dataSource: cats,
-								placeholder: "<?php _e('Select','cpsmartcrm')?>",
-								noDataTemplate: '<?php _e('No Categories; create categories in CRM settings ->Customers settings page','cpsmartcrm')?>',
+								placeholder: "<?php _e('Wählen','cpsmartcrm')?>",
+								noDataTemplate: '<?php _e('Keine Kategorien; Erstelle Kategorien in den CRM-Einstellungen ->Seite „Kundeneinstellungen“.','cpsmartcrm')?>',
 								change: function () {
 									$('input[name="customerCategory"]').val($('#customerCategory').data("kendoMultiSelect").value())
 								}
@@ -763,12 +763,12 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
 					</script>
                 </div>
                 <div class="row form-group">
-					<label class="col-sm-1 control-label"><?php _e('Web Site','cpsmartcrm')?></label>
+					<label class="col-sm-1 control-label"><?php _e('Webseite','cpsmartcrm')?></label>
                     <div class="col-sm-4">
                         <input type="text" name="sitoweb" size="20" maxlength='50' value="<?php if(isset($riga)) echo $riga["sitoweb"]?>" class="form-control">
                     </div>
 					<label class="col-sm-1 control-label">
-						<?php _e('Interests','cpsmartcrm')?>
+						<?php _e('Interessen','cpsmartcrm')?>
 					</label>
 					<div class="col-sm-4">
 
@@ -792,9 +792,9 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
                     		$('#customerInterests').kendoMultiSelect({
 								dataTextField: "text",
 								dataValueField: "id",
-								placeholder: "<?php _e('Select','cpsmartcrm')?>",
+								placeholder: "<?php _e('Wählen','cpsmartcrm')?>",
 								dataSource: ints,
-								noDataTemplate: '<?php _e('No Interests; create interests in CRM settings ->Customers settings page','cpsmartcrm')?>',
+								noDataTemplate: '<?php _e('Keine Interessen; Erstelle Interessen in den CRM-Einstellungen ->Seite „Kundeneinstellungen“.','cpsmartcrm')?>',
 								change: function () {
 									$('input[name="customerInterests"]').val($('#customerInterests').data("kendoMultiSelect").value())
 								}
@@ -810,7 +810,7 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
                     <div class="col-sm-4" <?php echo $style_disabled?>>
                         <select id="selectAgent" name="selectAgent" <?php echo $agent_disabled?> style="width:54%" ></select>
                     </div>
-                    <label class="col-sm-1 control-label"><?php _e('Comes from','cpsmartcrm')?>:</label>
+                    <label class="col-sm-1 control-label"><?php _e('Kommt von','cpsmartcrm')?>:</label>
 					<div class="col-sm-4">
 						<input id="customerComesfrom" name="customerComesfrom" value="<?php if(isset($riga)) echo $riga["provenienza"]?>"  />
 						<?php
@@ -830,9 +830,9 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
 							$('#customerComesfrom').kendoMultiSelect({
 								dataTextField: "text",
 								dataValueField: "id",
-								placeholder: "<?php _e('Select','cpsmartcrm')?>",
+								placeholder: "<?php _e('Wählen','cpsmartcrm')?>",
 								dataSource: provs,
-								noDataTemplate: "<?php _e('No Origins; create origins in CRM settings ->Customers settings page','cpsmartcrm')?>",
+								noDataTemplate: "<?php _e('Keine Quellen; erstelle Quellen in den CRM-Einstellungen ->Kundeneinstellungen Seite','cpsmartcrm')?>",
 								change: function () {
 									$('input[name="customerComesfrom"]').val($('#customerComesfrom').data("kendoMultiSelect").value())
 								}
@@ -852,17 +852,17 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
 				//{
                 ?>
                 <!--<div class="row form-group">
-                    <label class="col-sm-1 control-label"><?php _e('Create WP user','cpsmartcrm')?>?</label>
+                    <label class="col-sm-1 control-label"><?php _e('Benutzer erstellen','cpsmartcrm')?>?</label>
                     <div class="col-sm-1">
                         <input type="checkbox" name="crea_utente" value="1">
                     </div>
                 </div>
                 <div class="row form-group">
-                    <label class="col-sm-1 control-label"><?php _e('Username','cpsmartcrm')?></label>
+                    <label class="col-sm-1 control-label"><?php _e('Benutzername','cpsmartcrm')?></label>
                     <div class="col-sm-4">
                         <input type="text" name="username" size="20" maxlength='50' value="" class="form-control">
                     </div>
-                    <label class="col-sm-1 control-label"><?php _e('Password','cpsmartcrm')?></label>
+                    <label class="col-sm-1 control-label"><?php _e('Passwort','cpsmartcrm')?></label>
                     <div class="col-sm-4">
                         <input type="text" name="password" size="20" maxlength='50' value="" class="form-control">
                     </div>
@@ -882,11 +882,11 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
         <!--TAB 3 -->
 
         <div>
-            <!--<h2 style="text-align:center"><?php _e('Notes','cpsmartcrm')?></h2>-->
+            <!--<h2 style="text-align:center"><?php _e('Anmerkungen','cpsmartcrm')?></h2>-->
             <div style="min-height: 200px">
                 <div id="annotation">
-                    <h3 style="text-align:center"><?php _e('Notes Timeline','cpsmartcrm')?> 
-                        <span class="btn btn-primary btn-sm _flat btn_activity" title="<?php _e('NEW ANNOTATION','cpsmartcrm')?>">
+                    <h3 style="text-align:center"><?php _e('Notizen-Zeitleiste','cpsmartcrm')?> 
+                        <span class="btn btn-primary btn-sm _flat btn_activity" title="<?php _e('NEUE ANMERKUNG','cpsmartcrm')?>">
                             <i class="glyphicon glyphicon-option-horizontal"></i>
                         </span>
                     </h3>
@@ -920,28 +920,28 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
         <li class="btn btn-success btn-sm _flat _showLoader saveForm" onclick="save()">
             <i class="glyphicon glyphicon-floppy-disk"></i>
             <b>
-                <?php _e('Save','cpsmartcrm')?>
+                <?php _e('Speichern','cpsmartcrm')?>
             </b>
         </li>
         <li onClick="annulla();return false;" class="btn btn-warning btn-sm _flat resetForm">
             <i class="glyphicon glyphicon-floppy-remove"></i>
-            <b> <?php _e('Reset','cpsmartcrm')?></b>
+            <b> <?php _e('Zurücksetzen','cpsmartcrm')?></b>
         </li>
         <?php if ($ID){?>
         <li class="btn btn-danger btn-sm _flat deleteForm" style="margin-right:10px">
             <i class="glyphicon glyphicon-remove"></i>
-            <b onClick="elimina();return false;"> <?php _e('Delete','cpsmartcrm')?></b>
+            <b onClick="elimina();return false;"> <?php _e('Löschen','cpsmartcrm')?></b>
         </li>
         <li class="_tooltip"><i class="glyphicon glyphicon-menu-right"></i></li>
-        <li class="btn btn-info btn-sm _flat btn_todo" style="margin-left:10px" title="<?php _e('NEW TODO','cpsmartcrm')?>">
+        <li class="btn btn-info btn-sm _flat btn_todo" style="margin-left:10px" title="<?php _e('NEUE TODO','cpsmartcrm')?>">
             <i class="glyphicon glyphicon-tag"></i>
             <b> </b>
         </li>
-        <li class="btn  btn-sm _flat btn_appuntamento" title="<?php _e('NEW APPOINTMENT','cpsmartcrm')?>">
+        <li class="btn  btn-sm _flat btn_appuntamento" title="<?php _e('NEUER TERMIN','cpsmartcrm')?>">
             <i class="glyphicon glyphicon-pushpin"></i>
             <b> </b>
         </li>
-        <li class="btn btn-primary btn-sm _flat btn_activity" title="<?php _e('NEW ANNOTATION','cpsmartcrm')?>">
+        <li class="btn btn-primary btn-sm _flat btn_activity" title="<?php _e('NEUE ANMERKUNG','cpsmartcrm')?>">
             <i class="glyphicon glyphicon-option-horizontal"></i>
             <b> </b>
         </li>
@@ -993,7 +993,7 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
 	var invoiceWindow = $("#createInvoice").kendoWindow({
 		width: "90%",
 		height: "84%",
-		title: "<i class=\"glyphicon glyphicon-fire\"></i> <?php _e('Create invoice for','cpsmartcrm');if(isset($cliente)) echo " ". stripslashes($cliente)?>",
+		title: "<i class=\"glyphicon glyphicon-fire\"></i> <?php _e('Rechnung erstellen für','cpsmartcrm');if(isset($cliente)) echo " ". stripslashes($cliente)?>",
 		//content:"<?php echo admin_url('admin.php?page=smart-crm&p=documenti%2Fform_invoice.php&cliente='.$ID)?>&layout=iframe",
 		iframe: true,
 		visible: false,
@@ -1008,7 +1008,7 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
 		var quoteWindow = $("#createQuote").kendoWindow({
 		width: "90%",
 		height: "84%",
-		title: "<i class=\"glyphicon glyphicon-send\"></i> <?php _e('Create quote for','cpsmartcrm');if(isset($cliente)) echo " ". stripslashes($cliente)?>",
+		title: "<i class=\"glyphicon glyphicon-send\"></i> <?php _e('Angebot erstellen für','cpsmartcrm');if(isset($cliente)) echo " ". stripslashes($cliente)?>",
 		//content:"<?php echo admin_url('admin.php?page=smart-crm&p=documenti%2Fform_quotation.php&cliente='.$ID)?>&layout=iframe",
 		iframe: true,
 		visible: false,
@@ -1039,7 +1039,7 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
     			success: function (response) {
     				console.log(response);
     				noty({
-    					text: "<?php _e('Annotation has been deleted','cpsmartcrm')?>",
+    					text: "<?php _e('Anmerkung wurde gelöscht','cpsmartcrm')?>",
     					layout: 'center',
     					type: 'success',
     					template: '<div class="noty_message"><span class="noty_text"></span></div>',
@@ -1211,21 +1211,21 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
         $('#provenienza').kendoDropDownList({});
 
     	$('#nazione').kendoDropDownList({
-    		placeholder: "<?php _e('Select country','cpsmartcrm') ?>...",
+    		placeholder: "<?php _e('Land auswählen','cpsmartcrm') ?>...",
     	});
     	var country = jQuery("#nazione").data("kendoDropDownList").value();
     	if (country != "0") {
     		$('._toCheck').attr({ 'readonly': false, 'title': '' })
     	}
     	else {
-    		$('._toCheck').attr({ 'readonly': 'readonly' , 'title': '<?php _e('Select country first','cpsmartcrm') ?>...' , 'alt': '<?php _e('Select country first','cpsmartcrm') ?>...' })
+    		$('._toCheck').attr({ 'readonly': 'readonly' , 'title': '<?php _e('Wähle zuerst das Land aus','cpsmartcrm') ?>...' , 'alt': '<?php _e('Wähle zuerst das Land aus','cpsmartcrm') ?>...' })
     	}
     	$('#nazione').on('change', function () {
     		if ($(this).val() != "0") {
     			$('._toCheck').attr({ 'readonly': false , 'title':'' })
     		}
     		else {
-    			$('._toCheck').attr({ 'readonly': 'readonly' , 'title': '<?php _e('Select country first','cpsmartcrm') ?>...' , 'alt': '<?php _e('Select country first','cpsmartcrm') ?>...' })
+    			$('._toCheck').attr({ 'readonly': 'readonly' , 'title': '<?php _e('Wähle zuerst das Land aus','cpsmartcrm') ?>...' , 'alt': '<?php _e('Wähle zuerst das Land aus','cpsmartcrm') ?>...' })
     		}
     	})
     	setTimeout(function () {

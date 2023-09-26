@@ -859,7 +859,7 @@ msgstr "Steuergesetzbuch"
 #: inc/crm/clienti/form.php:632 inc/crm/clienti/form.php:636
 #: inc/crm/clienti/form.php:1197 inc/crm/clienti/form.php:1204
 #, fuzzy
-msgid "Select country first"
+msgid "Wähle zuerst das Land aus"
 msgstr "Wähle zuerst das Land"
 
 #: inc/crm/clienti/form.php:634 inc/crm/clienti/form_non-modal.php:316
@@ -3088,7 +3088,7 @@ msgstr "Erweiterte Einstellungen"
 
 #: inc/options.php:227
 #, fuzzy
-msgid "Business main data"
+msgid "Geschäftliche Hauptdaten"
 msgstr "Geschäftliche Hauptdaten"
 
 #: inc/options.php:227

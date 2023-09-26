@@ -2348,11 +2348,11 @@ msgid "Zip"
 msgstr ""
 
 #: inc/functions.php:63 inc/options.php:248
-msgid "Vat Code"
+msgid "MwSt.-Code"
 msgstr ""
 
 #: inc/functions.php:64
-msgid "Cod. Fisc"
+msgid "Steuernummer"
 msgstr ""
 
 #: inc/functions.php:69
@@ -2759,7 +2759,7 @@ msgstr ""
 
 #: inc/options.php:252 inc/templates/single-service-stripe.php:297
 #: inc/templates/user-tabs/tab1-form.php:34
-msgid "Cod. Fisc."
+msgid "Steuernummer."
 msgstr ""
 
 #: inc/options.php:257 inc/options.php:261 inc/options.php:265
@@ -2792,7 +2792,7 @@ msgid "Zip code is required"
 msgstr ""
 
 #: inc/options.php:361
-msgid "Vat Code is required"
+msgid "MwSt.-Code is required"
 msgstr ""
 
 #: inc/options.php:384

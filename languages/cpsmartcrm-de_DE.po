@@ -2627,12 +2627,12 @@ msgstr "Postleitzahl"
 
 #: inc/functions.php:63 inc/options.php:248
 #, fuzzy
-msgid "Vat Code"
+msgid "MwSt.-Code"
 msgstr "MwSt.-Code"
 
 #: inc/functions.php:64
 #, fuzzy
-msgid "Cod. Fisc"
+msgid "Steuernummer"
 msgstr "Kabeljau. Fisc"
 
 #: inc/functions.php:69
@@ -3108,8 +3108,8 @@ msgstr "Adresse (Straße, Nummer)"
 #: inc/options.php:252 inc/templates/single-service-stripe.php:297
 #: inc/templates/user-tabs/tab1-form.php:34
 #, fuzzy
-msgid "Cod. Fisc."
-msgstr "Cod. Fisc."
+msgid "Steuernummer."
+msgstr "Steuernummer."
 
 #: inc/options.php:257 inc/options.php:261 inc/options.php:265
 #: inc/options.php:270 inc/options.php:274 inc/options.php:278
@@ -3148,7 +3148,7 @@ msgstr "Postleitzahl ist erforderlich"
 
 #: inc/options.php:361
 #, fuzzy
-msgid "Vat Code is required"
+msgid "MwSt.-Code is required"
 msgstr "MwSt.-Code ist erforderlich"
 
 #: inc/options.php:384

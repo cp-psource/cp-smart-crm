@@ -291,7 +291,7 @@ class CRM_Options_Settings{
                           ?></select>                         
                 </div>
                 <div class="item xml_mandatory">
-                    <label><?php _e('Ust-ID', 'wp-smart-crm-invoices-pro') ?>  ( <span style="color:red"> * </span> )</label><br />
+                    <label><?php _e('MwSt.-Code', 'wp-smart-crm-invoices-pro') ?>  ( <span style="color:red"> * </span> )</label><br />
                     <input type="text" id="crm_business_iva" name="CRM_business_settings[business_iva]" value="<?php echo isset($options['business_iva'] ) ? $options['business_iva']: "" ?>"  class="form-control _m"/>
                 </div>
                 <div class="item">
@@ -522,7 +522,7 @@ class CRM_Options_Settings{
 		else
 			$html = '<input type="checkbox" id="minimize_Wp_menu" name="'.$this->general_settings_key.'[minimize_WP_menu-'.$userID.']" value="1" class="form-control"/>';
 		$html .= '&nbsp;';
-		$html .= '<label>'.__('Minimiere das Wp-Hauptmenü und verwende CRM ganzseitig (empfohlen)','cpsmartcrm').'</label>';
+		$html .= '<label>'.__('Minimiere das CMS-Hauptmenü und verwende CRM ganzseitig (empfohlen)','cpsmartcrm').'</label>';
 		
 		echo $html;
 		

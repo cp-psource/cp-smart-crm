@@ -44,16 +44,16 @@ $document->master_data = function() {
   return array(
        array('full_header' => "<h2 class=\"WPsCRM_businessName\">" . html_entity_decode($options['business_name']) . "</h2>" . $extraName . "<div class=\"WPsCRM_businessAddress\"> " . html_entity_decode($options['business_address']) . $number." <br /> " . html_entity_decode($options['business_zip']) . ", " . html_entity_decode($options['business_town']) .$prov. "</div>", 'show' => 1),
       array(__('Name', 'cpsmartcrm') => html_entity_decode($options['business_name']), 'show' => 0, 'show_label' => 0, ''),
-      array(__('Address', 'cpsmartcrm') => html_entity_decode($options['business_address']), 'show' => 0, 'show_label' => 0),
-      array(__('Town', 'cpsmartcrm') => html_entity_decode($options['business_town']), 'show' => 0, 'show_label' => 0),
-      array(__('Zip', 'cpsmartcrm') => html_entity_decode($options['business_zip']), 'show' => 0, 'show_label' => 0),
-			array(__('State/prov', 'wp-smart-crm-invoices-pro') => $prov, 'show' => 0, 'show_label' => 0),
-      array(__('Vat Code', 'cpsmartcrm') => html_entity_decode($options['business_iva']), 'show' => 1, 'show_label' => 1),
-      array(__('Cod. Fisc', 'cpsmartcrm') => html_entity_decode($options['business_cf']), 'show' => 1, 'show_label' => 1),
-      array(__('Phone', 'cpsmartcrm') => html_entity_decode($options['business_phone']), 'show' => isset($options['show_phone']) ? $options['show_phone'] : 0, 'show_label' => 1),
+      array(__('Addresse', 'cpsmartcrm') => html_entity_decode($options['business_address']), 'show' => 0, 'show_label' => 0),
+      array(__('Stadt', 'cpsmartcrm') => html_entity_decode($options['business_town']), 'show' => 0, 'show_label' => 0),
+      array(__('PLZ', 'cpsmartcrm') => html_entity_decode($options['business_zip']), 'show' => 0, 'show_label' => 0),
+			array(__('Staat/Prov', 'wp-smart-crm-invoices-pro') => $prov, 'show' => 0, 'show_label' => 0),
+      array(__('MwSt.-Code', 'cpsmartcrm') => html_entity_decode($options['business_iva']), 'show' => 1, 'show_label' => 1),
+      array(__('Steuernummer', 'cpsmartcrm') => html_entity_decode($options['business_cf']), 'show' => 1, 'show_label' => 1),
+      array(__('Telefon', 'cpsmartcrm') => html_entity_decode($options['business_phone']), 'show' => isset($options['show_phone']) ? $options['show_phone'] : 0, 'show_label' => 1),
       array(__('Fax', 'cpsmartcrm') => html_entity_decode($options['business_fax']), 'show' => isset($options['show_fax']) ? $options['show_fax'] : 0, 'show_label' => 1),
       array(__('Email', 'cpsmartcrm') => html_entity_decode($options['business_email']), 'show' => isset($options['show_email']) ? $options['show_email'] : 0, 'show_label' => 1),
-      array(__('Web Site', 'cpsmartcrm') => html_entity_decode($options['business_web']), 'show' => isset($options['show_web']) ? $options['show_web'] : 0, 'show_label' => 1),
+      array(__('Webseite', 'cpsmartcrm') => html_entity_decode($options['business_web']), 'show' => isset($options['show_web']) ? $options['show_web'] : 0, 'show_label' => 1),
       array(__('IBAN', 'cpsmartcrm') => html_entity_decode($options['business_iban']), 'show' => isset($options['show_iban']) ? $options['show_iban'] : 0, 'show_label' => 1),
       array(__('SWIFT', 'cpsmartcrm') => html_entity_decode($options['business_swift']), 'show' => isset($options['show_swift']) ? $options['show_swift'] : 0, 'show_label' => 1)
   );
@@ -809,20 +809,20 @@ function WPsCRM_get_scheduler() {
           $rowClass = "row_todo";
           break;
         case 2:
-          $tipo = __('Appointment', 'cpsmartcrm');
+          $tipo = __('Termin', 'cpsmartcrm');
           $rowClass = "row_appuntamento";
           break;
         case 3:
-          $tipo = __('Invoice expired payment', 'cpsmartcrm');
+          $tipo = __('Rechnungszahlung abgelaufen', 'cpsmartcrm');
           break;
         case 4:
-          $tipo = __('Purchase', 'cpsmartcrm');
+          $tipo = __('Kaufen', 'cpsmartcrm');
           break;
         case 5:
-          $tipo = __('Expiring service', 'cpsmartcrm');
+          $tipo = __('Auslaufender Dienst', 'cpsmartcrm');
           break;
         case 6:
-          $tipo = __('Deadline', 'cpsmartcrm');
+          $tipo = __('Frist', 'cpsmartcrm');
           break;
         default:
           $tipo = "";
@@ -1591,11 +1591,11 @@ function WPsCRM_import_customers() {
           //gestire errore dati obbligatori mancanti
           $row_err = "";
           if (!$riga["firstname"])
-            $row_err .= sprintf(__('Missing field: %s', 'cpsmartcrm'), "firstname") . "; ";
+            $row_err .= sprintf(__('Fehlendes Feld: %s', 'cpsmartcrm'), "firstname") . "; ";
           if (!$riga["lastname"])
-            $row_err .= sprintf(__('Missing field: %s', 'cpsmartcrm'), "lastname") . "; ";
+            $row_err .= sprintf(__('Fehlendes Feld: %s', 'cpsmartcrm'), "lastname") . "; ";
           if (!$riga["company"])
-            $row_err .= sprintf(__('Missing field: %s', 'cpsmartcrm'), "company");
+            $row_err .= sprintf(__('Fehlendes Feld: %s', 'cpsmartcrm'), "company");
           $arr_err[] = array("riga" => $row, "errore" => $row_err);
           $string_err .= "#$row $row_err\n";
         }
@@ -1603,7 +1603,7 @@ function WPsCRM_import_customers() {
       }
     }
     else {
-      $msg_err = __('Could not read file. Try again.', 'cpsmartcrm');
+      $msg_err = __('Datei konnte nicht gelesen werden. Versuche es erneut.', 'cpsmartcrm');
       header("Content-type: application/json");
       echo json_encode(array("mess_id" => 1, "msg" => $msg_err));
     }
@@ -1617,7 +1617,7 @@ function WPsCRM_import_customers() {
       //echo json_encode($arr_err);
       echo "{\"mess_id\": 2,\"errore\":" . json_encode($arr_err) . "}";
     } else {
-      $msg_ok = __('Import successfully done.', 'cpsmartcrm');
+      $msg_ok = __('Import erfolgreich abgeschlossen.', 'cpsmartcrm');
       header("Content-type: application/json");
       echo json_encode(array("mess_id" => 3, "msg" => $msg_ok));
     }
@@ -1816,7 +1816,7 @@ function WPsCRM_wp_new_user_notificattion($user_id, $plaintext_pass, $pass_stren
   $display_name = $user->display_name;
   $user_email = stripslashes($user->user_email);
 
-  $email_subject = "Welcome to " . htmlspecialchars_decode(strip_tags(get_bloginfo('name'))) . " " . $user_login . "!";
+  $email_subject = "Willkommen bei " . htmlspecialchars_decode(strip_tags(get_bloginfo('name'))) . " " . $user_login . "!";
 
   ob_start();
 
@@ -1825,14 +1825,14 @@ function WPsCRM_wp_new_user_notificattion($user_id, $plaintext_pass, $pass_stren
   <html>
       <head>
 
-          <title><?php _e('New User Registration on', 'cpsmartcrm') ?> <?php bloginfo('name') ?></title>
+          <title><?php _e('Neue Benutzerregistrierung am', 'cpsmartcrm') ?> <?php bloginfo('name') ?></title>
 
       </head>
       <body>
-          <p><?php _e('A very special welcome to you', 'cpsmartcrm') ?>, <b><?php echo $display_name ?></b>. <?php _e('Thank you for joining', 'cpsmartcrm') ?> <i>"<?php bloginfo('name') ?>"</i>!</p>
+          <p><?php _e('Ein ganz besonderes Willkommen an Dich', 'cpsmartcrm') ?>, <b><?php echo $display_name ?></b>. <?php _e('Danke, dass Du mitmachst', 'cpsmartcrm') ?> <i>"<?php bloginfo('name') ?>"</i>!</p>
 
           <p>
-              <?php _e('Your password is', 'cpsmartcrm') ?> <strong style="color:orange"><?php echo $plaintext_pass ?></strong> <br>
+              <?php _e('Dein Passwort lautet', 'cpsmartcrm') ?> <strong style="color:orange"><?php echo $plaintext_pass ?></strong> <br>
 
           </p>
           <p>

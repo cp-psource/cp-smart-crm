@@ -321,11 +321,11 @@ function WPsCRM_notify_CRM_SETTINGS(){
 ?>
 <div class="notice notice-error">
     <p>
-        <?php _e( 'Warning:  some basic settings are required','cpsmartcrm');?>
+        <?php _e( 'Achtung: Es sind einige Grundeinstellungen erforderlich','cpsmartcrm');?>
         <a href="<?php echo admin_url("admin.php?page=smartcrm_settings&tab=CRM_business_settings" )?>">
-            <?php _e('on this page','cpsmartcrm');?>
+            <?php _e('auf dieser Seite','cpsmartcrm');?>
         </a>
-        <?php _e('to use CP Smart CRM ','cpsmartcrm')?>!
+        <?php _e('um CP Smart CRM zu verwenden ','cpsmartcrm')?>!
     </p>
 </div>
 <?php
@@ -385,8 +385,8 @@ function WPsCRM_documentation_link(){
 		}
 	add_submenu_page(
 	'smart-crm',
-	__('Documentation', 'cpsmartcrm'),
-	__('Documentation', 'cpsmartcrm'),
+	__('Dokumentation', 'cpsmartcrm'),
+	__('Dokumentation', 'cpsmartcrm'),
 	'manage_crm',
 	$link,
 	''

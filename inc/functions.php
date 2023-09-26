@@ -1842,13 +1842,13 @@ function WPsCRM_wp_new_user_notificattion($user_id, $plaintext_pass, $pass_stren
                   break;
                 case 'veryweak':
 
-                  $_message = __('Your password strenght has been detected as', 'cpsmartcrm') . '<strong>' . __('Very Weak', 'cpsmartcrm') . '!!</strong>.' . __('We cannot accept users with weak passwords since the security of the whole site could be compromised', 'cpsmartcrm') . '<br>' . __('Therefore you have to update your password using special chars, capital and normal letters and numbers ( min 8) click here to update it', 'cpsmartcrm') . ': <a href="' . get_page_link($user_page) . '">' . __('Your Profile', 'cpsmartcrm') . '</a>, ' . __('thank you', 'cpsmartcrm');
+                  $_message = __('Deine Passwortstärke wurde erkannt als', 'cpsmartcrm') . '<strong>' . __('sehr Schwach', 'cpsmartcrm') . '!!</strong>.' . __('Wir können keine Benutzer mit schwachen Passwörtern akzeptieren, da die Sicherheit der gesamten Webseite gefährdet sein könnte', 'cpsmartcrm') . '<br>' . __('Daher muss Dein Passwort mit Sonderzeichen, Großbuchstaben und normalen Buchstaben und Zahlen (mindestens 8) aenthalten. Klicke hier, um es zu aktualisieren', 'cpsmartcrm') . ': <a href="' . get_page_link($user_page) . '">' . __('Dein Profil', 'cpsmartcrm') . '</a>, ' . __('Danke', 'cpsmartcrm');
                   break;
                 case 'weak':
-                  $_message = __('Your password strenght has been detected as', 'cpsmartcrm') . '<strong>' . __('Weak', 'cpsmartcrm') . '!!</strong>.' . __('We cannot accept users with weak passwords since the security of the whole site could be compromised', 'cpsmartcrm') . '<br>' . __('Therefore you have to update your password using special chars, capital and normal letters and numbers ( min 8) click here to update it', 'cpsmartcrm') . ': <a href="' . get_page_link($user_page) . '">' . __('Your Profile', 'cpsmartcrm') . '</a>, ' . __('thank you', 'cpsmartcrm');
+                  $_message = __('Deine Passwortstärke wurde erkannt als', 'cpsmartcrm') . '<strong>' . __('Schwach', 'cpsmartcrm') . '!!</strong>.' . __('Wir können keine Benutzer mit schwachen Passwörtern akzeptieren, da die Sicherheit der gesamten Webseite gefährdet sein könnte', 'cpsmartcrm') . '<br>' . __('Daher muss Dein Passwort mit Sonderzeichen, Großbuchstaben und normalen Buchstaben und Zahlen (mindestens 8) aenthalten. Klicke hier, um es zu aktualisieren', 'cpsmartcrm') . ': <a href="' . get_page_link($user_page) . '">' . __('Dein Profil', 'cpsmartcrm') . '</a>, ' . __('Danke', 'cpsmartcrm');
                   break;
                 case 'medium':
-                  $_message = __('Your password strenght has been detected as', 'cpsmartcrm') . '<strong>' . __('Medium', 'cpsmartcrm') . '!!</strong>.' . __('We cannot accept users with weak passwords since the security of the whole site could be compromised', 'cpsmartcrm') . '<br>' . __('Therefore you have to update your password using special chars, capital and normal letters and numbers ( min 8) click here to update it', 'cpsmartcrm') . ': <a href="' . get_page_link($user_page) . '">' . __('Your Profile', 'cpsmartcrm') . '</a>, ' . __('thank you', 'cpsmartcrm');
+                  $_message = __('Deine Passwortstärke wurde erkannt als', 'cpsmartcrm') . '<strong>' . __('Mittel', 'cpsmartcrm') . '!!</strong>.' . __('Wir können keine Benutzer mit schwachen Passwörtern akzeptieren, da die Sicherheit der gesamten Webseite gefährdet sein könnte', 'cpsmartcrm') . '<br>' . __('Daher muss Dein Passwort mit Sonderzeichen, Großbuchstaben und normalen Buchstaben und Zahlen (mindestens 8) aenthalten. Klicke hier, um es zu aktualisieren', 'cpsmartcrm') . ': <a href="' . get_page_link($user_page) . '">' . __('Dein Profil', 'cpsmartcrm') . '</a>, ' . __('Danke', 'cpsmartcrm');
                   break;
                 case 'strong':
                   break;
@@ -1857,7 +1857,7 @@ function WPsCRM_wp_new_user_notificattion($user_id, $plaintext_pass, $pass_stren
               ?>
           </p>
           <p>
-              <?php _e('Kind regards', 'cpsmartcrm') ?>,<br>
+              <?php _e('Mit freundlichen Gruß', 'cpsmartcrm') ?>,<br>
               <?php bloginfo('name') ?> 
           </p>
       </body>
@@ -2046,12 +2046,12 @@ function WPsCRM_insert_notification($subscriptionrules, $document_id, $document_
       $email = $qc->email;
     }
     $data_inserimento = date("Y-m-d H:i:s");
-    $scheduler_subject = __("Expiring service", 'cpsmartcrm');
-    $scheduler_notes = __("Expiring service", 'cpsmartcrm');
+    $scheduler_subject = __("Auslaufender Dienst", 'cpsmartcrm');
+    $scheduler_notes = __("Auslaufender Dienst", 'cpsmartcrm');
     $scheduler_notes .= " " . $descrizione . " ";
-    $scheduler_notes .= __("Invoice #", 'cpsmartcrm');
+    $scheduler_notes .= __("Rechnung #", 'cpsmartcrm');
     $scheduler_notes .= " " . $prog . " ";
-    $scheduler_notes .= __("to", 'cpsmartcrm');
+    $scheduler_notes .= __("zu", 'cpsmartcrm');
     $scheduler_notes .= " " . $cliente;
     $wpdb->insert(
             WPsCRM_TABLE . "agenda", array(
@@ -2230,13 +2230,13 @@ function WPsCRM_view_activity_modal() {
 
   switch ($riga->priorita) {
     case 1:
-      $priorita = __("Low", "cpsmartcrm");
+      $priorita = __("Niedrig", "cpsmartcrm");
       break;
     case 2:
       $priorita = __("Normal", "cpsmartcrm");
       break;
     case 3:
-      $priorita = __("High", "cpsmartcrm");
+      $priorita = __("Hoch", "cpsmartcrm");
       break;
     default:
       $priorita = __("Normal", "cpsmartcrm");
@@ -2266,7 +2266,7 @@ function WPsCRM_view_activity_modal() {
     $users = $steps[0]->selectedUsers;
     $groups = $steps[0]->selectedGroups;
     $days = $steps[0]->ruleStep;
-    $remindToCustomer = $steps[0]->remindToCustomer == "on" ? __('Yes', 'cpsmartcrm') : __('No', 'cpsmartcrm');
+    $remindToCustomer = $steps[0]->remindToCustomer == "on" ? __('Ja', 'cpsmartcrm') : __('Nein', 'cpsmartcrm');
     $mailToRecipients = $steps[0]->mailToRecipients == "on" ? "S&igrave;" : "No";
     $userDashboard = $steps[0]->userDashboard == "on" ? "S&igrave;" : "No";
     $groupDashboard = $steps[0]->groupDashboard == "on" ? "S&igrave;" : "No";
@@ -2289,10 +2289,10 @@ function WPsCRM_view_activity_modal() {
       $icon = '<i class="glyphicon glyphicon-tag"></i> ' . __('TODO', 'cpsmartcrm');
       break;
     case 2:
-      $icon = '<i class="glyphicon glyphicon-pushpin"></i> ' . __('Appointment', 'cpsmartcrm');
+      $icon = '<i class="glyphicon glyphicon-pushpin"></i> ' . __('Termin', 'cpsmartcrm');
       break;
     case 3:
-      $icon = '<i class="glyphicon glyphicon-option-horizontal"></i> ' . __('Activity', 'cpsmartcrm');
+      $icon = '<i class="glyphicon glyphicon-option-horizontal"></i> ' . __('Aktivität', 'cpsmartcrm');
       break;
     default:
       $tipo = "";
@@ -2303,57 +2303,57 @@ function WPsCRM_view_activity_modal() {
   $html .= '
     <div class="col-md-8 panel panel-primary _flat modal_inner" style="border:1px solid #666;text-align:left;background:#fff;padding-bottom:20px;margin: 46px auto;float: none;padding:0;position:relative">
     <div class="panel-heading" style="    padding: 3px 10px;">
-        <h3 style="text-align:center;margin-top: 8px;">' . __('Activity detail', 'cpsmartcrm') . ': <small style="margin-left:40px;color:#fff">' . $icon . '</small></h3>
+        <h3 style="text-align:center;margin-top: 8px;">' . __('Aktivitätsdetails', 'cpsmartcrm') . ': <small style="margin-left:40px;color:#fff">' . $icon . '</small></h3>
     </div>
     <div class="panel-body" style="padding:0px 20px 10px 20px">
     
 <form>
 <table border="0" cellpadding="2" cellspacing="2" class="view table">
     <tr>
-	    <td class="view">' . __('Customer', 'cpsmartcrm') . ':</td>
+	    <td class="view">' . __('Kunde', 'cpsmartcrm') . ':</td>
 	    <td class="view_text"><a href="' . admin_url('admin.php?page=smart-crm&p=clienti/form.php& ID=' . $riga->fk_clienti) . '">' . stripslashes($cliente) . '</a></td>
     </tr>
     <tr>
-	    <td class="view">' . __('Contact', 'cpsmartcrm') . ':</td>
+	    <td class="view">' . __('Kontakt', 'cpsmartcrm') . ':</td>
 	    <td class="view_text">' . $contatto . '</td>
     </tr>
     <tr>
-	    <td class="view">' . __('Subject', 'cpsmartcrm') . ':</td>
+	    <td class="view">' . __('Betreff', 'cpsmartcrm') . ':</td>
 	    <td colspan="2" class="view_text">' . stripslashes($riga->oggetto) . '</td>
     </tr>
     <tr>
-	    <td class="view">' . __('Description', 'cpsmartcrm') . ':</td>
+	    <td class="view">' . __('Beschreibung', 'cpsmartcrm') . ':</td>
 	    <td colspan="2" class="view_text">' . stripslashes($riga->annotazioni) . '</td>
     </tr>
     <tr>
-	    <td class="view">' . __('Users', 'cpsmartcrm') . ':</td>
+	    <td class="view">' . __('Benutzer', 'cpsmartcrm') . ':</td>
 	    <td class="view_text">' . stripslashes($destinatari) . '</td>
     </tr>
     <tr>
-	    <td class="view">' . __('Groups', 'cpsmartcrm') . ':</td>
+	    <td class="view">' . __('Gruppen', 'cpsmartcrm') . ':</td>
 	    <td class="view_text">' . stripslashes($groups) . '</td>
     </tr>
     <tr>
-	    <td class="view">' . __('Days in advance', 'cpsmartcrm') . ':</td>
+	    <td class="view">' . __('Tage im Voraus', 'cpsmartcrm') . ':</td>
 	    <td class="view_text">' . $days . '</td>
     </tr>';
   if ($riga->tipo_agenda == 2) {
     $html .= '<tr>
-	    <td class="view">' . __('Send email to customer', 'cpsmartcrm') . ':</td>
+	    <td class="view">' . __('E-Mail an den Kunden senden', 'cpsmartcrm') . ':</td>
 	    <td class="view_text">' . $remindToCustomer . '</td>
     </tr>';
   };
   $html .= '
     <tr>
-	    <td class="view">' . __('Send mail to recipients', 'cpsmartcrm') . ':</td>
+	    <td class="view">' . __('Sende E-Mails an Empfänger', 'cpsmartcrm') . ':</td>
 	    <td class="view_text">' . $mailToRecipients . '</td>
     </tr>
     <tr>
-	    <td class="view">' . __('Publish on Account dashboard', 'cpsmartcrm') . ':</td>
+	    <td class="view">' . __('Im Konto-Dashboard veröffentlichen', 'cpsmartcrm') . ':</td>
 	    <td class="view_text">' . $userDashboard . '</td>
     </tr>
     <tr>
-	    <td class="view">' . __('Publish on group dashboard', 'cpsmartcrm') . ':</td>
+	    <td class="view">' . __('Im Gruppen-Dashboard veröffentlichen', 'cpsmartcrm') . ':</td>
 	    <td class="view_text">' . $groupDashboard . '</td>
     </tr>';
   if ($riga->tipo_agenda == 2) {
@@ -2363,40 +2363,40 @@ function WPsCRM_view_activity_modal() {
 	    <td class="view_text"> ' . WPsCRM_culture_date_format($riga->start_date) . '</td>
     </tr>
     <tr>	
-	    <td class="view">' . __('End', 'cpsmartcrm') . ':</td>
+	    <td class="view">' . __('Ende', 'cpsmartcrm') . ':</td>
 	    <td class="view_text"> ' . WPsCRM_culture_date_format($riga->end_date) . '</td>
     </tr>';
   } else {
     $html .= '
     <tr>
-	    <td class="view">' . __('Expiration', 'cpsmartcrm') . ': </td>
+	    <td class="view">' . __('Ablauf', 'cpsmartcrm') . ': </td>
 	    <td class="view_text"> ' . WPsCRM_culture_date_format($riga->start_date) . '</td>
     </tr>';
   };
   $html .= '
     <tr>	
-	    <td class="view">' . __('Priority', 'cpsmartcrm') . ':</td>
+	    <td class="view">' . __('Priorität', 'cpsmartcrm') . ':</td>
 	    <td class="view_text">' . $priorita . '</td>
     </tr>
 </table>
 
 <fieldset>
-    <legend>' . __('Result', 'cpsmartcrm') . '</legend>
+    <legend>' . __('Ergebnis', 'cpsmartcrm') . '</legend>
     <table border="0" cellpadding="2" cellspacing="2" width="98%">
     <tr>
-	    <td>' . __('To be done', 'cpsmartcrm') . ' <input type="radio" name="fatto" value="1" id="f_1" ';
+	    <td>' . __('Noch zu erledigen', 'cpsmartcrm') . ' <input type="radio" name="fatto" value="1" id="f_1" ';
   $riga->fatto == "1" ? $html .= "checked" : $html .= $report == "false" ? " disabled" : "";
 
   $html .= '></td><td>';
-  $html .= '' . __('Done', 'cpsmartcrm') . ' <input type="radio" name="fatto" value="2" id="f_2" ';
+  $html .= '' . __('Erledigt', 'cpsmartcrm') . ' <input type="radio" name="fatto" value="2" id="f_2" ';
   $riga->fatto == "2" ? $html .= "checked" : $html .= $report == "false" ? " disabled" : "";
   $html .= '></td><td>';
-  $html .= '' . __('Canceled', 'cpsmartcrm') . ' <input type="radio" name="fatto" value="3" id="f_3" ';
+  $html .= '' . __('Abgesagt', 'cpsmartcrm') . ' <input type="radio" name="fatto" value="3" id="f_3" ';
   $riga->fatto == "3" ? $html .= "checked" : $html .= $report == "false" ? " disabled" : "";
   $html .= '></td>
     </tr>
     <tr>
-	    <td>' . __('Annotations', 'cpsmartcrm') . '</td>
+	    <td>' . __('Anmerkungen', 'cpsmartcrm') . '</td>
 	    <td colspan="2" style="padding-top:20px"><textarea rows="3" cols="50" name="esito" id="esito" ';
   $report == "false" ? $html .= " readonly" : $html .= "";
   $html .= '>' . stripslashes($riga->esito) . '</textarea></td>
@@ -2404,9 +2404,9 @@ function WPsCRM_view_activity_modal() {
     </table>
 </fieldset>';
   if ($report != "false")
-    $html .= '<span class="button button-primary _flat" id="save_activity_from_modal" data-id="' . $ID . '">' . __('Save', 'cpsmartcrm') . '</span>';
+    $html .= '<span class="button button-primary _flat" id="save_activity_from_modal" data-id="' . $ID . '">' . __('Speichern', 'cpsmartcrm') . '</span>';
 
-  $html .= '<span class="button button-secondary _flat _reset" id="configreset">' . __('Cancel', 'cpsmartcrm') . '</span>
+  $html .= '<span class="button button-secondary _flat _reset" id="configreset">' . __('Stornieren', 'cpsmartcrm') . '</span>
 <div id="box_messaggio"></div>
 
 </form>
@@ -3230,7 +3230,7 @@ function WPsCRM_generate_document_HTML($ID) {
     switch ($tipo = $riga["tipo"]) {
       case 1:
         $progressivo = $riga["progressivo"];
-        $document_name = __("Quote", 'cpsmartcrm');
+        $document_name = __("Zitat", 'cpsmartcrm');
         $text_before = $document_messages['offers_before'];
         $text_after = $document_messages['offers_after'];
         $document_prefix = $document_numbering['offers_prefix'];
@@ -3240,7 +3240,7 @@ function WPsCRM_generate_document_HTML($ID) {
         break;
       case 2:
         $progressivo = $riga["progressivo"];
-        $document_name = __("Invoice", 'cpsmartcrm');
+        $document_name = __("Rechnung", 'cpsmartcrm');
         $text_before = $document_messages['invoices_before'];
         $text_after = $document_messages['invoices_after'];
         $document_prefix = $document_numbering['invoices_prefix'];
@@ -3250,7 +3250,7 @@ function WPsCRM_generate_document_HTML($ID) {
         break;
       case 3:
         $progressivo = $riga["id"];
-        $document_name = __("Informal invoice", 'cpsmartcrm');
+        $document_name = __("Informelle Rechnung", 'cpsmartcrm');
         $text_before = $document_messages['invoices_before'];
         $text_after = $document_messages['invoices_after'];
         $document_prefix = $document_numbering['invoices_prefix'];
@@ -3294,17 +3294,17 @@ function WPsCRM_generate_document_HTML($ID) {
   if ($document_options['header_alignment'] == "text,logo") {
     $subheader .= '<table class="WPsCRM_customer_data" cellspacing="0" style="width: 100%; text-align: left; font-size: 11pt;padding-bottom:20px">
 			<tr>
-				<td style="width:60%;vertical-align:top;color:#666">' . $document_name . '<b style="color:#393939"> # ' . $n_offerta . '</b> ' . __("issued on", 'cpsmartcrm') . ' ' . WPsCRM_culture_date_format($riga["data"]) . '</td>
+				<td style="width:60%;vertical-align:top;color:#666">' . $document_name . '<b style="color:#393939"> # ' . $n_offerta . '</b> ' . __("ausgegeben am", 'cpsmartcrm') . ' ' . WPsCRM_culture_date_format($riga["data"]) . '</td>
 				<td style="width:40%;text-align:right">' . $document_dear . ' <b>' . $cliente . '</b><br />
 				' . $indirizzo . '<br />' . $cap . '  ' . $localita . '     ( ' . $provincia . ' )';
     if ($p_iva)
-      $subheader .= '<br />' . __('VAT code', 'cpsmartcrm') . ': ' . $p_iva;
+      $subheader .= '<br />' . __('MwSt.-Code', 'cpsmartcrm') . ': ' . $p_iva;
     if ($cod_fis)
-      $subheader .= '<br />' . __('Fiscal code', 'cpsmartcrm') . ': ' . $cod_fis;
+      $subheader .= '<br />' . __('Steuernummer', 'cpsmartcrm') . ': ' . $cod_fis;
     if ($contatto)
       $subheader .= '<br />C.A. ' . $contatto;
     if ($riferimento)
-      $subheader .= '<br />' . __('Reference #', 'cpsmartcrm') . ': ' . $riferimento;
+      $subheader .= '<br />' . __('Referenz #', 'cpsmartcrm') . ': ' . $riferimento;
     $subheader .= '</td>';
   }
   else {
@@ -3313,15 +3313,15 @@ function WPsCRM_generate_document_HTML($ID) {
 				<td style="width:50%;text-align:left">' . $document_dear . ' <b>' . $cliente . '</b><br />
 				' . $indirizzo . '<br />' . $cap . '  ' . $localita . '     ( ' . $provincia . ' )';
     if ($p_iva)
-      $subheader .= '<br />' . __('VAT code', 'cpsmartcrm') . ': ' . $p_iva;
+      $subheader .= '<br />' . __('MwSt.-Code', 'cpsmartcrm') . ': ' . $p_iva;
     if ($cod_fis)
-      $subheader .= '<br />' . __('Fiscal code', 'cpsmartcrm') . ': ' . $cod_fis;
+      $subheader .= '<br />' . __('Steuernummer', 'cpsmartcrm') . ': ' . $cod_fis;
     if ($contatto)
       $subheader .= '<br />C.A. ' . $contatto;
     if ($riferimento)
-      $subheader .= '<br />' . __('Reference #', 'cpsmartcrm') . ': ' . $riferimento;
+      $subheader .= '<br />' . __('Referenz #', 'cpsmartcrm') . ': ' . $riferimento;
     $subheader .= '</td>';
-    $subheader .= '<td style="width:50%;vertical-align:top;text-align:right;color:#666">' . $document_name . '<b style="color:#393939"> # ' . $n_offerta . '</b> ' . __("issued on", 'cpsmartcrm') . ' ' . WPsCRM_culture_date_format($riga["data"]) . '</td>';
+    $subheader .= '<td style="width:50%;vertical-align:top;text-align:right;color:#666">' . $document_name . '<b style="color:#393939"> # ' . $n_offerta . '</b> ' . __("ausgegeben am", 'cpsmartcrm') . ' ' . WPsCRM_culture_date_format($riga["data"]) . '</td>';
   }
   $subheader .= '
 			</tr>
@@ -3330,7 +3330,7 @@ function WPsCRM_generate_document_HTML($ID) {
   //document body
   $doc_body = "";
   if ($oggetto)
-    $doc_body .= '<h4 class="WPsCRM_document_subject">' . __('Subject', 'cpsmartcrm') . ': ' . $oggetto . '</h4>';
+    $doc_body .= '<h4 class="WPsCRM_document_subject">' . __('Betreff', 'cpsmartcrm') . ': ' . $oggetto . '</h4>';
   if ($text_before)
     $doc_body .= '<p>' . stripslashes($text_before) . '</p>';
   if ($testo_libero = $riga["testo_libero"]) {
@@ -3360,9 +3360,9 @@ function WPsCRM_generate_document_HTML($ID) {
   }
   $tab_cond = "";
   if ($pagamento)
-    $tab_cond .= "<tr style=\"background:transparent!important\"><td style=\"background:transparent!important\">" . __("Payment", 'cpsmartcrm') . ":</td><td>" . $pagamento . "</td></tr>";
+    $tab_cond .= "<tr style=\"background:transparent!important\"><td style=\"background:transparent!important\">" . __("Zahlung", 'cpsmartcrm') . ":</td><td>" . $pagamento . "</td></tr>";
   if ($riga["annotazioni"])
-    $tab_cond .= "<tr style=\"background:transparent!important\"><td style=\"background:transparent!important\">" . __("Notes", 'cpsmartcrm') . ":</td><td style='font-size:.9em;font-style:italic'>" . stripslashes($riga["annotazioni"]) . "ddd</td></tr>
+    $tab_cond .= "<tr style=\"background:transparent!important\"><td style=\"background:transparent!important\">" . __("Anmerkungen", 'cpsmartcrm') . ":</td><td style='font-size:.9em;font-style:italic'>" . stripslashes($riga["annotazioni"]) . "ddd</td></tr>
 	";
   $doc_body .= $t_articoli;
   //if ($tab_tot && $tipo==2)
@@ -3560,7 +3560,7 @@ function _WPsCRM_generate_document_HTML($ID) {
     switch ($tipo = $riga["tipo"]) {
       case 1:
         $progressivo = $riga["progressivo"];
-        $document_name = __("Quote", 'cpsmartcrm');
+        $document_name = __("Zitat", 'cpsmartcrm');
         $text_before = $document_messages['offers_before'];
         $text_after = $document_messages['offers_after'];
         $document_prefix = $document_numbering['offers_prefix'];
@@ -3570,7 +3570,7 @@ function _WPsCRM_generate_document_HTML($ID) {
         break;
       case 2:
         $progressivo = $riga["progressivo"];
-        $document_name = __("Invoice", 'cpsmartcrm');
+        $document_name = __("Rechnung", 'cpsmartcrm');
         $text_before = $document_messages['invoices_before'];
         $text_after = $document_messages['invoices_after'];
         $document_prefix = $document_numbering['invoices_prefix'];
@@ -3580,7 +3580,7 @@ function _WPsCRM_generate_document_HTML($ID) {
         break;
       case 3:
         $progressivo = $riga["id"];
-        $document_name = __("Informal invoice", 'cpsmartcrm');
+        $document_name = __("Informelle Rechnung", 'cpsmartcrm');
         $text_before = $document_messages['invoices_before'];
         $text_after = $document_messages['invoices_after'];
         $document_prefix = $document_numbering['invoices_prefix'];
@@ -3621,17 +3621,17 @@ function _WPsCRM_generate_document_HTML($ID) {
   $subheader = '';
   $subheader .= '<table class="WPsCRM_customer_data" cellspacing="0" style="width: 100%; text-align: left; font-size: 11pt;">
 			<tr>
-				<td style="width:60%;vertical-align:top"><b>' . $document_name . ' # ' . $n_offerta . ' ' . __("issued on", 'cpsmartcrm') . ' ' . WPsCRM_culture_date_format($riga["data"]) . '</b></td>
+				<td style="width:60%;vertical-align:top"><b>' . $document_name . ' # ' . $n_offerta . ' ' . __("ausgestellt am", 'cpsmartcrm') . ' ' . WPsCRM_culture_date_format($riga["data"]) . '</b></td>
 				<td style="width:40%; ">' . $document_dear . ' <b>' . $cliente . '</b><br />
 				' . $indirizzo . '<br />' . $cap . '  ' . $localita . '     ( ' . $provincia . ' )';
   if ($p_iva)
-    $subheader .= '<br />' . __('VAT code', 'cpsmartcrm') . ': ' . $p_iva;
+    $subheader .= '<br />' . __('MwSt.-Code', 'cpsmartcrm') . ': ' . $p_iva;
   if ($cod_fis)
-    $subheader .= '<br />' . __('Fiscal code', 'cpsmartcrm') . ': ' . $cod_fis;
+    $subheader .= '<br />' . __('Steuernummer', 'cpsmartcrm') . ': ' . $cod_fis;
   if ($contatto)
     $subheader .= '<br />C.A. ' . $contatto;
   if ($riferimento)
-    $subheader .= '<br />' . __('Reference #', 'cpsmartcrm') . ': ' . $riferimento;
+    $subheader .= '<br />' . __('Referenz #', 'cpsmartcrm') . ': ' . $riferimento;
   $subheader .= '</td>
 			</tr>
 		</table>';
@@ -3639,7 +3639,7 @@ function _WPsCRM_generate_document_HTML($ID) {
   //$subheader .='</section>';
   //document body
   if ($oggetto)
-    $doc_body .= '<h4 class="WPsCRM_document_subject">' . __('Subject', 'cpsmartcrm') . ': ' . $oggetto . '</h4>';
+    $doc_body .= '<h4 class="WPsCRM_document_subject">' . __('Betreff', 'cpsmartcrm') . ': ' . $oggetto . '</h4>';
   if ($text_before)
     $doc_body .= '<table class="WPsCRM_text-before"><tr><td>' . stripslashes($text_before) . '</td></tr></table>';
   if ($testo_libero = $riga["testo_libero"]) {
@@ -3668,9 +3668,9 @@ function _WPsCRM_generate_document_HTML($ID) {
   }
   $tab_cond = "";
   if ($pagamento)
-    $tab_cond .= "<tr style=\"background:transparent!important\"><td style=\"background:transparent!important\">" . __("Payment", 'cpsmartcrm') . ":</td><td>" . $pagamento . "</td></tr>";
+    $tab_cond .= "<tr style=\"background:transparent!important\"><td style=\"background:transparent!important\">" . __("Zahlung", 'cpsmartcrm') . ":</td><td>" . $pagamento . "</td></tr>";
   if ($riga["annotazioni"])
-    $tab_cond .= "<tr style=\"background:transparent!important\"><td colspan='1' style=\"background:transparent!important\">" . __("Notes", 'cpsmartcrm') . ":</td><td colspan='1' style='font-size:.9em;font-style:italic'>" . stripslashes($riga["annotazioni"]) . "</td></tr>
+    $tab_cond .= "<tr style=\"background:transparent!important\"><td colspan='1' style=\"background:transparent!important\">" . __("Anmerkungen", 'cpsmartcrm') . ":</td><td colspan='1' style='font-size:.9em;font-style:italic'>" . stripslashes($riga["annotazioni"]) . "</td></tr>
 	";
   $doc_body .= $t_articoli;
   //if ($tab_tot && $tipo==2)
@@ -3683,7 +3683,7 @@ function _WPsCRM_generate_document_HTML($ID) {
 			<table class="table WPsCRM_table-conditions">
 			<thead>
 					<th style="border:none">
-						<h4>' . __("Conditions", 'cpsmartcrm') . ':</h4>
+						<h4>' . __("Bedingungen", 'cpsmartcrm') . ':</h4>
 					</th>
 				</thead>
 			<tbody>' . $tab_cond . '</tbody></table></div>
@@ -3750,12 +3750,12 @@ function WPsCRM_create_pdf_document($ID, $content, $attachment = 0, $old_file = 
     $from_name = ( isset($options['nameFrom']) && trim($options['nameFrom']) != "" ) ? $options['nameFrom'] : "WP smart CRM - " . get_bloginfo('name');
     $e_date = date("Y-m-d");
     //$subject = 'Fattura del '.date("d-m-Y").' di '. $from_name; 
-    $subject = sprintf(__('Invoice issued on %1$s from %2$s', 'cpsmartcrm'), date("d-m-Y"), $from_name);
+    $subject = sprintf(__('Rechnung ausgestellt am %1$s von %2$s', 'cpsmartcrm'), date("d-m-Y"), $from_name);
     //$message = "Gentile cliente, ti ringraziamo per il tuo acquisto. In allegato trovi la tua fattura.". PHP_EOL;
-    $message = __('Dear customer, thank you for your purchase. Your invoice is attached.', 'cpsmartcrm');
+    $message = __('Sehr geehrter Kunde, wir danken Ihnen für Ihren Einkauf. Ihre Rechnung ist beigefügt.', 'cpsmartcrm');
     ;
     $message .= "\r\n";
-    $message .= __('Kind regards', 'cpsmartcrm');
+    $message .= __('Mit freundlichen Grüßen', 'cpsmartcrm');
     $message .= PHP_EOL;
     //$message .= "Clicca il seguente link per accedere al tuo pannello di controllo:  <a href=\"".get_page_link($user_page)."\">".__("Profile page.",'cpsmartcrm')."</a>";
     //$attachname=$document_name.".pdf";
@@ -3774,19 +3774,19 @@ function WPsCRM_print_totalBox($tipo) {
     ?>
     <div class="col-md-3">
         <label style="font-weight:normal;margin-top:10px;padding:8px 0;">
-            <?php _e("Print net + taxes", "cpsmartcrm") ?>
+            <?php _e("Druck netto + Steuern", "cpsmartcrm") ?>
         </label>
         <input type="radio" name="printTotal" id="printTotal" value="all" checked />
     </div>
     <div class="col-md-3">
         <label style="font-weight:normal;margin-top:10px;padding:8px 0">
-            <?php _e("Print gross amount", "cpsmartcrm") ?>
+            <?php _e("Bruttobetrag drucken", "cpsmartcrm") ?>
         </label>
         <input type="radio" name="printTotal" id="printTotal" value="total" />
     </div>
     <div class="col-md-3">
         <label style="font-weight:normal;margin-top:10px;padding:8px 0">
-            <?php _e("Show table of total", "cpsmartcrm") ?>
+            <?php _e("Tabelle der Gesamtsumme anzeigen", "cpsmartcrm") ?>
         </label>
         <input type="checkbox" name="printTotalTable" id="printTotalTable" checked />
     </div>
@@ -3799,7 +3799,7 @@ function WPsCRM_print_totalBox($tipo) {
   <?php } ?>
   <?php if ($tipo == 2) { ?>
     <div class="col-md-6">
-        <label style="font-weight:normal;margin-top:10px;padding:8px 0;display:flex"><?php _e("Print 'PAID' if paid", "cpsmartcrm") ?>
+        <label style="font-weight:normal;margin-top:10px;padding:8px 0;display:flex"><?php _e("'PAID' drucken, wenn bezahlt", "cpsmartcrm") ?>
 
             <input type="checkbox" name="printPaid" id="printPaid" value="1" checked style="float:left"/>
         </label>
@@ -3808,7 +3808,7 @@ function WPsCRM_print_totalBox($tipo) {
   <?php if ($tipo == 3) { ?>
     <div class="col-md-6">
         <label style="font-weight:normal;margin-top:10px;padding:8px 0">
-            <?php _e("Print 'Non formal' ", "cpsmartcrm") ?>
+            <?php _e("Drucken 'Nicht formell' ", "cpsmartcrm") ?>
         </label>
         <input type="checkbox" name="printPaid" id="printPaid" value="1" checked />
     </div>
@@ -3872,31 +3872,31 @@ function WPsCRM_HTML_display_newsletter_row($custom_tax, $ID, $email) {
         $status = $riga->status;
         switch ($status) {
           case "C":
-            $msg = __('A record with this email already exixts in state "Confirmed" ', 'cpsmartcrm');
+            $msg = __('Ein Datensatz mit dieser E-Mail existiert bereits im Status "Bestätigt". ', 'cpsmartcrm');
             break;
           case "S":
-            $msg = __('A record with this email already exixts in state "Not Confirmed" ', 'cpsmartcrm');
+            $msg = __('Ein Datensatz mit dieser E-Mail befindet sich bereits im Status "Nicht bestätigt". ', 'cpsmartcrm');
             break;
           case "U":
-            $msg = __('A record with this email already exixts in state "Unsubsrcibed" ', 'cpsmartcrm');
+            $msg = __('Ein Datensatz mit dieser E-Mail befindet sich bereits im Status "Abgemeldet". ', 'cpsmartcrm');
             break;
           case "B":
-            $msg = __('A record with this email already exixts in state "Bounced" ', 'cpsmartcrm');
+            $msg = __('Ein Datensatz mit dieser E-Mail ist bereits im Status "Zurückgewiesen" vorhanden. ', 'cpsmartcrm');
             break;
           default:
-            $msg = __('A record with this email already exixts ', 'cpsmartcrm');
+            $msg = __('Ein Datensatz mit dieser E-Mail ist bereits vorhanden ', 'cpsmartcrm');
             break;
         }
         ?>
         <div class="col-md-6 pull-right _customer_newsletter">
-            <h3><?php _e('Newsletter management', 'cpsmartcrm') ?></h3>
+            <h3><?php _e('Newsletter-Management', 'cpsmartcrm') ?></h3>
             <div class="row form-group">
-                <label class="control-label"><?php echo $msg ?> <small><a href="<?php echo admin_url('admin.php?page=newsletter_users_index') ?>" target="_blank"><?php _e('Manage subscribers', 'cpsmartcrm') ?>&raquo;</a></small></label>
+                <label class="control-label"><?php echo $msg ?> <small><a href="<?php echo admin_url('admin.php?page=newsletter_users_index') ?>" target="_blank"><?php _e('Abonnenten verwalten', 'cpsmartcrm') ?>&raquo;</a></small></label>
             </div>
             <input type="hidden" name="newsletter_flag" id="newsletter_flag" value="1">
             <?php
             $options_profile = get_option('newsletter_profile');
-            echo '<div class="newsletter-preferences-group row form-group"><h6 style="border-top:1px solid #ccc;padding-top:6px">' . __('Add record to specific newsletter lists', 'cpsmartcrm') . ':</h6>';
+            echo '<div class="newsletter-preferences-group row form-group"><h6 style="border-top:1px solid #ccc;padding-top:6px">' . __('Füge einen Datensatz zu bestimmten Newsletter-Listen hinzu', 'cpsmartcrm') . ':</h6>';
 
             for ($i = 1; $i <= 20; $i++) {
               if (empty($options_profile['list_' . $i])) {
@@ -3923,11 +3923,11 @@ function WPsCRM_HTML_display_newsletter_row($custom_tax, $ID, $email) {
         ?>
         <div class="col-md-5 pull-right _customer_newsletter">
 
-            <h3><?php _e('Newsletter management', 'cpsmartcrm') ?></h3>
+            <h3><?php _e('Newsletter-Management', 'cpsmartcrm') ?></h3>
 
 
             <div class="row form-group">
-                <label class="col-sm-4 control-label"><?php _e('Insert in Newsletter', 'cpsmartcrm') ?>?</label>
+                <label class="col-sm-4 control-label"><?php _e('Im Newsletter einfügen', 'cpsmartcrm') ?>?</label>
                 <div class="col-sm-1">
                     <input type="checkbox" name="newsletter_flag" id="newsletter_flag" value="1">
                 </div>

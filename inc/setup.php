@@ -343,8 +343,8 @@ add_action( 'plugins_loaded', 'WPsCRM_customers_tax' ,12);
 function WPsCRM_customers_tax() {
 
     $labels=array(
-    'name'              => _x( 'Interests', 'taxonomy general name' ),
-    'singular_name'     => _x( 'Interest', 'taxonomy singular name' ),
+    'name'              => _x( 'Interests', 'taxonomy general name', 'cpsmartcrm' ),
+    'singular_name'     => _x( 'Interest', 'taxonomy singular name', 'cpsmartcrm' ),
     'search_items'      => __( 'Search interest','cpsmartcrm'),
     'all_items'         => __( 'All interests','cpsmartcrm'),
     'edit_item'         => __( 'Edit interest','cpsmartcrm'),
@@ -420,12 +420,12 @@ function smart_crm_menu(){
     else
         $privileges=null;
 
-    add_menu_page( 'WP SMART CRM', 'CP Smart CRM', 'manage_crm', 'smart-crm', 'WPsCRM_smartcrm', 'dashicons-analytics', 71 );
+    add_menu_page( 'CP SMART CRM', 'CP Smart CRM', 'manage_crm', 'smart-crm', 'WPsCRM_smartcrm', 'dashicons-analytics', 71 );
     add_submenu_page('SMART CRM', 'CP Smart CRM', 'manage_crm', 'smart-crm', 'WPsCRM_smartcrm', 'dashicons-analytics', 71);
 	add_submenu_page(
 			'smart-crm',
-			__('WP SMART CRM NOTIFICATION RULES', 'cpsmartcrm'),
-			__('Notification rules', 'cpsmartcrm'),
+			__('CP SMART CRM BENACHRICHTIGUNGSREGELN', 'cpsmartcrm'),
+			__('Benachrichtigungen', 'cpsmartcrm'),
 			'manage_options',
 			'smartcrm_subscription-rules',
 			'smartcrm_subscription_rules'
@@ -433,8 +433,8 @@ function smart_crm_menu(){
     if($privileges ==null || $privileges['customer'] >0 ){
         add_submenu_page(
                 'smart-crm',
-                __('WP SMART CRM Customers', 'cpsmartcrm'),
-                __('Customers', 'cpsmartcrm'),
+                __('CP SMART CRM Kunden', 'cpsmartcrm'),
+                __('Kunden', 'cpsmartcrm'),
                 'manage_crm',
                 'admin.php?page=smart-crm&p=clienti/list.php',
                 ''
@@ -443,8 +443,8 @@ function smart_crm_menu(){
     if($privileges ==null || $privileges['agenda'] >0 ){
         add_submenu_page(
                 'smart-crm',
-                __('WP SMART CRM Scheduler', 'cpsmartcrm'),
-                __('Scheduler', 'cpsmartcrm'),
+                __('CP SMART CRM Planer', 'cpsmartcrm'),
+                __('Planer', 'cpsmartcrm'),
                 'manage_crm',
                 'admin.php?page=smart-crm&p=scheduler/list.php',
                 ''
@@ -453,8 +453,8 @@ function smart_crm_menu(){
     if($privileges ==null || $privileges['quote'] >0 || $privileges['invoice'] >0 ){
         add_submenu_page(
                 'smart-crm',
-                __('WP SMART CRM Documents', 'cpsmartcrm'),
-                __('Documents', 'cpsmartcrm'),
+                __('CP SMART CRM Dokumente', 'cpsmartcrm'),
+                __('Dokumente', 'cpsmartcrm'),
                 'manage_crm',
                 'admin.php?page=smart-crm&p=documenti/list.php',
                 ''

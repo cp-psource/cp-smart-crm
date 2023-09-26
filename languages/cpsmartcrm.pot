@@ -572,7 +572,7 @@ msgid "IMPORT CUSTOMERS"
 msgstr ""
 
 #: inc/crm/c_menu.php:106
-msgid "Subscription/Notification rules"
+msgid "Subscription/Benachrichtigungsregeln"
 msgstr ""
 
 #: inc/crm/clienti/form.php:239
@@ -1447,7 +1447,7 @@ msgstr ""
 #: inc/crm/dashboard-scheduler.php:479 inc/crm/dashboard.php:488
 #: inc/crm/dashboard.php:514 inc/crm/main.php:96 inc/crm/scheduler/list.php:157
 #: inc/functions.php:2314
-msgid "To be done"
+msgid "Noch zu erledigen"
 msgstr ""
 
 #: inc/crm/dashboard-scheduler.php:487
@@ -2265,7 +2265,7 @@ msgid "Type a subject for this Event"
 msgstr ""
 
 #: inc/crm/scheduler/form.php:406 inc/setup.php:692
-msgid "Notification rules"
+msgid "Benachrichtigungsregeln"
 msgstr ""
 
 #: inc/crm/scheduler/form.php:413
@@ -3522,19 +3522,19 @@ msgid "Origins"
 msgstr ""
 
 #: inc/setup.php:691
-msgid "WP SMART CRM NOTIFICATION RULES"
+msgid "CP SMART CRM NOTIFICATION RULES"
 msgstr ""
 
 #: inc/setup.php:699
-msgid "WP SMART CRM Customers"
+msgid "CP SMART CRM Customers"
 msgstr ""
 
 #: inc/setup.php:707
-msgid "WP SMART CRM Scheduler"
+msgid "CP SMART CRM Scheduler"
 msgstr ""
 
 #: inc/setup.php:715
-msgid "WP SMART CRM Documents"
+msgid "CP SMART CRM Documents"
 msgstr ""
 
 #: inc/subscription_rules.php:40

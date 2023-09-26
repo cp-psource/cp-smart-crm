@@ -403,7 +403,7 @@ switch ($tipo_agenda)
                 </div>
             </div>
 
-            <h4 class="page-header" style="background:#e2e2e2;padding:15px"><?php _e('Notification rules','cpsmartcrm')?><span class="crmHelp" data-help="notification-rules"></span></h4>
+            <h4 class="page-header" style="background:#e2e2e2;padding:15px"><?php _e('Benachrichtigungsregeln','cpsmartcrm')?><span class="crmHelp" data-help="notification-rules"></span></h4>
 
 
             <div class="row form group" style="padding-bottom:20px;border-bottom:1px solid #ccc">

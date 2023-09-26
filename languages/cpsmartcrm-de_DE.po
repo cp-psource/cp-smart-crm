@@ -620,7 +620,7 @@ msgstr "IMPORTKUNDEN"
 
 #: inc/crm/c_menu.php:106
 #, fuzzy
-msgid "Subscription/Notification rules"
+msgid "Subscription/Benachrichtigungsregeln"
 msgstr "Regeln für die Anmeldung/Benachrichtigung"
 
 #: inc/crm/clienti/form.php:239
@@ -1591,7 +1591,7 @@ msgstr "Erledigt"
 #: inc/crm/dashboard.php:514 inc/crm/main.php:96 inc/crm/scheduler/list.php:157
 #: inc/functions.php:2314
 #, fuzzy
-msgid "To be done"
+msgid "Noch zu erledigen"
 msgstr "Noch zu erledigen"
 
 #: inc/crm/dashboard-scheduler.php:487
@@ -2535,7 +2535,7 @@ msgstr "Gib einen Betreff für dieses Ereignis ein"
 
 #: inc/crm/scheduler/form.php:406 inc/setup.php:692
 #, fuzzy
-msgid "Notification rules"
+msgid "Benachrichtigungsregeln"
 msgstr "Benachrichtigungsregeln"
 
 #: inc/crm/scheduler/form.php:413
@@ -4004,23 +4004,23 @@ msgstr "Ursprünge"
 
 #: inc/setup.php:691
 #, fuzzy
-msgid "WP SMART CRM NOTIFICATION RULES"
-msgstr "WP SMART CRM BENACHRICHTIGUNGSREGELN"
+msgid "CP SMART CRM NOTIFICATION RULES"
+msgstr "CP SMART CRM BENACHRICHTIGUNGSREGELN"
 
 #: inc/setup.php:699
 #, fuzzy
-msgid "WP SMART CRM Customers"
-msgstr "WP SMART CRM Kunden"
+msgid "CP SMART CRM Customers"
+msgstr "CP SMART CRM Kunden"
 
 #: inc/setup.php:707
 #, fuzzy
-msgid "WP SMART CRM Scheduler"
-msgstr "WP SMART CRM Scheduler"
+msgid "CP SMART CRM Scheduler"
+msgstr "CP SMART CRM Scheduler"
 
 #: inc/setup.php:715
 #, fuzzy
-msgid "WP SMART CRM Documents"
-msgstr "WP SMART CRM Dokumente"
+msgid "CP SMART CRM Documents"
+msgstr "CP SMART CRM Dokumente"
 
 #: inc/subscription_rules.php:40
 #, fuzzy

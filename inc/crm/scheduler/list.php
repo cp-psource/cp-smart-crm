@@ -159,7 +159,7 @@ jQuery(document).ready(function ($) {
         </li>
         <li class="no-link">
             <i class="glyphicon glyphicon-bookmark  " style="color:black;font-size:1.3em"></i>
-            <?php _e('To be done','cpsmartcrm') ?>
+            <?php _e('Noch zu erledigen','cpsmartcrm') ?>
         </li>
         <li class="no-link">
             <i class="glyphicon glyphicon-remove" style="color:red;font-size:1.3em"></i>

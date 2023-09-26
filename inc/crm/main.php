@@ -53,7 +53,7 @@ if ( in_array( 'wp-smart-crm-agents/wp-smart-crm-agents.php', apply_filters( 'ac
     <form name="form_insert" style="max-width:940px">
     <section class="eventPopup container-fluid" >
         <div class="row" style="/*padding-left:0*/">
-            <label class="col-md-1"><?php _e('Customer','cpsmartcrm') ?></label>
+            <label class="col-md-1"><?php _e('Kunde','cpsmartcrm') ?></label>
             #var id_cliente;#
             <div data-container-for="customers" class="col-md-3">
                 <select id="customers" name="customers"
@@ -67,7 +67,7 @@ if ( in_array( 'wp-smart-crm-agents/wp-smart-crm-agents.php', apply_filters( 'ac
             </div>
 <!--        </div>
         <div class="col-md-8" style="padding-left:0">-->
-            <label class="col-md-1" for="Title"><?php _e('Subject','cpsmartcrm') ?></label>
+            <label class="col-md-1" for="Title"><?php _e('Betreff','cpsmartcrm') ?></label>
             <div data-container-for="title" class="col-md-5" style="padding-left:0">
                 <input class="k-textbox col-md-12" data-bind="value:title" name="Title" id="Title" type="text" #=readonly# />
             </div>
@@ -75,7 +75,7 @@ if ( in_array( 'wp-smart-crm-agents/wp-smart-crm-agents.php', apply_filters( 'ac
         #if (tipo_agenda==1 || tipo_agenda==6){#
             <!--<div class="col-md-12" id="_model" style="padding-left:0">-->
                 <div class="row">
-                <label class="col-md-1" for="Start">#if (tipo_agenda==1){#<?php _e('Date','cpsmartcrm') ?>#}else{#<?php _e('Date','cpsmartcrm') ?>#}#</label>
+                <label class="col-md-1" for="Start">#if (tipo_agenda==1){#<?php _e('Datum','cpsmartcrm') ?>#}else{#<?php _e('Datum','cpsmartcrm') ?>#}#</label>
                 <div class="col-md-3" data-container-for="start">
                     <input name="start" required="required" style="z-index: inherit;" type="datetime"
                            data-bind="value:start"
@@ -112,7 +112,7 @@ if ( in_array( 'wp-smart-crm-agents/wp-smart-crm-agents.php', apply_filters( 'ac
                     <span data-bind="text: startTimezone"></span>
                     <span data-for="start" class="k-invalid-msg"></span>
                 </div>
-                <label class="col-md-1" for="End"><?php _e('End','cpsmartcrm') ?></label>
+                <label class="col-md-1" for="End"><?php _e('Ende','cpsmartcrm') ?></label>
                 <div class="col-md-5" data-container-for="end">
                     <input name="end" id="dateTimeEnd" required="required" style="z-index: inherit;" type="datetime"
                            data-bind="value: end"
@@ -133,48 +133,48 @@ if ( in_array( 'wp-smart-crm-agents/wp-smart-crm-agents.php', apply_filters( 'ac
         #}#
        <!-- </div>-->
         <div class="row">
-            <label for="description" class="col-md-1"><?php _e('Description','cpsmartcrm') ?></label>
+            <label for="description" class="col-md-1"><?php _e('Beschreibung','cpsmartcrm') ?></label>
             <div data-container-for="description" class="k-edit-field col-md-11">
                 <textarea class="k-textbox" cols="20" data-bind="value:description" #=dataroletxt# id="description" name="description" rows="2" #=readonly#></textarea>
             </div>
         </div>
         <!--Rules-->
         <div class="col-md-12" style="padding-left:0">
-        <h4 class="page-header"><?php _e('Notification rules','cpsmartcrm')?></h4>
+        <h4 class="page-header"><?php _e('Benachrichtigungsregeln','cpsmartcrm')?></h4>
             <div class="row">
-                <label for="rulestep" class="col-md-2"><?php _e('Days in advance','cpsmartcrm') ?></label>
+                <label for="rulestep" class="col-md-2"><?php _e('Tage im Voraus','cpsmartcrm') ?></label>
                 <div data-container-for="rulestep" class="col-md-2">
                         <select class="form-control _m ruleActions k-dropdown _flat col-md-2" id="ruleStep" name="ruleStep" data-bind="value:rulestep" #=readonly# >
-                                <option value=""><?php _e( 'Select', 'cpsmartcrm'); ?></option><?php for($k=0;$k<61;$k++){echo '<option value="'.$k.'">'.$k.'</option>'.PHP_EOL; } ?>
+                                <option value=""><?php _e( 'Wählen', 'cpsmartcrm'); ?></option><?php for($k=0;$k<61;$k++){echo '<option value="'.$k.'">'.$k.'</option>'.PHP_EOL; } ?>
                         </select>
                 </div>
                 #if (tipo_agenda==2){#
-                <label class="col-md-2"><?php _e('Send mail to customer','cpsmartcrm') ?></label>
+                <label class="col-md-2"><?php _e('E-Mail an den Kunden senden','cpsmartcrm') ?></label>
                 <div class="col-md-4"><input type="checkbox" #=readonly?"onclick='return false;'":""# name="remindToCustomer" id="remindToCustomer" data-bind="checked:remind_to_customer" /></div>
 
                 #}#
             </div>
             <div class="row">
-                <label class="col-md-4"><?php _e('Send mail to recipients','cpsmartcrm') ?> </label> 
+                <label class="col-md-4"><?php _e('Sende E-Mails an Empfänger','cpsmartcrm') ?> </label> 
                 <div class="col-md-1">
                     <input type="checkbox" #=readonly?"onclick='return false;'":""# name="mailToRecipients" id="mailToRecipients" data-bind="checked:mail_to_recipients" />
                 </div>
                 <div class="col-md-4" style="line-height:.8em">
                     <div class="row">
-                        <label class="col-sm-8 control-label"><?php _e('Send also instant notification','cpsmartcrm')?></label>
+                        <label class="col-sm-8 control-label"><?php _e('Sende auch eine Sofortbenachrichtigung','cpsmartcrm')?></label>
                         <div class="col-md-1">
                             <input type="checkbox" #=readonly?"onclick ='return false;' ":" "# class="ruleActions " id="instantNotification" name="instantNotification" />
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <small><?php _e('An email will be sent immediately to all selected users/groups if the option "send mail to recipients" below is active','cpsmartcrm');?></small>
+                            <small><?php _e('Eine E-Mail wird sofort an alle ausgewählten Benutzer/Gruppen gesendet, wenn die Option „E-Mail an Empfänger senden“ unten aktiv ist','cpsmartcrm');?></small>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <label class="col-md-2" for="users" style="float:left"><?php _e('Notify to users','cpsmartcrm') ?></label>
+                <label class="col-md-2" for="users" style="float:left"><?php _e('Benutzer benachrichtigen','cpsmartcrm') ?></label>
                 <div data-container-for="users" class="col-md-3">
                     <select id="users" name="users"
                                     data-bind="value:users"
@@ -184,7 +184,7 @@ if ( in_array( 'wp-smart-crm-agents/wp-smart-crm-agents.php', apply_filters( 'ac
                                     data-option-label="Select"
                                     data-role="multiselect" #=readonly#/>
                 </div>
-                <label class="col-md-2" for="group" style="float:left"><?php _e('Notify to groups','cpsmartcrm') ?></label>
+                <label class="col-md-2" for="group" style="float:left"><?php _e('Gruppen benachrichtigen','cpsmartcrm') ?></label>
                 <div data-container-for="group" class="col-md-3">
                     <select id="group" name="group"
                                     data-bind="value:group"
@@ -197,20 +197,20 @@ if ( in_array( 'wp-smart-crm-agents/wp-smart-crm-agents.php', apply_filters( 'ac
             </div>
         </div>
         <div class="col-md-12" style="padding-left:0">
-        <h4 class="page-header"><?php _e('Result','cpsmartcrm')?></h4>
+        <h4 class="page-header"><?php _e('Ergebnis','cpsmartcrm')?></h4>
         #if (!status) status=1#
         <div class="row" style="padding-left:0">
             <div data-container-for="status" class="k-edit-field">
-                <label style="float:left;width:30%"><?php _e('To be done','cpsmartcrm') ?><input type="radio" name="status" value="1" data-bind="checked:status" />
+                <label style="float:left;width:30%"><?php _e('Noch zu erledigen','cpsmartcrm') ?><input type="radio" name="status" value="1" data-bind="checked:status" />
                 </label>
-                <label style="float:left;width:30%"><?php _e('Done','cpsmartcrm') ?><input type="radio" name="status" value="2" data-bind="checked:status" />
+                <label style="float:left;width:30%"><?php _e('Erledigt','cpsmartcrm') ?><input type="radio" name="status" value="2" data-bind="checked:status" />
                 </label>
-                <label style="float:left;width:30%"><?php _e('Canceled','cpsmartcrm') ?><input type="radio" name="status" value="3" data-bind="checked:status" />
+                <label style="float:left;width:30%"><?php _e('Abgesagt','cpsmartcrm') ?><input type="radio" name="status" value="3" data-bind="checked:status" />
                 </label>
             </div>
         </div>
         <div class="row" style="padding-left:0">
-            <label for="esito" class="col-md-1"><?php _e('Annotations','cpsmartcrm') ?></label>
+            <label for="esito" class="col-md-1"><?php _e('Anmerkungen','cpsmartcrm') ?></label>
             <div data-container-for="esito" class="k-edit-field">
                 <textarea class="k-textbox" cols="20" data-bind="value:esito" id="esito" name="esito" rows="2"></textarea>
             </div>

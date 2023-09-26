@@ -1466,7 +1466,7 @@ msgstr "Datei(en) einfügen"
 #: inc/crm/documenti/form_quotation.php:73 inc/crm/documenti/list.php:45
 #: inc/crm/documenti/list.php:333 inc/functions.php:3152
 msgid "Quote"
-msgstr "Zitat"
+msgstr "Anmerkung"
 
 #: inc/crm/clienti/script_mail.php:28 inc/crm/documenti/document_print.php:74
 #: inc/crm/documenti/list.php:44 inc/crm/documenti/list.php:332
@@ -2253,7 +2253,7 @@ msgstr "Prozentsatz der Erfolgsprognose"
 #: inc/crm/documenti/form_quotation.php:784
 #, fuzzy
 msgid "This quote should have a value"
-msgstr "Dieses Zitat sollte einen Wert haben"
+msgstr "Dieses Anmerkung sollte einen Wert haben"
 
 #: inc/crm/documenti/form_quotation.php:895
 #, fuzzy

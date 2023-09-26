@@ -3230,7 +3230,7 @@ function WPsCRM_generate_document_HTML($ID) {
     switch ($tipo = $riga["tipo"]) {
       case 1:
         $progressivo = $riga["progressivo"];
-        $document_name = __("Zitat", 'cpsmartcrm');
+        $document_name = __("Anmerkung", 'cpsmartcrm');
         $text_before = $document_messages['offers_before'];
         $text_after = $document_messages['offers_after'];
         $document_prefix = $document_numbering['offers_prefix'];
@@ -3560,7 +3560,7 @@ function _WPsCRM_generate_document_HTML($ID) {
     switch ($tipo = $riga["tipo"]) {
       case 1:
         $progressivo = $riga["progressivo"];
-        $document_name = __("Zitat", 'cpsmartcrm');
+        $document_name = __("Anmerkung", 'cpsmartcrm');
         $text_before = $document_messages['offers_before'];
         $text_after = $document_messages['offers_after'];
         $document_prefix = $document_numbering['offers_prefix'];

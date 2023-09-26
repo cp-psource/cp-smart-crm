@@ -475,19 +475,19 @@ class CRM_mail{
 		$business=$options['business_name'];
 		switch($context){
 			case "appointment":
-				$subject= sprintf( __( 'Appointment with staff %1$s on %2$s', 'cpsmartcrm'), $business, $date);
+				$subject= sprintf( __( 'Termin mit Mitarbeiter %1$s am %2$s', 'cpsmartcrm'), $business, $date);
 				$subject.="\r\n";
 				break;
 			case "expiring service":
-				$subject= sprintf( __( '%1$s: Exipiring service on %2$s', 'cpsmartcrm'), $business, $date);
+				$subject= sprintf( __( '%1$s: Auslaufender Dienst am %2$s', 'cpsmartcrm'), $business, $date);
 				$subject.="\r\n";
 				break;
 			case "purchase":
-				$subject= sprintf( __( '%1$s: purchase on %2$s', 'cpsmartcrm'), $business, $date);
+				$subject= sprintf( __( '%1$s: Kauf am %2$s', 'cpsmartcrm'), $business, $date);
 				$subject.="\r\n";
 				break;
 			case "deadline":
-				$subject= sprintf( __( 'New deadline', 'cpsmartcrm'));
+				$subject= sprintf( __( 'Neue Frist', 'cpsmartcrm'));
 				$subject.="\r\n";
 				break;
 			case "generic":
@@ -509,19 +509,19 @@ class CRM_mail{
 		switch($context){
 			case "appointment":
 				//$body="Gentile $name, vi ricordiamo l'appuntamento con Ns. personale in data: $date alle ore: $time\r\n";
-				$body= sprintf( __( 'Dear %1$s, we remind you the appointment with our staff on %2$s at %3$s', 'cpsmartcrm'), $name, $date, $time );
+				$body= sprintf( __( 'Hallo %1$s, wir erinnern Sie an den Termin mit unseren Mitarbeitern am %2$s bei %3$s', 'cpsmartcrm'), $name, $date, $time );
 				$body.="\r\n";
-				$body.=__( 'Kind regards', 'cpsmartcrm');
+				$body.=__( 'Mit freundlichen Grüßen', 'cpsmartcrm');
 				$body.=PHP_EOL;
 				break;
 			case "expiring service":
 //				$body="Gentile $name,\r\n";
 //				$body.="$business vi ricorda  che il servizio : ".$mailRow['rowDescription'].$art." &egrave; in scadenza in data: $date\r\n";
-				$body= sprintf( __( 'Dear %1$s, %2$s reminds you that the service: %3$s will expire on %4$s', 'cpsmartcrm'), $name, $business, $mailRow['rowDescription'], $date );
+				$body= sprintf( __( 'Hallo %1$s, %2$s erinnert Sie daran, dass der Dienst: %3$s am %4$s abläuft', 'cpsmartcrm'), $name, $business, $mailRow['rowDescription'], $date );
 				break;
 			case "purchase":
 				//$body="$business: Acquisto in data: $date\r\n";
-				$body= sprintf( __( '%1$s: purchase on %2$s', 'cpsmartcrm'), $business, $date);
+				$body= sprintf( __( '%1$s: Kauf am %2$s', 'cpsmartcrm'), $business, $date);
 				$body.="\r\n";
 				break;
 			case "generic":
@@ -541,22 +541,22 @@ class CRM_mail{
 		$mailRow=$this->oDocument->get_documentRow($row);
 		switch($context){
 			case "appointment":
-				$subject= sprintf( __( 'Appointment on %1$s with %2$s', 'cpsmartcrm'), $date, $name );
+				$subject= sprintf( __( 'Termin am %1$s mit %2$s', 'cpsmartcrm'), $date, $name );
 				break;
 			case "todo":
-				$subject= sprintf( __( 'Todo on %s', 'cpsmartcrm'), $date);
+				$subject= sprintf( __( 'Todo am %s', 'cpsmartcrm'), $date);
 				break;
 			case "expiring service":
-				$subject= sprintf( __( 'Expiring service: %1$s on %2$s', 'cpsmartcrm'), $mailRow['rowDescription'], $date );
+				$subject= sprintf( __( 'Auslaufender Dienst: %1$s auf %2$s', 'cpsmartcrm'), $mailRow['rowDescription'], $date );
 				break;
 			case "expired payment":
-				$subject= sprintf( __( 'Payment expired on %1$s invoice # %2$s', 'cpsmartcrm'), $date, $id_fattura);
+				$subject= sprintf( __( 'Die Zahlung für %1$s Rechnung Nr. %2$s ist abgelaufen', 'cpsmartcrm'), $date, $id_fattura);
 				break;
 			case "purchase":
-				$subject= sprintf( __( 'Purchase on %1$s by %2$s', 'cpsmartcrm'), $date, $name );
+				$subject= sprintf( __( 'Kauf am %1$s von %2$s', 'cpsmartcrm'), $date, $name );
 				break;
 			case "deadline":
-				$subject= sprintf( __( 'New deadline', 'cpsmartcrm'));
+				$subject= sprintf( __( 'Neue Frist', 'cpsmartcrm'));
 				break;
 		}
 		return stripslashes($subject);
@@ -575,26 +575,26 @@ class CRM_mail{
 
 		switch($context){
 			case "appointment":
-				$body= sprintf( __( 'We remind you the appointment with %1$s on %2$s at %3$s', 'cpsmartcrm'), $name, $date, $time );
+				$body= sprintf( __( 'Wir erinnern Sie an den Termin mit %1$s am %2$s um %3$s', 'cpsmartcrm'), $name, $date, $time );
 				break;
 			case "todo":
-				$body= sprintf( __( 'We remind you the activity %1$s on %2$s', 'cpsmartcrm'), $subject, $date);
+				$body= sprintf( __( 'Wir erinnern Sie an die Aktivität %1$s am %2$s', 'cpsmartcrm'), $subject, $date);
 				$body.="\r\n\r\n";
 				$body.=$annotations;
 			    break;
 			case "deadline":
-				$body= sprintf( __( 'We remind you the deadline %1$s on %2$s', 'cpsmartcrm'), $subject, $date);
+				$body= sprintf( __( 'Wir erinnern Sie an die Frist %1$s am %2$s', 'cpsmartcrm'), $subject, $date);
 				$body.="\r\n\r\n";
 				$body.=$annotations;
 			    break;
 			case "expiring service":
-				$body= sprintf( __( 'We remind you that the service: %1$s by %2$s will expire on %3$s', 'cpsmartcrm'), $mailRow['rowDescription'].$art, $name, $date );
+				$body= sprintf( __( 'Wir erinnern Sie daran, dass der Dienst: %1$s von %2$s am %3$s abläuft', 'cpsmartcrm'), $mailRow['rowDescription'].$art, $name, $date );
 				break;
 			case "expired payment":
-				$body= sprintf( __( 'We remind you that the payment of invoice # %1$s amount %2$d expired on %3$s', 'cpsmartcrm'), $id_fattura, $amount, $date );
+				$body= sprintf( __( 'Wir erinnern Sie daran, dass die Zahlung von Rechnung Nr. %1$s, Betrag %2$d, am %3$s abgelaufen ist', 'cpsmartcrm'), $id_fattura, $amount, $date );
 				break;
 			case "purchase":
-				$body= sprintf( __( 'Purchase on %1$s', 'cpsmartcrm'), $date );
+				$body= sprintf( __( 'Kaufen Sie am %1$s', 'cpsmartcrm'), $date );
 				break;
 		}
 		return $body;

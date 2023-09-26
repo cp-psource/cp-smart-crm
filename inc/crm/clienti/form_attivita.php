@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 			<div class="row" style="padding-bottom:10px;padding-top:6px;border-bottom:1px solid #ccc">
 				<div class="col-md-12 form-group">
 					<label class="col-sm-1 control-label">
-						<?php _e( 'Date', 'cpsmartcrm'); ?>
+						<?php _e( 'Datum', 'cpsmartcrm'); ?>
 					</label>
                     <div class="col-md-6">
 					<input type="text" name="data_attivita" id='data_attivita' value="<?php echo $oggi?>"/>
@@ -18,17 +18,17 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 			<div class="row" style="padding-bottom:10px;padding-top:6px;">
 				<div class="col-md-11 form-group">
 					<label>
-						<?php _e( 'Notes', 'cpsmartcrm'); ?>
+						<?php _e( 'Anmerkungen', 'cpsmartcrm'); ?>
 					</label>
 					<textarea id="n_annotazioni" name="n_annotazioni" class="form-control _m"></textarea>
 				</div>
 			</div>
 			<div class="row" style="padding:30px">
 				<span class="btn btn-success _flat" id="saveActivity">
-					<?php _e( 'Save', 'cpsmartcrm'); ?>
+					<?php _e( 'Speichern', 'cpsmartcrm'); ?>
 				</span>
 				<span class="btn btn-warning _flat _reset" id="configreset">
-					<?php _e( 'Reset', 'cpsmartcrm'); ?>
+					<?php _e( 'Zurücksetzen', 'cpsmartcrm'); ?>
 				</span>
 			</div>
 		</div>

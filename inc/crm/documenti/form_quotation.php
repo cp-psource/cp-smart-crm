@@ -251,7 +251,7 @@ if (isset($_GET["id_invoice"]) && ($ID = $_GET["id_invoice"])) {
               
               <div>-->
 
-              <h4 class="page-header"><?php _e('Add Products to quote', 'cpsmartcrm') ?><span class="crmHelp" data-help="quotation-products"></span>
+              <h4 class="page-header"><?php _e('Füge Produkte zum Angebot hinzu', 'cpsmartcrm') ?><span class="crmHelp" data-help="quotation-products"></span>
                   <?php do_action("WPsCRM_show_WOO_products"); ?>
               </h4>
               <?php

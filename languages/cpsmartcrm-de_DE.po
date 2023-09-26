@@ -2237,7 +2237,7 @@ msgstr "ANGEBOT TEXT"
 
 #: inc/crm/documenti/form_quotation.php:253
 #, fuzzy
-msgid "Add Products to quote"
+msgid "Füge Produkte zum Angebot hinzu"
 msgstr "Produkte zum Angebot hinzufügen"
 
 #: inc/crm/documenti/form_quotation.php:342

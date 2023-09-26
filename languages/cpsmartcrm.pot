@@ -2034,7 +2034,7 @@ msgid "ANGEBOT TEXT"
 msgstr ""
 
 #: inc/crm/documenti/form_quotation.php:253
-msgid "Add Products to quote"
+msgid "Füge Produkte zum Angebot hinzu"
 msgstr ""
 
 #: inc/crm/documenti/form_quotation.php:342

@@ -2,14 +2,14 @@
 /*
 Plugin Name: CP Smart CRM
 Plugin URI: https://smart-cms.n3rds.work/wordpress-crm-invoices-plugin
-Description: Adds a powerful CRM to wp-admin. Manage Customers, Invoices, TODO, Appointments and future Notifications to Agents, Users and Customers
+Description: Fügt ClassicPress ein leistungsstarkes CRM hinzu. Verwalten Sie Kunden, Rechnungen, TODO, Termine und zukünftige Benachrichtigungen an Agenten, Benutzer und Kunden
 Version: 1.5.17
-Author:       WMS N@W
+Author:       PSOURCE
 Author URI:   https://smart-cms.n3rds.work
 Text Domain: cpsmartcrm
 Domain Path: /languages
  **************************************************************************
-Copyright (C) 2023 WMS N@W
+Copyright (C) 2023-2024 PSOURCE
 
 
 This program is free software: you can redistribute it and/or modify
@@ -33,14 +33,18 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 **************************************************************************/
+require 'psource/psource-plugin-update/plugin-update-checker.php';
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+ 
+$myUpdateChecker = PucFactory::buildUpdateChecker(
+	'https://github.com/cp-psource/cp-smart-crm',
+	__FILE__,
+	'cp-smart-crm'
+);
+ 
+//Set the branch that contains the stable release.
+$myUpdateChecker->setBranch('master');
 
-/*require 'psource/psource-plugin-update/psource-plugin-updater.php';
-use Psource\PluginUpdateChecker\v5\PucFactory;
-$MyUpdateChecker = PucFactory::buildUpdateChecker(
-    'https://smart-cms.n3rds.work//wp-update-server/?action=get_metadata&slug=cp-smart-crm', 
-    __FILE__, 
-    'cp-smart-crm' 
-);*/
 /**
  * @@@@@@@@@@@@@@@@@ LOCALIZATION @@@@@@@@@@@
  *
@@ -357,14 +361,14 @@ function WPsCRM_fullpage(){
     if(isset($options['minimize_WP_menu-'.$user->ID]) && $options['minimize_WP_menu-'.$user->ID] ==1 ){
 ?>
 <script>
-        jQuery(document).ready(function ($) {
-            if (!$('body').hasClass('folded') && pagenow.search('smart-crm') != -1)
-                setTimeout(function () {
-                    $('body').addClass('folded');
-                    //$('#collapse-button').trigger('click');
-                }, 10)
-        })
-
+    jQuery(document).ready(function ($) {
+        if (!$('body').hasClass('folded') && pagenow.search('smart-crm') != -1)
+            setTimeout(function () {
+                $('body').addClass('folded');
+                //$('#collapse-button').trigger('click');
+            }, 10)
+        }
+    )
 </script>
 <?php
     }

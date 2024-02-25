@@ -5,6 +5,17 @@ $inc_dir  = dirname(__FILE__);
 //OPTIONS API
 
 class CRM_Options_Settings{
+
+	// Vorab deklarierte Eigenschaften
+    public $business_settings;
+    public $general_settings;
+    public $clients_settings;
+    public $documents_settings;
+    public $services_settings;
+    public $woo_settings;
+    public $acc_settings ;
+    public $adv_settings;
+    public $ag_settings;
 	
 	/*
 	 * For easier overriding we declared the keys
@@ -129,7 +140,7 @@ class CRM_Options_Settings{
 		echo '<h1>'.__('CP Smart CRM Optionen und Einstellungen','cpsmartcrm').'</h1>';
 	}
 	function footer(){
-		echo '<small style="text-align:center;top:30px;position:relative">Developed by Webmaster-Community N3rds@Work <a href="https://smart-cms.n3rds.work">https://smart-cms.n3rds.work</a></small></div>';
+		echo '<small style="text-align:center;top:30px;position:relative">ENTWICKELT VON PSOURCE <a href="https://smart-cms.n3rds.work">https://smart-cms.n3rds.work</a></small></div>';
 	}
 	
 	/*

@@ -75,22 +75,38 @@ label.control-label{float:left}
     margin: -5px 7px;
     cursor:pointer
 }
-.crmHelp:after{    content: '?';
+.crmHelp:after{    
+    content: '?';
     line-height: 30px;
     padding: 10px;
     color: salmon;
     font-size: smaller;}
-.crmHelp-dark{    background: #666;}
-.crmHelp-dark:after{    color:gold}
+.crmHelp-dark{    
+  background: #666;
+}
+.crmHelp-dark:after{    
+  color:gold
+}
 .crmHelp._options:after{font-size: large;
     /* line-height: 12px; */
     top: -4px;
     position: relative;}
 ._help a,._help legend{display:none}
-.form-control:not(._m){max-width:50%;height:20px!important}
-#noty_center_layout_container, #noty_center_layout_container li{width:600px!important;border-radius:0!important;padding-top:12px;padding-bottom:12px}
-.k-grouping-header{background-color:gold;border: 1px dotted;
-margin: 4px;}
+.form-control:not(._m){
+  max-width: 20px;
+  height: 20px;
+}
+#noty_center_layout_container, #noty_center_layout_container li{
+  width:600px!important;
+  border-radius:0!important;
+  padding-top:12px;
+  padding-bottom:12px
+}
+.k-grouping-header{
+  background-color:gold;
+  border: 1px dotted;
+  margin: 4px;
+}
 #tabstrip label{font-size:small;line-height:1em;position:relative;top:8px}
 #tabstrip h4 input[readonly] {
     height: 24px;
@@ -114,10 +130,19 @@ table[role="grid"] tr.annullato{
     text-decoration:line-through;
     background:#e7e7e7
 }
-#grid tr .glyphicon{cursor:pointer}
-th.k-header {border-right:1px solid #ccc!important}
-th.k-header:empty{border-right:none!important}
-.form-control:not(._m){max-width:50%;height:20px}
+#grid tr .glyphicon{
+  cursor:pointer
+}
+th.k-header {
+  border-right:1px solid #ccc!important
+}
+th.k-header:empty{
+  border-right:none!important
+}
+.form-control:not(._m){
+  width: 20px;
+  height: 20px;
+}
 #tabstrip-1,#annotation-1{height:100%!important}
 #dialog-view table td{padding:3px;/*line-height:1em*/}
 .documentsContainer h4{background:#fafafa;padding:4px 10px}
@@ -816,6 +841,11 @@ border-bottom:1px solid #ccc;padding-bottom:8px
     float: left;
     display: inline-block;
     clear: none;
+}
+
+input[type="checkbox"]:checked::before {
+  width: 20px;
+  height: 20px;
 }
 /*
     Use the DejaVu Sans font for display and embedding in the PDF file.

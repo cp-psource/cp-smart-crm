@@ -4,6 +4,17 @@ if (!defined('ABSPATH'))
 
 class WPsCRM_crmObject {
 
+    // Vorab deklarierte Eigenschaften
+    public $print_logo;
+    public $master_data;
+    public $numbering;
+    public $messages;
+    public $signature;
+    public $use_signature;
+    public $formatted_signature;
+    public $use_formatted_signature;
+    public $alignHeader;
+
   public function __construct(array $arguments = array()) {
     if (!empty($arguments)) {
       foreach ($arguments as $property => $argument) {
@@ -42,7 +53,7 @@ $document->master_data = function() {
 	$number= isset($options['business_number']) ? $options['business_number'] : "";
   $prov  = isset($options['crm_business_provincia']) ? " (".$options['crm_business_provincia'].")" : "";
   return array(
-       array('full_header' => "<h2 class=\"WPsCRM_businessName\">" . html_entity_decode($options['business_name']) . "</h2>" . $extraName . "<div class=\"WPsCRM_businessAddress\"> " . html_entity_decode($options['business_address']) . $number." <br /> " . html_entity_decode($options['business_zip']) . ", " . html_entity_decode($options['business_town']) .$prov. "</div>", 'show' => 1),
+      array('full_header' => "<h2 class=\"WPsCRM_businessName\">" . html_entity_decode($options['business_name']) . "</h2>" . $extraName . "<div class=\"WPsCRM_businessAddress\"> " . html_entity_decode($options['business_address']) . $number." <br /> " . html_entity_decode($options['business_zip']) . ", " . html_entity_decode($options['business_town']) .$prov. "</div>", 'show' => 1),
       array(__('Name', 'cpsmartcrm') => html_entity_decode($options['business_name']), 'show' => 0, 'show_label' => 0, ''),
       array(__('Addresse', 'cpsmartcrm') => html_entity_decode($options['business_address']), 'show' => 0, 'show_label' => 0),
       array(__('Stadt', 'cpsmartcrm') => html_entity_decode($options['business_town']), 'show' => 0, 'show_label' => 0),

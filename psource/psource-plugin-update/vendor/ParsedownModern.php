@@ -97,7 +97,7 @@ class Parsedown
         ':' => array('Table'),
         '<' => array('Comment', 'Markup'),
         '=' => array('SetextHeader'),
-        '>' => array('Angebot'),
+        '>' => array('Quote'),
         '[' => array('Reference'),
         '_' => array('Rule'),
         '`' => array('FencedCode'),
@@ -586,7 +586,7 @@ class Parsedown
     }
 
     #
-    # Angebot
+    # Quote
 
     protected function blockQuote($Line)
     {

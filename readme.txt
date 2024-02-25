@@ -1,6 +1,6 @@
 ﻿=== CP Smart CRM ===
 
-Contributors: DerN3rd
+Author: PSOURCE
 Tags: crm, invoices, todo
 Requires at least: 4.2
 Tested up to: 5.1.0

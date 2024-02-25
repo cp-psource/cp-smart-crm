@@ -80,20 +80,26 @@ label.control-label{float:left}
     line-height: 30px;
     padding: 10px;
     color: salmon;
-    font-size: smaller;}
+    font-size: smaller;
+  }
 .crmHelp-dark{    
   background: #666;
 }
 .crmHelp-dark:after{    
   color:gold
 }
-.crmHelp._options:after{font-size: large;
-    /* line-height: 12px; */
-    top: -4px;
-    position: relative;}
-._help a,._help legend{display:none}
+.crmHelp._options:after{
+  font-size: large;
+  /* line-height: 12px; */
+  top: -4px;
+  position: relative;
+  }
+._help a,._help legend{
+  display:none
+}
 .form-control:not(._m){
-  max-width: 20px;
+  min-width: 20px;
+  max-width: 50%;
   height: 20px;
 }
 #noty_center_layout_container, #noty_center_layout_container li{
@@ -107,28 +113,38 @@ label.control-label{float:left}
   border: 1px dotted;
   margin: 4px;
 }
-#tabstrip label{font-size:small;line-height:1em;position:relative;top:8px}
+#tabstrip label{
+  font-size:small;
+  line-height:1em;
+  position:relative;
+  top:8px
+}
 #tabstrip h4 input[readonly] {
     height: 24px;
     margin-top: 2px;
 }
-.k-grid td:first-child,.k-grid-header table th:first-child{color:#ccc}
-.k-grid .k-button{padding:2px 2px;min-width:initial;}
+.k-grid td:first-child,.k-grid-header table th:first-child{
+  color: #ccc
+}
+.k-grid .k-button{
+  padding:2px 2px;
+  min-width:initial;
+}
 table[role="grid"] tr.da_fare{
-    background
-        :#ffffff
+    background: #ffffff
 }
-.tipped {border:1px solid #393939; padding:4px;border-radius:50%;margin-left:-5px}
+.tipped {
+  border:1px solid #393939; 
+  padding:4px;
+  border-radius:50%;
+  margin-left:-5px
+}
 table[role="grid"] tr.fatto{
-    background
-        :#eafff0
+    background: #eafff0
 }
-    /*table[role="grid"] tr.fatto:after {
-    content:""
-    }*/
 table[role="grid"] tr.annullato{
-    text-decoration:line-through;
-    background:#e7e7e7
+  text-decoration:line-through;
+  background:#e7e7e7
 }
 #grid tr .glyphicon{
   cursor:pointer
@@ -139,13 +155,17 @@ th.k-header {
 th.k-header:empty{
   border-right:none!important
 }
-.form-control:not(._m){
-  width: 20px;
-  height: 20px;
+#tabstrip-1,#annotation-1{
+  height:100%!important
 }
-#tabstrip-1,#annotation-1{height:100%!important}
-#dialog-view table td{padding:3px;/*line-height:1em*/}
-.documentsContainer h4{background:#fafafa;padding:4px 10px}
+#dialog-view table td{
+  padding:3px;
+  /*line-height:1em*/
+}
+.documentsContainer h4{
+  background:#fafafa;
+  padding:4px 10px
+}
 .documentsList{padding:6px;border:1px solid #ccc}
 .documentsList li{margin-bottom:4px;border-bottom:1px solid #e2e2e2}
 .k-window-title{}
@@ -846,6 +866,18 @@ border-bottom:1px solid #ccc;padding-bottom:8px
 input[type="checkbox"]:checked::before {
   width: 20px;
   height: 20px;
+}
+
+input[type="checkbox"], input[type="radio"] {
+  width: 15px;
+  height: 15px;
+}
+
+input[type="radio"]:checked::before {
+  width: 12px;
+  height: 12px;
+  margin: 0px;
+  padding: 1px
 }
 /*
     Use the DejaVu Sans font for display and embedding in the PDF file.

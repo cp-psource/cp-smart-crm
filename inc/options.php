@@ -140,7 +140,7 @@ class CRM_Options_Settings{
 		echo '<h1>'.__('CP Smart CRM Optionen und Einstellungen','cpsmartcrm').'</h1>';
 	}
 	function footer(){
-		echo '<small style="text-align:center;top:30px;position:relative">ENTWICKELT VON PSOURCE <a href="https://smart-cms.n3rds.work">https://smart-cms.n3rds.work</a></small></div>';
+		echo '<small style="text-align:center;top:30px;position:relative">ENTWICKELT VON PSOURCE <a href="https://cp-psource.github.io/cp-smart-crm">https://cp-psource.github.io/cp-smart-crm</a></small></div>';
 	}
 	
 	/*

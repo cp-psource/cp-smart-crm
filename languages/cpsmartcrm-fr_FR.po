@@ -3993,8 +3993,8 @@ msgstr "CP Smart CRM"
 
 #. Plugin URI of the plugin/theme
 #, fuzzy
-msgid "https://smart-cms.n3rds.work/wordpress-crm-invoices-plugin"
-msgstr "https://smart-cms.n3rds.work/wordpress-crm-invoices-plugin"
+msgid "https://cp-psource.github.io/cp-smart-crm/wordpress-crm-invoices-plugin"
+msgstr "https://cp-psource.github.io/cp-smart-crm/wordpress-crm-invoices-plugin"
 
 #. Description of the plugin/theme
 #, fuzzy
@@ -4012,5 +4012,5 @@ msgstr "PSOURCE"
 
 #. Author URI of the plugin/theme
 #, fuzzy
-msgid "https://smart-cms.n3rds.work"
-msgstr "https://smart-cms.n3rds.work"
+msgid "https://cp-psource.github.io/cp-smart-crm"
+msgstr "https://cp-psource.github.io/cp-smart-crm"

@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: CP Smart CRM
-Plugin URI: https://smart-cms.n3rds.work/wordpress-crm-invoices-plugin
+Plugin URI: https://cp-psource.github.io/cp-smart-crm/wordpress-crm-invoices-plugin
 Description: Fügt ClassicPress ein leistungsstarkes CRM hinzu. Verwalten Sie Kunden, Rechnungen, TODO, Termine und zukünftige Benachrichtigungen an Agenten, Benutzer und Kunden
 Version: 1.5.17
 Author:       PSOURCE
-Author URI:   https://smart-cms.n3rds.work
+Author URI:   https://cp-psource.github.io/cp-smart-crm
 Text Domain: cpsmartcrm
 Domain Path: /languages
  **************************************************************************
@@ -380,12 +380,12 @@ add_action('admin_menu', 'WPsCRM_documentation_link',99);
 function WPsCRM_documentation_link(){
 	if(class_exists('sitepress')){
 		if(ICL_LANGUAGE_CODE =="de")
-			$link='https://smart-cms.n3rds.work/wordpress-crm-invoices-plugin/docs/';
+			$link='https://cp-psource.github.io/cp-smart-crm/wordpress-crm-invoices-plugin/docs/';
 		else
-			$link='https://smart-cms.n3rds.work/eng/wordpress-crm-invoices-plugin/docs/';
+			$link='https://cp-psource.github.io/cp-smart-crm/eng/wordpress-crm-invoices-plugin/docs/';
 		}
 		else{
-			$link='https://smart-cms.n3rds.work/eng/wordpress-crm-invoices-plugin/docs/';
+			$link='https://cp-psource.github.io/cp-smart-crm/eng/wordpress-crm-invoices-plugin/docs/';
 		}
 	add_submenu_page(
 	'smart-crm',

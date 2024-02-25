@@ -36,7 +36,7 @@ if ( in_array( 'wp-smart-crm-agents/wp-smart-crm-agents.php', apply_filters( 'ac
 		$p=$_GET['p'];
 
     include(plugin_dir_path(__FILE__ ))."$p";
-    echo '<small style="text-align:center;top:30px;position:relative">Developed by Webmaster-Community N3rds@Work <a href="https://smart-cms.n3rds.work">https://smart-cms.n3rds.work</a></small></div>';
+    echo '<small style="text-align:center;top:30px;position:relative">ENTWICKELT VON PSOURCE <a href="https://cp-psource.github.io/cp-smart-crm">https://cp-psource.github.io/cp-smart-crm</a></small></div>';
 	?>
 
 <!--CUSTOM POPUP EDITOR TEMPLATE-->

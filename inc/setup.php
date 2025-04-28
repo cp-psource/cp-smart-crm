@@ -339,7 +339,7 @@ function WPsCRM_create_clienti() {
         )
     );
 }
-add_action( 'plugins_loaded', 'WPsCRM_customers_tax' ,12);
+add_action( 'init', 'WPsCRM_customers_tax' ,12);
 function WPsCRM_customers_tax() {
 
     $labels=array(
@@ -359,7 +359,7 @@ function WPsCRM_customers_tax() {
     'show_ui'           => true,
     'show_admin_column' => false,
     'query_var'         => 'WPsCRM_customersInt',
-     'rewrite'           => false,
+    'rewrite'           => false,
 	);
 	register_taxonomy( 'WPsCRM_customersInt', array('clienti'), $args );
 

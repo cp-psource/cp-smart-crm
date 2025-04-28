@@ -175,7 +175,10 @@ function WPsCRM_get_clients2() {
         $_cats = explode(',', $record->categoria);
         if (count($_cats) > 0) {
           foreach ($_cats as $_cat) {
-            $cats[] = get_term_by('id', (int) $_cat, 'WPsCRM_customersCat')->name;
+            $term = get_term_by('id', (int) $_cat, 'WPsCRM_customersCat');
+            if ($term !== false) {
+                $cats[] = $term->name;
+            }
           }
         }
       }
@@ -795,9 +798,9 @@ function WPsCRM_get_scheduler() {
       if ($user_level >= 8)//levels 8, 9 and 10 are admin
         $adminArray[] = (string) $curID;
     }
-    $tipo = $_REQUEST["type"];
-    $view = $_REQUEST["view"];
-    $client = $_REQUEST["self_client"];
+    $tipo = isset($_REQUEST["type"]) ? $_REQUEST["type"] : null;
+    $view = isset($_REQUEST["view"]) ? $_REQUEST["view"] : null;
+    $client = isset($_REQUEST["self_client"]) ? $_REQUEST["self_client"] : null;
     $current_user = wp_get_current_user();
     $user_id = $current_user->ID;
     $user_info = get_userdata($user_id);

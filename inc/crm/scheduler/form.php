@@ -410,7 +410,7 @@ switch ($tipo_agenda)
                <label class="col-sm-2 control-label"><?php _e('Tage im Voraus','cpsmartcrm')?> *</label>
                 <div class="col-sm-4">
                     <select class="form-control ruleActions _m k-dropdown _flat" style="width:150px" id="ruleStep" name="ruleStep">
-                        <option value=""><?php _e("Sel","cpsmartcrm")?></option><?php for($k=0;$k<31;$k++){echo '<option value="'.$k.'">'.$k.'</option>'; } ?>
+                        <option value=""><?php _e("Select","cpsmartcrm")?></option><?php for($k=0;$k<31;$k++){echo '<option value="'.$k.'">'.$k.'</option>'; } ?>
 
                     </select>
                 </div>

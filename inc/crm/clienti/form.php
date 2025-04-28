@@ -369,7 +369,7 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
 								jQuery.playSound("<?php echo WPsCRM_URL?>inc/audio/double-alert-2")
     							return false;
     						}
-    						if (country == "IT" && jQuery("#fatturabile_1").is(":checked"))
+    						if (country == "DE" && jQuery("#fatturabile_1").is(":checked"))
     						{
     							console.log(WPsCRM_verifica(jQuery('input[name="cod_fis"]').val(), 'cod_fis'));
     							if (WPsCRM_verifica(jQuery('input[name="cod_fis"]').val(), 'cod_fis') != "ok") {
@@ -383,7 +383,7 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
 						////		jQuery.playSound("<?php echo WPsCRM_URL?>inc/audio/double-alert-2")
     					//		return false;
     					//	}
-    					//	if (country == "IT") {
+    					//	if (country == "DE") {
     					//		if (WPsCRM_verifica(jQuery('input[name="p_iva"]').val(), 'p_iva') != "ok") {
     					////			jQuery.playSound("<?php echo WPsCRM_URL?>inc/audio/double-alert-2")
     					//			return false;

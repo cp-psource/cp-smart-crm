@@ -7,8 +7,11 @@ title: "CP Smart CRM"
 
 <div class="menu">
   <a href="https://github.com/cp-psource/cp-smart-crm/discussions" style="color:#38c2bb;">💬 Forum</a>
+  <a href="dokumentation.html" style="color:#38c2bb;">📝 Dokumentation</a>
   <a href="https://github.com/cp-psource/cp-smart-crm/releases" style="color:#38c2bb;">📝 Download</a>
 </div>
+
+![banner-772x250.png](assets/images/banner-772x250.png)
 
 CP Smart CRM deckt eine Vielzahl von "Büroverwaltungsfunktionen" ab. 
 

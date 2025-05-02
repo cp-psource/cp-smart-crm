@@ -385,12 +385,12 @@ add_action('admin_menu', 'WPsCRM_documentation_link',99);
 function WPsCRM_documentation_link(){
 	if(class_exists('sitepress')){
 		if(ICL_LANGUAGE_CODE =="de")
-			$link='https://cp-psource.github.io/cp-smart-crm/wordpress-crm-invoices-plugin/docs/';
+			$link='https://cp-psource.github.io/cp-smart-crm/dokumentation.html';
 		else
-			$link='https://cp-psource.github.io/cp-smart-crm/eng/wordpress-crm-invoices-plugin/docs/';
+			$link='https://cp-psource.github.io/cp-smart-crm/dokumentation.html';
 		}
 		else{
-			$link='https://cp-psource.github.io/cp-smart-crm/eng/wordpress-crm-invoices-plugin/docs/';
+			$link='https://cp-psource.github.io/cp-smart-crm/dokumentation.html';
 		}
 	add_submenu_page(
 	'smart-crm',

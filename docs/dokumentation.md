@@ -61,3 +61,19 @@ In diesem Abschnitt können Sie einige Standardzeichenfolgen festlegen, die beim
 Insbesondere: das Präfix, das an den Namen des Empfängers angehängt werden soll (Liebes Zeichen, liebe Adresse...), ein Freitext, der vor dem automatisch generierten Dokument platziert werden soll, ein Text, der vor dem Dokument platziert wird. Ein Beispiel für einen "Vorher"-Text kann das klassische "Wie vereinbart senden wir unser bestes Angebot für Folgendes:" sein, während ein Beispiel für einen "Nachher"-Text lauten kann: "Wir stehen Ihnen weiterhin für alle Fragen zur Verfügung und bei dieser Gelegenheit bieten wir unsere besten Grüße an"
 
 settings-documents-messages
+
+## Allgemeine Einstellungen
+
+### Die Grundkonfigurationen des CRM.
+
+Logo: Verwenden Sie vorzugsweise quadratische Bilder mit 100px x 100px
+Alle Benachrichtigungen für Administratoren anzeigen: Site-Administratoren können die Aktivitäten aller Agenten sehen.
+Manager für vergangene Aufgaben: Mit dieser Option können Sie vergangene Aufgaben (älter als einen Tag), die als "erledigt" oder "abgebrochen" markiert wurden, aus der Ansicht ausschließen
+Löschen von Aktivitäten zulassen: Optional ist es möglich, das Löschen von Aktivitäten nur Administratoren oder sogar denjenigen zu erlauben, die den TODO oder TERMIN erstellt haben
+Erweitert die Agentenfunktionen: ob Agenten die Dokumente und Benachrichtigungen anderer Agenten sehen können oder nicht
+Legen Sie eine E-Mail-Adresse als Absender von Benachrichtigungen fest:
+Legen Sie eine E-Mail-Adresse als Absender für CRM-Benachrichtigungs-E-Mails
+fest. Wenn leer ist, wird die E-Mail-Adresse des Site-Administrators verwendet.
+Festlegen eines Namens als Absender von Benachrichtigungen:
+Legen Sie einen Namen als Absender von CRM-Benachrichtigungen fest, der als Absendername von E-Mails angezeigt wird, die an Kontakte gesendet werden. Wenn das Feld leer ist, wird der Site-Name verwendet
+Höhen der Raster Stammdaten und Dokumente: Der Standardwert ist 600px, Sie können einen anderen Wert festlegen, um das Layout der Datensatzanzeige zu verbessern

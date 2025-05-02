@@ -64,7 +64,7 @@ settings-documents-messages
 
 ## Allgemeine Einstellungen
 
-### Die Grundkonfigurationen des CRM.
+**Die Grundkonfigurationen des CRM.**
 
 Logo: Verwenden Sie vorzugsweise quadratische Bilder mit 100px x 100px
 Alle Benachrichtigungen für Administratoren anzeigen: Site-Administratoren können die Aktivitäten aller Agenten sehen.
@@ -77,3 +77,11 @@ fest. Wenn leer ist, wird die E-Mail-Adresse des Site-Administrators verwendet.
 Festlegen eines Namens als Absender von Benachrichtigungen:
 Legen Sie einen Namen als Absender von CRM-Benachrichtigungen fest, der als Absendername von E-Mails angezeigt wird, die an Kontakte gesendet werden. Wenn das Feld leer ist, wird der Site-Name verwendet
 Höhen der Raster Stammdaten und Dokumente: Der Standardwert ist 600px, Sie können einen anderen Wert festlegen, um das Layout der Datensatzanzeige zu verbessern
+
+## Kontakt-Einstellungen
+
+**CLIENT-TAXONOMIEN**
+
+Es ist möglich, Taxonomiebegriffe mit Stammdaten zu verknüpfen, um die Archivierung und statistische Berechnungen zu verbessern.
+Die in diesem Abschnitt zugeordneten Begriffe stehen Ihnen beim Anlegen/Bearbeiten von Stammsätzen zur Auswahl. Es ist auch möglich zu wählen, ob die Begriffe im Stammdatenraster angezeigt werden sollen, um Suchfilter anzuwenden.
+Es stehen 3 Arten von Taxonomien zur Verfügung: Kategorie (z. B. Kunden, Lieferanten), Interessen (um ein Profil eines Datensatzes zu einem oder mehreren spezifischen Interessen zu erstellen) und Herkunft (um einen möglichen Kanal zu identifizieren, aus dem der Kontakt gekommen ist). In Wirklichkeit ist die Benennung von Taxonomien rein konventionell, sie können für die Erstellung von Kontaktprofilen auf eine Weise verwendet werden, die Ihren Geschäftsanforderungen entspricht

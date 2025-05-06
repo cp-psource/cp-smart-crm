@@ -4,7 +4,7 @@ Author: PSOURCE
 Tags: crm, invoices, todo
 Requires at least: 4.2
 Tested up to: 6.8.1
-Stable tag: 1.5.2
+Stable tag: 1.5.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
  
@@ -64,6 +64,12 @@ Wichtig: Wenn Sie .mo/.po-Dateien im Plugin-Ordner "languages" ändern, können 
 
 
 == Changelog ==
+
+= 1.5.3 =
+
+* Codefixes for PhP8.2
+* Security-fixes
+* New Docs
 
 = 1.5.2 =
 * Minor Bugfixes

@@ -302,9 +302,19 @@ class CRM_Options_Settings{
                           ?></select>                         
                 </div>
                 <div class="item xml_mandatory">
-                    <label><?php _e('MwSt.-Code', 'wp-smart-crm-invoices-pro') ?>  ( <span style="color:red"> * </span> )</label><br />
-                    <input type="text" id="crm_business_iva" name="CRM_business_settings[business_iva]" value="<?php echo isset($options['business_iva'] ) ? $options['business_iva']: "" ?>"  class="form-control _m"/>
-                </div>
+					<label>
+						<input type="checkbox" id="crm_kleinunternehmer" name="CRM_business_settings[crm_kleinunternehmer]" value="1" <?php checked(isset($options['crm_kleinunternehmer']) && $options['crm_kleinunternehmer'] == 1); ?> />
+						<?php _e('Kleinunternehmer nach §19 UStG (keine Umsatzsteuer-ID)', 'wp-smart-crm-invoices-pro'); ?>
+					</label>
+					<br />
+					<label for="crm_business_iva">
+						<?php _e('Umsatzsteuer-ID', 'wp-smart-crm-invoices-pro') ?>
+						<?php if (empty($options['crm_kleinunternehmer'])) : ?>
+						<span id="iva_star" style="color:red"> *</span>
+						<?php endif; ?>
+					</label>
+					<input type="text" id="crm_business_iva" name="CRM_business_settings[business_iva]" value="<?php echo isset($options['business_iva']) ? esc_attr($options['business_iva']) : '' ?>" class="form-control _m" />
+				</div>
                 <div class="item">
                     <label><?php _e('Cod. Fisc.', 'wp-smart-crm-invoices-pro') ?></label><br />
                     <input type="text" id="crm_business_cf" name="CRM_business_settings[business_cf]" value="<?php echo isset( $options['business_cf'] ) ?  $options['business_cf'] :""?>"  class="form-control _m"/>
@@ -342,105 +352,115 @@ class CRM_Options_Settings{
 				#sortable-handlers input[type=text]{width:50%;}
 			</style>
 			<script>
-                jQuery('#nazione').kendoDropDownList({
-    	            placeholder: "<?php _e('Land auswählen','cpsmartcrm') ?>...",
-                    value: "<?php if(isset($options['business_country'])) echo $options['business_country']; else echo 'IT'?>"
-                });
-				function saveBusiness(e) {
-				var validator = jQuery("form").kendoValidator({
-				rules: {
-					hasName: function (input) {
+				jQuery(document).ready(function($) {
+				$('#nazione').kendoDropDownList({
+					placeholder: "<?php _e('Land auswählen','cpsmartcrm') ?>...",
+					value: "<?php if(isset($options['business_country'])) echo $options['business_country']; else echo 'IT'?>"
+				});
+
+				window.saveBusiness = function(e) {
+					var validator = $("form").kendoValidator({
+					rules: {
+						hasName: function (input) {
 						if (input.is("[id=crm_business_name]")) {
-							var kb = jQuery("#crm_business_name").val();
+							var kb = $("#crm_business_name").val();
 							if (kb == "") {
-								jQuery("#crm_business_name").focus();
-								jQuery.playSound("<?php echo WPsCRM_URL?>inc/audio/double-alert-2")
-								jQuery('#CRM_required_settings').val(0)
-								return false;
+							$("#crm_business_name").focus();
+							jQuery.playSound("<?php echo WPsCRM_URL?>inc/audio/double-alert-2");
+							$('#CRM_required_settings').val(0);
+							return false;
 							}
 						}
-
 						return true;
-					},
-					hasAddress: function (input) {
+						},
+						hasAddress: function (input) {
 						if (input.is("[id=crm_business_address]")) {
-							var kb = jQuery("#crm_business_address").val();
+							var kb = $("#crm_business_address").val();
 							if (kb == "") {
-								jQuery("#crm_business_address").focus();
-								jQuery('#CRM_required_settings').val(0)
-								return false;
+							$("#crm_business_address").focus();
+							$('#CRM_required_settings').val(0);
+							return false;
 							}
 						}
 						return true;
-					},
-					hasTown: function (input) {
+						},
+						hasTown: function (input) {
 						if (input.is("[id=crm_business_town]")) {
-							var ms = jQuery('#crm_business_town').val();
+							var ms = $('#crm_business_town').val();
 							if (ms == "") {
-								jQuery("#crm_business_town").focus();
-								jQuery('#CRM_required_settings').val(0)
-								return false;
+							$("#crm_business_town").focus();
+							$('#CRM_required_settings').val(0);
+							return false;
 							}
 						}
 						return true;
-
-					},
-					hasZip: function (input) {
+						},
+						hasZip: function (input) {
 						if (input.is("[id=crm_business_zip]")) {
-							var ms = jQuery('#crm_business_zip').val();
+							var ms = $('#crm_business_zip').val();
 							if (ms == "") {
-								jQuery("#crm_business_zip").focus();
-								jQuery('#CRM_required_settings').val(0)
-								return false;
+							$("#crm_business_zip").focus();
+							$('#CRM_required_settings').val(0);
+							return false;
 							}
 						}
 						return true;
-
-					},
-					hasCF: function (input) {
+						},
+						hasCF: function (input) {
 						if (input.is("[id=crm_business_iva]")) {
-							var ms = jQuery('#crm_business_iva').val();
+							if ($('#crm_kleinunternehmer').is(':checked')) {
+							return true; // kein Pflichtfeld wenn Kleinunternehmer
+							}
+							var ms = $('#crm_business_iva').val();
 							if (ms == "") {
-								jQuery("#crm_business_iva").focus();
-								jQuery('#CRM_required_settings').val(0)
-								return false;
+							$("#crm_business_iva").focus();
+							$('#CRM_required_settings').val(0);
+							return false;
 							}
 						}
 						return true;
-
-					},
-                                        hasMail: function (input) {
+						},
+						hasMail: function (input) {
 						if (input.is("[id=crm_business_email]")) {
-							var kb = jQuery("#crm_business_email").val();
+							var kb = $("#crm_business_email").val();
 							if (kb == "") {
-								jQuery("#crm_business_email").focus();
-								jQuery.playSound("<?php echo WPsCRM_URL?>inc/audio/double-alert-2")
-								jQuery('#CRM_required_settings').val(0)
-								return false;
+							$("#crm_business_email").focus();
+							jQuery.playSound("<?php echo WPsCRM_URL?>inc/audio/double-alert-2");
+							$('#CRM_required_settings').val(0);
+							return false;
 							}
 						}
-
 						return true;
+						}
+					},
+					messages: {
+						hasName: "<?php _e('Firmenname ist erforderlich','cpsmartcrm')?>",
+						hasAddress: "<?php _e('Adresse ist erforderlich','cpsmartcrm')?>",
+						hasTown: "<?php _e('Stadt ist erforderlich','cpsmartcrm')?>",
+						hasZip: "<?php _e('Postleitzahl ist erforderlich','cpsmartcrm')?>",
+						hasCF: "<?php _e('Umsatzsteuer-Code ist erforderlich','cpsmartcrm')?>",
+						hasMail: "<?php _e('E-Mail ist erforderlich','cpsmartcrm')?>"
 					}
+					}).data("kendoValidator");
 
-				},
-
-				messages: {
-					hasName: "<?php _e('Firmenname ist erforderlich','cpsmartcrm')?>",
-					hasAddress: "<?php _e('Adresse ist erforderlich','cpsmartcrm')?>",
-					hasTown: "<?php _e('Stadt ist erforderlich','cpsmartcrm')?>",
-					hasZip: "<?php _e('Postleitzahl ist erforderlich','cpsmartcrm')?>",
-					hasCF: "<?php _e('Umsatzsteuer-Code ist erforderlich','cpsmartcrm')?>",
-                                        hasMail: "<?php _e('E-Mail ist erforderlich','cpsmartcrm')?>",
-
+					if (validator.validate()) {
+					$('#CRM_required_settings').val(1);
+					$('form').find(':submit').click();
+					}
 				}
-				}).data("kendoValidator");
-			if (validator.validate()) {
-				jQuery('#CRM_required_settings').val(1)
-				jQuery('form').find(':submit').click();
-			}
 
-		}
+				// *** Sternchen Toggle ***
+				function toggleSternchen() {
+					if ($('#crm_kleinunternehmer').is(':checked')) {
+					$('#iva_star').hide();
+					} else {
+					$('#iva_star').show();
+					}
+				}
+
+				$('#crm_kleinunternehmer').on('change', toggleSternchen);
+				toggleSternchen(); // initial prüfen
+				});
 </script>
 		<?php
 		$options=get_option($this->business_settings_key);
@@ -827,7 +847,7 @@ class CRM_Options_Settings{
 
         })
 
-        if ($('#test_mode').attr('checked') == "checked") {
+        if (jQuery('#test_mode').attr('checked') == "checked") {
 
             $('.live_mode').attr('readonly', 'readonly');
             $('.test_mode').attr('readonly', false);

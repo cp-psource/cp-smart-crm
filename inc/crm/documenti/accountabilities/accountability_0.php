@@ -152,44 +152,33 @@
     </div>
 </div>
 <script>
+  // AutoNumeric-Optionen zentral definieren
+  const autoNumericOptions = {
+    decimalPlaces: 2,
+    digitGroupSeparator: '.',
+    decimalCharacter: ',',
+    minimumValue: '0',
+    modifyValueOnWheel: false
+  };
+
   var def_iva = "<?php if (isset($def_iva)) echo $def_iva ?>", cassa = "<?php if (isset($cassa)) echo $cassa ?>", rit_acconto = "<?php if (isset($rit_acconto)) echo $rit_acconto ?>";
   jQuery(document).ready(function ($) {
-      var tooltip = $(".glyphicon-info-sign").kendoTooltip({
-          width: 460,
-          position: "top",
-          content: "<?php _e('Der Rabattmodus ( % oder Wert) gilt für das gesamte Dokument und berücksichtigt selbstverständlich die Zeilenmengen (z. B. 5 Euro Rabatt auf 10 Artikel = 50)', 'cpsmartcrm') ?>"
-      }).data("kendoTooltip");
+      // Tooltip ggf. ersetzen, z.B. mit Bootstrap
+      // $(".glyphicon-info-sign").tooltip({ ... });
 
-      $('.numeric').each(function () {
-          console.log(kendo.toString(parseFloat($(this).val()), "n"));
-          var v = kendo.toString(parseFloat($(this).val()), "n");
-          $(this).kendoNumericTextBox({
-              decimals: 2,
-              format: "n2",
-              min: 0,
-              spinners: false,
-              step: 0,
-              culture: "<?php echo WPsCRM_CULTURE ?>"
-          }).data("kendoNumericTextBox").value(v);
-      })
-      $('.numericreadonly').each(function () {
-          var v = kendo.toString(parseFloat($(this).val()), "n");
-          $(this).kendoNumericTextBox({
-              decimals: 2,
-              format: "n2",
-              min: 0,
-              spinners: false,
-              step: 0,
-              culture: "<?php echo WPsCRM_CULTURE ?>"
-          }).data("kendoNumericTextBox").value(v);
-      })
+      // Alle numerischen Felder initialisieren
+      $('.numeric, .numericreadonly').each(function () {
+          new AutoNumeric(this, autoNumericOptions);
+          if ($(this).hasClass('numericreadonly')) {
+              $(this).prop('readonly', true);
+          }
+      });
 
       $('#calculate').on('click', function () {
           var amount = $('#reverseAmount').val();
           var refund = $('#reverseRefund').val();
-          var tipo_cliente = $('#tipo_cliente').val();
-          if (amount != "")
-          {
+          var tipo_cliente = jQuery('#tipo_cliente').val();
+          if (amount != "") {
               jQuery.ajax({
                   url: ajaxurl,
                   data: {
@@ -200,46 +189,24 @@
                       tipo_cliente: tipo_cliente
                   },
                   success: function (result) {
-                      console.log(result);
-                      result = kendo.toString(parseFloat(result), "n")
-                      if (jQuery('#t_art > tbody > tr').length) {
-                          var last = jQuery('#t_art > tbody > tr').last().attr("id");
-                          var last_id = last.split("_");
-                          var n_row = parseInt(last_id[1]) + 1;
-                      } else {
-                          var n_row = 1;
-                      }
-                      jQuery('#t_art').append('<tr class="riga" id="r_' + n_row + '"><td><input type="hidden" name="tipo_' + n_row + '" id="tipo_' + n_row + '" value="2"><input type="text" size="10" name="codice_' + n_row + '" id="codice_' + n_row + '" value=""></td><td><textarea rows="1" style="width:93%"  name="descrizione_' + n_row + '" id="descrizione_' + n_row + '" class="descriptive_row"></textarea></td><td></td><td><input data-role="numerictextbox" class="numeric" name="qta_' + n_row + '" id="qta_' + n_row + '" onblur="aggiornatot()" oninput="aggiornatot()" value="1"  style="width:80px"></td><td><input data-role="numerictextbox" class="numeric" name="prezzo_' + n_row + '" id="prezzo_' + n_row + '" value="' + result + '"  onblur="aggiornatot()"  oninput="aggiornatot()"  style="width:130px"></td><td><input data-role="numerictextbox" class="numeric" name="sconto_' + n_row + '" id="sconto_' + n_row + '"  onblur="aggiornatot()"  oninput="aggiornatot()"  style="width:80px"></td><td><input data-role="numerictextbox" class="numeric" name="iva_' + n_row + '" id="iva_' + n_row + '" value="' + def_iva + '"  onblur="aggiornatot()" oninput="aggiornatot()"  style="width:80px"></td><td><input data-role="numerictextbox" class="numeric" name="totale_' + n_row + '" id="totale_' + n_row + '" value=""  style="width:130px"></td><td><button type="button"  onclick="elimina_riga(0,' + n_row + ')"><?php _e('Löschen', 'cpsmartcrm') ?></button></td></tr>');
-                      jQuery("#r_" + n_row + " .numeric").kendoNumericTextBox({
-                          decimals: 2,
-                          format: "n2",
-                          spinners: false,
-                          step: 0,
-                          culture: "<?php echo WPsCRM_CULTURE ?>"
-                      })
+                      result = parseFloat(result).toFixed(2);
+                      var n_row = (jQuery('#t_art > tbody > tr').length) ? parseInt(jQuery('#t_art > tbody > tr').last().attr("id").split("_")[1]) + 1 : 1;
+                      jQuery('#t_art').append('<tr class="riga" id="r_' + n_row + '"><td><input type="hidden" name="tipo_' + n_row + '"  id="tipo_' + n_row + '" value="2"><input type="text" size="10" name="codice_' + n_row + '" id="codice_' + n_row + '" value=""></td><td><textarea rows="1" style="width:93%"  name="descrizione_' + n_row + '" id="descrizione_' + n_row + '" class="descriptive_row"></textarea></td><td>' + s_select + '</td><td><input class="numeric" size="4" name="qta_' + n_row + '" id="qta_' + n_row + '" onblur="aggiornatot()"  oninput="aggiornatot()" style="width:80px"></td><td><input class="numeric" size="10" name="prezzo_' + n_row + '" id="prezzo_' + n_row + '" value=""  onblur="aggiornatot()"  oninput="aggiornatot()"  style="width:130px"></td><td><input class="numeric" size="4" name="sconto_' + n_row + '" id="sconto_' + n_row + '" size="5"  onblur="aggiornatot()"  oninput="aggiornatot()" style="width:80px"></td><td><input class="numeric" size="4" name="iva_' + n_row + '" id="iva_' + n_row + '" value="' + iva + '" size="5"  onblur="aggiornatot()" oninput="aggiornatot()" style="width:80px"></td><td><input class="numeric" size="4" name="totale_' + n_row + '" id="totale_' + n_row + '" style="width:130px"></td><td><button type="button"  onclick="elimina_riga(0,' + n_row + ')">Löschen</button></td></tr>');
+                      // AutoNumeric für neue Felder initialisieren
+                      jQuery("#r_" + n_row + " .numeric").each(function () {
+                          new AutoNumeric(this, autoNumericOptions);
+                      });
                       aggiornatot();
                       window.sessionStorage.setItem('ref_row', n_row);
-                      if (refund)
-                      {
-                          //var n_row = jQuery('#t_art > tbody > tr').length + 1;
-                          if (jQuery('#t_art > tbody > tr').length) {
-                              var last = jQuery('#t_art > tbody > tr').last().attr("id");
-                              var last_id = last.split("_");
-                              var n_row = parseInt(last_id[1]) + 1;
-                          } else {
-                              var n_row = 1;
-                          }
-                          jQuery('#t_art').append('<tr class="riga riga_refund" id="r_' + n_row + '"><td colspan="3"><input type="hidden" name="tipo_' + n_row + '" id="tipo_' + n_row + '" value="4"><textarea rows="1" style="width:93%"  name="descrizione_' + n_row + '" id="descrizione_' + n_row + '" class="descriptive_row"></textarea></td><td><input data-role="numerictextbox" class="numeric" name="qta_' + n_row + '" id="qta_' + n_row + '" onblur="aggiornatot()" oninput="aggiornatot()" value="1"  style="width:80px"></td><td><input data-role="numerictextbox" class="numeric" name="prezzo_' + n_row + '" id="prezzo_' + n_row + '"  value="' + refund + '" onblur="aggiornatot()"  oninput="aggiornatot()"  style="width:130px"></td><td></td><td></td><td><input data-role="numerictextbox" class="numeric" name="totale_' + n_row + '" id="totale_' + n_row + '" value="' + refund + '"  style="width:80px"></td><td><button type="button"  onclick="elimina_riga(0,' + n_row + ')"><?php _e('Löschen', 'cpsmartcrm') ?></button></td></tr>');
-                          jQuery("#r_" + n_row + " .numeric").kendoNumericTextBox({
-                              decimals: 2,
-                              format: "n2",
-                              spinners: false,
-                              step: 0,
-                              culture: "<?php echo WPsCRM_CULTURE ?>"
-                          })
+                      if (refund) {
+                          n_row = (jQuery('#t_art > tbody > tr').length) ? parseInt(jQuery('#t_art > tbody > tr').last().attr("id").split("_")[1]) + 1 : 1;
+                          jQuery('#t_art').append('<tr class="riga riga_refund" id="r_' + n_row + '"><td colspan="3"><input type="hidden" name="tipo_' + n_row + '" id="tipo_' + n_row + '" value="4"><textarea rows="1" style="width:93%"  name="descrizione_' + n_row + '" id="descrizione_' + n_row + '" class="descriptive_row"></textarea></td><td><input class="numeric" name="qta_' + n_row + '" id="qta_' + n_row + '" onblur="aggiornatot()" oninput="aggiornatot()" value="1"  style="width:80px"></td><td><input class="numeric" name="prezzo_' + n_row + '" id="prezzo_' + n_row + '"  value="' + refund + '" onblur="aggiornatot()"  oninput="aggiornatot()"  style="width:130px"></td><td></td><td></td><td><input class="numeric" name="totale_' + n_row + '" id="totale_' + n_row + '" value="' + refund + '"  style="width:80px"></td><td><button type="button"  onclick="elimina_riga(0,' + n_row + ')"><?php _e('Löschen', 'cpsmartcrm') ?></button></td></tr>');
+                          jQuery("#r_" + n_row + " .numeric").each(function () {
+                              new AutoNumeric(this, autoNumericOptions);
+                          });
                       }
                       window.sessionStorage.setItem('tmp_amount', amount);
-                      $('#reverseCalculator').data('kendoWindow').close();
+                      // $('#reverseCalculator').data('kendoWindow').close(); // ggf. ersetzen
                       aggiornatot();
                   },
                   error: function (errorThrown) {
@@ -248,168 +215,76 @@
               })
           }
       })
-  })
-  /*function addRow(id, codice, descrizione, iva, prezzo, arr_rules, rule)
-  {
-      var n_row = jQuery('#t_art > tbody > tr').length + 1;
-      var s_select = '<select name="subscriptionrules_' + n_row + '" id="subscriptionrules_' + n_row + '"><option value=""></option>';
-      if (arr_rules != null)
-          for (i = 0; i < arr_rules.length; i++)
-          {
-              if (rule != 0 && arr_rules[i].ID == rule)
-                  is_sel = "selected";
-              else
-                  is_sel = "";
-              s_select += '<option value="' + arr_rules[i].ID + '" ' + is_sel + '>' + arr_rules[i].name + '</option>';
-          }
-      s_select += '</select>';
-      jQuery('#t_art').append('<tr class="riga" id="r_' + n_row + '"><td><input type="hidden" id="tipo_' + n_row + '" name="tipo_' + n_row + '" value="1"><input type="hidden" name="id_' + n_row + '" value="' + id + '"><input type="text" size="10" name="codice_' + n_row + '" id="codice_' + n_row + '" value="' + codice + '"></td><td><textarea  name="descrizione_' + n_row + '" id="descrizione_' + n_row + '" style="width:93%" class="descriptive_row">' + descrizione + '</textarea></td><td>' + s_select + '</td><td><input data-role="numerictextbox" class="numeric" size="4" name="qta_' + n_row + '" id="qta_' + n_row + '" oninput="aggiornatot()" onblur="aggiornatot()" value="1" /></td><td><input data-role="numerictextbox" class="numeric" size="10" name="prezzo_' + n_row + '" id="prezzo_' + n_row + '" value="' + prezzo + '" oninput="aggiornatot()" onblur="aggiornatot()"></td><td><input data-role="numerictextbox" class="numeric" size="4" name="sconto_' + n_row + '" id="sconto_' + n_row + '" size="5" oninput="aggiornatot()" onblur="aggiornatot()"></td><td><input data-role="numerictextbox" size="4" name="iva_' + n_row + '" id="iva_' + n_row + '" value="' + iva + '" size="5" oninput="aggiornatot()" onblur="aggiornatot()"></td><td><input data-role="numerictextbox" class="numeric" size="4" name="totale_' + n_row + '" id="totale_' + n_row + '"></td><td><button type="button"  onclick="elimina_riga(0,' + n_row + ')"><?php _e('Delete', 'cpsmartcrm') ?></button></td></tr>');
-      aggiornatot();
+  });
+
+  function getNumeric(id) {
+      return AutoNumeric.getAutoNumericElement("#" + id).getNumber();
   }
-*/
+  function setNumeric(id, value) {
+      AutoNumeric.getAutoNumericElement("#" + id).set(value);
+  }
+
   function aggiorna(riga) {
-      //	alert(riga);
-      //debugger;
-      if (jQuery('#tipo_sconto0').is(':checked'))
-          var tipo_sconto = 0;
-      else
-          var tipo_sconto = 1;
-      var qta = jQuery("#qta_" + riga).data("kendoNumericTextBox").value();   
-      var pre = jQuery("#prezzo_" + riga).data("kendoNumericTextBox").value();
-      if (document.getElementById("sconto_" + riga))
-          var sconto = jQuery("#sconto_" + riga).data("kendoNumericTextBox").value()
-      if (document.getElementById("iva_" + riga))
-          var iva = document.getElementById("iva_" + riga).value;
-//      var tot = document.getElementById("totale_" + riga);
-      if (sconto > 0)
-      {
-          if (tipo_sconto == 0)
-              var pre_sc = pre - (pre * sconto / 100);
-          else
-              var pre_sc = pre - sconto;
-      } else
-          var pre_sc = pre;
+      var tipo_sconto = jQuery('#tipo_sconto0').is(':checked') ? 0 : 1;
+      var qta = getNumeric("qta_" + riga);
+      var pre = getNumeric("prezzo_" + riga);
+      var sconto = document.getElementById("sconto_" + riga) ? getNumeric("sconto_" + riga) : 0;
+      var iva = document.getElementById("iva_" + riga) ? getNumeric("iva_" + riga) : 0;
+      var pre_sc = (sconto > 0) ? (tipo_sconto == 0 ? pre - (pre * sconto / 100) : pre - sconto) : pre;
       var totale = qta * pre_sc;
-      if (parseInt(iva) > 0)
-          totale = totale + (totale * iva / 100);
+      if (parseInt(iva) > 0) totale = totale + (totale * iva / 100);
       totale = Math.round(totale * 100) / 100;
-      var v = kendo.toString(parseFloat(totale), "n");
-      jQuery("#totale_" + riga).data("kendoNumericTextBox").value(v);
-      //aggiornatot();
+      setNumeric("totale_" + riga, totale);
   }
 
   function aggiornatot() {
-      // debugger;
-      if (jQuery('#t_art > tbody > tr').length) {
-          var last = jQuery('#t_art > tbody > tr').last().attr("id");
-          var last_id = last.split("_");
-          var n_row = parseInt(last_id[1]);
-      } else {
-          var n_row = 0;
-      }
+      var n_row = (jQuery('#t_art > tbody > tr').length) ? parseInt(jQuery('#t_art > tbody > tr').last().attr("id").split("_")[1]) : 0;
       var form = document.forms["form_insert"];
-      var totaleimp = 0;
-      var totale = 0;
-      var totale_imposta = 0;
-      var totale_rimborso = 0;
-      if (jQuery('#tipo_sconto0').is(':checked'))
-          var tipo_sconto = 0;
-      else
-          var tipo_sconto = 1;
+      var totaleimp = 0, totale = 0, totale_imposta = 0, totale_rimborso = 0;
+      var tipo_sconto = jQuery('#tipo_sconto0').is(':checked') ? 0 : 1;
       for (i = 1; i <= n_row; i++) {
-          if (tot = document.getElementById("totale_" + i)) {
+          if (document.getElementById("totale_" + i)) {
               aggiorna(i);
               var tipo = document.getElementById("tipo_" + i).value;
-              var qta = jQuery("#qta_" + i).data("kendoNumericTextBox").value();
-              var pre = jQuery("#prezzo_" + i).data("kendoNumericTextBox").value();
-              if (document.getElementById("iva_" + i))
-                  var iva = jQuery("#iva_" + i).data("kendoNumericTextBox").value();
-              if (document.getElementById("sconto_" + i))
-                  var sconto = jQuery("#sconto_" + i).data("kendoNumericTextBox").value();
-              if (sconto > 0)
-              {
-                  if (tipo_sconto == 0)
-                      var pre_sc = pre - (pre * sconto / 100);
-                  else
-                      var pre_sc = pre - sconto;
-              } else
-              {
-                  var pre_sc = pre;
-              }
+              var qta = getNumeric("qta_" + i);
+              var pre = getNumeric("prezzo_" + i);
+              var iva = document.getElementById("iva_" + i) ? getNumeric("iva_" + i) : 0;
+              var sconto = document.getElementById("sconto_" + i) ? getNumeric("sconto_" + i) : 0;
+              var pre_sc = (sconto > 0) ? (tipo_sconto == 0 ? pre - (pre * sconto / 100) : pre - sconto) : pre;
               var totaleriga = qta * pre_sc;
-              if (tipo != 4)
-              {
+              if (tipo != 4) {
                   totale_imposta = (parseFloat(totale_imposta) + parseFloat(totaleriga * iva / 100)).toFixed(2);
                   totaleimp = (parseFloat(totaleimp) + parseFloat(totaleriga)).toFixed(2);
-              } else
+              } else {
                   totale_rimborso = (parseFloat(totale_rimborso) + parseFloat(totaleriga)).toFixed(2);
-
+              }
           }
       }
       totale = parseFloat(totaleimp).toFixed(2);
-      //totale = Math.round((totale) * 100) / 100;
-      // totale_imposta = Math.round((totale_imposta) * 100) / 100;
       totale_imposta = parseFloat(totale_imposta).toFixed(2);
-      //var totalone = Math.round((totale + totale_imposta + totale_rimborso) * 100) / 100;
       var totalone = (parseFloat(totale) + parseFloat(totale_imposta) + parseFloat(totale_rimborso)).toFixed(2);
-      //totalone = Math.round((totalone) * 100) / 100;
-      if (tmp_amount = sessionStorage.getItem("tmp_amount"))
-      {
-          //var diff = Math.round((totalone - tmp_amount) * 100) / 100;
+      if (tmp_amount = sessionStorage.getItem("tmp_amount")) {
           var diff = (totalone - parseFloat(tmp_amount)).toFixed(2);
-          //console.log(diff);
-          if (diff > 0)
-          {
-//              totale = Math.round((totale - diff) * 100) / 100;
+          if (diff > 0) {
               totale = (totale - diff).toFixed(2);
               totalone = tmp_amount;
-              if (ref_row = sessionStorage.getItem("ref_row"))
-              {
-                  //var val_input = jQuery('#prezzo_' + ref_row).val();
-                  var val_input = jQuery("#prezzo_" + ref_row).data("kendoNumericTextBox").value();
+              if (ref_row = sessionStorage.getItem("ref_row")) {
+                  var val_input = getNumeric("prezzo_" + ref_row);
                   var newval = (val_input - diff).toFixed(2);
-                  console.log(val_input);
-                  console.log(newval);
-                  //jQuery('#prezzo_' + ref_row).val(newval);
-                  jQuery("#prezzo_" + ref_row).data("kendoNumericTextBox").value(kendo.toString(parseFloat(newval), "n"));
+                  setNumeric("prezzo_" + ref_row, newval);
               }
-          } else if (diff < 0)
-          {
-              //console.log(totale_imposta);
+          } else if (diff < 0) {
               totale_imposta = (totale_imposta - diff).toFixed(2);
               totalone = parseFloat(tmp_amount).toFixed(2);
           }
       }
-      //totaleimp = Math.round(totaleimp * 100) / 100;
       totaleimp = parseFloat(totaleimp).toFixed(2);
-//      totale_imposta = Math.round((totale_imposta) * 100) / 100;
       totale_imposta = parseFloat(totale_imposta).toFixed(2);
-      //debugger;
-      if (totaleimp > 0)
-      {
-          jQuery("#totale_imponibile").data("kendoNumericTextBox").value(kendo.toString(parseFloat(totaleimp), "n"));
-          jQuery("#totale_imposta").data("kendoNumericTextBox").value(kendo.toString(parseFloat(totale_imposta), "n"));
-          jQuery("#totale").data("kendoNumericTextBox").value(kendo.toString(parseFloat(totalone), "n"));
-          //   form.elements["totale_imponibile"].value = totaleimp.toFixed(2);
-          //   form.elements["totale_imposta"].value = totale_imposta.toFixed(2);
-          //   form.elements["totale"].value = totalone.toFixed(2);
-          if (form.elements["quotation_value"]) {
-              //form.elements["quotation_value"].value = totaleimp.toFixed(2);
-              jQuery("#quotation_value").data("kendoNumericTextBox").value(kendo.toString(parseFloat(totaleimp), "n"));
-          }
-      } else
-      {
-          jQuery("#totale_imponibile").data("kendoNumericTextBox").value(kendo.toString(parseFloat(0), "n"));
-          jQuery("#totale_imposta").data("kendoNumericTextBox").value(kendo.toString(parseFloat(0), "n"));
-          jQuery("#totale").data("kendoNumericTextBox").value(kendo.toString(parseFloat(0), "n"));
-          // form.elements["totale_imponibile"].value = 0;
-          // form.elements["totale_imposta"].value = 0;
-          //  form.elements["totale"].value = 0;
-          if (form.elements["quotation_value"]) {
-              //form.elements["quotation_value"].value = 0;
-              jQuery("#quotation_value").data("kendoNumericTextBox").value(kendo.toString(parseFloat(0), "n"));
-
-          }
+      setNumeric("totale_imponibile", totaleimp);
+      setNumeric("totale_imposta", totale_imposta);
+      setNumeric("totale", totalone);
+      if (form && form.elements["quotation_value"]) {
+          setNumeric("quotation_value", totaleimp);
       }
   }
 
@@ -426,15 +301,14 @@
                   security: '<?php echo $delete_nonce ?>'
               },
               success: function (result) {
-                  console.log(result);
                   jQuery('#r_' + riga).find("input").remove();
                   jQuery('#r_' + riga).remove();
                   if (jQuery('#t_art > tbody > tr').length) {
                       aggiornatot();
                   } else {
-                      jQuery("#totale_imponibile").data("kendoNumericTextBox").value(kendo.toString(parseFloat(0), "n"));
-                      jQuery("#totale_imposta").data("kendoNumericTextBox").value(kendo.toString(parseFloat(0), "n"));
-                      jQuery("#totale").data("kendoNumericTextBox").value(kendo.toString(parseFloat(0), "n"));
+                      setNumeric("totale_imponibile", 0);
+                      setNumeric("totale_imposta", 0);
+                      setNumeric("totale", 0);
                   }
               },
               error: function (errorThrown) {
@@ -448,82 +322,49 @@
       }
   }
 
-  function add_manual_row()
-  {
+  function add_manual_row() {
       jQuery.ajax({
           url: ajaxurl,
           data: {
               'action': 'WPsCRM_get_product_manual_info'
           },
           success: function (result) {
-              console.log(result.info);
               var parseData = result.info;
               JSON.stringify(parseData);
               var iva = parseData[0].iva;
               var arr_rules = parseData[0].arr_rules;
-              //console.log(arr_rules);
-              if (jQuery('#t_art > tbody > tr').length) {
-                  var last = jQuery('#t_art > tbody > tr').last().attr("id");
-                  var last_id = last.split("_");
-                  var n_row = parseInt(last_id[1]) + 1;
-              } else {
-                  n_row = 1;
-              }
+              var n_row = (jQuery('#t_art > tbody > tr').length) ? parseInt(jQuery('#t_art > tbody > tr').last().attr("id").split("_")[1]) + 1 : 1;
               var s_select = '<select name="subscriptionrules_' + n_row + '" id="subscriptionrules_' + n_row + '"><option value=""></option>';
               if (arr_rules != null)
-                  for (i = 0; i < arr_rules.length; i++)
-                  {
+                  for (i = 0; i < arr_rules.length; i++) {
                       s_select += '<option value="' + arr_rules[i].ID + '">' + arr_rules[i].name + '</option>';
                   }
               s_select += '</select>';
               jQuery('#t_art').append('<tr class="riga" id="r_' + n_row + '"><td><input type="hidden" name="tipo_' + n_row + '"  id="tipo_' + n_row + '" value="2"><input type="text" size="10" name="codice_' + n_row + '" id="codice_' + n_row + '" value=""></td><td><textarea rows="1" style="width:93%"  name="descrizione_' + n_row + '" id="descrizione_' + n_row + '" class="descriptive_row"></textarea></td><td>' + s_select + '</td><td><input class="numeric" size="4" name="qta_' + n_row + '" id="qta_' + n_row + '" onblur="aggiornatot()"  oninput="aggiornatot()" style="width:80px"></td><td><input class="numeric" size="10" name="prezzo_' + n_row + '" id="prezzo_' + n_row + '" value=""  onblur="aggiornatot()"  oninput="aggiornatot()"  style="width:130px"></td><td><input class="numeric" size="4" name="sconto_' + n_row + '" id="sconto_' + n_row + '" size="5"  onblur="aggiornatot()"  oninput="aggiornatot()" style="width:80px"></td><td><input class="numeric" size="4" name="iva_' + n_row + '" id="iva_' + n_row + '" value="' + iva + '" size="5"  onblur="aggiornatot()" oninput="aggiornatot()" style="width:80px"></td><td><input class="numeric" size="4" name="totale_' + n_row + '" id="totale_' + n_row + '" style="width:130px"></td><td><button type="button"  onclick="elimina_riga(0,' + n_row + ')"><?php _e('Löschen', 'cpsmartcrm') ?></button></td></tr>');
-              jQuery("#r_" + n_row + " .numeric").kendoNumericTextBox({
-                  decimals: 2,
-                  format: "n2",
-                  spinners: false,
-                  step: 0,
-                  culture: "<?php echo WPsCRM_CULTURE ?>"
-              })
+              jQuery("#r_" + n_row + " .numeric").each(function () {
+                  new AutoNumeric(this, autoNumericOptions);
+              });
           },
           error: function (errorThrown) {
               console.log(errorThrown);
           }
       })
   }
-  function add_descriptive_row()
-  {
-      if (jQuery('#t_art > tbody > tr').length) {
-          var last = jQuery('#t_art > tbody > tr').last().attr("id");
-          var last_id = last.split("_");
-          var n_row = parseInt(last_id[1]) + 1;
-      } else {
-          n_row = 1;
-      }
 
+  function add_descriptive_row() {
+      var n_row = (jQuery('#t_art > tbody > tr').length) ? parseInt(jQuery('#t_art > tbody > tr').last().attr("id").split("_")[1]) + 1 : 1;
       jQuery('#t_art').append('<tr class="riga" id="r_' + n_row + '"><td colspan="7"><input type="hidden" name="tipo_' + n_row + '" value="3"><textarea  rows="1" style="width:93%" name="descrizione_' + n_row + '" id="descrizione_' + n_row + '"  class="descriptive_row"></textarea></td><td><button type="button"  onclick="elimina_riga(0,' + n_row + ')"><?php _e('Löschen', 'cpsmartcrm') ?></button></td></tr>');
   }
-  function annulla()
-  {
+
+  function annulla() {
       location.href = "<?php echo admin_url('admin.php?page=smart-crm&p=documenti/list.php') ?>";
   }
-  
-  function add_refund_row(e) {
-      //var n_row = jQuery('#t_art > tbody > tr').length + 1;
-      if (jQuery('#t_art > tbody > tr').length) {
-          var last = jQuery('#t_art > tbody > tr').last().attr("id");
-          var last_id = last.split("_");
-          var n_row = parseInt(last_id[1]) + 1;
-      } else {
-          n_row = 1;
-      }
-      jQuery('#t_art').append('<tr class="riga refund_row" id="r_' + n_row + '"><td colspan="3"><input type="hidden" name="tipo_' + n_row + '" id="tipo_' + n_row + '" value="4"><textarea rows="1" style="width:93%"  name="descrizione_' + n_row + '" id="descrizione_' + n_row + '" class="descriptive_row"></textarea></td><td><input class="numeric" name="qta_' + n_row + '" id="qta_' + n_row + '" onblur="aggiornatot()" oninput="aggiornatot()" style="width:80px"></td><td><input class="numeric" name="prezzo_' + n_row + '" id="prezzo_' + n_row + '" value=""  onblur="aggiornatot()"  oninput="aggiornatot()" style="width:130px"></td><td></td><td></td><td><input class="numeric" name="totale_' + n_row + '" id="totale_' + n_row + '" style="width:130px"></td><td><button type="button"  onclick="elimina_riga(0,' + n_row + ')"><?php _e('Löschen', 'cpsmartcrm') ?></button></td></tr>');
-      jQuery("#r_" + n_row + " .numeric").kendoNumericTextBox({
-          decimals: 2,
-          format: "n2",
-          spinners: false,
-          step: 0,
-          culture: "<?php echo WPsCRM_CULTURE ?>"
-      })
-  }
 
+  function add_refund_row(e) {
+      var n_row = (jQuery('#t_art > tbody > tr').length) ? parseInt(jQuery('#t_art > tbody > tr').last().attr("id").split("_")[1]) + 1 : 1;
+      jQuery('#t_art').append('<tr class="riga refund_row" id="r_' + n_row + '"><td colspan="3"><input type="hidden" name="tipo_' + n_row + '" id="tipo_' + n_row + '" value="4"><textarea rows="1" style="width:93%"  name="descrizione_' + n_row + '" id="descrizione_' + n_row + '" class="descriptive_row"></textarea></td><td><input class="numeric" name="qta_' + n_row + '" id="qta_' + n_row + '" onblur="aggiornatot()" oninput="aggiornatot()" style="width:80px"></td><td><input class="numeric" name="prezzo_' + n_row + '" id="prezzo_' + n_row + '" value=""  onblur="aggiornatot()"  oninput="aggiornatot()" style="width:130px"></td><td></td><td></td><td><input class="numeric" name="totale_' + n_row + '" id="totale_' + n_row + '" style="width:130px"></td><td><button type="button"  onclick="elimina_riga(0,' + n_row + ')"><?php _e('Löschen', 'cpsmartcrm') ?></button></td></tr>');
+      $("#r_" + n_row + " .numeric").each(function () {
+          new AutoNumeric(this, autoNumericOptions);
+      });
+  }
 </script>

@@ -1,17 +1,21 @@
 <?php
 if (!defined('ABSPATH'))
   exit;
+
 $delete_nonce = wp_create_nonce("delete_document");
 $update_nonce = wp_create_nonce("update_document");
 $scheduler_nonce = wp_create_nonce("update_scheduler");
+
 global $document;
 $generalOptions = get_option('CRM_general_settings');
 $documentOptions = get_option('CRM_documents_settings');
 $payOptions = get_option('CRM_documents_settings');
+
 if (isset($payOptions['delayedPayments']))
   $arr_payments = maybe_unserialize($payOptions['delayedPayments']);
 $def_iva = $documentOptions['default_vat'];
 $accOptions = get_option("CRM_acc_settings");
+
 if (isset($_GET["id_invoice"]) && ($ID = $_GET["id_invoice"])) {
   $plugin_dir = dirname(dirname(dirname(dirname(__FILE__))));
 } else {
@@ -313,7 +317,7 @@ if (isset($_GET["id_invoice"]) && ($ID = $_GET["id_invoice"])) {
                           <input type="text" class="form-control _editable" name="provincia" id="provincia" maxlength='20' value="<?php if (isset($provincia)) echo $provincia ?>" <?php echo $disabled ?> data-value="<?php if (isset($provincia)) echo $provincia ?>">
 
                       </div>
-                      <label class="col-sm-1 control-label"><?php _e('MwSt.-Code', 'wp-smart-crm-invoices-pro') ?></label>
+                      <label class="col-sm-1 control-label"><?php _e('Umsatzsteuer-ID', 'wp-smart-crm-invoices-pro') ?></label>
                       <div class="col-md-2">
                           <input type="text" class="form-control _editable" name="p_iva" id="p_iva" maxlength='20' value="<?php if (isset($p_iva)) echo $p_iva ?>" <?php echo $disabled ?> data-value="<?php if (isset($p_iva)) echo $p_iva ?>">
                       </div>

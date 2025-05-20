@@ -222,7 +222,7 @@ if (isset($_GET["id_invoice"]) && ($ID = $_GET["id_invoice"])) {
                           <input type="text" class="form-control _editable" name="provincia" id="provincia" maxlength='20' value="<?php if (isset($provincia)) echo $provincia ?>" <?php echo $disabled ?> data-value="<?php if (isset($provincia)) echo $provincia ?>">
 
                       </div>
-                      <label class="col-sm-1 control-label"><?php _e('MwSt.-Code', 'wp-smart-crm-invoices-pro') ?></label>
+                      <label class="col-sm-1 control-label"><?php _e('Umsatzsteuer-ID', 'wp-smart-crm-invoices-pro') ?></label>
                       <div class="col-md-2">
                           <input type="text" class="form-control _editable" name="p_iva" id="p_iva" maxlength='20' value="<?php if (isset($p_iva)) echo $p_iva ?>" <?php echo $disabled ?> data-value="<?php if (isset($p_iva)) echo $p_iva ?>">
                       </div>
@@ -488,11 +488,11 @@ if (isset($_GET["id_invoice"]) && ($ID = $_GET["id_invoice"])) {
             }
         })
     })
-    if ($('#totale_imponibile').val() > 0)
-        $('#quotation_value').val($('#totale_imponibile').val());
-    $('#totale_imponibile').on('change', function () {
+    if (jQuery('#totale_imponibile').val() > 0)
+        $('#quotation_value').val(jQuery('#totale_imponibile').val());
+    jQuery('#totale_imponibile').on('change', function () {
         //debugger;
-        if ($('#totale_imponibile').val() > 0)
+        if (jQuery('#totale_imponibile').val() > 0)
             $('#quotation_value').val($(this).val());
     })
     var _clients = new kendo.data.DataSource({

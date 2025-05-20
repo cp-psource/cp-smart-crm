@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: CP Smart CRM
+Plugin Name: PS Smart CRM
 Plugin URI: https://cp-psource.github.io/cp-smart-crm/wordpress-crm-invoices-plugin
 Description: Fügt ClassicPress ein leistungsstarkes CRM hinzu. Verwalten Sie Kunden, Rechnungen, TODO, Termine und zukünftige Benachrichtigungen an Agenten, Benutzer und Kunden
 Version: 1.5.3
@@ -9,7 +9,7 @@ Author URI:   https://cp-psource.github.io/cp-smart-crm
 Text Domain: cpsmartcrm
 Domain Path: /languages
  **************************************************************************
-Copyright (C) 2023-2024 PSOURCE
+Copyright (C) 2023-2025 PSOURCE
 
 
 This program is free software: you can redistribute it and/or modify
@@ -119,7 +119,6 @@ function WPsCRM_add_smartcrm_scripts(){
     wp_enqueue_style( 'extend',plugin_dir_url( __FILE__ ).'css/extend-'.$style.'.css');
     wp_enqueue_style( 'smartcrm',plugin_dir_url( __FILE__ ).'css/smartcrm.css');
     wp_enqueue_script( 'kendoc', plugin_dir_url( __FILE__ ).'js/kendo.custom.min.js',array('jquery'),"2.2",false );
-    //wp_enqueue_script( 'kendoc', 'https://kendo.cdn.telerik.com/2017.2.621/js/kendo.all.min.js',array('jquery'),"2.2",false );
     wp_enqueue_script( 'mainjs', plugin_dir_url( __FILE__ ).'js/adminScript.min.js',array('jquery'),"1.1",true );
     wp_enqueue_script( 'signature',  plugin_dir_url( __FILE__ ).'js/signature.js',array('jquery'),"1.3",false );
     wp_enqueue_script( 'culture',  plugin_dir_url( __FILE__ ).'js/cultures/kendo.culture.'.WPsCRM_CULTURE.'.min.js',array(), "1.4",false );
@@ -127,6 +126,7 @@ function WPsCRM_add_smartcrm_scripts(){
     wp_enqueue_script( 'pako',  plugin_dir_url( __FILE__ ).'js/pako/pako.min.js', array('jquery'),"1.4",false );
 	wp_enqueue_script('underscore',plugin_dir_url( __FILE__ ).'js/underscore.js',array('jquery'),false);
     wp_enqueue_media();
+    wp_enqueue_script( 'autonumeric', 'https://cdn.jsdelivr.net/npm/autonumeric@4.10.5/dist/autoNumeric.min.js', array('jquery'), null, true );
 }
 if ( isset( $_GET['page'] ) &&  ( $_GET['page'] == 'smart-crm'  || $_GET['page'] == 'smartcrm_custom-fields' || $_GET['page'] == 'smartcrm_subscription-rules' || $_GET['page'] == 'smartcrm_settings') )
 	add_action('admin_enqueue_scripts','WPsCRM_add_smartcrm_scripts',99);

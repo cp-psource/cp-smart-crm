@@ -59,7 +59,12 @@ $document->master_data = function() {
       array(__('Stadt', 'cpsmartcrm') => html_entity_decode($options['business_town']), 'show' => 0, 'show_label' => 0),
       array(__('PLZ', 'cpsmartcrm') => html_entity_decode($options['business_zip']), 'show' => 0, 'show_label' => 0),
 			array(__('Staat/Prov', 'wp-smart-crm-invoices-pro') => $prov, 'show' => 0, 'show_label' => 0),
-      array(__('MwSt.-Code', 'cpsmartcrm') => html_entity_decode($options['business_iva']), 'show' => 1, 'show_label' => 1),
+      array(
+  'label' => __('Umsatzsteuer-ID', 'cpsmartcrm'),
+  'value' => cpsmartcrm_get_umsatzsteuer_info($options),
+  'show' => 1,
+  'show_label' => 1,
+),
       array(__('Steuernummer', 'cpsmartcrm') => html_entity_decode($options['business_cf']), 'show' => 1, 'show_label' => 1),
       array(__('Telefon', 'cpsmartcrm') => html_entity_decode($options['business_phone']), 'show' => isset($options['show_phone']) ? $options['show_phone'] : 0, 'show_label' => 1),
       array(__('Fax', 'cpsmartcrm') => html_entity_decode($options['business_fax']), 'show' => isset($options['show_fax']) ? $options['show_fax'] : 0, 'show_label' => 1),
@@ -2534,11 +2539,11 @@ function WPsCRM_check_client_one() {
   $table = WPsCRM_TABLE . "clienti";
   if (empty($clients)) {
     $wpdb->insert(
-            $table, array('FK_aziende' => "$ID_azienda", 'nome' => $options['business_name'], 'cognome' => '', 'ragione_sociale' => $options['business_name'], 'indirizzo' => $options['business_address'], 'cap' => $options['business_zip'], 'localita' => $options['business_town'], 'provincia' => '', 'telefono1' => $options['business_phone'], 'telefono2' => '', 'fax' => $options['business_fax'], 'email' => $options['business_email'], 'sitoweb' => '', 'skype' => '', 'p_iva' => $options['business_iva'], 'cod_fis' => $options['business_cf'], 'annotazioni' => '', 'data_inserimento' => $data_inserimento, 'provenienza' => '', 'agente' => ''), array('%d', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%d')
+            $table, array('FK_aziende' => "$ID_azienda", 'nome' => $options['business_name'], 'cognome' => '', 'ragione_sociale' => $options['business_name'], 'indirizzo' => $options['business_address'], 'cap' => $options['business_zip'], 'localita' => $options['business_town'], 'provincia' => '', 'telefono1' => $options['business_phone'], 'telefono2' => '', 'fax' => $options['business_fax'], 'email' => $options['business_email'], 'sitoweb' => '', 'skype' => '', 'p_iva' => cpsmartcrm_get_umsatzsteuer_info($options), 'cod_fis' => $options['business_cf'], 'annotazioni' => '', 'data_inserimento' => $data_inserimento, 'provenienza' => '', 'agente' => ''), array('%d', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%d')
     );
   } else {
     $wpdb->update(
-            $table, array('FK_aziende' => "$ID_azienda", 'nome' => $options['business_name'], 'cognome' => '', 'ragione_sociale' => $options['business_name'], 'indirizzo' => $options['business_address'], 'cap' => $options['business_zip'], 'localita' => $options['business_town'], 'provincia' => '', 'telefono1' => $options['business_phone'], 'telefono2' => '', 'fax' => $options['business_fax'], 'email' => $options['business_email'], 'sitoweb' => '', 'skype' => '', 'p_iva' => $options['business_iva'], 'cod_fis' => $options['business_cf'], 'annotazioni' => '', 'data_modifica' => $data_modifica, 'provenienza' => '', 'agente' => ''), array('ID_clienti' => 1), array('%d', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%d')
+            $table, array('FK_aziende' => "$ID_azienda", 'nome' => $options['business_name'], 'cognome' => '', 'ragione_sociale' => $options['business_name'], 'indirizzo' => $options['business_address'], 'cap' => $options['business_zip'], 'localita' => $options['business_town'], 'provincia' => '', 'telefono1' => $options['business_phone'], 'telefono2' => '', 'fax' => $options['business_fax'], 'email' => $options['business_email'], 'sitoweb' => '', 'skype' => '', 'p_iva' => cpsmartcrm_get_umsatzsteuer_info($options), 'cod_fis' => $options['business_cf'], 'annotazioni' => '', 'data_modifica' => $data_modifica, 'provenienza' => '', 'agente' => ''), array('ID_clienti' => 1), array('%d', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%d')
     );
   }
   $client_one = $wpdb->insert_id;
@@ -3312,7 +3317,7 @@ function WPsCRM_generate_document_HTML($ID) {
 				<td style="width:40%;text-align:right">' . $document_dear . ' <b>' . $cliente . '</b><br />
 				' . $indirizzo . '<br />' . $cap . '  ' . $localita . '     ( ' . $provincia . ' )';
     if ($p_iva)
-      $subheader .= '<br />' . __('MwSt.-Code', 'cpsmartcrm') . ': ' . $p_iva;
+      $subheader .= '<br />' . __('Umsatzsteuer-ID', 'cpsmartcrm') . ': ' . $p_iva;
     if ($cod_fis)
       $subheader .= '<br />' . __('Steuernummer', 'cpsmartcrm') . ': ' . $cod_fis;
     if ($contatto)
@@ -3327,7 +3332,7 @@ function WPsCRM_generate_document_HTML($ID) {
 				<td style="width:50%;text-align:left">' . $document_dear . ' <b>' . $cliente . '</b><br />
 				' . $indirizzo . '<br />' . $cap . '  ' . $localita . '     ( ' . $provincia . ' )';
     if ($p_iva)
-      $subheader .= '<br />' . __('MwSt.-Code', 'cpsmartcrm') . ': ' . $p_iva;
+      $subheader .= '<br />' . __('Umsatzsteuer-ID', 'cpsmartcrm') . ': ' . $p_iva;
     if ($cod_fis)
       $subheader .= '<br />' . __('Steuernummer', 'cpsmartcrm') . ': ' . $cod_fis;
     if ($contatto)
@@ -3639,7 +3644,7 @@ function _WPsCRM_generate_document_HTML($ID) {
 				<td style="width:40%; ">' . $document_dear . ' <b>' . $cliente . '</b><br />
 				' . $indirizzo . '<br />' . $cap . '  ' . $localita . '     ( ' . $provincia . ' )';
   if ($p_iva)
-    $subheader .= '<br />' . __('MwSt.-Code', 'cpsmartcrm') . ': ' . $p_iva;
+    $subheader .= '<br />' . __('Umsatzsteuer-ID', 'cpsmartcrm') . ': ' . $p_iva;
   if ($cod_fis)
     $subheader .= '<br />' . __('Steuernummer', 'cpsmartcrm') . ': ' . $cod_fis;
   if ($contatto)
@@ -4328,16 +4333,22 @@ function WPsCRM_numfmt($num){
 }
 
 function WPsCRM_number_format_locale($number,$decimals=2) {
-    setlocale(LC_NUMERIC, get_locale());
-    $locale = localeconv();
-   // var_dump($locale);
-    return number_format($number,$decimals,
-               $locale['decimal_point'],
-               trim($locale['thousands_sep']));
-    //return $number;
- }
+  setlocale(LC_NUMERIC, get_locale());
+  $locale = localeconv();
+  // var_dump($locale);
+  return number_format($number,$decimals,
+  $locale['decimal_point'],
+  trim($locale['thousands_sep']));
+  //return $number;
+}
  
- 
+function cpsmartcrm_get_umsatzsteuer_info($options) {
+    if (!empty($options['crm_kleinunternehmer'])) {
+        return __('Kleinunternehmer nach §19 UStG (keine Umsatzsteuer-ID)', 'wp-smart-crm-invoices-pro');
+    } else {
+        return !empty($options['business_iva']) ? esc_html($options['business_iva']) : '<span style="color:red;">*</span>';
+    }
+}
 /**
  * Section containing the pluggable functions of WP SmartCRM
  * 

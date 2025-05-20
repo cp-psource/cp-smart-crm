@@ -77,7 +77,7 @@
                       console.log(response);
                       if (opener == "clienti") {//ricarico la grid solo se aperto da form clienti
                           setTimeout(function () {
-                              $("#tabstrip").kendoTabStrip().data("kendoTabStrip").activateTab($('#tab3'));
+                              $("#tabstrip").kendoTabStrip().data("kendoTabStrip").activateTab(jQuery('#tab3'));
                               $.ajax({
                                   url: ajaxurl,
                                   data: {

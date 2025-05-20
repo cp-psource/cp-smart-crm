@@ -132,7 +132,7 @@ if ($ID)
 $subheader  ='<section class="WPsCRM_subheader">';
 $subheader .='<div class="col-md-6 WPsCRM_customerData">'.$document_dear.' <b>'.$cliente.'</b><br>'.$indirizzo.'<br>'.$cap.'  '.$localita.'     ( '.$provincia.' )';
 if ($p_iva)
-	$subheader.='<br>'.__('MwSt.-Code','cpsmartcrm').': '.$p_iva;
+	$subheader.='<br>'.__('Umsatzsteuer-ID','cpsmartcrm').': '.$p_iva;
 if ($cod_fis)
 	$subheader.='<br>'.__('Steuernummer','cpsmartcrm').': '.$cod_fis;
 if ($riferimento)

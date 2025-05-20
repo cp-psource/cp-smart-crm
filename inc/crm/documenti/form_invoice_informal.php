@@ -327,7 +327,7 @@ else
                         <input type="text" class="form-control _editable" name="provincia" id="provincia" maxlength='5' value="<?php if (isset($provincia)) echo $provincia?>" <?php echo $disabled?> data-value="<?php if (isset($provincia)) echo $provincia?>">
 
                     </div>
-                    <label class="col-sm-1 control-label"><?php _e('MwSt.-Code','cpsmartcrm')?></label>
+                    <label class="col-sm-1 control-label"><?php _e('Umsatzsteuer-ID','cpsmartcrm')?></label>
                     <div class="col-md-2">
                         <input type="text" class="form-control _editable" name="p_iva" id="p_iva" maxlength='5' value="<?php if (isset($p_iva)) echo $p_iva?>" <?php echo $disabled?> data-value="<?php if (isset($p_iva)) echo $p_iva?>">
                     </div>

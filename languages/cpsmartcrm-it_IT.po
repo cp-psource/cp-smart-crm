@@ -1401,7 +1401,7 @@ msgstr "Fattura informale"
 #: inc/functions.php:3301 inc/functions.php:3316 inc/functions.php:3628
 #: inc/options.php:294
 #, fuzzy
-msgid "MwSt.-Code"
+msgid "Umsatzsteuer-ID"
 msgstr "Codice IVA"
 
 #: inc/crm/documenti/document_print.php:137 inc/functions.php:52

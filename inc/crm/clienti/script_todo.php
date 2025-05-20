@@ -67,7 +67,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 			value: new Date(),
 			format: $formatTime
 		});
-		var t_users = $('#t_remindToUser').kendoMultiSelect({
+		var t_users = jQuery('#t_remindToUser').kendoMultiSelect({
 			placeholder: "<?php _e( 'Benutzer wählen', 'cpsmartcrm'); ?>...",
 			dataTextField: "display_name",
 			dataValueField: "ID",
@@ -75,15 +75,15 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 			dataSource: t_userSource,
 			change: function (e) {
 				var t_selectedUsers = (this.value()).clean("");
-				$('#t_selectedUsers').val(t_selectedUsers)
+				jQuery('#t_selectedUsers').val(t_selectedUsers)
 			},
 			dataBound: function (e) {
 				var t_selectedUsers = (this.value()).clean("");
-				$('#t_selectedUsers').val(t_selectedUsers)
+				jQuery('#t_selectedUsers').val(t_selectedUsers)
 			}
 		}).data("kendoMultiSelect")
 
-		$('#t_remindToGroup').kendoMultiSelect({
+		jQuery('#t_remindToGroup').kendoMultiSelect({
 			placeholder: "<?php _e( 'Wähle Gruppe', 'cpsmartcrm'); ?>...",
 			dataTextField: "name",
 			dataValueField: "role",
@@ -91,11 +91,11 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 			dataSource: t_roleSource,
 			change: function (e) {
 				var t_selectedGroups = (this.value()).clean("");
-				$('#t_selectedGroups').val(t_selectedGroups)
+				jQuery('#t_selectedGroups').val(t_selectedGroups)
 			},
 			dataBound: function (e) {
 				var t_selectedGroups = (this.value()).clean("");
-				$('#t_selectedGroups').val(t_selectedGroups)
+				jQuery('#t_selectedGroups').val(t_selectedGroups)
 			}
 		});
 
@@ -120,24 +120,24 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 			days = $("#t_ruleStep").val();
 			var s = "[";
 			s += '{"ruleStep":"' + days + '" ,"remindToCustomer":';
-			if ($('#t_remindToCustomer').prop('checked'))
+			if (jQuery('#t_remindToCustomer').prop('checked'))
 				s += '"on"';
 			else
 				s += '""';
 			s += ',"selectedUsers":"' + users + '"';
 			s += ',"selectedGroups":"' + groups + '"';
 			s += ',"userDashboard":';
-			if ($('#t_userDashboard').prop('checked'))
+			if (jQuery('#t_userDashboard').prop('checked'))
 				s += '"on"';
 			else
 				s += '""';
 			s += ',"groupDashboard":';
-			if ($('#t_groupDashboard').prop('checked'))
+			if (jQuery('#t_groupDashboard').prop('checked'))
 				s += '"on"';
 			else
 				s += '""';
 			s += ',"mailToRecipients":';
-			if ($('#t_mailToRecipients').prop('checked'))
+			if (jQuery('#t_mailToRecipients').prop('checked'))
 				s += '"on"';
 			else
 				s += '""';

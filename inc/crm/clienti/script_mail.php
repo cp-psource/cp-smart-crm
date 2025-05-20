@@ -112,7 +112,7 @@ function draw_list(id_cliente) {
 			},
 			dataBound: function (e) {
 				//var m_selectedUsers = (this.value()).clean("");
-				//$('#t_selectedUsers').val(m_selectedUsers)
+				//jQuery('#t_selectedUsers').val(m_selectedUsers)
 			}
 		}).data("kendoMultiSelect")
 

@@ -134,7 +134,7 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
 
 		var tabToActivate = $("#tab1");
 		<?php if(isset($_GET['tab'])){ ?>
-		tabToActivate=$('#tab<?php echo $_GET['tab']?>') ;
+		tabToActivate=jQuery('#tab<?php echo $_GET['tab']?>') ;
 		<?php } ?>
 		$("#tabstrip").kendoTabStrip().data("kendoTabStrip").activateTab(tabToActivate);
 

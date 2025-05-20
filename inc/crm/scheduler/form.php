@@ -50,7 +50,7 @@ switch ($tipo_agenda)
 				}
 			}
 		});
-		$('#fk_clienti').select2({
+		jQuery('#fk_clienti').select2({
 			optionLabel : "<?php _e('Wähle Kunde aus','cpsmartcrm') ?>...",
 			dataSource: _clients,
 			dataTextField: "ragione_sociale",

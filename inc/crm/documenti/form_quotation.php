@@ -516,7 +516,7 @@ if (isset($_GET["id_invoice"]) && ($ID = $_GET["id_invoice"])) {
         }
     });
 
-    var clienti = $('#fk_clienti').select2({
+    var clienti = jQuery('#fk_clienti').select2({
         placeholder: "Select Client...",
         dataTextField: "ragione_sociale",
         dataValueField: "ID_clienti",
@@ -554,10 +554,10 @@ if (isset($_GET["id_invoice"]) && ($ID = $_GET["id_invoice"])) {
         width: 300
     }).data('kendoDropDownList');
 
-    $('#fk_clienti').data('kendoDropDownList').value([<?php if (isset($fk_clienti)) echo $fk_clienti ?>]);
+    jQuery('#fk_clienti').data('kendoDropDownList').value([<?php if (isset($fk_clienti)) echo $fk_clienti ?>]);
   <?php if (isset($_GET['cliente'])) { ?>
-      $('#fk_clienti').data('kendoDropDownList').value(<?php echo $_GET['cliente'] ?>)
-      $('#fk_clienti').data('kendoDropDownList').trigger("change");
+      jQuery('#fk_clienti').data('kendoDropDownList').value(<?php echo $_GET['cliente'] ?>)
+      jQuery('#fk_clienti').data('kendoDropDownList').trigger("change");
 
   <?php } ?>
     var userSource = new kendo.data.DataSource({

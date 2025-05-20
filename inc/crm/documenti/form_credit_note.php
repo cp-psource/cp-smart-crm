@@ -778,7 +778,7 @@ else
       }
   });
 
-  var clienti=$('#fk_clienti').select2({
+  var clienti=jQuery('#fk_clienti').select2({
       placeholder: "<?php _e('Wähle Kunde aus','cpsmartcrm')?>...",
       dataTextField: "ragione_sociale",
       dataValueField: "ID_clienti",
@@ -815,11 +815,11 @@ else
       },
   }).data('kendoDropDownList');
 
-    $('#fk_clienti').data('kendoDropDownList').value([<?php echo $fk_clienti ?>]);
+    jQuery('#fk_clienti').data('kendoDropDownList').value([<?php echo $fk_clienti ?>]);
     //t_users.value([<?php echo wp_get_current_user()->ID ?>]);
 	<?php if ( isset($_GET['cliente'] ) ) { ?>
-		$('#fk_clienti').data('kendoDropDownList').value(<?php echo $_GET['cliente']?>)
-		$('#fk_clienti').data('kendoDropDownList').trigger("change");
+		jQuery('#fk_clienti').data('kendoDropDownList').value(<?php echo $_GET['cliente']?>)
+		jQuery('#fk_clienti').data('kendoDropDownList').trigger("change");
 
 		<?php } ?>
     var userSource = new kendo.data.DataSource({

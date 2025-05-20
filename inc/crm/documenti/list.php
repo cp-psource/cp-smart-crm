@@ -190,7 +190,7 @@ if ( in_array( 'wp-smart-crm-accountability/wp-smart-crm-accountability.php', ap
 				}
 			}
 		});
-		$('#selectAgent_1').kendoDropDownList({
+		$('#selectAgent_1').select2({
 			optionLabel: "<?php _e('Wähle Agent aus','cpsmartcrm')?>...",
 			dataTextField: "display_name",
 			dataValueField: "ID",
@@ -230,7 +230,7 @@ if ( in_array( 'wp-smart-crm-accountability/wp-smart-crm-accountability.php', ap
 				]);
 			}
 		});
-		$('#selectAgent_2').kendoDropDownList({
+		$('#selectAgent_2').select2({
 			optionLabel: "<?php _e('Wähle Agent aus','cpsmartcrm')?>...",
 			dataTextField: "display_name",
 			dataValueField: "ID",

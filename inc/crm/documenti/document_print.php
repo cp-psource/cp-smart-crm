@@ -476,7 +476,7 @@ $serverName=site_url();
 
       })
 
-        $("#paper").kendoDropDownList({
+        $("#paper").select2({
           change: function() {
             $(".pdf-page")
               .removeClass("size-a4")

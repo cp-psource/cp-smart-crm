@@ -274,7 +274,7 @@ else
 
 						} 
 						?>
-                        <select id="fk_clienti" name="fk_clienti"></select>
+                        <select id="fk_clienti" name="fk_clienti" data-parsley-hasclient></select>
 						<input type="hidden" name="hidden_fk_clienti" id="hidden_fk_clienti" value="<?php echo $fk_clienti?>">
 
                     </div>
@@ -684,7 +684,7 @@ else
 
 		}
 	<?php if ($ID){ ?>
-		$("#fk_clienti").kendoDropDownList({
+		$("#fk_clienti").select2({
 			enable: false
 		});
 		<?php } ?>
@@ -778,7 +778,7 @@ else
       }
   });
 
-  var clienti=$('#fk_clienti').kendoDropDownList({
+  var clienti=$('#fk_clienti').select2({
       placeholder: "<?php _e('Wähle Kunde aus','cpsmartcrm')?>...",
       dataTextField: "ragione_sociale",
       dataValueField: "ID_clienti",

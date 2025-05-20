@@ -336,62 +336,40 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
 				return "ok";
             else
 				return "ko";
-            //if (err != '') {
-            //	//jQuery('#' + el).closest('.form-row').removeClass('woocommerce-validated').addClass('woocommerce-invalid')
-            //	//return "VALORE ERRATO\n\n" + err + "\nCorreggi e riprova!"
-            //    //alert("VALORE ERRATO\n\n" + err + "\nCorreggi e riprova!");
-            //    return;
-            //}
-            //else {
-            //    //jQuery('#' + el).closest('.form-row').removeClass('woocommerce-invalid').addClass('woocommerce-validated')
-            //    return true;
-            //}
         }
 		function save(e) {
 		    var cf = jQuery("#cod_fis").val();
     		var customerValidator = jQuery("#form_insert").kendoValidator({
     			rules: {
     				hasCountry: function (input) {
-    					var country = jQuery("#nazione").data("kendoDropDownList").value();
+						var country = jQuery("#nazione").val(); // Select2 liefert den Wert direkt
 						if (input.is("[name=nazione]")) {
-    						if (country == "0" || country == null) {
-    							jQuery.playSound("<?php echo WPsCRM_URL?>inc/audio/double-alert-2");
-    							return false;
-    						}
-    					}
-    					return true;
-    				},
-    				hasFiscalCode: function (input) {
-    					var country = jQuery("#nazione").data("kendoDropDownList").value();
-    					if (input.is("[name=cod_fis]")) {
-
-    						if (jQuery('input[name="cod_fis"]').val() == "" && jQuery('input[name="p_iva"]').val() == "" && jQuery("#fatturabile_1").is(":checked")) {
-								jQuery.playSound("<?php echo WPsCRM_URL?>inc/audio/double-alert-2")
-    							return false;
-    						}
-    						if (country == "DE" && jQuery("#fatturabile_1").is(":checked"))
-    						{
-    							console.log(WPsCRM_verifica(jQuery('input[name="cod_fis"]').val(), 'cod_fis'));
-    							if (WPsCRM_verifica(jQuery('input[name="cod_fis"]').val(), 'cod_fis') != "ok") {
-    								jQuery.playSound("<?php echo WPsCRM_URL?>inc/audio/double-alert-2")
-    								return false;
-    							}
+							if (country == "0" || country == null) {
+								jQuery.playSound("<?php echo WPsCRM_URL?>inc/audio/double-alert-2");
+								return false;
 							}
-    					}
-    					//if (input.is("[name=p_iva]")) {
-    					//	if (jQuery('input[name="p_iva"]').val() == "" && jQuery('input[name="cod_fis"]').val() == "" && jQuery("#fatturabile_1").is(":checked")) {
-						////		jQuery.playSound("<?php echo WPsCRM_URL?>inc/audio/double-alert-2")
-    					//		return false;
-    					//	}
-    					//	if (country == "DE") {
-    					//		if (WPsCRM_verifica(jQuery('input[name="p_iva"]').val(), 'p_iva') != "ok") {
-    					////			jQuery.playSound("<?php echo WPsCRM_URL?>inc/audio/double-alert-2")
-    					//			return false;
-    					//		}
-    					//	}
-    					//}
-    					return true;
-    				},
+						}
+						return true;
+					},
+					hasFiscalCode: function (input) {
+						var country = jQuery("#nazione").val(); // Select2 liefert den Wert direkt
+						if (input.is("[name=cod_fis]")) {
+
+							if (jQuery('input[name="cod_fis"]').val() == "" && jQuery('input[name="p_iva"]').val() == "" && jQuery("#fatturabile_1").is(":checked")) {
+								jQuery.playSound("<?php echo WPsCRM_URL?>inc/audio/double-alert-2")
+								return false;
+							}
+							if (country == "DE" && jQuery("#fatturabile_1").is(":checked"))
+							{
+								console.log(WPsCRM_verifica(jQuery('input[name="cod_fis"]').val(), 'cod_fis'));
+								if (WPsCRM_verifica(jQuery('input[name="cod_fis"]').val(), 'cod_fis') != "ok") {
+									jQuery.playSound("<?php echo WPsCRM_URL?>inc/audio/double-alert-2")
+									return false;
+								}
+							}
+						}
+						return true;
+					},
     				hasName: function (input) {
     					if (input.is("[name=nome]")) {
     						if (jQuery('input[name="nome"]').val() == "" && jQuery('input[name="ragione_sociale"]').val() == "") {
@@ -484,7 +462,7 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
     				hasName: "<?php _e('Du solltest den Vornamen oder den Firmennamen des Kunden eingeben.','cpsmartcrm')?>",
     				hasLastName: "<?php _e('Du solltest den Nachnamen oder den Firmennamen des Kunden eingeben.','cpsmartcrm')?>",
     				hasBusinessName: "<?php _e('Du solltest den Firmennamen oder den Vornamen und Nachnamen des Kunden eingeben','cpsmartcrm')?>",
-    				hasVAT: "<?php _e('Wenn Du das Feld "Firmenname" verwendest, solltest Du die Umsatzsteuer-Identifikationsnummer eingeben','cpsmartcrm')?>",
+    				hasVAT: "<?php _e('Wenn Du das Feld Firmenname verwendest, solltest Du die Umsatzsteuer-Identifikationsnummer eingeben','cpsmartcrm')?>",
     				isUser:"<?php _e('Um einen neuen Benutzer zu erstellen, musst Du E-Mail, Benutzername und Passwort festlegen','cpsmartcrm')?>",
     				isFiscallyDefined:"<?php _e('Bitte privat oder geschäftlich ankreuzen','cpsmartcrm')?>"
     			}
@@ -867,7 +845,7 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
                         <input type="text" name="password" size="20" maxlength='50' value="" class="form-control">
                     </div>
                 </div>-->
-                <?//}?>
+                <?php //} ?>
             </div>
         </div>
         <!--END TAB 1 -->
@@ -1086,9 +1064,9 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
                 ($(this).offset().top <= $(window).scrollTop() + $(window).height() * offset && $(this).find('.cd-timeline-img').hasClass('is-hidden')) && $(this).find('.cd-timeline-img, .cd-timeline-content').removeClass('is-hidden').addClass('bounce-in');
             });
         }
-//validator for modal forms (appointment, todo)
+		//validator for modal forms (appointment, todo)
 
-//update delle activity da modale
+		//update delle activity da modale
         $(document).on('click', '#save_activity_from_modal', function () {
             var id = $(this).data('id');
             $('.modal_loader').show();
@@ -1175,74 +1153,138 @@ include (WPsCRM_DIR."/inc/crm/clienti/script_attivita.php" )
     	})
 
 
-        var _users = new kendo.data.DataSource({
+		jQuery(document).ready(function($){
 
-            transport: {
-                read: function (options) {
-                    $.ajax({
-                        url: ajaxurl,
-                        data: {
-                        	'action': 'WPsCRM_get_CRM_users_customer'
-                           // 'role': 'CRM_agent',
-                           // 'include_admin':true
-                        },
-                        success: function (result) {
-                            if($("#selectAgent").length)
-                                $("#selectAgent").data("kendoDropDownList").dataSource.data(result);
+			// AGENT (Select2)
+			if ($("#selectAgent").length) {
+				$.ajax({
+					url: ajaxurl,
+					data: {
+						'action': 'WPsCRM_get_CRM_users_customer'
+					},
+					success: function (result) {
+						var data = [];
+						if (Array.isArray(result)) {
+							data = result.map(function(user) {
+								return { id: user.ID, text: user.display_name };
+							});
+						}
+						$("#selectAgent").select2({
+							data: data,
+							placeholder: "<?php _e('Select Agent...','cpsmartcrm') ?>",
+							width: '54%'
+						});
+						var agente = '<?php if(isset($agente)) echo $agente?>';
+						if (agente > 0) {
+							$("#selectAgent").val(agente).trigger('change');
+						}
+					},
+					error: function (errorThrown) {
+						console.log(errorThrown);
+					}
+				});
+			}
 
-                        },
-                        error: function (errorThrown) {
-                            console.log(errorThrown);
-                        }
-                    })
-                }
-            }
-        });
-        $('#selectAgent').kendoDropDownList({
-			optionLabel: "Select Agent...",
-            dataTextField: "display_name",
-            dataValueField: "ID",
-            dataSource: _users,
-        });
-        agente='<?php if(isset($agente)) echo $agente?>';
-        if (agente>0)
-            $("#selectAgent").data('kendoDropDownList').value(agente);
-        $('#categoria').kendoDropDownList({});
-        $('#provenienza').kendoDropDownList({});
+			// LAND (Select2)
+			$('#nazione').select2({
+				placeholder: "<?php _e('Land auswählen','cpsmartcrm') ?>...",
+				width: '100%'
+			});
+			// Felder aktivieren/deaktivieren je nach Land
+			var country = $('#nazione').val();
+			if (country != "0") {
+				$('._toCheck').attr({ 'readonly': false, 'title': '' });
+			} else {
+				$('._toCheck').attr({ 'readonly': 'readonly', 'title': '<?php _e('Wähle zuerst das Land aus','cpsmartcrm') ?>...', 'alt': '<?php _e('Wähle zuerst das Land aus','cpsmartcrm') ?>...' });
+			}
+			$('#nazione').on('change', function () {
+				if ($(this).val() != "0") {
+					$('._toCheck').attr({ 'readonly': false, 'title': '' });
+				} else {
+					$('._toCheck').attr({ 'readonly': 'readonly', 'title': '<?php _e('Wähle zuerst das Land aus','cpsmartcrm') ?>...', 'alt': '<?php _e('Wähle zuerst das Land aus','cpsmartcrm') ?>...' });
+				}
+			});
 
-    	$('#nazione').kendoDropDownList({
-    		placeholder: "<?php _e('Land auswählen','cpsmartcrm') ?>...",
-    	});
-    	var country = jQuery("#nazione").data("kendoDropDownList").value();
-    	if (country != "0") {
-    		$('._toCheck').attr({ 'readonly': false, 'title': '' })
-    	}
-    	else {
-    		$('._toCheck').attr({ 'readonly': 'readonly' , 'title': '<?php _e('Wähle zuerst das Land aus','cpsmartcrm') ?>...' , 'alt': '<?php _e('Wähle zuerst das Land aus','cpsmartcrm') ?>...' })
-    	}
-    	$('#nazione').on('change', function () {
-    		if ($(this).val() != "0") {
-    			$('._toCheck').attr({ 'readonly': false , 'title':'' })
-    		}
-    		else {
-    			$('._toCheck').attr({ 'readonly': 'readonly' , 'title': '<?php _e('Wähle zuerst das Land aus','cpsmartcrm') ?>...' , 'alt': '<?php _e('Wähle zuerst das Land aus','cpsmartcrm') ?>...' })
-    		}
-    	})
-    	setTimeout(function () {
-    		var divList = $(".cd-timeline-block");
-    		divList.sort(function (a, b) {
-    			var date1 = $(a).data("date");
-    			date1 = date1.split('-');
-    			date1 = new Date(date1[0], date1[1] - 1, date1[2]);
-    			var date2 = $(b).data("date");
-    			date2 = date2.split('-');
-    			date2 = new Date(date2[0], date2[1] - 1, date2[2]);
-    			return date1 < date2;
-    		}).appendTo('#_timeline');
-    		$('#_timeline').fadeIn('fast')
-    	}, 50)
+			// KATEGORIE (Select2 als Mehrfachauswahl)
+			<?php
+				echo "var cats = [];";
+				if( ! empty($cats) ){
+					echo "cats = [";
+					foreach($cats as $cat)
+						echo '{id:"'.$cat->term_id.'",text:"'.$cat->name.'"},';
+					echo "];";
+				}
+			?>
+			$('#customerCategory').select2({
+				data: cats,
+				placeholder: "<?php _e('Wählen','cpsmartcrm')?>",
+				width: '100%',
+				multiple: true
+			});
+			// Vorbelegung Kategorie
+			<?php if(isset($riga) && $riga["categoria"]): ?>
+				$('#customerCategory').val([<?php echo $riga["categoria"]?>]).trigger('change');
+			<?php endif; ?>
 
-});
+			// PROVENIENZ (Select2 als Mehrfachauswahl)
+			<?php
+				echo "var provs = [];";
+				if( ! empty($provs) ){
+					echo "provs = [";
+					foreach($provs as $prov)
+						echo '{id:"'.$prov->term_id.'",text:"'.$prov->name.'"},';
+					echo "];";
+				}
+			?>
+			$('#customerComesfrom').select2({
+				data: provs,
+				placeholder: "<?php _e('Wählen','cpsmartcrm')?>",
+				width: '100%',
+				multiple: true
+			});
+			// Vorbelegung Provenienz
+			<?php if(isset($riga) && $riga["provenienza"]): ?>
+				$('#customerComesfrom').val([<?php echo $riga["provenienza"]?>]).trigger('change');
+			<?php endif; ?>
+
+			// INTERESSEN (Select2 als Mehrfachauswahl)
+			<?php
+				echo "var ints = [];";
+				if( ! empty($ints) ){
+					echo "ints = [";
+					foreach($ints as $int)
+						echo '{id:"'.$int->term_id.'",text:"'.$int->name.'"},';
+					echo "];";
+				}
+			?>
+			$('#customerInterests').select2({
+				data: ints,
+				placeholder: "<?php _e('Wählen','cpsmartcrm')?>",
+				width: '100%',
+				multiple: true
+			});
+			// Vorbelegung Interessen
+			<?php if(isset($riga) && $riga["interessi"]): ?>
+				$('#customerInterests').val([<?php echo $riga["interessi"]?>]).trigger('change');
+			<?php endif; ?>
+
+			// Timeline-Sortierung
+			setTimeout(function () {
+				var divList = $(".cd-timeline-block");
+				divList.sort(function (a, b) {
+					var date1 = $(a).data("date");
+					date1 = date1.split('-');
+					date1 = new Date(date1[0], date1[1] - 1, date1[2]);
+					var date2 = $(b).data("date");
+					date2 = date2.split('-');
+					date2 = new Date(date2[0], date2[1] - 1, date2[2]);
+					return date1 < date2;
+				}).appendTo('#_timeline');
+				$('#_timeline').fadeIn('fast')
+			}, 50);
+
+		});
+	});
 
 </script>
 <style>

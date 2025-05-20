@@ -111,7 +111,7 @@ do_action('WPsCRM_stats_grid_toolbar');
 				}
 			}
 		});
-		$('#selectAgent_1').kendoDropDownList({
+		$('#selectAgent_1').select2({
 			//placeholder: "Select User...",
 			optionLabel: "<?php _e('Wählen...','cpsmartcrm') ?>",
 			dataTextField: "display_name",
@@ -136,7 +136,7 @@ do_action('WPsCRM_stats_grid_toolbar');
 				ds.filter(filter);
 			}
 		});
-		$('#selectAgent_2').kendoDropDownList({
+		$('#selectAgent_2').select2({
 			//placeholder: "Select User...",
 			optionLabel: "<?php _e('Wählen...','cpsmartcrm') ?>",
 			//valuePrimitive: true,

@@ -50,7 +50,7 @@ switch ($tipo_agenda)
 				}
 			}
 		});
-		$('#fk_clienti').kendoDropDownList({
+		$('#fk_clienti').select2({
 			optionLabel : "<?php _e('Wähle Kunde aus','cpsmartcrm') ?>...",
 			dataSource: _clients,
 			dataTextField: "ragione_sociale",
@@ -360,17 +360,17 @@ switch ($tipo_agenda)
                 <label class="col-sm-2 control-label"><?php _e('Kunde','cpsmartcrm')?> *</label>
                 
                 <div class="col-md-4">
-	                  <select id="fk_clienti" name="fk_clienti" class="form-control" ></select>
+	                  <select id="fk_clienti" name="fk_clienti" class="form-control" data-parsley-hasclients></select>
                 </div>                   
 
             </div>
             <?php if ($tipo_agenda==2) {?>
             <div class="row form-group">
                 <label class="col-sm-4 control-label"><?php _e('Start', 'cpsmartcrm'); ?>
-                    <input name="data_scadenza_inizio" id='data_scadenza_inizio'  value="<?php echo $data_scadenza?>" class="" required validationMessage="<?php _e('Du solltest ein Startdatum/eine Startzeit für diesen Termin auswählen','cpsmartcrm')?>">
+                    <input name="data_scadenza_inizio" id='data_scadenza_inizio'  value="<?php echo $data_scadenza?>" class="" required data-parsley-hasexpiration validationMessage="<?php _e('Du solltest ein Startdatum/eine Startzeit für diesen Termin auswählen','cpsmartcrm')?>">
                 </label> 
                 <label class="col-sm-4 control-label"><?php _e('Ende', 'cpsmartcrm'); ?>
-                    <input name="data_scadenza_fine" id='data_scadenza_fine'  value="<?php echo $data_scadenza?>" class="" required validationMessage="<?php _e('Du solltest ein Enddatum/eine Endzeit für diesen Termin auswählen','cpsmartcrm')?>">
+                    <input name="data_scadenza_fine" id='data_scadenza_fine'  value="<?php echo $data_scadenza?>" class="" required data-parsley-hasexpiration validationMessage="<?php _e('Du solltest ein Enddatum/eine Endzeit für diesen Termin auswählen','cpsmartcrm')?>">
                 </label>
             </div>
             <?php } ?>
@@ -378,7 +378,7 @@ switch ($tipo_agenda)
             <div class="row form-group">
                 <label class="col-sm-2 control-label"><?php _e('TODO Datum','cpsmartcrm')?> *</label>
                 <div class="col-sm-4">
-                    <input type="text" name="data_scadenza_inizio" id='data_scadenza_inizio' value="<?php echo $data_scadenza?>"  required validationMessage="<?php _e('Du solltest ein Ablaufdatum für dieses Ereignis auswählen','cpsmartcrm')?>">
+                    <input type="text" name="data_scadenza_inizio" id='data_scadenza_inizio' value="<?php echo $data_scadenza?>"  required data-parsley-hasexpiration validationMessage="<?php _e('Du solltest ein Ablaufdatum für dieses Ereignis auswählen','cpsmartcrm')?>">
                 </div>
             </div>
             <?php } ?>

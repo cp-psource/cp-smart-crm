@@ -352,10 +352,13 @@ class CRM_Options_Settings{
 				#sortable-handlers input[type=text]{width:50%;}
 			</style>
 			<script>
-				jQuery(document).ready(function($) {
-				$('#nazione').kendoDropDownList({
-					placeholder: "<?php _e('Land auswählen','cpsmartcrm') ?>...",
-					value: "<?php if(isset($options['business_country'])) echo $options['business_country']; else echo 'IT'?>"
+				jQuery(document).ready(function($){
+					$('#nazione').select2({
+						placeholder: "<?php _e('Land auswählen','cpsmartcrm') ?>...",
+						width: '50%'
+					});
+					// Wert setzen:
+					$('#nazione').val('<?php echo isset($options['business_country']) ? $options['business_country'] : 'DE' ?>').trigger('change');
 				});
 
 				window.saveBusiness = function(e) {

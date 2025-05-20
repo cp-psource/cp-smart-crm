@@ -178,7 +178,7 @@ if (isset($_GET["id_invoice"]) && ($ID = $_GET["id_invoice"])) {
                           } else
                             $disabled = "";
                           ?>
-                          <select id="fk_clienti" name="fk_clienti"></select>
+                          <select id="fk_clienti" name="fk_clienti" data-parsley-hasclient></select>
                           <input type="hidden" name="hidden_fk_clienti" value="<?php if (isset($fk_clienti)) echo $fk_clienti ?>">
 
                       </div>
@@ -413,7 +413,7 @@ if (isset($_GET["id_invoice"]) && ($ID = $_GET["id_invoice"])) {
         format:$format
     })
   <?php if ($ID) { ?>
-      $("#fk_clienti").kendoDropDownList({
+      $("#fk_clienti").select2({
           enable: false
       });
       $('#hidden_fk_clienti').val('<?php echo $ID ?>');
@@ -516,7 +516,7 @@ if (isset($_GET["id_invoice"]) && ($ID = $_GET["id_invoice"])) {
         }
     });
 
-    var clienti = $('#fk_clienti').kendoDropDownList({
+    var clienti = $('#fk_clienti').select2({
         placeholder: "Select Client...",
         dataTextField: "ragione_sociale",
         dataValueField: "ID_clienti",
@@ -680,7 +680,7 @@ if (isset($_GET["id_invoice"]) && ($ID = $_GET["id_invoice"])) {
             }
         }
     });
-    $('#selectAgent').kendoDropDownList({
+    $('#selectAgent').select2({
         placeholder: "Select User...",
         dataTextField: "display_name",
         dataValueField: "ID",
@@ -689,7 +689,7 @@ if (isset($_GET["id_invoice"]) && ($ID = $_GET["id_invoice"])) {
     });
     if (agente = '<?php echo isset($agente) ? $agente : "" ?>')
         $("#selectAgent").data('kendoDropDownList').value(agente);
-    $('#categoria').kendoDropDownList({});
+    $('#categoria').select2({});
 
 
     var validator = jQuery("#form_insert").kendoValidator({

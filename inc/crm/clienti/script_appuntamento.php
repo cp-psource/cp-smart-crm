@@ -226,142 +226,91 @@ if ( ! defined( 'ABSPATH' ) ) exit;
         })
 	}
 
-	var a_validator = $("#new_appointment").kendoValidator({
-            rules: {
-                hasClients: function (input) {
-                    if (input.is("[name=fk_clienti]")) {
+		jQuery(document).ready(function ($) {
 
-                        var kb = $("#fk_clienti").data("kendoDropDownList").value();
-                        if (kb.length == "") {
+			// Parsley initialisieren
+			var a_validator = $('#new_appointment').parsley();
 
-							jQuery.playSound("<?php echo WPsCRM_URL?>inc/audio/double-alert-2")
-                            return false;
-                        }
-
-                    }
-
-                    return true;
-                },
-            	hasExpiration: function (input) {
-            		if (input.is("[name=a_data_scadenza_inizio]")) {
-
-            			var kb = $("#a_data_scadenza_inizio").val();
-						if (kb == "") {
-
-							jQuery.playSound("<?php echo WPsCRM_URL?>inc/audio/double-alert-2")
-                            return false;
-                        }
+			// Eigene Parsley-Validatoren
+			window.Parsley.addValidator('hasclients', {
+				validateString: function(value) {
+					if (!value || value === "0") {
+						jQuery.playSound("<?php echo WPsCRM_URL?>inc/audio/double-alert-2");
+						return false;
 					}
-            	if (input.is("[name=a_data_scadenza_fine]")) {
-
-            		var kb = $("#a_data_scadenza_fine").val();
-						if (kb == "") {
-
-							jQuery.playSound("<?php echo WPsCRM_URL?>inc/audio/double-alert-2")
-                            return false;
-                        }
-
-					}
-            		if (input.is("[name=t_data_scadenza]")) {
-
-            			var kb = $("#t_data_scadenza").val();
-						if (kb == "") {
-
-							jQuery.playSound("<?php echo WPsCRM_URL?>inc/audio/double-alert-2")
-                            return false;
-                        }
-
-					}
-                    return true;
-                },
-                hasObject: function (input) {
-                    if (input.is("[name=a_oggetto]")) {
-                        var kb = $("#a_oggetto").val();
-                        if (kb == "") {
-
-							jQuery.playSound("<?php echo WPsCRM_URL?>inc/audio/double-alert-2")
-                            return false;
-                        }
-                    }
-                    if (input.is("[name=t_oggetto]")) {
-                            var kb = $("#t_oggetto").val();
-                            if (kb == "") {
-
-								jQuery.playSound("<?php echo WPsCRM_URL?>inc/audio/double-alert-2")
-                                return false;
-                            };
-                    }
-                    return true;
-                },
-				hasDays: function (input) {
-					if (input.is("[name=a_ruleStep]")) {
-
-						var kb = $("#a_ruleStep").val();
-						if (kb == "") {
-
-							jQuery.playSound("<?php echo WPsCRM_URL?>inc/audio/double-alert-2")
-                            return false;
-                        }
-
-					}
-				if (input.is("[name=t_ruleStep]")) {
-
-						var kb = $("#t_ruleStep").val();
-						if (kb == "") {
-
-							jQuery.playSound("<?php echo WPsCRM_URL?>inc/audio/double-alert-2")
-                            return false;
-                        }
-
-					}
-
-                    return true;
+					return true;
 				},
-				hasNoty: function (input) {
-					if (input.is("[name=a_remindToUser]") || input.is("[name=a_remindToGroup]")) {
-	            			var kb = jQuery("#a_remindToUser").data("kendoMultiSelect").value();
-	            			var kb1 = jQuery("#a_remindToGroup").data("kendoMultiSelect").value();
+				messages: {
+					de: "<?php _e('Du solltest einen Kunden auswählen','cpsmartcrm')?>"
+				}
+			});
 
-	            			if (kb == "" && kb1 == "") {
-								jQuery.playSound("<?php echo WPsCRM_URL?>inc/audio/double-alert-2");
+			window.Parsley.addValidator('hasexpiration', {
+				validateString: function(value, requirement, instance) {
+					if (!value || value === "") {
+						jQuery.playSound("<?php echo WPsCRM_URL?>inc/audio/double-alert-2");
+						return false;
+					}
+					return true;
+				},
+				messages: {
+					de: "<?php _e('Du solltest ein Datum für diese Veranstaltung auswählen','cpsmartcrm')?>"
+				}
+			});
 
-	            				return false;
-	            			}
+			window.Parsley.addValidator('hasobject', {
+				validateString: function(value) {
+					if (!value || value === "") {
+						jQuery.playSound("<?php echo WPsCRM_URL?>inc/audio/double-alert-2");
+						return false;
+					}
+					return true;
+				},
+				messages: {
+					de: "<?php _e('Du solltest einen Betreff für dieses Element eingeben','cpsmartcrm')?>"
+				}
+			});
 
-	            	}
+			window.Parsley.addValidator('hasdays', {
+				validateString: function(value) {
+					if (!value || value === "") {
+						jQuery.playSound("<?php echo WPsCRM_URL?>inc/audio/double-alert-2");
+						return false;
+					}
+					return true;
+				},
+				messages: {
+					de: "<?php _e('Du solltest auswählen, wie viele Tage im Voraus Du die Benachrichtigung aktivieren möchtest','cpsmartcrm')?>"
+				}
+			});
 
-					if (input.is("[name=t_remindToUser]") || input.is("[name=t_remindToGroup]") ) {
-	            			var kb = jQuery("#t_remindToUser").data("kendoMultiSelect").value();
-	            			var kb1 = jQuery("#t_remindToGroup").data("kendoMultiSelect").value();
+			window.Parsley.addValidator('hasnoty', {
+				validateString: function(value, requirement, instance) {
+					// Für Mehrfachauswahl mit Select2
+					var kb = $("#a_remindToUser").val();
+					var kb1 = $("#a_remindToGroup").val();
+					if ((!kb || kb.length === 0) && (!kb1 || kb1.length === 0)) {
+						jQuery.playSound("<?php echo WPsCRM_URL?>inc/audio/double-alert-2");
+						return false;
+					}
+					return true;
+				},
+				messages: {
+					de: "<?php _e('Du solltest einen Benutzer oder eine Gruppe von Benutzern auswählen, die benachrichtigt werden sollen','cpsmartcrm')?>"
+				}
+			});
 
-	            			if (kb == "" && kb1 == "") {
-								jQuery.playSound("<?php echo WPsCRM_URL?>inc/audio/double-alert-2");
+			// Speichern-Button
+			$("#a_saveStep").on("click", function () {
+				if ($("#new_appointment").parsley().validate()) {
+					saveAppointment();
+				}
+			});
 
-	            				return false;
-	            			}
-
-	            	}
-
-	            	return true;
-	            },
-
-            },
-
-        	messages: {
-				hasDays:"<?php _e('Du solltest auswählen, wie viele Tage im Voraus Du die Benachrichtigung aktivieren möchtest','cpsmartcrm')?>",
-				hasNoty:"<?php _e('Du solltest einen Benutzer oder eine Gruppe von Benutzern auswählen, die benachrichtigt werden sollen','cpsmartcrm')?>",
-                hasClients: "<?php _e('Du solltest einen Kunden auswählen','cpsmartcrm')?>",
-        		hasObject: "<?php _e('Du solltest einen Betreff für dieses Element eingeben','cpsmartcrm')?>",
-				hasExpiration:"<?php _e('Du solltest ein Datum für diese Veranstaltung auswählen','cpsmartcrm')?>"
-
-            }
-	}).data("kendoValidator");
-		$("#a_saveStep").click(function () {
-			if (a_validator.validate())
-				saveAppointment();
+			// Reset-Button
+			$('._reset').on("click", function () {
+				$("#dialog_appuntamento").data('kendoWindow').close();
+			});
 		});
-		$('._reset').click(function () {
-			$("#dialog_appuntamento").data('kendoWindow').close();
-		})
 })
 </script>

@@ -23,11 +23,11 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
                     <label class="col-sm-1 control-label"><?php _e( 'Start', 'cpsmartcrm'); ?></label>
                     <div class="col-md-3">
-                        <input name="a_data_scadenza_inizio" id='a_data_scadenza_inizio' value="<?php echo $data_scadenza?>">
+                        <input name="a_data_scadenza_inizio" id='a_data_scadenza_inizio' value="<?php echo $data_scadenza?>" data-parsley-hasexpiration>
                     </div>
                     <label class="col-sm-1 control-label"><?php _e( 'Ende', 'cpsmartcrm'); ?></label>
                     <div class="col-md-3">
-                        <input name="a_data_scadenza_fine" id='a_data_scadenza_fine' value="<?php echo $data_scadenza?>">
+                        <input name="a_data_scadenza_fine" id='a_data_scadenza_fine' value="<?php echo $data_scadenza?>" data-parsley-hasexpiration>
                     </div>
 				<div class="clear"></div>
                     <label class="col-sm-1 control-label"><?php _e('Priorität','cpsmartcrm')?></label>
@@ -37,7 +37,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
             </div>
             <div class="row" style="padding-bottom:2px;padding-top:0px;">
                 <div class="col-md-5 form-group">
-                    <label><?php _e( 'Betreff', 'cpsmartcrm'); ?> </label><input type="text" name="a_oggetto" id='a_oggetto' class="form-control _m k-textbox" placeholder="<?php _e('Gib einen Betreff für dieses Element ein','cpsmartcrm')?>">
+                    <label><?php _e( 'Betreff', 'cpsmartcrm'); ?> </label><input type="text" name="a_oggetto" id='a_oggetto' class="form-control _m k-textbox" placeholder="<?php _e('Gib einen Betreff für dieses Element ein','cpsmartcrm')?>" data-parsley-hasobject>
                 </div>
                 <div class="col-md-6 form-group">
                     <label><?php _e( 'Anmerkungen', 'cpsmartcrm'); ?></label><textarea id="a_annotazioni" name="a_annotazioni" class="form-control _m k-textbox _flat" style="height:30px"></textarea>
@@ -54,7 +54,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
             <div style="padding-bottom:2px;padding-top:0px;border-bottom:1px solid #ccc">
                 <div class="col-md-4 form-group">
                     <label><?php _e( 'Tage im Voraus', 'cpsmartcrm'); ?></label>
-                    <select class="form-control _m ruleActions k-dropdown _flat" style="width:100px" id="a_ruleStep" name="a_ruleStep">
+                    <select class="form-control _m ruleActions k-dropdown _flat" style="width:100px" id="a_ruleStep" name="a_ruleStep" data-parsley-hasdays>
                         <option value=""><?php _e( 'Wählen', 'cpsmartcrm'); ?></option>
                         <?php for($k=0;$k<61;$k++){echo '<option value="'.$k.'">'.$k.'</option>'.PHP_EOL; } ?>
                     </select>
@@ -70,7 +70,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
             <div class="row" style="padding-bottom:2px;padding-top:0px;border-bottom:1px solid #ccc">
                 <div class="col-md-6">
                     <label><?php _e( 'Wähle Konto für diesen Termin aus', 'cpsmartcrm'); ?></label>
-                    <input class="ruleActions" id="a_remindToUser" name="a_remindToUser" />
+                    <select class="ruleActions" id="a_remindToUser" name="a_remindToUser[]" multiple></select>
                 </div>
                 <div class="col-md-4">
                     <label>
@@ -82,7 +82,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
             <div class="row" style="padding-bottom:2px;padding-top:0px;border-bottom:1px solid #ccc;display:none">
                 <div class="col-md-6">
                     <label><?php _e( 'An Gruppe senden', 'cpsmartcrm'); ?></label>
-                    <input class="ruleActions" id="a_remindToGroup" name="a_remindToGroup">
+                    <select class="ruleActions" id="a_remindToGroup" name="a_remindToGroup[]" multiple></select>
                 </div>
                 <div class="col-md-4">
                     <label>

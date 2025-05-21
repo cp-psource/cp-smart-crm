@@ -149,11 +149,11 @@ else
                 <label class="control-label"><?php _e('Ausgabedatum','cpsmartcrm')?></label>
 				<?php if ($ID) {?>
 	            <span class="col-sm-4" style="margin-top: -4px;">
-					<input name="data" id="data" class="form-control  _m" data-placement="bottom" title="<?php _e('Datum','cpsmartcrm')?>" value="<?php echo  $data ?>" style="border:none" />
+					<input name="data" id="data" class="form-control  _m" data-placement="bottom" title="<?php _e('Datum','cpsmartcrm')?>" value="<?php echo  $data ?>"/>
 	            </span>
 				<?php } else {?>
                 <span class="col-sm-4" style="margin-top: -4px;">
-                    <input name="data" id="data" class="form-control _m" data-placement="bottom" title="<?php _e('Datum','cpsmartcrm')?>" value="" style="border:none"  />
+                    <input name="data" id="data" class="form-control _m" data-placement="bottom" title="<?php _e('Datum','cpsmartcrm')?>" value=""/>
                     
                 </span>
 				<?php } ?>
@@ -199,7 +199,7 @@ else
                 </div>
                 <label class="control-label"><?php _e('Zahlungsexp. Datum','cpsmartcrm')?></label>
                 <div class="col-sm-2">
-                    <input name="data_scadenza" id="data_scadenza" class="_m" data-placement="bottom"  value="<?php if (isset($riga)) echo  $data_scadenza  ?>" style="border:none" />
+                    <input name="data_scadenza" id="data_scadenza" class="_m" data-placement="bottom"  value="<?php if (isset($riga)) echo  $data_scadenza  ?>"/>
                 </div>
                 <?php
                 if ($ID)

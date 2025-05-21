@@ -131,6 +131,9 @@ function WPsCRM_add_smartcrm_scripts(){
     wp_enqueue_script('select2', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js', array('jquery'));
     wp_enqueue_script('parsley', 'https://cdn.jsdelivr.net/npm/parsleyjs@2.9.2/dist/parsley.min.js', array('jquery'));
     wp_enqueue_script('sortablejs', 'https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js');
+    wp_enqueue_script('jquery-ui-datepicker');
+    wp_enqueue_style('jquery-ui-css', 'https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css');
+    wp_enqueue_script('jquery-ui-tooltip');
 }
 if ( isset( $_GET['page'] ) &&  ( $_GET['page'] == 'smart-crm'  || $_GET['page'] == 'smartcrm_custom-fields' || $_GET['page'] == 'smartcrm_subscription-rules' || $_GET['page'] == 'smartcrm_settings') )
 	add_action('admin_enqueue_scripts','WPsCRM_add_smartcrm_scripts',99);

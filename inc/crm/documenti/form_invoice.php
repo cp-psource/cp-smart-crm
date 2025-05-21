@@ -97,7 +97,6 @@ if (isset($_GET["id_invoice"]) && ($ID = $_GET["id_invoice"])) {
   ?>
 
   <style>
-      #tabstrip div.k-content:not(first-child){padding-top:30px}
       h4.page-header{background:gainsboro;padding:10px 4px}
       ._forminvoice li{padding:2px!important}
       <?php if (isset($_GET['layout']) && $_GET['layout'] == "iframe") { ?>

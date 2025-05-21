@@ -506,6 +506,7 @@ if (isset($_GET["id_invoice"]) && ($ID = $_GET["id_invoice"])) {
 
         // Kunden-Auswahl (Select2)
         $("#fk_clienti").select2({
+            width: '100%', // <-- Breite auf 100% setzen
             placeholder: "<?php _e('Wähle Kunde aus', 'cpsmartcrm') ?>...",
             minimumInputLength: 3,
             ajax: {

@@ -102,7 +102,7 @@ else
 
 ?>
 <style>
-    #tabstrip div.k-content:not(first-child){padding-top:30px}
+    
     h4.page-header{background:gainsboro;padding:10px 4px}
 	._forminvoice li{padding:2px!important}
 	<?php if(isset($_GET['layout']) && $_GET['layout']=="iframe") { ?>
@@ -124,11 +124,11 @@ else
 	<input type="hidden" name="num_righe" id="num_righe" value="">
     <h1 style="text-align:center"><?php _e('GUTSCHRIFT ERSTELLEN/BEARBEITEN','cpsmartcrm')?> <i class="glyphicon glyphicon-fire"></i></h1>
     <div id="tabstrip">
-        <ul>
+        <ul class="tabstrip">
             <li id="tab1"><?php _e('GUTSCHRIFT','cpsmartcrm')?></li>
             <li onclick="aggiornatot();"><?php _e('KOMMENTARE UND INTERNE DATEN','cpsmartcrm')?></li>
         </ul>
-        <div>
+        <div class="tab-content" style="display:block;">
             <h4 class="page-header" style="margin: 10px 0 20px;">
                 <?php _e('GUTSCHRIFTSDATEN','cpsmartcrm')?><span class="crmHelp" data-help="document-data"></span>
                 <?php if ($ID) {?>
@@ -358,7 +358,7 @@ else
         </div>
         <!--fine primo tab -->
         <!-- inizio secondo tab -->
-        <div>
+        <div class="tab-content" style="display:none;">
             <div class="row form-group">
                 <label class="col-sm-2 control-label"><?php _e('Kommentare','cpsmartcrm')?></label>
                 <div class="col-sm-6">
@@ -442,559 +442,353 @@ else
 	.customer_data_partial{padding-top:6px;padding-bottom:6px}
 	.edit_active{border:1px dashed red;background:#ccc}
 </style>
-<div id="reverseCalculator">
-	<div class="col-md-11">
-		<label><?php _e('Gib den vollen Betrag für die umgekehrte Berechnung ein:','cpsmartcrm') ?></label><input class="form-control" type="number" id="reverseAmount" />
-	</div>
-    <div class="col-md-11">
-        <label><?php _e('Eingabe der Erstattung für die umgekehrte Berechnung:','cpsmartcrm') ?></label><input class="form-control" type="number" id="reverseRefund" />
+<div class="modal fade" id="reverseCalculator" tabindex="-1" role="dialog" aria-labelledby="reverseCalculatorLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="reverseCalculatorLabel"><?php _e('Umgekehrte Berechnung','cpsmartcrm') ?></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Schließen">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label><?php _e('Gib den vollen Betrag für die umgekehrte Berechnung ein:','cpsmartcrm') ?></label>
+          <input class="form-control" type="number" id="reverseAmount" />
+        </div>
+        <div class="form-group">
+          <label><?php _e('Eingabe der Erstattung für die umgekehrte Berechnung:','cpsmartcrm') ?></label>
+          <input class="form-control" type="number" id="reverseRefund" />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn _flat btn-success" type="button" id="calculate"><?php _e('Berechnung:','cpsmartcrm') ?></button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"><?php _e('Schließen','cpsmartcrm') ?></button>
+      </div>
     </div>
-    <div class="col-md-11"><br />
-        <input class="btn _flat btn-success" type="button" id="calculate" value="<?php _e('Berechnung:','cpsmartcrm') ?>" />
-    </div>
+  </div>
 </div>
 <script type="text/javascript">
-	jQuery(document).ready(function ($) {
-		sessionStorage.removeItem('tmp_amount');
-		$('#reverseCalculator').kendoWindow({
-		width: "400px",
-		height: "300px",
-		title: "<?php _e('Aus Gesamtmenge berechnen:','cpsmartcrm') ?>",
-		visible: false,
-		modal: true,
-		draggable: false,
-		resizable:false,
-		pinned: true,
-		actions: [
+jQuery(document).ready(function ($) {
+    sessionStorage.removeItem('tmp_amount');
 
-			"Close"
-		],
-		close: function () {
-
-			$('.modal_loader').hide();
-
-		}
-		})
-		$('.reverseCalulator').on('click', function () {
-			if (clientValidator.validate() && !$(this).hasClass('disabled'))
-				$('#reverseCalculator').data('kendoWindow').center().open();
-		})
-	$("._tooltip").kendoTooltip({
-    	//autoHide: false,
-    	animation: {
-			close: {
-				duration: 1000,
-			}
-		},
-		position:"top",
-    	content: "<h4><?php _e('TASTEN-LEGENDE','cpsmartcrm')?>:</h4>\n\
-	<ul>\n\
-		<li class=\"no-link\">\n\
-			<span class=\"btn btn-info _flat\"><i class=\"glyphicon glyphicon-tag\"></i> = <?php _e('NEUES TODONEUES TODO','cpsmartcrm')?></span>\n\
-			<span class=\"btn btn_appuntamento_1 _flat\"><i class=\"glyphicon glyphicon-pushpin\"></i> = <?php _e('NEUER TERMIN','cpsmartcrm')?></span>\n\
-			<span class=\"btn btn-primary _flat\"><i class=\"glyphicon glyphicon-option-horizontal\"></i> = <?php _e('NEUE AKTIVITÄT','cpsmartcrm')?></span>\n\
-			<span class=\"btn btn-warning _flat\"><i class=\"glyphicon glyphicon-envelope\"></i> = <?php _e('NEUE MAIL','cpsmartcrm')?></span>\n\
-		</li>\n\
-	</ul>"
-    });
-		var mainValidator = jQuery("#form_insert").kendoValidator({
-			rules: {
-				hasClient: function (input) {
-					if (input.is("[name=fk_clienti]")) {
-						if (jQuery('input[name="fk_clienti"]').attr('type') != "hidden") {
-							var kb = jQuery("#fk_clienti").data("kendoDropDownList").value();
-							console.log(kb)
-							if (kb.length == "") {
-								jQuery.playSound("<?php echo WPsCRM_URL?>inc/audio/double-alert-2");
-								//jQuery('input[name="fk_clienti"]').focus();
-								return false;
-							}
-						}
-						return true;
-					}
-					return true;
-				},
-				hasNoty: function (input) {
-					if (input.is("[name=remindToUser]")) {
-						if (jQuery('input[name="notify_payment"]:checked').length) {
-							var kb = jQuery("#remindToUser").data("kendoMultiSelect").value();
-							var kb1 = jQuery("#remindToGroup").data("kendoMultiSelect").value();
-							if (kb == "" && kb1 == "") {
-								jQuery.playSound("<?php echo WPsCRM_URL?>inc/audio/double-alert-2");
-								return false;
-							}
-						}
-					}
-					if (input.is("[name=remindToGroup]")) {
-						if (jQuery('input[name="notify_payment"]:checked').length) {
-							var kb = jQuery("#remindToUser").data("kendoMultiSelect").value();
-							var kb1 = jQuery("#remindToGroup").data("kendoMultiSelect").value();
-							if (kb == "" && kb1 == "") {
-								jQuery.playSound("<?php echo WPsCRM_URL?>inc/audio/double-alert-2");
-								return false;
-							}
-						}
-					}
-					return true;
-				},
-				hasRows: function (input) {
-					if (input.is("[name=check]")) {
-						console.log(jQuery('.riga').length)
-						if (jQuery('.riga').length == 0) {
-							jQuery.playSound("<?php echo WPsCRM_URL?>inc/audio/double-alert-2");
-							return false;
-						}
-					}
-					return true;
-				},
-				hasDescription: function (input) {
-					if (input.hasClass("descriptive_row") ) {
-
-						if (input.val()=="") {
-							jQuery.playSound("<?php echo WPsCRM_URL?>inc/audio/double-alert-2");
-							return false;
-						}
-					}
-					return true;
-				}
-			},
-			messages: {
-				//hasExpiration: "<?php _e('Du solltest ein Ablaufdatum auswählen; Wähle heute für eine nicht relevante aus ','cpsmartcrm')?>",
-				hasNoty: "<?php _e('Du solltest einen Benutzer oder eine Gruppe von Benutzern auswählen, die benachrichtigt werden sollen','cpsmartcrm')?>",
-				hasClient: "<?php _e('Du solltest einen Kunden auswählen','cpsmartcrm')?>",
-				hasRows: "<?php _e('Du solltest dieser Rechnung mindestens eine Zeile hinzufügen','cpsmartcrm')?>",
-				hasDescription:"<?php _e('Beschreibung ist obligatorisch','cpsmartcrm')?>"
-			}
-		}).data("kendoValidator");
-
-		$('#_submit').on('click', function (e) {
-			if (mainValidator.validate()) {
-				showMouseLoader();
-				jQuery('#mouse_loader').offset({ left: e.pageX, top: e.pageY });
-				var n_row = jQuery('#t_art > tbody > tr').length;
-				jQuery('#num_righe').val(n_row);
-				jQuery('#form_insert').find(':submit').click();
-			}
-		})
-	//usato solo per i controlli sulle contabilit� avanzate che richiedono il tipo cliente per le ritenute d'acconto
-		var clientValidator = jQuery("#form_insert").kendoValidator({
-			rules: {
-				hasClient: function (input) {
-					if (input.is("[name=fk_clienti]")) {
-						if (jQuery('input[name="fk_clienti"]').attr('type') != "hidden") {
-							var kb = jQuery("#fk_clienti").data("kendoDropDownList").value();
-							console.log(kb)
-							if (kb.length == "") {
-								jQuery.playSound("<?php echo WPsCRM_URL?>inc/audio/double-alert-2");
-								jQuery('html, body').animate({
-									scrollTop: jQuery('select[name="fk_clienti"]').offset().top - 100
-								}, 300);
-								return false;
-							}
-						}
-						return true;
-					}
-					return true;
-				}
-			},
-			messages: {
-				hasClient: "<?php _e('Du solltest einen Kunden auswählen','cpsmartcrm')?>",
-			}
-		}).data("kendoValidator");
-
-
-		var todayDate = kendo.toString(new Date(), $format, localCulture);
-		var todayAbsoluteDate = new Date();
-		$("#data").kendoDatePicker({
-			<?php if(! $ID) {?>
-			value: todayDate,
-			<?php } ?>
-			format: $format,
-		})
-		var issuedate = $("#data").data("kendoDatePicker");
-		$("#data_scadenza").kendoDatePicker({
-			<?php if($data_scadenza =="") {?>
-			value: todayDate,
-			<?php } ?>
-			format:$format
-		})
-		issuedate.bind("change", function () {
-			var dateToBind = $('#data_scadenza').data('kendoDatePicker');
-			var $date = $('#modalita_pagamento').val();
-			$date = $date.split('~');
-			$date[1] != undefined ? bindPayToExpiration($date[1], 'data_scadenza', $format) : null;
-
-		});
-		if ( $('input[name="notify_payment"]:checked').length) {
-			$('#notifications').show();
-		}
-		else {
-			$('#notifications').hide();
-		}
-		$('#modalita_pagamento').on('change', function () {
-			var $date = $(this).val();
-			$date = $date.split('~');
-
-			$date[1] != undefined ? bindPayToExpiration($date[1], 'data_scadenza', $format) : null;
-		})
-		function bindPayToExpiration(days, el, format) {
-			var dateToBind = $('#' + el).data('kendoDatePicker');
-			var $date = new Date(kendo.parseDate($('#data').val(), format, localCulture)).getTime();
-			//console.log($date);
-			var $future = new Date(parseInt($date + days * 86400000))
-			var futureDate = kendo.toString(new Date($future));
-			dateToBind.value(futureDate);
-		}
-		//var datepicker = $('#data').data("kendoDatePicker");
-		<?php if( $ID) {?> issuedate.readonly(true);<?php } ?>
-		$('._edit_header').on('click', function () {
-			toggle_read('data', 'edit_warning',true);
-			toggle_dis('progressivo', 'edit_warning')
-			toggle_read('progressivo', 'edit_warning')
-		});
-		function toggle_dis(el, msg) {
-			if ($('#' + el).attr('disabled') == 'disabled') {
-				$('#' + el).attr('disabled', false)
-				$('#' + msg).show()
-			}
-			else {
-				$('#' + el).attr('disabled', 'disabled')
-				$('#' + msg).hide()
-			}
-		}
-		function toggle_read(el, msg, k_el) {
-			if ($('#' + el).attr('readonly') == 'readonly') {
-				$('#' + el).attr('readonly', false)
-				$('#' + msg).show()
-				if (k_el) {
-					//var datepicker = $('#' + el).data("kendoDatePicker");
-					issuedate.enable(true);
-					issuedate.readonly(false)
-				}
-			}
-			else {
-				$('#' + el).attr('readonly', 'readonly')
-				$('#' + msg).hide()
-				if (k_el) {
-					//var datepicker = $('#' + el).data("kendoDatePicker");
-					issuedate.enable(false)
-					issuedate.readonly(true)
-				}
-			}
-
-		}
-	<?php if ($ID){ ?>
-		$("#fk_clienti").select2({
-			enable: false
-		});
-		<?php } ?>
-
-		$('._edit').on('click', function () {
-			var $this = $(this);
-			$this.hide();
-			$('._quitEdit').show();
-			var dropdownlist = $("#fk_clienti").data("kendoDropDownList");
-			//dropdownlist.enable(true);
-			$('._editable').attr('readonly', false).attr('disabled', false);
-			$('#_submit').css('visibility', 'hidden');
-			$('#save_client_data').show();
-			$('#save_client_data').parent().append("<br><small class=\"_notice notice notice-error \"><?php _e("Du bearbeitest die Stammdaten für diesen Kunden",'cpsmartcrm')?></small>")
-			$('.customer_data_partial').addClass('edit_active');
-		});
-
-		$('._quitEdit').on('click', function () {
-			var dropdownlist = $("#fk_clienti").data("kendoDropDownList");
-			var $this = $(this);
-			$this.hide();
-			$('._notice').hide().remove();
-			$('._edit').show();
-			$('._editable').attr('readonly', 'readonly').attr('disabled', 'disabled');
-			$('._editable').each(function (e) {
-				$(this).val('');
-				$(this).val($(this).data('value'));
-			})
-			$('#_submit').css('visibility','visible');
-			$('#save_client_data').hide();
-			$('.customer_data_partial').removeClass('edit_active');
-			});
-
-		$('#save_client_data').on('click', function () {
-			var inputs = $('.customer_data_partial :input').serialize();
-			$.ajax({
-				url: ajaxurl,
-				method: 'POST',
-				data: {
-					action: 'WPsCRM_save_client_partial',
-					values: inputs,
-					security: '<?php echo $update_nonce?>'
-				},
-				success: function (result) {
-					console.log(result);
-					noty({
-						text: "<?php _e('Daten wurden gespeichert','cpsmartcrm')?>",
-						layout: 'center',
-						type: 'success',
-						template: '<div class="noty_message"><span class="noty_text"></span></div>',
-						//closeWith: ['button'],
-						timeout: 1000
-					});
-					setTimeout(function () {
-						$('._quitEdit').hide();
-						$('._notice').hide().remove();
-						$('._edit').show();
-						$('._editable').attr('readonly', 'readonly').attr('disabled', 'disabled');
-						$('#_submit').css('visibility', 'visible');
-						$('#save_client_data').hide();
-						$('.customer_data_partial').removeClass('edit_active');
-					}, 200)
-					$('.customer_data_partial :input').each(function () {
-						$(this).attr('data-value', $(this).val())
-					})
-				},
-				error: function (errorThrown) {
-					console.log(errorThrown);
-				}
-			})
-		});
-
-  var _clients = new kendo.data.DataSource({
-      transport: {
-          read: function (options) {
-              $.ajax({
-                  url: ajaxurl,
-                  data: {
-                  	'action': 'WPsCRM_get_clients2'
-                  },
-                  success: function (result) {
-
-                      $("#fk_clienti").data("kendoDropDownList").dataSource.data(result.clients);
-
-                  },
-                  error: function (errorThrown) {
-                      console.log(errorThrown);
-                  }
-              })
-          }
-      }
-  });
-
-  var clienti=jQuery('#fk_clienti').select2({
-      placeholder: "<?php _e('Wähle Kunde aus','cpsmartcrm')?>...",
-      dataTextField: "ragione_sociale",
-      dataValueField: "ID_clienti",
-      filter: "contains",
-      autoBind: false,
-      minLength: 3,
-      dataSource: _clients,
-      change: function () {
-        id_clienti=this.value();
-        if (id_clienti != null && id_clienti != "" && id_clienti != undefined) {
-        	$.ajax({
-        		url: ajaxurl,
-        		data: {
-        			'action': 'WPsCRM_get_client_info',
-        			'id_clienti': id_clienti
-        		},
-        		success: function (result) {
-        			console.log(result.info);
-        			var parseData = result.info;
-        			JSON.stringify(parseData);
-        			$("#indirizzo").val(parseData[0].indirizzo);
-        			$("#cap").val(parseData[0].cap);
-        			$("#localita").val(parseData[0].localita);
-        			$("#provincia").val(parseData[0].provincia);
-        			$("#cod_fis").val(parseData[0].cod_fis);
-        			$("#p_iva").val(parseData[0].p_iva);
-        			$("#tipo_cliente").val(parseData[0].tipo_cliente);
-        		},
-        		error: function (errorThrown) {
-        			console.log(errorThrown);
-        		}
-        	})
+    // MODAL: reverseCalculator (Bootstrap Modal)
+    $('.reverseCalulator').on('click', function () {
+        if ($('#form_insert').parsley().validate() && !$(this).hasClass('disabled')) {
+            $('#reverseCalculator').modal('show');
         }
-      },
-  }).data('kendoDropDownList');
+    });
 
-    jQuery('#fk_clienti').data('kendoDropDownList').value([<?php echo $fk_clienti ?>]);
-    //t_users.value([<?php echo wp_get_current_user()->ID ?>]);
-	<?php if ( isset($_GET['cliente'] ) ) { ?>
-		jQuery('#fk_clienti').data('kendoDropDownList').value(<?php echo $_GET['cliente']?>)
-		jQuery('#fk_clienti').data('kendoDropDownList').trigger("change");
+    // TOOLTIP: Bootstrap Tooltip
+    $("._tooltip").tooltip({
+        html: true,
+        placement: "top",
+        title: `<h4><?php _e('TASTEN-LEGENDE','cpsmartcrm')?>:</h4>
+        <ul>
+            <li class="no-link">
+                <span class="btn btn-info _flat"><i class="glyphicon glyphicon-tag"></i> = <?php _e('NEUES TODO','cpsmartcrm')?></span>
+                <span class="btn btn_appuntamento_1 _flat"><i class="glyphicon glyphicon-pushpin"></i> = <?php _e('NEUER TERMIN','cpsmartcrm')?></span>
+                <span class="btn btn-primary _flat"><i class="glyphicon glyphicon-option-horizontal"></i> = <?php _e('NEUE AKTIVITÄT','cpsmartcrm')?></span>
+                <span class="btn btn-warning _flat"><i class="glyphicon glyphicon-envelope"></i> = <?php _e('NEUE MAIL','cpsmartcrm')?></span>
+            </li>
+        </ul>`
+    });
 
-		<?php } ?>
-    var userSource = new kendo.data.DataSource({
-    transport: {
-        read: function (options) {
-            $.ajax({
-                url: ajaxurl,
-                data: {
-                	'action': 'WPsCRM_get_CRM_users',
-                },
-                success: function (result) {
-                    //console.log(result);
-                    $("#remindToUser").data("kendoMultiSelect").dataSource.data(result);
-                },
-                error: function (errorThrown) {
-                    console.log(errorThrown);
-                }
-            })
+    // VALIDATOR: Parsley.js
+    $('#form_insert').parsley({
+        errorsContainer: function (ParsleyField) {
+            return ParsleyField.$element.closest('.form-group');
+        },
+        errorClass: 'is-invalid',
+        successClass: 'is-valid'
+    });
+
+    // Custom Parsley validators
+    window.Parsley.addValidator('hasclient', {
+        validateString: function(value) {
+            return value && value !== '';
+        },
+        messages: {
+            de: "<?php _e('Du solltest einen Kunden auswählen','cpsmartcrm')?>"
+        }
+    });
+
+    window.Parsley.addValidator('hasnoty', {
+        validateString: function(value) {
+            return $('#notify_payment').is(':checked') ? (value && value !== '') : true;
+        },
+        messages: {
+            de: "<?php _e('Du solltest einen Benutzer oder eine Gruppe von Benutzern auswählen, die benachrichtigt werden sollen','cpsmartcrm')?>"
+        }
+    });
+
+    // DATEPICKER: jQuery UI
+    $("#data").datepicker({
+        dateFormat: "<?php echo WPsCRM_DATEFORMAT_JS ?>",
+        <?php if(!$ID) { ?> defaultDate: new Date(), <?php } ?>
+        onSelect: function(dateText) {
+            updateExpiration();
+        }
+    });
+    $("#data_scadenza").datepicker({
+        dateFormat: "<?php echo WPsCRM_DATEFORMAT_JS ?>",
+        <?php if($data_scadenza =="") { ?> defaultDate: new Date(), <?php } ?>
+    });
+
+    function updateExpiration() {
+        var payment = $('#modalita_pagamento').val();
+        var parts = payment.split('~');
+        if (parts[1]) {
+            var baseDate = $("#data").datepicker('getDate');
+            if (baseDate) {
+                var days = parseInt(parts[1], 10);
+                var future = new Date(baseDate.getTime() + days * 86400000);
+                $("#data_scadenza").datepicker('setDate', future);
+            }
         }
     }
+
+    $('#modalita_pagamento').on('change', updateExpiration);
+
+    // Select2 für Kunden
+    $("#fk_clienti").select2({
+        width: '100%',
+        placeholder: "<?php _e('Wähle Kunde aus','cpsmartcrm')?>...",
+        minimumInputLength: 3,
+        ajax: {
+            url: ajaxurl,
+            dataType: 'json',
+            delay: 250,
+            data: function (params) {
+                return { action: 'WPsCRM_get_clients2', q: params.term };
+            },
+            processResults: function (data) {
+                return {
+                    results: $.map(data.clients, function (obj) {
+                        return { id: obj.ID_clienti, text: obj.ragione_sociale ? obj.ragione_sociale : (obj.nome + " " + obj.cognome) };
+                    })
+                };
+            },
+            cache: true
+        }
+    }).on('select2:select', function (e) {
+        var id_clienti = e.params.data.id;
+        $.ajax({
+            url: ajaxurl,
+            data: {
+                'action': 'WPsCRM_get_client_info',
+                'id_clienti': id_clienti
+            },
+            success: function (result) {
+                var parseData = result.info ? result.info[0] : {};
+                $("#indirizzo").val(parseData.indirizzo || '');
+                $("#cap").val(parseData.cap || '');
+                $("#localita").val(parseData.localita || '');
+                $("#provincia").val(parseData.provincia || '');
+                $("#cod_fis").val(parseData.cod_fis || '');
+                $("#p_iva").val(parseData.p_iva || '');
+                $("#tipo_cliente").val(parseData.tipo_cliente || '');
+            }
+        });
+    });
+
+    <?php if ($ID){ ?>
+    $("#fk_clienti").prop("disabled", true);
+    <?php } ?>
+
+    // MultiSelect für Benutzer und Gruppen (Select2)
+    $("#remindToUser").select2({
+        width: '100%',
+        placeholder: "<?php _e('Benutzer wählen','cpsmartcrm')?>...",
+        ajax: {
+            url: ajaxurl,
+            dataType: 'json',
+            delay: 250,
+            data: function (params) {
+                return { action: 'WPsCRM_get_CRM_users', q: params.term };
+            },
+            processResults: function (data) {
+                return {
+                    results: $.map(data, function (obj) {
+                        return { id: obj.ID, text: obj.display_name };
+                    })
+                };
+            },
+            cache: true
+        },
+        multiple: true
+    }).on('change', function () {
+        $('#selectedUsers').val($(this).val());
+    });
+
+    $("#remindToGroup").select2({
+        width: '100%',
+        placeholder: "<?php _e('Wähle Rolle aus','cpsmartcrm')?>...",
+        ajax: {
+            url: ajaxurl,
+            dataType: 'json',
+            delay: 250,
+            data: function (params) {
+                return { action: 'WPsCRM_get_registered_roles', q: params.term };
+            },
+            processResults: function (data) {
+                return {
+                    results: $.map(data.roles, function (obj) {
+                        return { id: obj.role, text: obj.name };
+                    })
+                };
+            },
+            cache: true
+        },
+        multiple: true
+    }).on('change', function () {
+        $('#selectedGroups').val($(this).val());
+    });
+
+    // Vorbelegen falls vorhanden
+    <?php if (!empty($users)) { ?>
+        $("#remindToUser").val([<?php echo json_encode(explode(',', $users)); ?>]).trigger('change');
+    <?php } ?>
+    <?php if (!empty($groups)) { ?>
+        $("#remindToGroup").val([<?php echo json_encode(explode(',', $groups)); ?>]).trigger('change');
+    <?php } ?>
+
+    // Notifications anzeigen/verstecken
+    if ($('input[name="notify_payment"]:checked').length) {
+        $('#notifications').show();
+    } else {
+        $('#notifications').hide();
+    }
+    $('#notify_payment').on('click', function () {
+        $('#notifications').is(':visible') ? $('#notifications').fadeOut(200) : $('#notifications').fadeIn(200)
+    });
+
+    // Editier-Logik
+    $('._edit').on('click', function () {
+        $(this).hide();
+        $('._quitEdit').show();
+        $('._editable').attr('readonly', false).attr('disabled', false);
+        $('#_submit').css('visibility', 'hidden');
+        $('#save_client_data').show();
+        $('#save_client_data').parent().append("<br><small class=\"_notice notice notice-error \"><?php _e("Du bearbeitest die Stammdaten für diesen Kunden",'cpsmartcrm')?></small>")
+        $('.customer_data_partial').addClass('edit_active');
+    });
+
+    $('._quitEdit').on('click', function () {
+        var $this = $(this);
+        $this.hide();
+        $('._notice').hide().remove();
+        $('._edit').show();
+        $('._editable').attr('readonly', 'readonly').attr('disabled', 'disabled');
+        $('._editable').each(function () {
+            $(this).val($(this).data('value'));
+        });
+        $('#_submit').css('visibility','visible');
+        $('#save_client_data').hide();
+        $('.customer_data_partial').removeClass('edit_active');
+    });
+
+    $('#save_client_data').on('click', function () {
+        var inputs = $('.customer_data_partial :input').serialize();
+        $.ajax({
+            url: ajaxurl,
+            method: 'POST',
+            data: {
+                action: 'WPsCRM_save_client_partial',
+                values: inputs,
+                security: '<?php echo $update_nonce?>'
+            },
+            success: function (result) {
+                noty({
+                    text: "<?php _e('Daten wurden gespeichert','cpsmartcrm')?>",
+                    layout: 'center',
+                    type: 'success',
+                    template: '<div class="noty_message"><span class="noty_text"></span></div>',
+                    timeout: 1000
+                });
+                setTimeout(function () {
+                    $('._quitEdit').hide();
+                    $('._notice').hide().remove();
+                    $('._edit').show();
+                    $('._editable').attr('readonly', 'readonly').attr('disabled', 'disabled');
+                    $('#_submit').css('visibility', 'visible');
+                    $('#save_client_data').hide();
+                    $('.customer_data_partial').removeClass('edit_active');
+                }, 200)
+                $('.customer_data_partial :input').each(function () {
+                    $(this).attr('data-value', $(this).val())
+                })
+            },
+            error: function (errorThrown) {
+                console.log(errorThrown);
+            }
+        })
+    });
+
+    // Noty-Dialog
+    $('#changeNoty').on('click', function (e) {
+        var position = $(e.target).offset();
+        $('#dialog-view').show();
+        $('.modal_inner').animate({
+            'top': position.top - 320 + 'px',
+        }, 1000);
+    });
+    $(document).on('click', '#notyConfirm', function () {
+        $.ajax({
+            url: ajaxurl,
+            method: 'POST',
+            data: {
+                action: 'WPsCRM_update_options_modal',
+                option_section: 'CRM_documents_settings',
+                option: 'invoice_noty_days',
+                val: $('#new_default_noty').val(),
+                security:'<?php echo $update_nonce?>'
+            },
+            success: function (result) {
+                $('#dialog-view').slideToggle();
+                if (isNaN(result) == false) {
+                    $('#notificationDays').val(result);
+                    noty({
+                        text: "<?php _e('Option gespeichert','cpsmartcrm')?>",
+                        layout: 'center',
+                        type: 'success',
+                        template: '<div class="noty_message"><span class="noty_text"></span><span class="noty_close glyphicons gypicons-close"></span></div>',
+                        timeout: 1500
+                    });
+                }
+                else {
+                    noty({
+                        text: "<?php _e('Ein Fehler ist aufgetreten','cpsmartcrm')?>",
+                        layout: 'center',
+                        type: 'error',
+                        template: '<div class="noty_message"><span class="noty_text"></span><span class="noty_close glyphicons gypicons-close"></span></div>',
+                        closeWith: ['button'],
+                    });
+                }
+            },
+            error: function (errorThrown) {
+                console.log(errorThrown);
+            }
+        })
+    });
+
+    // UI-Logik für Buttons
+    if ($('.reverse_row').length) {
+        $('#btn_manual').addClass('disabled').attr('title', 'Questa fattura e\' stata calcolata mit Werten scorporati und es können keine weiteren Zeilen hinzugefügt werden');
+        $('.reverseCalulator').addClass('disabled').attr('title', 'Diese Funktion ist nur verfügbar, wenn keine weiteren Zeilen vorhanden sind');
+        $('#btn_refund').addClass('disabled').attr('title', 'Diese Funktion ist nur verfügbar, wenn keine weiteren Zeilen vorhanden sind');
+    }
+    if ($('.manual_row').length) {
+        $('.reverseCalulator').addClass('disabled').attr('title', 'Diese Funktion ist nur verfügbar, wenn keine weiteren Zeilen vorhanden sind');
+    }
+
+	$('.tabstrip li').on('click', function() {
+    var idx = $(this).index();
+    $('.tabstrip li').removeClass('active');
+    $(this).addClass('active');
+    $('.tab-content').hide().eq(idx).show();
 });
-  var roleSource = new kendo.data.DataSource({
-      transport: {
-          read: function (options) {
-              $.ajax({
-                  url: ajaxurl,
-                  data: {
-                  	'action': 'WPsCRM_get_registered_roles',
-                  },
-                  success: function (result) {
-                      console.log(result);
-                      $("#remindToGroup").data("kendoMultiSelect").dataSource.data(result.roles);
-                  },
-                  error: function (errorThrown) {
-                      console.log(errorThrown);
-                  }
-              })
-          }
-      }
-  });
-  $('#remindToUser').kendoMultiSelect({
-      placeholder: "<?php _e('Benutzer wählen','cpsmartcrm')?>...",
-      dataTextField: "display_name",
-      dataValueField: "ID",
-      autoBind: false,
-      dataSource: userSource,
-      change: function (e) {
-          var selectedUsers = (this.value()).clean("");
-          $('#selectedUsers').val(selectedUsers)
-      },
-      dataBound: function (e) {
-          var selectedUsers = (this.value()).clean("");
-          $('#selectedUsers').val(selectedUsers)
-      }
-  })
-
-  $('#remindToGroup').kendoMultiSelect({
-      placeholder: "<?php _e('Wähle Rolle aus','cpsmartcrm')?>...",
-      dataTextField: "name",
-      dataValueField: "role",
-      autoBind: false,
-      dataSource: roleSource,
-      change: function (e) {
-          var selectedGroups = (this.value()).clean("");
-          $('#selectedGroups').val(selectedGroups)
-      },
-      dataBound: function (e) {
-          var selectedGroups = (this.value()).clean("");
-          $('#selectedGroups').val(selectedGroups)
-      }
-  });
-	if (users='<?php echo $users?>')
-	{
-	    users = users.split(",");
-        $("#remindToUser").data('kendoMultiSelect').value(users);
-	}
-	if (groups='<?php echo $groups?>')
-	{
-	    groups = groups.split(",");
-        $("#remindToGroup").data('kendoMultiSelect').value(groups);
-	}
-/*
-	if ($("#remindToUser").data('kendoMultiSelect').value() || $("#remindToGroup").data('kendoMultiSelect').value())
-	{
-	    $('#notify_payment').trigger("click");
-        $('#notifications').fadeToggle();
-	}*/
-
-		$('#notify_payment').on('click', function () {
-			$('#notifications').is(':visible') ? $('#notifications').fadeOut(200) : $('#notifications').fadeIn(200)
-	})
-	$("#tabstrip").kendoTabStrip({
-		animation:
-			{
-			close: {
-				duration: 500,
-				effects: "fadeOut"
-				},
-			open: {
-				duration: 500,
-				effects: "fadeIn"
-			}
-		}
-	});
-	var tabToActivate = $("#tab1");
-	$("#tabstrip").kendoTabStrip().data("kendoTabStrip").activateTab(tabToActivate);
-	$('#changeNoty').on('click', function (e) {
-	    var position = $(e.target).offset();
-	    $('#dialog-view').show();
-	    $('.modal_inner').animate({
-	        'top': position.top - 320 + 'px',
-	    }, 1000);
-	})
-	$(document).on('click', '#notyConfirm', function () {
-	    $.ajax({
-	        url: ajaxurl,
-	        method: 'POST',
-	        data: {
-	        	action: 'WPsCRM_update_options_modal',
-	            option_section: 'CRM_documents_settings',
-	            option: 'invoice_noty_days',
-	            val: $('#new_default_noty').val(),
-				security:'<?php echo $update_nonce?>'
-	        },
-	        success: function (result) {
-	            $('#dialog-view').slideToggle();
-	            if (isNaN(result) == false) {
-	                $('#notificationDays').val(result);
-	                noty({
-	                    text: "<?php _e('Option gespeichert','cpsmartcrm')?>",
-	                    layout: 'center',
-	                    type: 'success',
-	                    template: '<div class="noty_message"><span class="noty_text"></span><span class="noty_close glyphicons gypicons-close"></span></div>',
-	                    //closeWith: ['button'],
-	                    timeout: 1500
-	                });
-	            }
-	            else {
-	                noty({
-	                    text: "<?php _e('Ein Fehler ist aufgetreten','cpsmartcrm')?>",
-	                    layout: 'center',
-	                    type: 'error',
-	                    template: '<div class="noty_message"><span class="noty_text"></span><span class="noty_close glyphicons gypicons-close"></span></div>',
-	                    closeWith: ['button'],
-	                    //timeout: 1500
-	                });
-	            }
-	        },
-	        error: function (errorThrown) {
-	            console.log(errorThrown);
-	        }
-	    })
-	})
-
-		var _dateEnd = $("#data_scadenza").data('kendoDatePicker');
-		_dateEnd.setOptions({
-			value: new Date(),
-			width: 200
-		});
-		setTimeout(function () {
-			$('.modal_loader').hide()
-		}, 200);
-		//aggiornatot();
-
-
-		if ($('.reverse_row').length) {
-			jQuery('#btn_manual').addClass('disabled').attr('title', 'Questa fattura e\' stata calcolata con valori scorporati e non e\' possibile aggiungere altre righe');;
-			jQuery('.reverseCalulator').addClass('disabled').attr('title', 'Questa funzione e\' disponibile solo se non vi sono altre righe in fattura');
-			jQuery('#btn_refund').addClass('disabled').attr('title', 'Questa funzione e\' disponibile solo se non vi sono altre righe in fattura');
-		}
-		if ($('.manual_row').length) {
-			jQuery('.reverseCalulator').addClass('disabled').attr('title', 'Questa funzione e\' disponibile solo se non vi sono altre righe in fattura');
-		}
-	});
-
+});
 </script>
 <?php } ?>
 

@@ -245,7 +245,7 @@ jQuery(document).ready(function ($) {
             echo "];";
         }
     ?>
-    $('#customerCategory').select2({
+    jQuery('#customerCategory').select2({
         data: cats,
         placeholder: "<?php _e('Wählen','cpsmartcrm')?>",
         width: '100%',
@@ -265,7 +265,7 @@ jQuery(document).ready(function ($) {
             echo "];";
         }
     ?>
-    $('#customerComesfrom').select2({
+    jQuery('#customerComesfrom').select2({
         data: provs,
         placeholder: "<?php _e('Wählen','cpsmartcrm')?>",
         width: '100%',
@@ -285,7 +285,7 @@ jQuery(document).ready(function ($) {
             echo "];";
         }
     ?>
-    $('#customerInterests').select2({
+    jQuery('#customerInterests').select2({
         data: ints,
         placeholder: "<?php _e('Wählen','cpsmartcrm')?>",
         width: '100%',
@@ -480,7 +480,7 @@ jQuery(document).ready(function ($) {
                 <div class="row form-group">
                     <label class="col-sm-1 control-label"><?php _e('Land','cpsmartcrm')?></label>
                     <div class="col-sm-4">
-                        <select data-nazione="<?php if(isset($riga)) echo $riga["nazione"]?>" id="nazione" name="nazione" size="20" maxlength='50'><?php if(isset($riga['nazione'])) echo stripslashes( WPsCRM_get_countries($riga["nazione"]) ); else echo stripslashes( WPsCRM_get_countries('IT'))?></select>
+                        <select data-nazione="<?php if(isset($riga)) echo $riga["nazione"]?>" id="nazione" name="nazione" size="20" maxlength='50'><?php if(isset($riga['nazione'])) echo stripslashes( WPsCRM_get_countries($riga["nazione"]) ); else echo stripslashes( WPsCRM_get_countries('DE'))?></select>
                     </div>
                     <label class="col-sm-1 control-label"><?php _e('Firmenname','cpsmartcrm')?></label>
                     <div class="col-sm-4">
@@ -591,7 +591,7 @@ jQuery(document).ready(function ($) {
 								echo "];";
 							}
 							?>
-							$('#customerCategory').select2({
+							jQuery('#customerCategory').select2({
 								data: cats,
 								placeholder: "<?php _e('Wählen','cpsmartcrm')?>",
 								width: '100%',
@@ -628,7 +628,7 @@ jQuery(document).ready(function ($) {
 								echo "];";
 							}
 							?>
-							$('#customerInterests').select2({
+							jQuery('#customerInterests').select2({
 								data: ints,
 								placeholder: "<?php _e('Wählen','cpsmartcrm')?>",
 								width: '100%',
@@ -665,7 +665,7 @@ jQuery(document).ready(function ($) {
 								echo "];";
 							}
 							?>
-							$('#customerComesfrom').select2({
+							jQuery('#customerComesfrom').select2({
 								data: provs,
 								placeholder: "<?php _e('Wählen','cpsmartcrm')?>",
 								width: '100%',
@@ -1002,7 +1002,7 @@ jQuery(document).ready(function ($) {
 					echo "];";
 				}
 			?>
-			$('#customerCategory').select2({
+			jQuery('#customerCategory').select2({
 				data: cats,
 				placeholder: "<?php _e('Wählen','cpsmartcrm')?>",
 				width: '100%',
@@ -1023,7 +1023,7 @@ jQuery(document).ready(function ($) {
 					echo "];";
 				}
 			?>
-			$('#customerComesfrom').select2({
+			jQuery('#customerComesfrom').select2({
 				data: provs,
 				placeholder: "<?php _e('Wählen','cpsmartcrm')?>",
 				width: '100%',
@@ -1044,7 +1044,7 @@ jQuery(document).ready(function ($) {
 					echo "];";
 				}
 			?>
-			$('#customerInterests').select2({
+			jQuery('#customerInterests').select2({
 				data: ints,
 				placeholder: "<?php _e('Wählen','cpsmartcrm')?>",
 				width: '100%',

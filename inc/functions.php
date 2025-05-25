@@ -52,31 +52,45 @@ $document->master_data = function() {
     $options = get_option('CRM_business_settings');
     $number = isset($options['business_number']) ? $options['business_number'] : "";
     $prov  = isset($options['crm_business_provincia']) ? " (".$options['crm_business_provincia'].")" : "";
-    return array(
+
+    $master_data = array(
         array('full_header' => "<h2 class=\"WPsCRM_businessName\">" . html_entity_decode($options['business_name']) . "</h2>" . $extraName . "<div class=\"WPsCRM_businessAddress\"> " . html_entity_decode($options['business_address']) . $number." <br /> " . html_entity_decode($options['business_zip']) . ", " . html_entity_decode($options['business_town']) .$prov. "</div>", 'show' => 1),
         array(__('Name', 'cpsmartcrm') => html_entity_decode($options['business_name']), 'show' => 0, 'show_label' => 0, ''),
         array(__('Addresse', 'cpsmartcrm') => html_entity_decode($options['business_address']), 'show' => 0, 'show_label' => 0),
         array(__('Stadt', 'cpsmartcrm') => html_entity_decode($options['business_town']), 'show' => 0, 'show_label' => 0),
         array(__('PLZ', 'cpsmartcrm') => html_entity_decode($options['business_zip']), 'show' => 0, 'show_label' => 0),
         array(__('Staat/Prov', 'wp-smart-crm-invoices-pro') => $prov, 'show' => 0, 'show_label' => 0),
-        array(
+    );
+
+    // Kleinunternehmer-Regelung oder USt-ID
+    if (!empty($options['crm_kleinunternehmer'])) {
+        $master_data[] = array(
+            'value' => __('Kleinunternehmer nach §19 UStG (keine Umsatzsteuer-ID)', 'wp-smart-crm-invoices-pro'),
+            'show' => 1,
+            'show_label' => 0,
+        );
+    } else {
+        $master_data[] = array(
             'label' => __('Umsatzsteuer-ID', 'cpsmartcrm'),
-            'value' => !empty($options['business_ustid']) ? esc_html($options['business_ustid']) : cpsmartcrm_get_umsatzsteuer_info($options),
+            'value' => !empty($options['business_ustid']) ? esc_html($options['business_ustid']) : '<span style="color:red;">*</span>',
             'show' => 1,
             'show_label' => 1,
-        ),
-        array(
-            __('Steuernummer', 'cpsmartcrm') => html_entity_decode(isset($options['business_taxid']) ? $options['business_taxid'] : ''),
-            'show' => 1,
-            'show_label' => 1
-        ),
-        array(__('Telefon', 'cpsmartcrm') => html_entity_decode($options['business_phone']), 'show' => isset($options['show_phone']) ? $options['show_phone'] : 0, 'show_label' => 1),
-        array(__('Fax', 'cpsmartcrm') => html_entity_decode($options['business_fax']), 'show' => isset($options['show_fax']) ? $options['show_fax'] : 0, 'show_label' => 1),
-        array(__('Email', 'cpsmartcrm') => html_entity_decode($options['business_email']), 'show' => isset($options['show_email']) ? $options['show_email'] : 0, 'show_label' => 1),
-        array(__('Webseite', 'cpsmartcrm') => html_entity_decode($options['business_web']), 'show' => isset($options['show_web']) ? $options['show_web'] : 0, 'show_label' => 1),
-        array(__('IBAN', 'cpsmartcrm') => html_entity_decode($options['business_iban']), 'show' => isset($options['show_iban']) ? $options['show_iban'] : 0, 'show_label' => 1),
-        array(__('SWIFT', 'cpsmartcrm') => html_entity_decode($options['business_swift']), 'show' => isset($options['show_swift']) ? $options['show_swift'] : 0, 'show_label' => 1)
+        );
+    }
+
+    $master_data[] = array(
+        __('Steuernummer', 'cpsmartcrm') => html_entity_decode(isset($options['business_taxid']) ? $options['business_taxid'] : ''),
+        'show' => 1,
+        'show_label' => 1
     );
+    $master_data[] = array(__('Telefon', 'cpsmartcrm') => html_entity_decode($options['business_phone']), 'show' => isset($options['show_phone']) ? $options['show_phone'] : 0, 'show_label' => 1);
+    $master_data[] = array(__('Fax', 'cpsmartcrm') => html_entity_decode($options['business_fax']), 'show' => isset($options['show_fax']) ? $options['show_fax'] : 0, 'show_label' => 1);
+    $master_data[] = array(__('Email', 'cpsmartcrm') => html_entity_decode($options['business_email']), 'show' => isset($options['show_email']) ? $options['show_email'] : 0, 'show_label' => 1);
+    $master_data[] = array(__('Webseite', 'cpsmartcrm') => html_entity_decode($options['business_web']), 'show' => isset($options['show_web']) ? $options['show_web'] : 0, 'show_label' => 1);
+    $master_data[] = array(__('IBAN', 'cpsmartcrm') => html_entity_decode($options['business_iban']), 'show' => isset($options['show_iban']) ? $options['show_iban'] : 0, 'show_label' => 1);
+    $master_data[] = array(__('SWIFT', 'cpsmartcrm') => html_entity_decode($options['business_swift']), 'show' => isset($options['show_swift']) ? $options['show_swift'] : 0, 'show_label' => 1);
+
+    return $master_data;
 };
 $document->numbering = function() {
   $options = get_option('CRM_documents_settings');

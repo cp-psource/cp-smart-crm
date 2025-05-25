@@ -1222,7 +1222,7 @@ class CRM_Options_Settings{
 				<div class="panel-wrap hidden-on-narrow row" style="margin-top:20px">
 					<div id="signature-pad" class="m-signature-pad">
 						<div class="m-signature-pad--body" style="text-align:center;">
-							<canvas id="cSignature" style="width:800px;border:1px solid #666"></canvas>
+							<canvas id="cSignature" width="800" height="200" style="width:800px;border:1px solid #666"></canvas>
 						</div>
 						<div class="m-signature-pad--footer">
 							<br />
@@ -1352,192 +1352,68 @@ class CRM_Options_Settings{
 	});
 	</script>
         
-        </div><!--FINE METODI DI PAGAMENTO-->
-        <!-- MESSAGGI FATTURE / PREVENTIVI--><div>
-           
-            <div id="_header_invoices_messages">
-                <div class="dash-head hidden-on-narrow">
-				<h4 style="text-align: center;margin:30px auto" class="page-header" ><span class="crmHelp crmHelp-dark" data-help="document-messages"></span><?php _e('INVOICES MESSAGES SETTINGS','cpsmartcrm')?> </h4></div>
-                <div class="panel-wrap hidden-on-narrow row">
-                    <div class="col-md-12 _messages">
-                        <div class="item">
-                            <label><?php _e('Hallo','cpsmartcrm')?></label>
-                            <input type="text" id="crm_invoices_dear" name="<?php echo $this->documents_settings_key ?>[invoices_dear]" value="<?php echo  isset($document_options['invoices_dear'] ) ? $document_options['invoices_dear'] : null?>" class="form-control _m"/>
-                        </div>
-                        <div class="item">
-                            <label><?php _e('Rechnungen vor Text','cpsmartcrm')?></label>
-                            
-                            <textarea id="crm_invoices_before" name="<?php echo $this->documents_settings_key ?>[invoices_before]" class="_m" style="width:96%"><?php echo isset($document_options['invoices_before'] ) ? $document_options['invoices_before'] : null ?></textarea>
-                        </div>
-                        <div class="item">
-                            <label><?php _e('Rechnungen nach Text','cpsmartcrm')?></label>
-                            <textarea  id="crm_invoices_after" name="<?php echo $this->documents_settings_key ?>[invoices_after]" class="_m" style="width:96%"><?php echo isset($document_options['invoices_after'] ) ? $document_options['invoices_after'] : null ?></textarea>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="_header_offers_messages">
-                <div class="dash-head hidden-on-narrow">
-					<h4 style="text-align: center;margin:30px auto" class="page-header"><span class="crmHelp crmHelp-dark" data-help="document-messages"></span><?php _e('ZITATE NACHRICHTEN EINSTELLUNGEN','cpsmartcrm')?> </h4>
-				</div>
-                <div class="panel-wrap hidden-on-narrow row _messages">
-                    <div class="col-md-12">
-
-                        <div class="item">
-                            <label><?php _e('Hallo','cpsmartcrm')?></label>
-                            <input type="text" id="crm_offers_dear" name="<?php echo $this->documents_settings_key ?>[offers_dear]" value="<?php echo  isset( $document_options['offers_dear'] ) ? $document_options['offers_dear'] : null?>" class="form-control _m"/>
-                        </div>
-                        <div class="item">
-                            <label><?php _e('Angebote vor dem Text','cpsmartcrm')?></label>
-                            <textarea id="crm_offers_before" name="<?php echo $this->documents_settings_key ?>[offers_before]" class="_m" style="width:96%"><?php echo isset($document_options['offers_before'] ) ? $document_options['offers_before']: null ?></textarea>
-                        </div>
-                        <div class="item">
-                            <label><?php _e('Angebote nach dem Text','cpsmartcrm')?></label>
-                            <textarea id="crm_offers_after" name="<?php echo $this->documents_settings_key ?>[offers_after]" class="_m" style="width:96%"><?php echo isset($document_options['offers_after'] ) ? $document_options['offers_after'] : null ?></textarea>
-                        </div>
-                    </div>
-                </div>
-				<style>._messages input{width:50%;height:20px}</style>
-            </div>
-        </div><!-- FINE MESSAGGI OFFERTE/PREVENTIVI -->
-        <!-- FIRMA --><div>
-            
-            <div id="_signature" >
-
-                <div class="dash-head hidden-on-narrow">
-                    <h1 style="text-align:center">
-                        <?php _e('Signatureinstellungen','cpsmartcrm')?>
-                    </h1>
-                    <h4 style="text-align: center; padding: 12px;background-color:gainsboro;">
-                        <?php _e('Zeichne Deine Signatur (Maus oder Touch), um sie in Anführungszeichen zu verwenden','cpsmartcrm')?>
-                    </h4>
-                </div>
-                <div class="panel-wrap hidden-on-narrow row" style="margin-top:20px">
-
-                    <div id="signature-pad" class="m-signature-pad">
-
-                        <div class="m-signature-pad--body" style="text-align:center;">
-                            <canvas id="cSignature" style="width:800px;border:1px solid #666"></canvas>
-                        </div>
-                        <div class="m-signature-pad--footer">
-                            <br />
-                            <button type="button" class="btn btn-warning btn-sm _flat" data-action="clear">
-                                <?php _e('Zurücksetzen','cpsmartcrm')?>
-                            </button>
-                            <button type="button" class="btn btn-success btn-sm _flat" data-action="save">
-                                <?php _e('Speichern','cpsmartcrm')?>
-                            </button>
-                            <div style="float:right;margin-right:100px">
-                                <label>
-                                    <?php _e('Verwende diese Signatur','cpsmartcrm')?>?
-                                </label>
-                                <input type="checkbox" value="1" name="<?php echo $this->documents_settings_key ?>[use_crm_signature]" <?php echo checked( 1, isset($document_options['use_crm_signature']) ? $document_options['use_crm_signature'] : 0, false ) ?> />
-                                <input type="hidden" id="crm_signature" name="<?php echo $this->documents_settings_key ?>[crm_signature]" value="<?php echo  isset($document_options['crm_signature'] ) ? $document_options['crm_signature'] : null?>" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <h4 style="text-align: center; padding: 12px;background-color:gainsboro;">
-                        <?php _e('Formatierte Signatur (z. B. Firmenname)','cpsmartcrm')?>
-                    </h4>
-
-                    <div style="text-align:center" id="signature_formatted">
-                        <span class="editable_signature" data-field="formatted_signature" id="editor_signature_formatted" style="border:1px solid;height:90px;width:800px;text-align:left!important" >
-                        <?php echo isset($document_options['crm_formatted_signature'] ) ? html_entity_decode($document_options['crm_formatted_signature'] ) : null?>
-                        </span>
-                    <input type="hidden" id="crm_formatted_signature" name="<?php echo $this->documents_settings_key ?>[crm_formatted_signature]" value="<?php echo  isset($document_options['crm_formatted_signature'] ) ?$document_options['crm_formatted_signature'] : null?>" />
-                    </div>
-                    <div class="m-signature-pad--footer">
-                        <br />
-                        <button type="button" class="btn btn-warning btn-sm _flat" onclick="jQuery('#editor_signature_formatted').html(''); jQuery('#crm_formatted_signature').val('');">
-                            <?php _e('Zurücksetzen','cpsmartcrm')?>
-                        </button>
-                        <button type="button" class="btn btn-success btn-sm _flat" onclick="jQuery('#submit').trigger('click');">
-                            <?php _e('Speichern','cpsmartcrm')?>
-                        </button>
-                        <div style="float:right;margin-right:100px">
-
-                            <label>
-                                <?php _e('Verwende diese Signatur','cpsmartcrm')?>?
-                            </label>
-                            <input type="checkbox" value="1" name="<?php echo $this->documents_settings_key ?>[use_crm_formatted_signature]" <?php echo checked( 1, isset($document_options['use_crm_formatted_signature'] ) ? $document_options['use_crm_formatted_signature'] : 0 , false ) ?> />
-                        </div>
-                    </div>
-
-                    </div>
-
-                <script type="text/javascript">
-                var _canvas = document.getElementById("cSignature");
-                var ctx = _canvas.getContext("2d");
-                data = "<?php echo isset($document_options['crm_signature']) ? $document_options['crm_signature'] : "" ?>";
-                var image = new Image();
-                image.onload = function () {
-                    ctx.drawImage(image, 0, 0);
-                };
-                image.src = data;
-                </script>
-            </div>
-            
-		</div><!-- END FIRMA -->
-		<!--CUSTOM CSS--><div>
-                    <div id="_custom_css">
-                        <div class="dash-head hidden-on-narrow">
-                            <h1 style="text-align:center">
-                                <?php _e('Benutzerdefinierte CSS','cpsmartcrm')?>
-                            </h1>
-                            <h4 style="text-align: center; padding: 12px;background-color:gainsboro;">
-                                <?php _e('Füge einen vorhandenen Stil in PDF-Dokumenten hinzu oder überschreibe ihn','cpsmartcrm')?>
-                            </h4>
-                        </div>
-                        <div class="panel-wrap hidden-on-narrow row" style="margin-top:20px">
-                            <div class="col-md-12">
-                                <textarea name="<?php echo $this->documents_settings_key ?>[document_custom_css]" style="width:100%;height:200px"><?php echo isset($document_options['document_custom_css'] ) ? $document_options['document_custom_css'] : null?></textarea>
-                            </div>
-							<p><?php _e('Verwende diese CSS-Regeln, um das Layout der druckbaren Version Deiner Dokumente anzupassen (verfügbar, nachdem ein Dokument erstellt wurde).','cpsmartcrm')?>. </p>
-						</div>
-                    </div>
-                </div><!--END CUSTOM CSS-->
+        
     </div>
-<!--SIGNATURE SCRIPT--><script>
-
+	<script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.6/dist/signature_pad.umd.min.js"></script>
+<!--SIGNATURE SCRIPT-->
+<script>
     var wrapper = document.getElementById("signature-pad"),
-    clearButton = wrapper.querySelector("[data-action=clear]"),
-    saveButton = wrapper.querySelector("[data-action=save]"),
-    canvas = wrapper.querySelector("canvas"),
-    signaturePad;
+        clearButton = wrapper.querySelector("[data-action=clear]"),
+        saveButton = wrapper.querySelector("[data-action=save]"),
+        canvas = wrapper.querySelector("canvas"),
+        signaturePad;
+
     function resizeCanvas() {
-        // When zoomed out to less than 100%, for some very strange reason,
-        // some browsers report devicePixelRatio as less than 1
-        // and only part of the canvas is cleared then.
-        var ratio = Math.max(window.devicePixelRatio || 1, 1);
-        canvas.width = canvas.offsetWidth * ratio;
-        canvas.height = canvas.offsetHeight * ratio;
-        canvas.getContext("2d").scale(ratio, ratio);
+        // Nur ausführen, wenn das Canvas sichtbar ist!
+        if (canvas.offsetParent !== null) {
+            var ratio = Math.max(window.devicePixelRatio || 1, 1);
+            var width = canvas.offsetWidth || canvas.width;
+            var height = canvas.offsetHeight || canvas.height;
+            canvas.width = width * ratio;
+            canvas.height = height * ratio;
+            canvas.getContext("2d").scale(ratio, ratio);
+        }
     }
 
-    window.onresize = resizeCanvas;
-    resizeCanvas();
-
-    signaturePad = new SignaturePad(canvas);
-
-    clearButton.addEventListener("click", function (event) {
-        signaturePad.clear();
-    });
-
-    saveButton.addEventListener("click", function (event) {
-        if (signaturePad.isEmpty()) {
-            alert("Bitte gib zuerst Deine Unterschrift ein.");
-        } else {
-            //window.open(signaturePad.toDataURL());
-            var Pic = signaturePad.toDataURL();
-            //Pic = Pic.replace(/^data:image\/(png|jpg);base64,/, "");
-            jQuery('#crm_signature').val(Pic);
-            jQuery('#submit').trigger('click');
+    jQuery(document).ready(function($){
+        $('#innerTabstrip > ul > li').on('click', function() {
+            var idx = $(this).index();
+            $('#innerTabstrip > ul > li').removeClass('active');
+            $(this).addClass('active');
+            $('#innerTabstrip > div').hide().eq(idx).show();
+            if(idx === 4) { // Signatur-Tab
+                setTimeout(resizeCanvas, 100); // Verzögert, damit Canvas sichtbar ist
+            }
+        });
+        // Beim ersten Laden, falls Tab schon sichtbar
+        if($('#innerTabstrip > ul > li').eq(4).hasClass('active')) {
+            setTimeout(resizeCanvas, 100);
         }
     });
 
-</script><!--END SIGNATURE SCRIPT-->
+    window.onresize = resizeCanvas;
+
+    // Initialisiere SignaturePad erst, wenn das Canvas sichtbar ist
+    setTimeout(function() {
+        resizeCanvas();
+        signaturePad = new SignaturePad(canvas);
+
+        clearButton.addEventListener("click", function (event) {
+            signaturePad.clear();
+        });
+
+        saveButton.addEventListener("click", function (event) {
+            if (signaturePad.isEmpty()) {
+                alert("Bitte gib zuerst Deine Unterschrift ein.");
+            } else {
+                var Pic = signaturePad.toDataURL();
+                jQuery('#crm_signature').val(Pic);
+                jQuery('#submit').trigger('click');
+            }
+        });
+    }, 200);
+</script>
+<!--END SIGNATURE SCRIPT-->
 
 <?php
 		do_action('WPsCRM_add_documents_inner_divs');

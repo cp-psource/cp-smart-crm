@@ -40,102 +40,36 @@ if ( in_array( 'wp-smart-crm-agents/wp-smart-crm-agents.php', apply_filters( 'ac
 	?>
 
 <!--CUSTOM POPUP EDITOR TEMPLATE-->
-<script type="text/x-kendo-template" id="customEditor" style="width:960px;height:760px!important">
-    #var $format = "<?php echo WPsCRM_DATETIMEFORMAT ?>"#
-    #if (typeof disabled != 'undefined' && disabled==1) {
-        var readonly="readonly";
-        var dataroletxt="data-role=''";
-    }
-    else {
-        var readonly="";
-        var dataroletxt="data-role='editor'";
-    }#
+<script type="text/template" id="customEditor" style="width:960px;height:760px!important">
     <form name="form_insert" style="max-width:940px">
     <section class="eventPopup container-fluid" >
-        <div class="row" style="/*padding-left:0*/">
+        <div class="row">
             <label class="col-md-1"><?php _e('Kunde','cpsmartcrm') ?></label>
-            #var id_cliente;#
-            <div data-container-for="customers" class="col-md-3">
-                <select id="customers" name="customers"
-                        data-bind="value:id_cliente"
-                        data-source="customersDatasource"
-                        data-text-field="ragione_sociale"
-                        data-value-field="ID_clienti"
-                        data-role="dropdownlist"
-                        data-option-label="Select"
-			            #=readonly#	/>
+            <div class="col-md-3">
+                <select id="customers" name="customers" class="form-control">
+                    <option value=""><?php _e('Wählen', 'cpsmartcrm'); ?></option>
+                    <!-- Hier dynamisch Kundenoptionen per JS/PHP einfügen -->
+                </select>
             </div>
-<!--        </div>
-        <div class="col-md-8" style="padding-left:0">-->
             <label class="col-md-1" for="Title"><?php _e('Betreff','cpsmartcrm') ?></label>
-            <div data-container-for="title" class="col-md-5" style="padding-left:0">
-                <input class="k-textbox col-md-12" data-bind="value:title" name="Title" id="Title" type="text" #=readonly# />
+            <div class="col-md-5" style="padding-left:0">
+                <input class="form-control col-md-12" name="Title" id="Title" type="text" />
             </div>
         </div>
-        #if (tipo_agenda==1 || tipo_agenda==6){#
-            <!--<div class="col-md-12" id="_model" style="padding-left:0">-->
-                <div class="row">
-                <label class="col-md-1" for="Start">#if (tipo_agenda==1){#<?php _e('Datum','cpsmartcrm') ?>#}else{#<?php _e('Datum','cpsmartcrm') ?>#}#</label>
-                <div class="col-md-3" data-container-for="start">
-                    <input name="start" required="required" style="z-index: inherit;" type="datetime"
-                           data-bind="value:start"
-                           data-format="#=$format#"
-                           data-role="datetimepicker" 
-			               #=readonly# />
-                    <!--<input name="start" required="required" type="date" style="z-index: inherit;"
-                           data-bind="value:start"
-                           data-format="#=$format#"
-                           data-role="datepicker" 
-						   />-->
-                    <span data-bind="text: startTimezone"></span>
-                    <span data-for="start" class="k-invalid-msg"></span>
-                </div>
-                </div>
-          <!--  </div>-->
-        #} else if (tipo_agenda==2){#
-       <!-- <div class="col-md-12" id="_model" style="padding-left:0">-->
-                <div class="row">
-                <label class="col-md-1" for="Start"><?php _e('Start','cpsmartcrm') ?></label>
-                <div class="col-md-3" data-container-for="start">
-                    <input name="start" id="dateTimeStart" required="required" style="z-index: inherit;" type="datetime"
-                           data-bind="value:start"
-                           data-format="#=$format#"
-                           data-role="datetimepicker"
-                           data-change="onChange" 
-                            #=readonly#			   />
-                    <!--<input name="start" id="dateStart" required="required" type="date" style="z-index: inherit;"
-                           data-bind="value:start,visible:isAllDay"
-                           data-format="#=$format#"
-                           data-role="datepicker"
-                           data-change="onChange" 
-						   />-->
-                    <span data-bind="text: startTimezone"></span>
-                    <span data-for="start" class="k-invalid-msg"></span>
-                </div>
-                <label class="col-md-1" for="End"><?php _e('Ende','cpsmartcrm') ?></label>
-                <div class="col-md-5" data-container-for="end">
-                    <input name="end" id="dateTimeEnd" required="required" style="z-index: inherit;" type="datetime"
-                           data-bind="value: end"
-                           data-format="#=$format#"
-                           data-role="datetimepicker" 
-                           #=readonly#			   />
-
-                    <!--<input name="end" id="dateEnd" required="required" type="date" style="z-index: inherit;"
-                           data-bind="value:end"
-                           data-format="#=$format#"
-                           data-role="datepicker" 
-						   />-->
-                    <span data-bind="text: endTimezone"></span>
-                    <span data-for="end" class="k-invalid-msg"></span>
-                </div>
+        <div class="row">
+            <label class="col-md-1" for="Start"><?php _e('Start','cpsmartcrm') ?></label>
+            <div class="col-md-3">
+                <input name="start" id="dateTimeStart" required="required" type="datetime-local" class="form-control" />
             </div>
-       <!-- </div>-->
-        #}#
-       <!-- </div>-->
+            <label class="col-md-1" for="End"><?php _e('Ende','cpsmartcrm') ?></label>
+            <div class="col-md-5">
+                <input name="end" id="dateTimeEnd" required="required" type="datetime-local" class="form-control" />
+            </div>
+        </div>
         <div class="row">
             <label for="description" class="col-md-1"><?php _e('Beschreibung','cpsmartcrm') ?></label>
-            <div data-container-for="description" class="k-edit-field col-md-11">
-                <textarea class="k-textbox" cols="20" data-bind="value:description" #=dataroletxt# id="description" name="description" rows="2" #=readonly#></textarea>
+            <div class="col-md-11">
+                <textarea class="form-control" cols="20" id="description" name="description" rows="2"></textarea>
             </div>
         </div>
         <!--Rules-->
@@ -143,27 +77,25 @@ if ( in_array( 'wp-smart-crm-agents/wp-smart-crm-agents.php', apply_filters( 'ac
         <h4 class="page-header"><?php _e('Benachrichtigungsregeln','cpsmartcrm')?></h4>
             <div class="row">
                 <label for="rulestep" class="col-md-2"><?php _e('Tage im Voraus','cpsmartcrm') ?></label>
-                <div data-container-for="rulestep" class="col-md-2">
-                        <select class="form-control _m ruleActions k-dropdown _flat col-md-2" id="ruleStep" name="ruleStep" data-bind="value:rulestep" #=readonly# >
-                                <option value=""><?php _e( 'Wählen', 'cpsmartcrm'); ?></option><?php for($k=0;$k<61;$k++){echo '<option value="'.$k.'">'.$k.'</option>'.PHP_EOL; } ?>
-                        </select>
+                <div class="col-md-2">
+                    <select class="form-control col-md-2" id="ruleStep" name="ruleStep">
+                        <option value=""><?php _e( 'Wählen', 'cpsmartcrm'); ?></option>
+                        <?php for($k=0;$k<61;$k++){echo '<option value="'.$k.'">'.$k.'</option>'.PHP_EOL; } ?>
+                    </select>
                 </div>
-                #if (tipo_agenda==2){#
                 <label class="col-md-2"><?php _e('E-Mail an den Kunden senden','cpsmartcrm') ?></label>
-                <div class="col-md-4"><input type="checkbox" #=readonly?"onclick='return false;'":""# name="remindToCustomer" id="remindToCustomer" data-bind="checked:remind_to_customer" /></div>
-
-                #}#
+                <div class="col-md-4"><input type="checkbox" name="remindToCustomer" id="remindToCustomer" /></div>
             </div>
             <div class="row">
                 <label class="col-md-4"><?php _e('Sende E-Mails an Empfänger','cpsmartcrm') ?> </label> 
                 <div class="col-md-1">
-                    <input type="checkbox" #=readonly?"onclick='return false;'":""# name="mailToRecipients" id="mailToRecipients" data-bind="checked:mail_to_recipients" />
+                    <input type="checkbox" name="mailToRecipients" id="mailToRecipients" />
                 </div>
                 <div class="col-md-4" style="line-height:.8em">
                     <div class="row">
                         <label class="col-sm-8 control-label"><?php _e('Sende auch eine Sofortbenachrichtigung','cpsmartcrm')?></label>
                         <div class="col-md-1">
-                            <input type="checkbox" #=readonly?"onclick ='return false;' ":" "# class="ruleActions " id="instantNotification" name="instantNotification" />
+                            <input type="checkbox" class="ruleActions" id="instantNotification" name="instantNotification" />
                         </div>
                     </div>
                     <div class="row">
@@ -175,59 +107,57 @@ if ( in_array( 'wp-smart-crm-agents/wp-smart-crm-agents.php', apply_filters( 'ac
             </div>
             <div class="row">
                 <label class="col-md-2" for="users" style="float:left"><?php _e('Benutzer benachrichtigen','cpsmartcrm') ?></label>
-                <div data-container-for="users" class="col-md-3">
-                    <select id="users" name="users"
-                                    data-bind="value:users"
-                                    data-source="agentsDatasource"
-                                    data-text-field="display_name"
-                                    data-value-field="ID"
-                                    data-option-label="Select"
-                                    data-role="multiselect" #=readonly#/>
+                <div class="col-md-3">
+                    <select id="users" name="users[]" class="form-control" multiple>
+                        <!-- Dynamisch Benutzeroptionen einfügen -->
+                    </select>
                 </div>
                 <label class="col-md-2" for="group" style="float:left"><?php _e('Gruppen benachrichtigen','cpsmartcrm') ?></label>
-                <div data-container-for="group" class="col-md-3">
-                    <select id="group" name="group"
-                                    data-bind="value:group"
-                                    data-source="groupsDatasource"
-                                    data-text-field="name"
-                                    data-value-field="role"
-                                    data-option-label="Select"
-                                    data-role="multiselect" #=readonly#/>
+                <div class="col-md-3">
+                    <select id="group" name="group[]" class="form-control" multiple>
+                        <!-- Dynamisch Gruppenoptionen einfügen -->
+                    </select>
                 </div>
             </div>
         </div>
         <div class="col-md-12" style="padding-left:0">
         <h4 class="page-header"><?php _e('Ergebnis','cpsmartcrm')?></h4>
-        #if (!status) status=1#
         <div class="row" style="padding-left:0">
-            <div data-container-for="status" class="k-edit-field">
-                <label style="float:left;width:30%"><?php _e('Noch zu erledigen','cpsmartcrm') ?><input type="radio" name="status" value="1" data-bind="checked:status" />
-                </label>
-                <label style="float:left;width:30%"><?php _e('Erledigt','cpsmartcrm') ?><input type="radio" name="status" value="2" data-bind="checked:status" />
-                </label>
-                <label style="float:left;width:30%"><?php _e('Abgesagt','cpsmartcrm') ?><input type="radio" name="status" value="3" data-bind="checked:status" />
-                </label>
+            <div>
+                <label style="float:left;width:30%"><?php _e('Noch zu erledigen','cpsmartcrm') ?><input type="radio" name="status" value="1" /></label>
+                <label style="float:left;width:30%"><?php _e('Erledigt','cpsmartcrm') ?><input type="radio" name="status" value="2" /></label>
+                <label style="float:left;width:30%"><?php _e('Abgesagt','cpsmartcrm') ?><input type="radio" name="status" value="3" /></label>
             </div>
         </div>
         <div class="row" style="padding-left:0">
             <label for="esito" class="col-md-1"><?php _e('Angeboten','cpsmartcrm') ?></label>
-            <div data-container-for="esito" class="k-edit-field">
-                <textarea class="k-textbox" cols="20" data-bind="value:esito" id="esito" name="esito" rows="2"></textarea>
+            <div>
+                <textarea class="form-control" cols="20" id="esito" name="esito" rows="2"></textarea>
             </div>
         </div>
-	    </div>
+        </div>
     </section>
     </form>
 </script>
 <!--/CUSTOM POPUP EDITOR TEMPLATE-->
 <script>
-	function onChange(e) {
-		var _e = jQuery('#dateTimeEnd').data('kendoDateTimePicker');
-		dateEnd = new Date(e.sender._old);             
-		dateEnd.setHours(dateEnd.getHours() + 1);
-		_e.value(dateEnd)
+document.addEventListener('DOMContentLoaded', function() {
+    var startInput = document.getElementById('dateTimeStart');
+    var endInput = document.getElementById('dateTimeEnd');
+    if(startInput && endInput) {
+        startInput.addEventListener('change', function() {
+            if (startInput.value) {
+                // Datum und Uhrzeit aus dem Startfeld holen
+                var startDate = new Date(startInput.value);
+                // +1 Stunde
+                startDate.setHours(startDate.getHours() + 1);
+                // ISO-String für input[type=datetime-local] formatieren
+                var local = startDate.toISOString().slice(0,16);
+                endInput.value = local;
+            }
+        });
     }
-
+});
 </script>
 
 <style>

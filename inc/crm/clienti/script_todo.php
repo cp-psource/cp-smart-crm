@@ -172,13 +172,13 @@ jQuery(document).ready(function ($) {
     }
 
     // Button-Handler
-    $("#t_saveStep").click(function (e) {
+    $("#t_saveStep").on('click', function (e) {
         e.preventDefault();
         if ($('#new_todo').parsley().validate()) {
             saveTodo();
         }
     });
-    $('._reset').click(function () {
+    $('._reset').on('click', function () {
         $("#dialog_todo").dialog("close");
     });
 

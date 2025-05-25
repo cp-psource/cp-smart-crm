@@ -84,16 +84,16 @@ else{
 } ?>
 <script type="text/javascript">
 jQuery(document).ready(function ($) {
-    $('._showLoader').click(function (e) {
+    $('._showLoader').on('click', function (e) {
         $('#mouse_loader').offset({ left: e.pageX, top: e.pageY });
     });
 
     // Bootstrap Modals für Rechnung und Angebot öffnen
-    $('.btn_invoice').click(function () {
+    $('.btn_invoice').on('click', function () {
         $('#invoiceFrame').attr('src', "<?php echo admin_url('admin.php?page=smart-crm&p=documenti%2Fform_invoice.php&cliente=').$ID?>" + "&layout=iframe");
         $('#invoiceModal').modal('show');
     });
-    $('.btn_quote').click(function () {
+    $('.btn_quote').on('click', function () {
         $('#quoteFrame').attr('src', "<?php echo admin_url('admin.php?page=smart-crm&p=documenti%2Fform_quotation.php&cliente=').$ID?>" + "&layout=iframe");
         $('#quoteModal').modal('show');
     });
@@ -833,16 +833,16 @@ jQuery(document).ready(function ($) {
     }
 
 jQuery(document).ready(function ($) {
-    $('._showLoader').click(function (e) {
+    $('._showLoader').on('click', function (e) {
         $('#mouse_loader').offset({ left: e.pageX, top: e.pageY });
     });
 
     // --- NEU: Bootstrap Modals für Rechnung und Angebot öffnen ---
-    $('.btn_invoice').click(function () {
+    $('.btn_invoice').on('click', function () {
         $('#invoiceFrame').attr('src', "<?php echo admin_url('admin.php?page=smart-crm&p=documenti%2Fform_invoice.php&cliente=').$ID?>" + "&layout=iframe");
         $('#invoiceModal').modal('show');
     });
-    $('.btn_quote').click(function () {
+    $('.btn_quote').on('click', function () {
         $('#quoteFrame').attr('src', "<?php echo admin_url('admin.php?page=smart-crm&p=documenti%2Fform_quotation.php&cliente=').$ID?>" + "&layout=iframe");
         $('#quoteModal').modal('show');
     });

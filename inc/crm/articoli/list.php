@@ -54,7 +54,7 @@ jQuery(document).ready(function ($) {
     });
 
     // Suche-Button
-    $("#btn_cerca").click(function () {
+    $("#btn_cerca").on('click', function () {
         loadProducts();
     });
 

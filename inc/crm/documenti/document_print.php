@@ -420,7 +420,7 @@ $serverName=site_url();
 
 
     		var PDF;
-    		$(".export-pdf").click(function (e) {
+    		$(".export-pdf").on('click', function (e) {
     			showMouseLoader();
 	     		$('#mouse_loader').offset({ left: e.pageX, top: e.pageY });
     		$('.export-info').show();

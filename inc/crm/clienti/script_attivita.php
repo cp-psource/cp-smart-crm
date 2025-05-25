@@ -49,7 +49,7 @@
 
       //})
 
-      $("#saveActivity").click(function () {
+      $("#saveActivity").on('click', function () {
           var opener = $('#dialog_attivita').data('from'), activityTimestamp = "";
           if (opener == "clienti")
               id_cliente = '<?php if (isset($ID)) echo $ID ?>'
@@ -133,7 +133,7 @@
               })
           }
       });
-      $('._reset').click(function () {
+      $('._reset').on('click', function () {
           $("#dialog_attivita").data('kendoWindow').close();
       })
   });

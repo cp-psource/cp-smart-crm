@@ -167,67 +167,27 @@ $num=$wpdb->num_rows;
 <script>
 
     function check_form() {
-            var validator = jQuery("#formEditStep").kendoValidator({
-            	rules: {
-            		hasDays: function (input) {
-            			if (input.is("[name=editRuleStep]")) {
+        // 1. Tage im Voraus prüfen
+        if ($('#editRuleStep').val() === "" || $('#editRuleStep').val() === null) {
+            new Audio("<?php echo WPsCRM_URL?>inc/audio/double-alert-2.mp3").play();
+            alert("<?php _e('Du solltest Tage im Voraus auswählen','cpsmartcrm')?>");
+            return false;
+        }
+        // 2. Mindestens ein Benutzer oder eine Gruppe prüfen
+        var users = $('#editRemindToUser').val();
+        var groups = $('#editRemindToGroup').val();
+        if ((!users || users.length === 0) && (!groups || groups.length === 0)) {
+            new Audio("<?php echo WPsCRM_URL?>inc/audio/double-alert-2.mp3").play();
+            alert("<?php _e('Du solltest mindestens einen Benutzer oder eine Gruppe auswählen','cpsmartcrm')?>");
+            return false;
+        }
 
-            				if (jQuery('#editRuleStep').val() == "") {
-								jQuery.playSound("<?php echo WPsCRM_URL?>inc/audio/","double-alert-2")
-            					return false;
-            				}
-
-            			}
-
-            			return true;
-            		},
-
-            		hasUsers: function (input) {
-            			if (input.is("[name=editRemindToUser]")) {
-            				var kb = jQuery("#editRemindToUser").data("kendoMultiSelect").value();
-            				var kb1 = jQuery("#editRemindToGroup").data("kendoMultiSelect").value();
-
-            				if (kb == "" && kb1 == "") {
-								jQuery.playSound("<?php echo WPsCRM_URL?>inc/audio/","double-alert-2")
-            					return false;
-            				}
-            			}
-
-            			return true;
-
-            		},
-					hasGroups: function (input) {
-						if (input.is("[name=editRemindToGroup]")) {
-            				var kb = jQuery("#editRemindToUser").data("kendoMultiSelect").value();
-            				var kb1 = jQuery("#editRemindToGroup").data("kendoMultiSelect").value();
-
-            				if (kb == "" && kb1 == "") {
-								jQuery.playSound("<?php echo WPsCRM_URL?>inc/audio/","double-alert-2")
-            					return false;
-            				}
-            			}
-
-            			return true;
-
-            		}
-            	},
-
-            	messages: {
-            		hasDays: "<?php _e('Du solltest Tage im Voraus auswählen','cpsmartcrm')?>",
-            		hasUsers: "<?php _e('Du solltest mindestens einen Benutzer oder eine Gruppe auswählen','cpsmartcrm')?>",
-					hasGroups: "<?php _e('Du solltest mindestens einen Benutzer oder eine Gruppe auswählen','cpsmartcrm')?>",
-            	}
-            }).data("kendoValidator");
-
-    	if (validator.validate())
-    		//alert();
-
-    	{
-    		jQuery('._loader').show();
-            var currentStep = jQuery('#formEditStep').serializeObject();
-            currentStep.ID = jQuery('#editStep h3 span:last').text();
-            var stepID = jQuery('#editStep h3 span:first').text();
-            console.log(currentStep);
+        // Wenn alles ok, wie gehabt weiter:
+        jQuery('._loader').show();
+        var currentStep = jQuery('#formEditStep').serializeObject();
+        currentStep.ID = jQuery('#editStep h3 span:last').text();
+        var stepID = jQuery('#editStep h3 span:first').text();
+        console.log(currentStep);
 
             var _html = "";
             var s = "[";
@@ -309,7 +269,6 @@ $num=$wpdb->num_rows;
             }, 100);
 
 		}
-    }
 
 	jQuery(document).ready(function ($) {
 		var complete = false;
@@ -401,20 +360,31 @@ $num=$wpdb->num_rows;
         $('#ruleStep').val(_obj.ruleStep);
         if (_obj.remindToCustomer == "on")
             $('#remindToCustomer').attr('checked', 'checked')
-        if (_obj.selectedUsers.length) {
-            var users = ((_obj.selectedUsers)).split(",");
-            $("#remindToUser").data("kendoMultiSelect").value(users);
+        else
+            $('#remindToCustomer').prop('checked', false);
+
+        // Select2 statt Kendo
+        if (_obj.selectedUsers && _obj.selectedUsers.length) {
+            var users = _obj.selectedUsers.split(",");
+            $("#remindToUser").val(users).trigger('change');
+        } else {
+            $("#remindToUser").val(null).trigger('change');
         }
-        if (_obj.selectedGroups.length) {
-            var groups = ((_obj.selectedGroups)).split(",");
-            $("#remindToGroup").data("kendoMultiSelect").value(groups);
+        if (_obj.selectedGroups && _obj.selectedGroups.length) {
+            var groups = _obj.selectedGroups.split(",");
+            $("#remindToGroup").val(groups).trigger('change');
+        } else {
+            $("#remindToGroup").val(null).trigger('change');
         }
         if (_obj.userDashboard == "on")
             $('#userDashboard').attr('checked', 'checked')
+        else
+            $('#userDashboard').prop('checked', false);
         if (_obj.groupDashboard == "on")
             $('#groupDashboard').attr('checked', 'checked')
-
-    })
+        else
+            $('#groupDashboard').prop('checked', false);
+    });
 
     $('#existingSteps').on('click', '.deleteStep', function () {
         $(this).parent().remove();
@@ -510,9 +480,9 @@ $num=$wpdb->num_rows;
         //}
 
     });
-/*
-*edit rule
-*/
+        /*
+        *edit rule
+        */
 		$('#confirmEditRule').on('click', function () {
 			jQuery('._loader').show();
             var currentRule = $('#formEditRule').serializeObject();
@@ -594,9 +564,9 @@ $num=$wpdb->num_rows;
         }
 
     });
-/*
-*open and populate step editor
-*/
+    /*
+    *open and populate step editor
+    */
     $('#existingRules').on('click', '.editSavedStep', function (e) {
         var position = $(e.target).offset();
         $('#editStep h3 b').text('<?php _e('Edit step','cpsmartcrm') ?>');
@@ -613,23 +583,39 @@ $num=$wpdb->num_rows;
         $('#editRuleStep').val(_obj.ruleStep);
         if (_obj.remindToCustomer == "on")
             $('#editRemindToCustomer').attr('checked', 'checked')
+        else
+            $('#editRemindToCustomer').prop('checked', false);
 
-            var users = ((_obj.selectedUsers)).split(",");
-            $("#editRemindToUser").data("kendoMultiSelect").value(users);
-
-            var groups = ((_obj.selectedGroups)).split(",");
-            $("#editRemindToGroup").data("kendoMultiSelect").value(groups);
+        // Select2 MultiSelects setzen
+        if (_obj.selectedUsers && _obj.selectedUsers.length) {
+            var users = _obj.selectedUsers.split(",");
+            $("#editRemindToUser").val(users).trigger('change');
+        } else {
+            $("#editRemindToUser").val(null).trigger('change');
+        }
+        if (_obj.selectedGroups && _obj.selectedGroups.length) {
+            var groups = _obj.selectedGroups.split(",");
+            $("#editRemindToGroup").val(groups).trigger('change');
+        } else {
+            $("#editRemindToGroup").val(null).trigger('change');
+        }
 
         if (_obj.userDashboard == "on")
             $('#editUserDashboard').attr('checked', 'checked')
+        else
+            $('#editUserDashboard').prop('checked', false);
         if (_obj.groupDashboard == "on")
             $('#editGroupDashboard').attr('checked', 'checked')
+        else
+            $('#editGroupDashboard').prop('checked', false);
         if (_obj.mailToRecipients == "on")
             $('#editMailToRecipients').attr('checked', 'checked')
-    })
-/*
-*open  step editor for new step
-*/
+        else
+            $('#editMailToRecipients').prop('checked', false);
+    });
+    /*
+    *open  step editor for new step
+    */
     $('#existingRules').on('click', '.addStep', function (e) {
         var position = $(e.target).offset();
         $('#editStep h3 b').text("<?php _e('New Notification Step','cpsmartcrm')?>")
@@ -642,7 +628,6 @@ $num=$wpdb->num_rows;
         }, 1000);
     })
 
-
     $('#newRuleName').on('input', function () {
         if ($(this).val() != "" && $('#newRuleLength').val() !=0 )
             $('#saveNewRule').show();
@@ -650,115 +635,68 @@ $num=$wpdb->num_rows;
             $('#saveNewRule').hide();
     })
     $('#newRuleLength').on('change', function () {
-
         if ($(this).val() != 0 && $('#newRuleName').val() !="")
-        	$('#saveNewRule').show();
+            $('#saveNewRule').show();
         else
-        	$('#saveNewRule').hide();
+            $('#saveNewRule').hide();
     })
-    var userSource = new kendo.data.DataSource({
-        type: "json",
-        transport: {
-            read: function (options) {
-                $.ajax({
-                    url: ajaxurl,
-                    data: {
-                    	'action': 'WPsCRM_get_CRM_users',
-                    },
-                    success: function (result) {
-                        //console.log(result);
-                        $("#remindToUser").data("kendoMultiSelect").dataSource.data(result);
-                    },
-                    error: function (errorThrown) {
-                        console.log(errorThrown);
-                    }
-                })
+
+    function loadUsers() {
+        $.ajax({
+            url: ajaxurl,
+            data: { 'action': 'WPsCRM_get_CRM_users' },
+            success: function (result) {
+                var users = [];
+                if (Array.isArray(result)) {
+                    users = result.map(function(user) {
+                        return { id: user.ID, text: user.display_name };
+                    });
+                }
+                $("#remindToUser, #editRemindToUser").select2({
+                    data: users,
+                    placeholder: "<?php _e('Benutzer wählen','cpsmartcrm')?>...",
+                    width: '100%',
+                    multiple: true
+                });
             }
-        }
-    });
-    var roleSource = new kendo.data.DataSource({
-        type: "json",
-        transport: {
-            read: function (options) {
-                $.ajax({
-                    url: ajaxurl,
-                    data: {
-                    	'action': 'WPsCRM_get_registered_roles',
-                    },
-                    success: function (result) {
-                        //console.log(result);
-                        $("#remindToGroup").data("kendoMultiSelect").dataSource.data(result.roles);
-                    },
-                    error: function (errorThrown) {
-                        console.log(errorThrown);
-                    }
-                })
+        });
+    }
+    function loadGroups() {
+        $.ajax({
+            url: ajaxurl,
+            data: { 'action': 'WPsCRM_get_registered_roles' },
+            success: function (result) {
+                var groups = [];
+                if (result && result.roles) {
+                    groups = result.roles.map(function(role) {
+                        return { id: role.name, text: role.name };
+                    });
+                }
+                $("#remindToGroup, #editRemindToGroup").select2({
+                    data: groups,
+                    placeholder: "<?php _e('Rolle auswählen','cpsmartcrm')?>...",
+                    width: '100%',
+                    multiple: true
+                });
             }
-        }
+        });
+    }
+    loadUsers();
+    loadGroups();
+
+    // Synchronisieren der Hidden-Felder
+    $("#remindToUser").on('change', function () {
+        $('#selectedUsers').val($(this).val());
     });
-    $('#remindToUser').kendoMultiSelect({
-        placeholder: "<?php _e('Benutzer wählen','cpsmartcrm')?>...",
-        dataTextField: "display_name",
-        dataValueField: "ID",
-        autoBind: false,
-        dataSource: userSource,
-        change: function (e) {
-            var selectedUsers = (this.value()).clean("");
-            $('#selectedUsers').val(selectedUsers)
-        },
-        dataBound: function (e) {
-            var selectedUsers = (this.value()).clean("");
-            $('#selectedUsers').val(selectedUsers)
-        }
-    })
-    $('#remindToGroup').kendoMultiSelect({
-        placeholder: "<?php _e('Rolle auswählen','cpsmartcrm')?>...",
-        dataTextField: "name",
-        dataValueField: "name",
-        autoBind: false,
-        dataSource: roleSource,
-        change: function (e) {
-            var selectedGroups = (this.value()).clean("");
-            $('#selectedGroups').val(selectedGroups)
-        },
-        dataBound: function (e) {
-            var selectedGroups = (this.value()).clean("");
-            $('#selectedGroups').val(selectedGroups)
-        }
+    $("#remindToGroup").on('change', function () {
+        $('#selectedGroups').val($(this).val());
     });
-    var _editSelectedUsers = $('#editRemindToUser').kendoMultiSelect({
-        placeholder: "<?php _e('Benutzer wählen','cpsmartcrm')?>...",
-        dataTextField: "display_name",
-        dataValueField: "ID",
-        autoBind: false,
-        dataSource: userSource,
-        change: function (e) {
-        	var editSelectedUsers = (this.value()).clean("");
-        	$('#editSelectedUsers').val(editSelectedUsers)
-        },
-        dataBound: function (e) {
-        	var editSelectedUsers = (this.value()).clean("");
-        	$('#editSelectedUsers').val(editSelectedUsers)
-        }
-    }).data("kendoMultiSelect");
-    var _editSelectedGroup = $('#editRemindToGroup').kendoMultiSelect({
-        placeholder: "<?php _e('Rolle auswählen','cpsmartcrm')?>...",
-        dataTextField: "name",
-        dataValueField: "name",
-        autoBind: false,
-        dataSource: roleSource,
-        change: function (e) {
-            var editSelectedGroups = (this.value()).clean("");
-            $('#editSelectedGroups').val(editSelectedGroups)
-        },
-        dataBound: function (e) {
-            var editSelectedGroups = (this.value()).clean("");
-            $('#editSelectedGroups').val(editSelectedGroups)
-        }
-    }).data("kendoMultiSelect");
-	function sort_li(a, b) {
-		return (jQuery(b).data('position')) < (jQuery(a).data('position')) ? -1 : 1;
-	}
+    $("#editRemindToUser").on('change', function () {
+        $('#editSelectedUsers').val($(this).val());
+    });
+    $("#editRemindToGroup").on('change', function () {
+        $('#editSelectedGroups').val($(this).val());
+    });
 /*
 *disegna la'elenco delle rule completo
 */
@@ -862,7 +800,6 @@ function getRule(id,rules) {
 }
 
 drawRules(_rules);
-_editSelectedUsers.value([<?php echo wp_get_current_user()->ID ?>]);
 
 });
 </script>

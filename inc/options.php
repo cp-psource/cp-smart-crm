@@ -804,17 +804,17 @@ class CRM_Options_Settings{
             $('.' + $('input[name="<?php echo $this->services_settings_key; ?>[stripe_mode]"]:checked').val()).attr('readonly', false);
             $('input[type="text"]:not(.' + $('input[name="<?php echo $this->services_settings_key; ?>[stripe_mode]"]:checked').val() + ')').attr('readonly', 'readonly')
         })
-        $('#submit').click(function (e) {
-            if ($('input[name="<?php echo $this->services_settings_key; ?>[stripe_mode]"]:checked').val() == "live_mode" && $('.live_mode').val() == "") {
-                e.preventDefault();
-                alert('Warning: live values missing');
-            }
-            if ($('input[name="<?php echo $this->services_settings_key; ?>[stripe_mode]"]:checked').val() == "test_mode" && $('.test_mode').val() == "") {
-                e.preventDefault();
-                alert('Warning: test values missing');
-            }
+		$('#submit').on('click', function (e) {
+			if ($('input[name="<?php echo $this->services_settings_key; ?>[stripe_mode]"]:checked').val() == "live_mode" && $('.live_mode').val() == "") {
+				e.preventDefault();
+				alert('Warning: live values missing');
+			}
+			if ($('input[name="<?php echo $this->services_settings_key; ?>[stripe_mode]"]:checked').val() == "test_mode" && $('.test_mode').val() == "") {
+				e.preventDefault();
+				alert('Warning: test values missing');
+			}
 
-        })
+		})
     })
 </script>
     <?php
@@ -895,7 +895,7 @@ class CRM_Options_Settings{
 		loadTaxonomy('#customer-origins-list', 'WPsCRM_customersProv');
 
 		// Hinzufügen
-		$('#add-customer-category').click(function(){
+		$('#add-customer-category').on('click', function(){
 			var val = $('#new-customer-category').val();
 			if(val) {
 				$.post(ajaxurl, {action: 'wpscrm_add_term', taxonomy: 'WPsCRM_customersCat', name: val}, function(){
@@ -904,7 +904,7 @@ class CRM_Options_Settings{
 				});
 			}
 		});
-		$('#add-customer-interest').click(function(){
+		$('#add-customer-interest').on('click', function(){
 			var val = $('#new-customer-interest').val();
 			if(val) {
 				$.post(ajaxurl, {action: 'wpscrm_add_term', taxonomy: 'WPsCRM_customersInt', name: val}, function(){
@@ -913,7 +913,7 @@ class CRM_Options_Settings{
 				});
 			}
 		});
-		$('#add-customer-origin').click(function(){
+		$('#add-customer-origin').on('click', function(){
 			var val = $('#new-customer-origin').val();
 			if(val) {
 				$.post(ajaxurl, {action: 'wpscrm_add_term', taxonomy: 'WPsCRM_customersProv', name: val}, function(){

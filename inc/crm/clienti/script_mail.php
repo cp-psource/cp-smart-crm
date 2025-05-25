@@ -269,7 +269,7 @@ function draw_list(id_cliente) {
 		interval: 60,
 		min:_after
 	});
-    $('._reset').click(function () {
+    $('._reset').on('click', function () {
         mailWindow.close();
 
     })
@@ -307,7 +307,7 @@ function draw_list(id_cliente) {
 
 		}
 	}).data("kendoValidator");
-    $('#saveMail').click(function () {
+    $('#saveMail').on('click', function () {
         if(m_validator.validate())
         	sendMail();
     })

@@ -288,7 +288,7 @@ switch ($tipo_agenda)
 		});
 
 
-		$("#btn_save").click(function () {
+		$("#btn_save").on('click', function () {
 			//validator.validate();
 			$('form').find(':submit').click();
 

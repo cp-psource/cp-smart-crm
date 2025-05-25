@@ -824,57 +824,118 @@ class CRM_Options_Settings{
 	 * Summary of smartcrm_add_client_category
 	 * set labels for clients categories
 	 */
-    function smartcrm_add_client_category() {
-		$options= get_option( $this->clients_settings_key );
-		$catOptions=isset($options['clientsCategories']) ? $options['clientsCategories'] : null;
-        $showCategories= isset($options['gridShowCat']) ? $options['gridShowCat'] : null;
-        $showInterests= isset($options['gridShowInt']) ? $options['gridShowInt'] : null;
-        $showOrigins= isset($options['gridShowOr']) ? $options['gridShowOr'] : null;
-    ?>
+	function smartcrm_add_client_category() {
+		$options = get_option( $this->clients_settings_key );
+		$showCategories = isset($options['gridShowCat']) ? $options['gridShowCat'] : null;
+		$showInterests  = isset($options['gridShowInt']) ? $options['gridShowInt'] : null;
+		$showOrigins    = isset($options['gridShowOr']) ? $options['gridShowOr'] : null;
+	?>
 	<div class="row" style="border-bottom:1px solid #000;padding-bottom:20px;margin-bottom:10px">
-		<!--<div class="col-md-10"><h4><span class="crmHelp crmHelp-dark" data-help="customer-categories"></span></h4></div>-->
 		<div class="row" style="margin-bottom:10px;padding-bottom:10px;border-bottom:2px solid #ccc">
-            <div class="col-md-6"><iframe width="450" height="450" frameborder="0" title="Categorie:" src="<?php echo admin_url( '/edit-tags.php?taxonomy=WPsCRM_customersCat&amp;layout=modal')?>"></iframe></div>
-            <div class="col-md-1"></div>
+			<div class="col-md-6">
+				<h4><?php _e('Kundenkategorien verwalten','cpsmartcrm') ?></h4>
+				<ul id="customer-categories-list"></ul>
+				<input type="text" id="new-customer-category" placeholder="<?php _e('Neue Kategorie','cpsmartcrm') ?>" />
+				<button type="button" id="add-customer-category" class="button button-small"><?php _e('Hinzufügen','cpsmartcrm') ?></button>
+			</div>
+			<div class="col-md-1"></div>
 			<div class="col-md-4">
-                <label>
-                    <?php _e('Kundenkategorie im Raster anzeigen','cpsmartcrm')?>?
-                </label>
-                <input type="checkbox" value="1" name="<?php echo $this->clients_settings_key ?>[gridShowCat]" <?php echo checked( 1, $showCategories, false ) ?> />
-            </div>
+				<label>
+					<?php _e('Kundenkategorie im Raster anzeigen','cpsmartcrm')?>?
+				</label>
+				<input type="checkbox" value="1" name="<?php echo $this->clients_settings_key ?>[gridShowCat]" <?php echo checked( 1, $showCategories, false ) ?> />
+			</div>
 		</div>
-        <div class="row" style="margin-bottom:10px;padding-bottom:10px;border-bottom:2px solid #ccc">
-            <div class="col-md-6">
-                <iframe width="450" height="450" frameborder="0" title="Interessi:" src="<?php echo admin_url( '/edit-tags.php?taxonomy=WPsCRM_customersInt&amp;layout=modal')?>"></iframe>
+		<!-- Gleiches Prinzip für Interessen und Herkunft -->
+		<div class="row" style="margin-bottom:10px;padding-bottom:10px;border-bottom:2px solid #ccc">
+			<div class="col-md-6">
+				<h4><?php _e('Kundeninteressen verwalten','cpsmartcrm') ?></h4>
+				<ul id="customer-interests-list"></ul>
+				<input type="text" id="new-customer-interest" placeholder="<?php _e('Neues Interesse','cpsmartcrm') ?>" />
+				<button type="button" id="add-customer-interest" class="button button-small"><?php _e('Hinzufügen','cpsmartcrm') ?></button>
 			</div>
-            <div class="col-md-1"></div>
-            <div class="col-md-4">
-                <label><?php _e('Zeige Kundeninteressen am Raster','cpsmartcrm')?>?
-                </label>
-                <input type="checkbox" value="1" name="<?php echo $this->clients_settings_key ?>[gridShowInt]" <?php echo checked( 1, $showInterests, false ) ?> />
-            </div>
-        </div>
-        <div class="row" style="margin-bottom:10px;padding-bottom:10px;border-bottom:2px solid #ccc">
-            <div class="col-md-6">
-                <iframe width="450" height="450" frameborder="0" title="Interessi:" src="<?php echo admin_url( '/edit-tags.php?taxonomy=WPsCRM_customersProv&amp;layout=modal')?>"></iframe>
+			<div class="col-md-1"></div>
+			<div class="col-md-4">
+				<label><?php _e('Zeige Kundeninteressen am Raster','cpsmartcrm')?>?
+				</label>
+				<input type="checkbox" value="1" name="<?php echo $this->clients_settings_key ?>[gridShowInt]" <?php echo checked( 1, $showInterests, false ) ?> />
 			</div>
-            <div class="col-md-1"></div>
-            <div class="col-md-4">
-                <label><?php _e('Kundenherkunft im Raster anzeigen','cpsmartcrm')?>?
-                </label>
-                <input type="checkbox" value="1" name="<?php echo $this->clients_settings_key ?>[gridShowOr]" <?php echo checked( 1, $showOrigins, false ) ?> />
-            </div>
-        </div>
-		
+		</div>
+		<div class="row" style="margin-bottom:10px;padding-bottom:10px;border-bottom:2px solid #ccc">
+			<div class="col-md-6">
+				<h4><?php _e('Kundenherkunft verwalten','cpsmartcrm') ?></h4>
+				<ul id="customer-origins-list"></ul>
+				<input type="text" id="new-customer-origin" placeholder="<?php _e('Neue Herkunft','cpsmartcrm') ?>" />
+				<button type="button" id="add-customer-origin" class="button button-small"><?php _e('Hinzufügen','cpsmartcrm') ?></button>
+			</div>
+			<div class="col-md-1"></div>
+			<div class="col-md-4">
+				<label><?php _e('Kundenherkunft im Raster anzeigen','cpsmartcrm')?>?
+				</label>
+				<input type="checkbox" value="1" name="<?php echo $this->clients_settings_key ?>[gridShowOr]" <?php echo checked( 1, $showOrigins, false ) ?> />
+			</div>
+		</div>
 	</div>
-    <script>
-    	jQuery(document).ready(function ($) {
-    		//$('#submit').unbind('click').remove();
-    	})
+	<script>
+	jQuery(document).ready(function($){
+		// Kategorien laden
+		function loadTaxonomy(listId, taxonomy) {
+			$.post(ajaxurl, {action: 'wpscrm_get_terms', taxonomy: taxonomy}, function(data){
+				var list = $(listId);
+				list.empty();
+				if(data && Array.isArray(data)) {
+					data.forEach(function(term){
+						list.append('<li data-id="'+term.term_id+'">'+term.name+' <a href="#" class="remove-term" data-tax="'+taxonomy+'" data-id="'+term.term_id+'">✖</a></li>');
+					});
+				}
+			}, 'json');
+		}
+		loadTaxonomy('#customer-categories-list', 'WPsCRM_customersCat');
+		loadTaxonomy('#customer-interests-list', 'WPsCRM_customersInt');
+		loadTaxonomy('#customer-origins-list', 'WPsCRM_customersProv');
+
+		// Hinzufügen
+		$('#add-customer-category').click(function(){
+			var val = $('#new-customer-category').val();
+			if(val) {
+				$.post(ajaxurl, {action: 'wpscrm_add_term', taxonomy: 'WPsCRM_customersCat', name: val}, function(){
+					loadTaxonomy('#customer-categories-list', 'WPsCRM_customersCat');
+					$('#new-customer-category').val('');
+				});
+			}
+		});
+		$('#add-customer-interest').click(function(){
+			var val = $('#new-customer-interest').val();
+			if(val) {
+				$.post(ajaxurl, {action: 'wpscrm_add_term', taxonomy: 'WPsCRM_customersInt', name: val}, function(){
+					loadTaxonomy('#customer-interests-list', 'WPsCRM_customersInt');
+					$('#new-customer-interest').val('');
+				});
+			}
+		});
+		$('#add-customer-origin').click(function(){
+			var val = $('#new-customer-origin').val();
+			if(val) {
+				$.post(ajaxurl, {action: 'wpscrm_add_term', taxonomy: 'WPsCRM_customersProv', name: val}, function(){
+					loadTaxonomy('#customer-origins-list', 'WPsCRM_customersProv');
+					$('#new-customer-origin').val('');
+				});
+			}
+		});
+
+		// Entfernen
+		$(document).on('click', '.remove-term', function(e){
+			e.preventDefault();
+			var id = $(this).data('id');
+			var tax = $(this).data('tax');
+			$.post(ajaxurl, {action: 'wpscrm_delete_term', taxonomy: tax, term_id: id}, function(){
+				loadTaxonomy('#customer-'+(tax=='WPsCRM_customersCat'?'categories':tax=='WPsCRM_customersInt'?'interests':'origins')+'-list', tax);
+			});
+		});
+	});
 	</script>
-            
-    <?php
-	} 
+	<?php
+	}
 
 
 	function smart_crm_documents_settings(){
@@ -1722,7 +1783,62 @@ add_action( 'plugins_loaded', function() {
 });
         ?>
 <?php
+// AJAX: Begriffe laden
+add_action('wp_ajax_wpscrm_get_terms', function() {
+    if (!current_user_can('manage_options')) {
+        wp_send_json_error('No permission');
+    }
+    $taxonomy = sanitize_text_field($_POST['taxonomy']);
+    if (!taxonomy_exists($taxonomy)) {
+        wp_send_json([]);
+    }
+    $terms = get_terms([
+        'taxonomy' => $taxonomy,
+        'hide_empty' => false,
+    ]);
+    $result = [];
+    foreach ($terms as $term) {
+        $result[] = [
+            'term_id' => $term->term_id,
+            'name'    => $term->name,
+        ];
+    }
+    wp_send_json($result);
+});
 
+// AJAX: Begriff hinzufügen
+add_action('wp_ajax_wpscrm_add_term', function() {
+    if (!current_user_can('manage_options')) {
+        wp_send_json_error('No permission');
+    }
+    $taxonomy = sanitize_text_field($_POST['taxonomy']);
+    $name = sanitize_text_field($_POST['name']);
+    if (!taxonomy_exists($taxonomy) || empty($name)) {
+        wp_send_json_error('Invalid taxonomy or name');
+    }
+    $term = wp_insert_term($name, $taxonomy);
+    if (is_wp_error($term)) {
+        wp_send_json_error($term->get_error_message());
+    }
+    wp_send_json_success();
+});
+
+// AJAX: Begriff löschen
+add_action('wp_ajax_wpscrm_delete_term', function() {
+    if (!current_user_can('manage_options')) {
+        wp_send_json_error('No permission');
+    }
+    $taxonomy = sanitize_text_field($_POST['taxonomy']);
+    $term_id = intval($_POST['term_id']);
+    if (!taxonomy_exists($taxonomy) || !$term_id) {
+        wp_send_json_error('Invalid taxonomy or term_id');
+    }
+    $result = wp_delete_term($term_id, $taxonomy);
+    if (is_wp_error($result)) {
+        wp_send_json_error($result->get_error_message());
+    }
+    wp_send_json_success();
+});
 /**
 //subscription rules FIELDS
  * manage subscription rules save in wp_options

@@ -327,29 +327,31 @@ if (isset($_GET["id_invoice"]) && ($ID = $_GET["id_invoice"])) {
 
   <?php do_action("WPsCRM_show_WOO_products"); ?>
 
-              </h4>
+            </h4>
 
-              <?php
-              $accontOptions = get_option("CRM_acc_settings");
+            <?php
+            $accontOptions = get_option("CRM_acc_settings");
 
-              switch ($accontOptions['accountability']) {
-                case 0:
-                  include ('accountabilities/accountability_0.php');
-                  break;
-                case "1":
-                  include (ACCsCRM_DIR . '/inc/crm/documenti/accountabilities/accountability_1.php');
-                  break;
-                case "2":
-                  include (ACCsCRM_DIR . '/inc/crm/documenti/accountabilities/accountability_2.php');
-                  break;
-                case "3":
-                  include (ACCsCRM_DIR . '/inc/crm/documenti/accountabilities/accountability_3.php');
-                  break;
-                case "4":
-                  include (ACCsCRM_DIR . '/inc/crm/documenti/accountabilities/accountability_4.php');
-                  break;
-              }
-              ?>
+            if (is_array($accontOptions) && isset($accontOptions['accountability'])) {
+                switch ($accontOptions['accountability']) {
+                    case 0:
+                        include ('accountabilities/accountability_0.php');
+                        break;
+                    case "1":
+                        include (ACCsCRM_DIR . '/inc/crm/documenti/accountabilities/accountability_1.php');
+                        break;
+                    case "2":
+                        include (ACCsCRM_DIR . '/inc/crm/documenti/accountabilities/accountability_2.php');
+                        break;
+                    case "3":
+                        include (ACCsCRM_DIR . '/inc/crm/documenti/accountabilities/accountability_3.php');
+                        break;
+                    case "4":
+                        include (ACCsCRM_DIR . '/inc/crm/documenti/accountabilities/accountability_4.php');
+                        break;
+                }
+            }
+            ?>
 
 
           </div>

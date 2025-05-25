@@ -246,7 +246,7 @@ register_activation_hook( __FILE__, 'WPsCRM_add_CRM_role' );
  **/
 function WPsCRM_set_defaults(){
 	$defaults_documents = array(
-			  'default_vat'   => 22,
+			  'default_vat'   => 19,
 			  'crm_currency'=>WPsCRM_DEFAULT_CURRENCY
 			  );
 	$defaults_general=array(

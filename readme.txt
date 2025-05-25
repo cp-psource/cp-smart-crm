@@ -4,7 +4,7 @@ Author: PSOURCE
 Tags: crm, invoices, todo
 Requires at least: 4.2
 Tested up to: 6.8.1
-Stable tag: 1.5.3
+Stable tag: 1.5.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
  
@@ -64,6 +64,12 @@ Wichtig: Wenn Sie .mo/.po-Dateien im Plugin-Ordner "languages" ändern, können 
 
 
 == Changelog ==
+
+= 1.5.4 =
+
+* Many fixes
+* KendoUI Remove: 75%
+* Angepasst auf Deutsches Steuerrecht
 
 = 1.5.3 =
 

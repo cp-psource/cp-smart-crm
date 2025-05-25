@@ -1650,6 +1650,37 @@ class CRM_Options_Settings{
 	#innerTabstrip-1 .crmHelp{margin-top: -18px;font-size:large}
 	#innerTabstrip-1 .widget{cursor:inherit}
 	#innerTabstrip-2 h2{font-size:20px}
+
+	/* Tabs Styling ähnlich Kendo UI */
+	#innerTabstrip > ul {
+		display: flex;
+		border-bottom: 2px solid #ddd;
+		margin-bottom: 0;
+		padding-left: 0;
+		background: #f5f5f5;
+	}
+	#innerTabstrip > ul > li {
+		list-style: none;
+		padding: 10px 24px;
+		cursor: pointer;
+		border: 1px solid #ddd;
+		border-bottom: none;
+		background: #e9e9e9;
+		margin-right: 2px;
+		font-size: 1.1em;
+		transition: background 0.2s;
+	}
+	#innerTabstrip > ul > li.active {
+		background: #fff;
+		border-bottom: 2px solid #fff;
+		font-weight: bold;
+	}
+	#innerTabstrip > div {
+		padding: 20px;
+		background: #fff;
+		border: 1px solid #ddd;
+		border-top: none;
+	}
 </style>
 <script>
 	jQuery(document).ready(function ($) {

@@ -134,9 +134,6 @@ jQuery(document).ready(function ($) {
     })
 });
     </script>
-<script id="tooltipTemplate" type="text/x-kendo-template">
- <div style="background-color:rgba(57,57,57,.8);border:2px solid rgb(204,204,204);color:rgb(250,250,250);border-radius:6px;display:block;width:240px;height:100px">#=target.data('title')#</div>
-</script>
 <ul class="select-action">
 
         <li onClick="location.href='<?php echo admin_url( 'admin.php?page=smart-crm&p=scheduler/form.php&tipo_agenda=1')?>';return false;" class="btn btn-info btn-sm _flat btn_todo"><i class="glyphicon glyphicon-tag"></i> 

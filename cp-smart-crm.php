@@ -113,6 +113,10 @@ function WPsCRM_add_smartcrm_scripts(){
 		else
 			$style="light";
     }
+    wp_enqueue_style( 'datatables-css', 'https://cdn.datatables.net/1.13.8/css/jquery.dataTables.min.css', array(), '1.13.8' );
+    wp_enqueue_script( 'datatables-js', 'https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js', array('jquery'), '1.13.8', true );
+wp_enqueue_style( 'datatables-bootstrap-css', 'https://cdn.datatables.net/1.13.8/css/dataTables.bootstrap5.min.css', array('datatables-css'), '1.13.8' );
+wp_enqueue_script( 'datatables-bootstrap-js', 'https://cdn.datatables.net/1.13.8/js/dataTables.bootstrap5.min.js', array('datatables-js', 'bootstrap'), '1.13.8', true );
     wp_enqueue_style( 'k-commoncss',plugin_dir_url( __FILE__ ).'css/kendo.common.min.css');
     wp_enqueue_style( 'k-common1',plugin_dir_url( __FILE__ ).'css/kendo.custom.min.css',array(),'4.2.2');
     wp_enqueue_style( 'bootstrap',plugin_dir_url( __FILE__ ).'inc/bootstrap/css/bootstrap-'.$style.'.min.css');
@@ -124,7 +128,7 @@ function WPsCRM_add_smartcrm_scripts(){
     wp_enqueue_script( 'culture',  plugin_dir_url( __FILE__ ).'js/cultures/kendo.culture.'.WPsCRM_CULTURE.'.min.js',array(), "1.4",false );
     wp_enqueue_script( 'noty',  plugin_dir_url( __FILE__ ).'js/noty-2.3.8/js/noty/packaged/jquery.noty.packaged.min.js', array('jquery'),"1.4",false );
     wp_enqueue_script( 'pako',  plugin_dir_url( __FILE__ ).'js/pako/pako.min.js', array('jquery'),"1.4",false );
-	wp_enqueue_script('underscore',plugin_dir_url( __FILE__ ).'js/underscore.js',array('jquery'),false);
+    wp_enqueue_script('underscore',plugin_dir_url( __FILE__ ).'js/underscore.js',array('jquery'),false);
     wp_enqueue_media();
     wp_enqueue_script( 'autonumeric', 'https://cdn.jsdelivr.net/npm/autonumeric@4.10.5/dist/autoNumeric.min.js', array('jquery'), null, true );
     wp_enqueue_style('select2', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css');

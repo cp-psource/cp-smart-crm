@@ -9,8 +9,8 @@ $page="dashboard";
 
     jQuery(document).ready(function ($) {
 
-			var $format = "<?php echo WPsCRM_DATETIMEFORMAT ?>";
-          //update delle activity da modale
+		var $format = "<?php echo WPsCRM_DATETIMEFORMAT ?>";
+        //update delle activity da modale
         $(document).on('click', '#save_activity_from_modal', function () {
             var id = $(this).data('id');
             $('.modal_loader').show();
@@ -25,399 +25,199 @@ $page="dashboard";
 					'security':'<?php echo $update_nonce?>'
                 },
             	success: function (result) {
-					var _tgr
-                    var t_Datasource = new kendo.data.DataSource({
-                        transport: {
-                            read: function (options) {
-                                jQuery.ajax({
-                                    url: ajaxurl,
-                                    data: {
-                                        'action': 'WPsCRM_get_scheduler',
-                                        'type': 1,
-                                        'view': '<?php echo $view?>',
-										'self_client':'1'
-                                    },
-                                    success: function (result) {
-                                    	console.log(result);
-                                    	jQuery("#grid_todo").data("kendoGrid").dataSource.data(result.scheduler);
-                                    },
-                                    error: function (errorThrown) {
-                                        console.log(errorThrown);
-                                    }
-                                })
-                            }
-                        },
-                        sort: { field: "data_scadenza", dir: "desc" },
-                        schema: {
-                            model: {
-                                id: "id_agenda",
-                                fields: {
-                                    tipo: { editable: false },
-                                    oggetto: { editable: false },
-                                    annotazioni: { editable: false },
-                                    data_scadenza: { type: "date", editable: false },
-                                    destinatari: { editable: false },
-                                }
-                            }
-                        },
-                        pageSize: 50,
-                    });
-                    var a_Datasource = new kendo.data.DataSource({
-                        transport: {
-                            read: function (options) {
-                                jQuery.ajax({
-                                    url: ajaxurl,
-                                    data: {
-                                    	'action': 'WPsCRM_get_scheduler',
-                                        'type': 2,
-                                        'view': '<?php echo $view?>'
-                                    },
-                                    success: function (result) {
-                                        //console.log(result);
-                                        a_grid.dataSource.data(result.scheduler);
-
-                                    },
-                                    error: function (errorThrown) {
-                                        console.log(errorThrown);
-                                    }
-                                })
-                            }
-                        },
-                        sort: { field: "data_scadenza", dir: "desc" },
-                        schema: {
-                            model: {
-                                id: "id_agenda",
-                                fields: {
-                                    tipo: { editable: false },
-                                    oggetto: { editable: false },
-                                    annotazioni: { editable: false },
-                                    data_scadenza: { type: "date", editable: false },
-                                    destinatari: { editable: false },
-                                }
-                            }
-                        },
-                        pageSize: 50,
-                    });
                     setTimeout(function () {
                         $('.modal_loader').fadeOut('fast');
                     }, 300);
                     setTimeout(function () {
                         $('._modal').fadeOut('fast');
                     }, 400);
-                    //jQuery("#grid").data("kendoGrid").dataSource.data(result.scheduler);
-                    //var a_grid = $("#grid_appuntamenti").data("kendoGrid").dataSource.data(result.scheduler);
-                    //var t_grid = $("#grid_todo").data("kendoGrid").dataSource.data(result.scheduler);
-            		//
-                    var t_grid = $('#grid_todo').data("kendoGrid");
-                    var a_grid = $('#grid_appuntamenti').data("kendoGrid");
-                    t_grid.setDataSource(t_Datasource);
-                    a_grid.setDataSource(a_Datasource);
-                    setTimeout(function () {
-                    	t_grid.dataSource.read();
-                    	a_grid.dataSource.read();
-                    }, 100);
-
-                    setTimeout(function () {
-                        t_grid.refresh();
-                        a_grid.refresh()
-                    }, 200);
-
-                },
-                error: function (errorThrown) {
-                    console.log(errorThrown);
+                    // DataTables-Reload für beide Grids:
+                    $('#grid_todo').DataTable().ajax.reload(null, false);
+                    $('#grid_appuntamenti').DataTable().ajax.reload(null, false);
                 }
-            })
-
-        })
+            });
+        });
 
         $(document).on('click', '._reset',function () {
             $('._modal').fadeOut('fast');
         });
 
-        $("#grid_todo").kendoGrid({
-		noRecords: {
-			template: "<h4 style=\"text-align:center;padding:5%\"><?php _e('Kein TODO zu zeigen','cpsmartcrm')?></h4>"
-    	},
-        dataSource: {
-          transport: {
-            read: function (options) {
-              $.ajax({
-                url: ajaxurl,
-                data: {
-                	'action': 'WPsCRM_get_scheduler',
-                  'type': 1,
-                  'view': '<?php echo $view?>',
-				  'self_client':"1"
+        $(document).ready(function () {
+            $('#grid_todo').DataTable({
+                ajax: {
+                    url: ajaxurl,
+                    type: 'POST',
+                    data: {
+                        'action': 'WPsCRM_get_scheduler',
+                        'type': 1,
+                        'view': '<?php echo $view?>',
+                        'self_client': '1'
+                    },
+                    dataSrc: 'scheduler'
                 },
-                success: function (result) {
-
-                  $("#grid_todo").data("kendoGrid").dataSource.data(result.scheduler);
-
-                },
-                error: function (errorThrown) {
-                  console.log(errorThrown);
-                }
-              })
-            }
-          },
-          sort: { field: "data_scadenza", dir: "desc" },
-          schema: {
-            model: {
-              id: "id_agenda",
-              fields: {
-                cliente: { editable: false },
-                oggetto: { editable: false },
-                annotazioni: { editable: false },
-                data_scadenza: { type:"date", editable: false },
-                destinatari: { editable: false },
-              }
-            }
-          },
-          pageSize: 50,
-        },
-        dataBound: loadCellsAttributesScheduler,
-        groupable: true,
-        sortable: true,
-        serverPaging: true,
-        groupable: {
-            messages: {
-                empty: "<?php _e('Ziehe die Spaltenüberschriften und lege sie hier ab, um nach dieser Spalte zu gruppieren.','cpsmartcrm') ?>"
-            }
-        },
-        pageable:
-        {
-            pageSizes: [20, 50, 100],
-            messages:
-                {
-                    display: "<?php _e('Zeige','cpsmartcrm') ?> {0}-{1}  <?php _e('von','cpsmartcrm') ?> {2} <?php _e('gesammt','cpsmartcrm') ?>",
-                    of: "<?php _e('von','cpsmartcrm') ?> {0}",
-                    itemsPerPage: "<?php _e('Beiträge pro Seite','cpsmartcrm') ?>",
-                    first: "<?php _e('Erste Seite','cpsmartcrm') ?>",
-                    last: "<?php _e('Letzte Seite','cpsmartcrm') ?>",
-                    next: "<?php _e('Nächste','cpsmartcrm') ?>",
-                    previous: "<?php _e('Vorherige','cpsmartcrm') ?>",
-                    refresh: "<?php _e('Neu laden','cpsmartcrm') ?>",
-                    morePages: "<?php _e('Mehr','cpsmartcrm') ?>"
-                },
-        },
-        filterable:
-        {
-            messages:
-                {
-                    info: "<?php _e('Filtern nach','cpsmartcrm') ?> "
-                },
-            extra: false,
-            operators:
-                {
-                    string:
-                        {
-                            contains: "<?php _e('Enthält','cpsmartcrm') ?> ",
-                            startswith: "<?php _e('Beginnt mit','cpsmartcrm') ?>",
-                            eq: "<?php _e('Gleich','cpsmartcrm') ?>",
-                            neq: "<?php _e('Nicht gleich','cpsmartcrm') ?>"
+                columns: [
+                    { data: 'cliente', title: '<?php _e('Kunde','cpsmartcrm')?>' },
+                    { data: 'oggetto', title: '<?php _e('Objekt','cpsmartcrm')?>' },
+                    { data: 'annotazioni', title: '<?php _e('Beschreibung','cpsmartcrm')?>' },
+                    { data: 'data_scadenza', title: '<?php _e('Ablauf','cpsmartcrm')?>' },
+                    { data: 'destinatari', title: '<?php _e('Empfänger','cpsmartcrm')?>' },
+                    { data: 'status', title: '<?php _e('Status','cpsmartcrm')?>' },
+                    {
+                        data: null,
+                        orderable: false,
+                        searchable: false,
+                        width: "200px",
+                        render: function (data, type, row) {
+                            return `
+                                <button class="btn _flat open-todo" data-id="${row.id_agenda}"><?php _e('Offen','cpsmartcrm')?></button>
+                                <button class="btn btn-danger _flat delete-todo" data-id="${row.id_agenda}"><?php _e('Löschen','cpsmartcrm')?></button>
+                            `;
                         }
+                    }
+                ],
+                pageLength: 50,
+                lengthMenu: [20, 50, 100],
+                order: [[3, 'desc']],
+                language: {
+                    emptyTable: "<h4 style='text-align:center;padding:5%'><?php _e('Kein TODO zu zeigen','cpsmartcrm')?></h4>",
+                    info: "<?php _e('Zeige','cpsmartcrm')?> _START_-_END_ <?php _e('von','cpsmartcrm')?> _TOTAL_ <?php _e('gesammt','cpsmartcrm')?>",
+                    infoEmpty: "<?php _e('Keine Einträge vorhanden','cpsmartcrm')?>",
+                    infoFiltered: "(<?php _e('gefiltert von','cpsmartcrm')?> _MAX_ <?php _e('gesammt','cpsmartcrm')?>)",
+                    lengthMenu: "<?php _e('Beiträge pro Seite','cpsmartcrm')?> _MENU_",
+                    loadingRecords: "<?php _e('Lade...','cpsmartcrm')?>",
+                    processing: "<?php _e('Verarbeite...','cpsmartcrm')?>",
+                    search: "<?php _e('Filtern nach','cpsmartcrm')?>:",
+                    zeroRecords: "<?php _e('Keine passenden Einträge gefunden','cpsmartcrm')?>",
+                    paginate: {
+                        first: "<?php _e('Erste Seite','cpsmartcrm')?>",
+                        last: "<?php _e('Letzte Seite','cpsmartcrm')?>",
+                        next: "<?php _e('Nächste','cpsmartcrm')?>",
+                        previous: "<?php _e('Vorherige','cpsmartcrm')?>"
+                    },
+                    aria: {
+                        sortAscending: ": <?php _e('aktivieren um Spalte aufsteigend zu sortieren','cpsmartcrm')?>",
+                        sortDescending: ": <?php _e('aktivieren um Spalte absteigend zu sortieren','cpsmartcrm')?>"
+                    }
                 }
-        },
-        	columns: [{ field: "id_agenda", title: "ID", hidden: true },
-				{ field: "fk_utenti_ins", title: "Ins", hidden: true },
-				{ field: "cliente", title: "<?php _e('Kunde','cpsmartcrm')?>" },
-				{ field: "oggetto", title: "<?php _e('Objekt','cpsmartcrm')?>" },
-				{ field: "annotazioni", title: "<?php _e('Beschreibung','cpsmartcrm')?>" },
-				{ field: "data_scadenza", title: "<?php _e('Ablauf','cpsmartcrm')?>", template: '#= kendo.toString(kendo.parseDate(data_scadenza, "yyyy-MM-dd HH:mm:ss"), "' + $format + '") #' },
-				{ field: "destinatari", title: "<?php _e('Empfänger','cpsmartcrm')?>" },{field:"privileges",hidden:true},
-        { command: [
-          {
-              name: "<?php _e('Offen','cpsmartcrm')?>",
-            click: function (e) {
-              e.preventDefault();
-              var position = $(e.target).offset();
-              var tr = $(e.target).closest("tr"); // get the current table row (tr)
-              var _row = this.dataItem(tr);
-              $.ajax({
-                  url: ajaxurl,
-                  data: {
-                  	'action': 'WPsCRM_view_activity_modal',
-                      'id': _row.id,
-                      'report':$(e.currentTarget).data('report')
-                  },
-                  success: function (result) {
-                      $('#dialog-view').show().html(result)
-                      $('.modal_inner').animate({
-                          'top': position.top -320 +'px',
-                      }, 1000);
-                  },
-                  error: function (errorThrown) {
-                      console.log(errorThrown);
-                  }
-              })
-            },
-            className: "btn _flat"
-          },
-          {
-          	name: "<?php _e('Löschen','cpsmartcrm')?>",
+            });
 
-          	click: function (e) {
-            e.preventDefault();
-            var tr = $(e.target).closest("tr"); // get the current table row (tr)
-          // get the data bound to the current table row
-          var data = this.dataItem(tr);
+            // "Offen"-Button
+            $(document).on('click', '.open-todo', function () {
+                var id = $(this).data('id');
+                var position = $(this).offset();
+                $.ajax({
+                    url: ajaxurl,
+                    data: {
+                        'action': 'WPsCRM_view_activity_modal',
+                        'id': id
+                    },
+                    success: function (result) {
+                        $('#dialog-view').show().html(result);
+                        $('.modal_inner').animate({
+                            'top': position.top - 320 + 'px',
+                        }, 1000);
+                    },
+                    error: function (errorThrown) {
+                        console.log(errorThrown);
+                    }
+                });
+            });
 
-         if (!confirm("<?php _e('Löschen bestätigen','cpsmartcrm') ?>?"))
-            return false;
-		 location.href="<?php echo admin_url('admin.php?page=smart-crm&p=scheduler/delete.php&ID=')?>"+data.id +"&ref=dashboard&security=<?php echo $delete_nonce?>";
-         },
-        className: "btn btn-danger _flat"
-        }
-        ],width:200
-        }, { field: "esito", hidden: true }
-		, { field: "status", title: "<?php _e('Status','cpsmartcrm')?>", width: 100 ,"filterable":false}
-        , { field: "class", hidden: true }
-        ],
-        height: 500,
-        editable:"popup"
+            // "Löschen"-Button
+            $(document).on('click', '.delete-todo', function () {
+                var id = $(this).data('id');
+                if (!confirm("<?php _e('Löschen bestätigen','cpsmartcrm') ?>?")) return false;
+                window.location.href = "<?php echo admin_url('admin.php?page=smart-crm&p=scheduler/delete.php&ID=')?>"+id+"&ref=dashboard&security=<?php echo $delete_nonce?>";
+            });
         });
 
-    	$("#grid_appuntamenti").kendoGrid({
-		noRecords: {
-			template: "<h4 style=\"text-align:center;padding:5%\"><?php _e('Keine TERMINE vorhanden','cpsmartcrm')?></h4>"
-    	},
-        dataSource: {
-          transport: {
-            read: function (options) {
-              $.ajax({
-                url: ajaxurl,
-                data: {
-                	'action': 'WPsCRM_get_scheduler',
-                  'type': 2,
-                  'view': '<?php echo $view?>'
+        $(document).ready(function () {
+            $('#grid_appuntamenti').DataTable({
+                ajax: {
+                    url: ajaxurl,
+                    type: 'POST',
+                    data: {
+                        'action': 'WPsCRM_get_scheduler',
+                        'type': 2,
+                        'view': '<?php echo $view?>'
+                    },
+                    dataSrc: 'scheduler'
                 },
-                success: function (result) {
-                  $("#grid_appuntamenti").data("kendoGrid").dataSource.data(result.scheduler);
-
-                },
-                error: function (errorThrown) {
-                  console.log(errorThrown);
-                }
-              })
-            }
-          },
-            sort: { field: "data_scadenza", dir: "desc" },
-          schema: {
-            model: {
-              id: "id_agenda",
-              fields: {
-                cliente: { editable: false },
-                oggetto: { editable: false },
-                annotazioni: { editable: false },
-                data_scadenza: { type:"date", editable: false },
-                destinatari: { editable: false },
-              }
-            }
-          },
-          pageSize: 50,
-        },
-        dataBound: loadCellsAttributesScheduler,
-        groupable: {
-            messages: {
-            empty: "<?php _e('Ziehe die Spaltenüberschriften und lege sie hier ab, um sie nach dieser Spalte zu gruppieren','cpsmartcrm') ?>"
-            }
-        },
-        sortable: true,
-        serverPaging: true,
-        pageable:
-        {
-            pageSizes: [20, 50, 100],
-            messages:
-                {
-                    display: "<?php _e('Zeige','cpsmartcrm') ?> {0}-{1}  <?php _e('von','cpsmartcrm') ?> {2} <?php _e('gesammt','cpsmartcrm') ?>",
-                    of: "<?php _e('von','cpsmartcrm') ?> {0}",
-                    itemsPerPage: "<?php _e('Beiträge pro Seite','cpsmartcrm') ?>",
-                    first: "<?php _e('Erste Seite','cpsmartcrm') ?>",
-                    last: "<?php _e('Letzte Seite','cpsmartcrm') ?>",
-                    next: "<?php _e('Nächste','cpsmartcrm') ?>",
-                    previous: "<?php _e('Vorherige','cpsmartcrm') ?>",
-                    refresh: "<?php _e('Neu laden','cpsmartcrm') ?>",
-                    morePages: "<?php _e('Mehr','cpsmartcrm') ?>"
-                },
-        },
-        filterable:
-        {
-            messages:
-                {
-                    info: "<?php _e('Filtern nach','cpsmartcrm') ?> "
-                },
-            extra: false,
-            operators:
-                {
-                    string:
-                        {
-                            contains: "<?php _e('Enthält','cpsmartcrm') ?> ",
-                            startswith: "<?php _e('Beginnt mit','cpsmartcrm') ?>",
-                            eq: "<?php _e('Gleich','cpsmartcrm') ?>",
-                            neq: "<?php _e('Nicht gleich','cpsmartcrm') ?>"
+                columns: [
+                    { data: 'cliente', title: '<?php _e('Kunde','cpsmartcrm')?>' },
+                    { data: 'oggetto', title: '<?php _e('Objekt','cpsmartcrm')?>' },
+                    { data: 'annotazioni', title: '<?php _e('Beschreibung','cpsmartcrm')?>' },
+                    { data: 'data_scadenza', title: '<?php _e('Ablauf','cpsmartcrm')?>' },
+                    { data: 'destinatari', title: '<?php _e('Empfänger','cpsmartcrm')?>' },
+                    { data: 'status', title: '<?php _e('Status','cpsmartcrm')?>' },
+                    {
+                        data: null,
+                        orderable: false,
+                        searchable: false,
+                        width: "200px",
+                        render: function (data, type, row) {
+                            return `
+                                <button class="btn _flat open-appointment" data-id="${row.id_agenda}"><?php _e('Offen','cpsmartcrm')?></button>
+                                <button class="btn btn-danger _flat delete-appointment" data-id="${row.id_agenda}"><?php _e('Löschen','cpsmartcrm')?></button>
+                            `;
                         }
+                    }
+                ],
+                pageLength: 50,
+                lengthMenu: [20, 50, 100],
+                order: [[3, 'desc']],
+                language: {
+                    emptyTable: "<h4 style='text-align:center;padding:5%'><?php _e('Keine TERMINE vorhanden','cpsmartcrm')?></h4>",
+                    info: "<?php _e('Zeige','cpsmartcrm')?> _START_-_END_ <?php _e('von','cpsmartcrm')?> _TOTAL_ <?php _e('gesammt','cpsmartcrm')?>",
+                    infoEmpty: "<?php _e('Keine Einträge vorhanden','cpsmartcrm')?>",
+                    infoFiltered: "(<?php _e('gefiltert von','cpsmartcrm')?> _MAX_ <?php _e('gesammt','cpsmartcrm')?>)",
+                    lengthMenu: "<?php _e('Beiträge pro Seite','cpsmartcrm')?> _MENU_",
+                    loadingRecords: "<?php _e('Lade...','cpsmartcrm')?>",
+                    processing: "<?php _e('Verarbeite...','cpsmartcrm')?>",
+                    search: "<?php _e('Filtern nach','cpsmartcrm')?>:",
+                    zeroRecords: "<?php _e('Keine passenden Einträge gefunden','cpsmartcrm')?>",
+                    paginate: {
+                        first: "<?php _e('Erste Seite','cpsmartcrm')?>",
+                        last: "<?php _e('Letzte Seite','cpsmartcrm')?>",
+                        next: "<?php _e('Nächste','cpsmartcrm')?>",
+                        previous: "<?php _e('Vorherige','cpsmartcrm')?>"
+                    },
+                    aria: {
+                        sortAscending: ": <?php _e('aktivieren um Spalte aufsteigend zu sortieren','cpsmartcrm')?>",
+                        sortDescending: ": <?php _e('aktivieren um Spalte absteigend zu sortieren','cpsmartcrm')?>"
+                    }
                 }
-        },
-    		columns: [{ field: "id_agenda", title: "ID", hidden: true },
-				{ field: "fk_utenti_ins", title: "Ins", hidden: true },
-				{ field: "cliente", title: "<?php _e('Kunde','cpsmartcrm')?>" },
-				{ field: "oggetto", title: "<?php _e('Objekt','cpsmartcrm')?>" },
-				{ field: "annotazioni", title: "<?php _e('Beschreibung','cpsmartcrm')?>" },
-				{ field: "data_scadenza", title: "<?php _e('Ablauf','cpsmartcrm')?>", template: '#= kendo.toString(kendo.parseDate(data_scadenza, "yyyy-MM-dd HH:mm:ss"), "' + $format + '") #' },
-				{ field: "destinatari", title: "<?php _e('Empfänger','cpsmartcrm')?>" },{field:"privileges",hidden:true},
-        { command: [
-            {
-            name: "<?php _e('Offen','cpsmartcrm')?>",
-            click: function (e) {
-              e.preventDefault();
-              var position = $(e.target).offset();
-                console.log(position.top)
-              var tr = $(e.target).closest("tr"); // get the current table row (tr)
-              var _row = this.dataItem(tr);
-                //location.href="?page=smart-crm&p=scheduler/view.php&ID="+data.id;
-              $.ajax({
-                  url: ajaxurl,
-                  data: {
-                  	'action': 'WPsCRM_view_activity_modal',
-                      'id': _row.id,
-                      'report':$(e.currentTarget).data('report')
-                  },
-                  success: function (result) {
-                      //console.log(result);
-                      $('#dialog-view').show().html(result)
-                      $('.modal_inner').animate({
-                          'top': position.top - 320 + 'px',
-                      }, 1000);
+            });
 
-                  },
-                  error: function (errorThrown) {
-                      console.log(errorThrown);
-                  }
-              })
-            },
-               className: "btn _flat"
-          },
-          {
-            name: "<?php _e('Löschen','cpsmartcrm')?>",
-            click: function (e) {
-                e.preventDefault();
-				var tr = $(e.target).closest("tr"); // get the current table row (tr)
-          // get the data bound to the current table row
-				var data = this.dataItem(tr);
-				if (!confirm("<?php _e('Löschen bestätigen','cpsmartcrm') ?>?"))
-					return false;
-				location.href="<?php echo admin_url('admin.php?page=smart-crm&p=scheduler/delete.php&ID=')?>"+data.id +"&ref=dashboard&security=<?php echo $delete_nonce?>";
-			},
-        className: "btn btn-danger _flat"
-        }
-        ],width:200
-        }, { field: "esito", hidden: true }
-		, { field: "status", title: "<?php _e('Status','cpsmartcrm')?>", width: 100 , "filterable": false}
-        , { field: "class", hidden: true }
-        ],
-        height: 500,
-        editable:"popup"
-      });
+            // "Offen"-Button
+            $(document).on('click', '.open-appointment', function () {
+                var id = $(this).data('id');
+                var position = $(this).offset();
+                $.ajax({
+                    url: ajaxurl,
+                    data: {
+                        'action': 'WPsCRM_view_activity_modal',
+                        'id': id
+                    },
+                    success: function (result) {
+                        $('#dialog-view').show().html(result);
+                        $('.modal_inner').animate({
+                            'top': position.top - 320 + 'px',
+                        }, 1000);
+                    },
+                    error: function (errorThrown) {
+                        console.log(errorThrown);
+                    }
+                });
+            });
+
+            // "Löschen"-Button
+            $(document).on('click', '.delete-appointment', function () {
+                var id = $(this).data('id');
+                if (!confirm("<?php _e('Löschen bestätigen','cpsmartcrm') ?>?")) return false;
+                window.location.href = "<?php echo admin_url('admin.php?page=smart-crm&p=scheduler/delete.php&ID=')?>"+id+"&ref=dashboard&security=<?php echo $delete_nonce?>";
+            });
+        });
 
 });
     </script> 
@@ -477,9 +277,6 @@ $page="dashboard";
 			</ul>
 		</div>
 	</h4>
-    <script id="tooltipTemplate" type="text/x-kendo-template">
-        <div style="background-color:rgba(57,57,57,.8);border:2px solid rgb(204,204,204);color:rgb(250,250,250);border-radius:6px;display:block;width:240px;height:100px">#=target.data('title')#</div>
-    </script>
     <?php if($privileges==null || $privileges['agenda'] >0){ ?>
 <h3 style="margin:0 20px"><?php _e('ToDo','cpsmartcrm')?>
 	<ul class="select-action _llegend pull-right" style="width:initial">
@@ -505,7 +302,7 @@ $page="dashboard";
 
 
 </h3>
-<div id="grid_todo" class="datagrid" style="margin-bottom:24px"></div>
+<table id="grid_todo" class="datagrid table table-striped table-bordered" style="margin-bottom:24px"></table>
 	
 <h3><?php _e('Termine','cpsmartcrm')?>
 	<ul class="select-action _llegend pull-right" style="width:initial">
@@ -528,7 +325,7 @@ $page="dashboard";
 		</span>
 	</ul>
 	</h3>
-<div id="grid_appuntamenti" class="datagrid" style="margin-bottom:24px"></div> 
+<table id="grid_appuntamenti" class="datagrid table table-striped table-bordered" style="margin-bottom:24px"></table> 
 </div>
 <?php } else{?> 
 <h3 style="color:crimson"><?php _e("Du hast keine Berechtigung, auf den Benachrichtigungsbereich zuzugreifen","cpsmartcrm") ?></h3>

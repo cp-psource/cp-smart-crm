@@ -1222,7 +1222,12 @@ class CRM_Options_Settings{
 				<div class="panel-wrap hidden-on-narrow row" style="margin-top:20px">
 					<div id="signature-pad" class="m-signature-pad">
 						<div class="m-signature-pad--body" style="text-align:center;">
-							<canvas id="cSignature" width="800" height="200" style="width:800px;border:1px solid #666"></canvas>
+							<canvas id="cSignature" width="800" height="200" style="width:800px;height:200px;border:1px solid #666"></canvas>
+							<?php if (!empty($document_options['crm_signature'])): ?>
+								<div style="margin-top:20px;">
+									<img src="<?php echo esc_attr($document_options['crm_signature']); ?>" style="max-width:300px" />
+								</div>
+							<?php endif; ?>
 						</div>
 						<div class="m-signature-pad--footer">
 							<br />

@@ -2367,7 +2367,7 @@ msgid "Staat/Provinz"
 msgstr ""
 
 #: inc/options.php:298
-msgid "Cod. Fisc."
+msgid "Steuernummer"
 msgstr ""
 
 #: inc/options.php:303 inc/options.php:307 inc/options.php:311

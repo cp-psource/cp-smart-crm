@@ -298,30 +298,30 @@ class CRM_Options_Settings{
                           echo stripslashes(WPsCRM_get_countries('0'))
                           ?></select>                         
                 </div>
+				<div class="item">
+					<label><?php _e('Steuernummer', 'wp-smart-crm-invoices-pro') ?></label><br />
+					<input type="text" id="crm_business_taxid" name="CRM_business_settings[business_taxid]" value="<?php echo isset($options['business_taxid']) ? esc_attr($options['business_taxid']) : '' ?>" class="form-control _m"/>
+				</div>
 				<div class="item xml_mandatory">
 					<label>
 						<input type="checkbox" id="crm_kleinunternehmer" name="CRM_business_settings[crm_kleinunternehmer]" value="1" <?php checked(isset($options['crm_kleinunternehmer']) && $options['crm_kleinunternehmer'] == 1); ?> />
 						<?php _e('Kleinunternehmer nach §19 UStG (keine Umsatzsteuer-ID)', 'wp-smart-crm-invoices-pro'); ?>
 					</label>
 					<br />
-					<label for="crm_business_iva">
+					<label for="crm_business_ustid">
 						<?php _e('Umsatzsteuer-ID', 'wp-smart-crm-invoices-pro') ?>
 						<?php if (empty($options['crm_kleinunternehmer'])) : ?>
 						<span id="iva_star" style="color:red"> *</span>
 						<?php endif; ?>
 					</label>
 					<br />
-					<input type="text" id="crm_business_iva" name="CRM_business_settings[business_iva]" value="<?php echo isset($options['business_iva']) ? esc_attr($options['business_iva']) : '' ?>" 
+					<input type="text" id="crm_business_ustid" name="CRM_business_settings[business_ustid]" value="<?php echo isset($options['business_ustid']) ? esc_attr($options['business_ustid']) : '' ?>" 
 						class="form-control _m"
 						<?php if (empty($options['crm_kleinunternehmer'])): ?>
-							required data-parsley-required-message="<?php _e('Umsatzsteuer-Code ist erforderlich','cpsmartcrm')?>"
+							required data-parsley-required-message="<?php _e('Umsatzsteuer-ID ist erforderlich','cpsmartcrm')?>"
 						<?php endif; ?>
 					/>
 				</div>
-                <div class="item">
-                    <label><?php _e('Cod. Fisc.', 'wp-smart-crm-invoices-pro') ?></label><br />
-                    <input type="text" id="crm_business_cf" name="CRM_business_settings[business_cf]" value="<?php echo isset( $options['business_cf'] ) ?  $options['business_cf'] :""?>"  class="form-control _m"/>
-                </div>
                 <div class="item">
                     <label><?php _e('Telefon', 'wp-smart-crm-invoices-pro') ?></label><br />
                     <input type="text" id="crm_business_phone" name="CRM_business_settings[business_phone]" value="<?php echo isset($options['business_phone']) ? $options['business_phone'] :"" ?>"  class="form-control _m" /><label class="toRight"><?php _e('Im Dokumentkopf anzeigen', 'wp-smart-crm-invoices-pro') ?>?<input type="checkbox" value="1" name="CRM_business_settings[show_phone]" <?php echo (isset($options['show_phone']) && $options['show_phone'] == "1" ? 'checked' : null) ?>/></label><br />
@@ -379,9 +379,9 @@ class CRM_Options_Settings{
 					var $form = $("form");
 					// Umsatzsteuer-ID nur required, wenn kein Kleinunternehmer
 					if ($('#crm_kleinunternehmer').is(':checked')) {
-						$('#crm_business_iva').removeAttr('required').removeAttr('data-parsley-required-message');
+						$('#crm_business_ustid').removeAttr('required').removeAttr('data-parsley-required-message');
 					} else {
-						$('#crm_business_iva').attr('required', 'required').attr('data-parsley-required-message', "<?php _e('Umsatzsteuer-Code ist erforderlich','cpsmartcrm')?>");
+						$('#crm_business_ustid').attr('required', 'required').attr('data-parsley-required-message', "<?php _e('Umsatzsteuer-ID ist erforderlich','cpsmartcrm')?>");
 					}
 					if ($form.parsley().validate()) {
 						$('#CRM_required_settings').val(1);

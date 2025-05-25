@@ -2814,8 +2814,8 @@ msgstr "État/Province"
 
 #: inc/options.php:298
 #, fuzzy
-msgid "Cod. Fisc."
-msgstr "Cod. Fisc."
+msgid "Steuernummer"
+msgstr "Steuernummer"
 
 #: inc/options.php:303 inc/options.php:307 inc/options.php:311
 #: inc/options.php:315 inc/options.php:319 inc/options.php:323

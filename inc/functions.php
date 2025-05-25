@@ -49,30 +49,34 @@ $document->print_logo = function() {
     return true;
 };
 $document->master_data = function() {
-  $options = get_option('CRM_business_settings');
-	$number= isset($options['business_number']) ? $options['business_number'] : "";
-  $prov  = isset($options['crm_business_provincia']) ? " (".$options['crm_business_provincia'].")" : "";
-  return array(
-      array('full_header' => "<h2 class=\"WPsCRM_businessName\">" . html_entity_decode($options['business_name']) . "</h2>" . $extraName . "<div class=\"WPsCRM_businessAddress\"> " . html_entity_decode($options['business_address']) . $number." <br /> " . html_entity_decode($options['business_zip']) . ", " . html_entity_decode($options['business_town']) .$prov. "</div>", 'show' => 1),
-      array(__('Name', 'cpsmartcrm') => html_entity_decode($options['business_name']), 'show' => 0, 'show_label' => 0, ''),
-      array(__('Addresse', 'cpsmartcrm') => html_entity_decode($options['business_address']), 'show' => 0, 'show_label' => 0),
-      array(__('Stadt', 'cpsmartcrm') => html_entity_decode($options['business_town']), 'show' => 0, 'show_label' => 0),
-      array(__('PLZ', 'cpsmartcrm') => html_entity_decode($options['business_zip']), 'show' => 0, 'show_label' => 0),
-			array(__('Staat/Prov', 'wp-smart-crm-invoices-pro') => $prov, 'show' => 0, 'show_label' => 0),
-      array(
-  'label' => __('Umsatzsteuer-ID', 'cpsmartcrm'),
-  'value' => cpsmartcrm_get_umsatzsteuer_info($options),
-  'show' => 1,
-  'show_label' => 1,
-),
-      array(__('Steuernummer', 'cpsmartcrm') => html_entity_decode($options['business_cf']), 'show' => 1, 'show_label' => 1),
-      array(__('Telefon', 'cpsmartcrm') => html_entity_decode($options['business_phone']), 'show' => isset($options['show_phone']) ? $options['show_phone'] : 0, 'show_label' => 1),
-      array(__('Fax', 'cpsmartcrm') => html_entity_decode($options['business_fax']), 'show' => isset($options['show_fax']) ? $options['show_fax'] : 0, 'show_label' => 1),
-      array(__('Email', 'cpsmartcrm') => html_entity_decode($options['business_email']), 'show' => isset($options['show_email']) ? $options['show_email'] : 0, 'show_label' => 1),
-      array(__('Webseite', 'cpsmartcrm') => html_entity_decode($options['business_web']), 'show' => isset($options['show_web']) ? $options['show_web'] : 0, 'show_label' => 1),
-      array(__('IBAN', 'cpsmartcrm') => html_entity_decode($options['business_iban']), 'show' => isset($options['show_iban']) ? $options['show_iban'] : 0, 'show_label' => 1),
-      array(__('SWIFT', 'cpsmartcrm') => html_entity_decode($options['business_swift']), 'show' => isset($options['show_swift']) ? $options['show_swift'] : 0, 'show_label' => 1)
-  );
+    $options = get_option('CRM_business_settings');
+    $number = isset($options['business_number']) ? $options['business_number'] : "";
+    $prov  = isset($options['crm_business_provincia']) ? " (".$options['crm_business_provincia'].")" : "";
+    return array(
+        array('full_header' => "<h2 class=\"WPsCRM_businessName\">" . html_entity_decode($options['business_name']) . "</h2>" . $extraName . "<div class=\"WPsCRM_businessAddress\"> " . html_entity_decode($options['business_address']) . $number." <br /> " . html_entity_decode($options['business_zip']) . ", " . html_entity_decode($options['business_town']) .$prov. "</div>", 'show' => 1),
+        array(__('Name', 'cpsmartcrm') => html_entity_decode($options['business_name']), 'show' => 0, 'show_label' => 0, ''),
+        array(__('Addresse', 'cpsmartcrm') => html_entity_decode($options['business_address']), 'show' => 0, 'show_label' => 0),
+        array(__('Stadt', 'cpsmartcrm') => html_entity_decode($options['business_town']), 'show' => 0, 'show_label' => 0),
+        array(__('PLZ', 'cpsmartcrm') => html_entity_decode($options['business_zip']), 'show' => 0, 'show_label' => 0),
+        array(__('Staat/Prov', 'wp-smart-crm-invoices-pro') => $prov, 'show' => 0, 'show_label' => 0),
+        array(
+            'label' => __('Umsatzsteuer-ID', 'cpsmartcrm'),
+            'value' => !empty($options['business_ustid']) ? esc_html($options['business_ustid']) : cpsmartcrm_get_umsatzsteuer_info($options),
+            'show' => 1,
+            'show_label' => 1,
+        ),
+        array(
+            __('Steuernummer', 'cpsmartcrm') => html_entity_decode(isset($options['business_taxid']) ? $options['business_taxid'] : ''),
+            'show' => 1,
+            'show_label' => 1
+        ),
+        array(__('Telefon', 'cpsmartcrm') => html_entity_decode($options['business_phone']), 'show' => isset($options['show_phone']) ? $options['show_phone'] : 0, 'show_label' => 1),
+        array(__('Fax', 'cpsmartcrm') => html_entity_decode($options['business_fax']), 'show' => isset($options['show_fax']) ? $options['show_fax'] : 0, 'show_label' => 1),
+        array(__('Email', 'cpsmartcrm') => html_entity_decode($options['business_email']), 'show' => isset($options['show_email']) ? $options['show_email'] : 0, 'show_label' => 1),
+        array(__('Webseite', 'cpsmartcrm') => html_entity_decode($options['business_web']), 'show' => isset($options['show_web']) ? $options['show_web'] : 0, 'show_label' => 1),
+        array(__('IBAN', 'cpsmartcrm') => html_entity_decode($options['business_iban']), 'show' => isset($options['show_iban']) ? $options['show_iban'] : 0, 'show_label' => 1),
+        array(__('SWIFT', 'cpsmartcrm') => html_entity_decode($options['business_swift']), 'show' => isset($options['show_swift']) ? $options['show_swift'] : 0, 'show_label' => 1)
+    );
 };
 $document->numbering = function() {
   $options = get_option('CRM_documents_settings');
@@ -2538,13 +2542,58 @@ function WPsCRM_check_client_one() {
   $cur_year = date("Y");
   $table = WPsCRM_TABLE . "clienti";
   if (empty($clients)) {
-    $wpdb->insert(
-            $table, array('FK_aziende' => "$ID_azienda", 'nome' => $options['business_name'], 'cognome' => '', 'ragione_sociale' => $options['business_name'], 'indirizzo' => $options['business_address'], 'cap' => $options['business_zip'], 'localita' => $options['business_town'], 'provincia' => '', 'telefono1' => $options['business_phone'], 'telefono2' => '', 'fax' => $options['business_fax'], 'email' => $options['business_email'], 'sitoweb' => '', 'skype' => '', 'p_iva' => cpsmartcrm_get_umsatzsteuer_info($options), 'cod_fis' => $options['business_cf'], 'annotazioni' => '', 'data_inserimento' => $data_inserimento, 'provenienza' => '', 'agente' => ''), array('%d', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%d')
-    );
+      $wpdb->insert(
+          $table, array(
+              'FK_aziende' => "$ID_azienda",
+              'nome' => $options['business_name'],
+              'cognome' => '',
+              'ragione_sociale' => $options['business_name'],
+              'indirizzo' => $options['business_address'],
+              'cap' => $options['business_zip'],
+              'localita' => $options['business_town'],
+              'provincia' => '',
+              'telefono1' => $options['business_phone'],
+              'telefono2' => '',
+              'fax' => $options['business_fax'],
+              'email' => $options['business_email'],
+              'sitoweb' => '',
+              'skype' => '',
+              'p_iva' => isset($options['business_ustid']) ? $options['business_ustid'] : '', // Umsatzsteuer-ID
+              'cod_fis' => isset($options['business_taxid']) ? $options['business_taxid'] : '', // Steuernummer
+              'annotazioni' => '',
+              'data_inserimento' => $data_inserimento,
+              'provenienza' => '',
+              'agente' => ''
+          ),
+          array('%d', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%d')
+      );
   } else {
-    $wpdb->update(
-            $table, array('FK_aziende' => "$ID_azienda", 'nome' => $options['business_name'], 'cognome' => '', 'ragione_sociale' => $options['business_name'], 'indirizzo' => $options['business_address'], 'cap' => $options['business_zip'], 'localita' => $options['business_town'], 'provincia' => '', 'telefono1' => $options['business_phone'], 'telefono2' => '', 'fax' => $options['business_fax'], 'email' => $options['business_email'], 'sitoweb' => '', 'skype' => '', 'p_iva' => cpsmartcrm_get_umsatzsteuer_info($options), 'cod_fis' => $options['business_cf'], 'annotazioni' => '', 'data_modifica' => $data_modifica, 'provenienza' => '', 'agente' => ''), array('ID_clienti' => 1), array('%d', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%d')
-    );
+      $wpdb->update(
+          $table, array(
+              'FK_aziende' => "$ID_azienda",
+              'nome' => $options['business_name'],
+              'cognome' => '',
+              'ragione_sociale' => $options['business_name'],
+              'indirizzo' => $options['business_address'],
+              'cap' => $options['business_zip'],
+              'localita' => $options['business_town'],
+              'provincia' => '',
+              'telefono1' => $options['business_phone'],
+              'telefono2' => '',
+              'fax' => $options['business_fax'],
+              'email' => $options['business_email'],
+              'sitoweb' => '',
+              'skype' => '',
+              'p_iva' => isset($options['business_ustid']) ? $options['business_ustid'] : '', // Umsatzsteuer-ID
+              'cod_fis' => isset($options['business_taxid']) ? $options['business_taxid'] : '', // Steuernummer
+              'annotazioni' => '',
+              'data_modifica' => $data_modifica,
+              'provenienza' => '',
+              'agente' => ''
+          ),
+          array('ID_clienti' => 1),
+          array('%d', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%d')
+      );
   }
   $client_one = $wpdb->insert_id;
   update_option('CRM_client_one', $client_one);
@@ -4346,7 +4395,7 @@ function cpsmartcrm_get_umsatzsteuer_info($options) {
     if (!empty($options['crm_kleinunternehmer'])) {
         return __('Kleinunternehmer nach §19 UStG (keine Umsatzsteuer-ID)', 'wp-smart-crm-invoices-pro');
     } else {
-        return !empty($options['business_iva']) ? esc_html($options['business_iva']) : '<span style="color:red;">*</span>';
+        return !empty($options['business_ustid']) ? esc_html($options['business_ustid']) : '<span style="color:red;">*</span>';
     }
 }
 /**

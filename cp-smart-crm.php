@@ -2,7 +2,7 @@
 /*
 Plugin Name: PS Smart CRM
 Plugin URI: https://cp-psource.github.io/cp-smart-crm/wordpress-crm-invoices-plugin
-Description: Fügt ClassicPress ein leistungsstarkes CRM hinzu. Verwalten Sie Kunden, Rechnungen, TODO, Termine und zukünftige Benachrichtigungen an Agenten, Benutzer und Kunden
+Description: Fügt WordPress ein leistungsstarkes CRM hinzu. Verwalten Sie Kunden, Rechnungen, TODO, Termine und zukünftige Benachrichtigungen an Agenten, Benutzer und Kunden
 Version: 1.5.4
 Author:       PSOURCE
 Author URI:   https://cp-psource.github.io/cp-smart-crm

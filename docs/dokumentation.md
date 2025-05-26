@@ -1,9 +1,9 @@
 ---
 layout: psource-theme
-title: "CP Smart CRM"
+title: "PS Smart CRM"
 ---
 
-<h2 align="center" style="color:#38c2bb;">📚 CP Smart CRM</h2>
+<h2 align="center" style="color:#38c2bb;">📚 PS Smart CRM</h2>
 
 <div class="menu">
   <a href="https://github.com/cp-psource/cp-smart-crm/discussions" style="color:#38c2bb;">💬 Forum</a>
@@ -17,7 +17,7 @@ Nach der Aktivierung des Plugins siehst Du eine Benachrichtigung, in der Du eini
 
 ![crm-einrichtung.jpeg](assets/images/crm-einrichtung.jpeg)
 
-## 2. CP Smart CRM-Optionen
+## 2. PS Smart CRM-Optionen
 
 Im Menü "DIENSTPROGRAMME"->Einstellungen findest Du als ersten Punkt des Untermenüs die Konfigurationseinstellungen des Managementsystems, die in Abschnitte unterteilt sind:
 ![cp-smart-crm-optionen.jpeg](assets/images/cp-smart-crm-optionen.jpeg)

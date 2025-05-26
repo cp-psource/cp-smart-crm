@@ -1,7 +1,7 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: CP Smart CRM\n"
+"Project-Id-Version: PS Smart CRM\n"
 "POT-Creation-Date: 2023-09-26 22:25+0200\n"
 "PO-Revision-Date: 2023-09-26 22:25+0200\n"
 "Last-Translator: \n"
@@ -38,7 +38,7 @@ msgid "auf dieser Seite"
 msgstr ""
 
 #: cp-smart-crm.php:328
-msgid "um CP Smart CRM zu verwenden "
+msgid "um PS Smart CRM zu verwenden "
 msgstr ""
 
 #: cp-smart-crm.php:388 cp-smart-crm.php:389
@@ -2239,7 +2239,7 @@ msgid "Füge einen Datensatz zu bestimmten Newsletter-Listen hinzu"
 msgstr ""
 
 #: inc/options.php:129
-msgid "CP Smart CRM Optionen und Einstellungen"
+msgid "PS Smart CRM Optionen und Einstellungen"
 msgstr ""
 
 #: inc/options.php:142
@@ -3097,7 +3097,7 @@ msgid "CP SMART CRM Dokumente"
 msgstr ""
 
 #: inc/subscription_rules.php:40
-msgid "CP Smart CRM-Abonnementregeln"
+msgid "PS Smart CRM-Abonnementregeln"
 msgstr ""
 
 #: inc/subscription_rules.php:40
@@ -3307,7 +3307,7 @@ msgid "There is no changelog available."
 msgstr ""
 
 #. Plugin Name of the plugin/theme
-msgid "CP Smart CRM"
+msgid "PS Smart CRM"
 msgstr ""
 
 #. Plugin URI of the plugin/theme

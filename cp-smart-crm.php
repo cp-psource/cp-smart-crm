@@ -345,7 +345,7 @@ function WPsCRM_notify_CRM_SETTINGS(){
         <a href="<?php echo admin_url("admin.php?page=smartcrm_settings&tab=CRM_business_settings" )?>">
             <?php _e('auf dieser Seite','cpsmartcrm');?>
         </a>
-        <?php _e('um CP Smart CRM zu verwenden ','cpsmartcrm')?>!
+        <?php _e('um PS Smart CRM zu verwenden ','cpsmartcrm')?>!
     </p>
 </div>
 <?php

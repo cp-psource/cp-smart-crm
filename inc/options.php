@@ -134,10 +134,10 @@ class CRM_Options_Settings{
             $privileges=null;
 ?>
         <div class="wrap">
-            <h1 class="WPsCRM_plugin_title" style="text-align:center">CP Smart CRM<?php if(! isset($_GET['p'])){ ?><!--<span class="crmHelp" data-help="main"></span>--><?php } ?></h1>
+            <h1 class="WPsCRM_plugin_title" style="text-align:center">PS Smart CRM<?php if(! isset($_GET['p'])){ ?><!--<span class="crmHelp" data-help="main"></span>--><?php } ?></h1>
 		    <?php include(WPsCRM_DIR."/inc/crm/c_menu.php")?> 
         <?php
-		echo '<h1>'.__('CP Smart CRM Optionen und Einstellungen','cpsmartcrm').'</h1>';
+		echo '<h1>'.__('PS Smart CRM Optionen und Einstellungen','cpsmartcrm').'</h1>';
 	}
 	function footer(){
 		echo '<small style="text-align:center;top:30px;position:relative">ENTWICKELT VON PSOURCE <a href="https://cp-psource.github.io/cp-smart-crm">https://cp-psource.github.io/cp-smart-crm</a></small></div>';
@@ -264,101 +264,109 @@ class CRM_Options_Settings{
         <div id="pages" class="col-md-12">
             <div id="pages-title"><h4 class="page-header" style="text-align:center"><span class="crmHelp crmHelp-dark" data-help="business-data" data-role="tooltip"></span><?php _e('Geschäftliche Hauptdaten', 'wp-smart-crm-invoices-pro') ?><small style="font-size:small"> - <?php _e('Mit diesen Informationen wird bei der Plugin-Aktivierung Kontakt Nr. 1 (zur Selbsterledigung) erstellt und in Dokumenten (Rechnungen, Kostenvoranschläge usw.) verwendet.', 'wp-smart-crm-invoices-pro') ?></small></h4></div>
             <div id="sortable-handlers">
-				<div class="item xml_mandatory">
-					<label><?php _e('Firmenname', 'wp-smart-crm-invoices-pro') ?> ( <span style="color:red"> * </span> )</label><br />
-					<input type="text" id="crm_business_name" name="CRM_business_settings[business_name]" value="<?php echo isset( $options['business_name']) ? $options['business_name'] : "" ?>" required data-parsley-required-message="<?php _e('Firmenname ist erforderlich','cpsmartcrm')?>" class="form-control _m" />
-				</div>
-                <?php do_action("business_extra_field"); ?>
-					<div class="item xml_mandatory">
-						<label><?php _e('Adresse (Straße)', 'wp-smart-crm-invoices-pro') ?> ( <span style="color:red"> * </span> )</label><br />
-						<input type="text" id="crm_business_address" name="CRM_business_settings[business_address]" value="<?php echo isset($options['business_address']) ? $options['business_address'] : "" ?>" required data-parsley-required-message="<?php _e('Adresse ist erforderlich','cpsmartcrm')?>" class="form-control _m"/>
-					</div>
-              <div class="item">
-                <label><?php _e('Adresse (Nummer)', 'wp-smart-crm-invoices-pro') ?> </label><br />
-                <input type="text" id="crm_business_number" name="CRM_business_settings[business_number]" value="<?php echo isset($options['business_number']) ? $options['business_number'] : "" ?>" class="form-control _m" />
-              </div>
-				<div class="item xml_mandatory">
-					<label><?php _e('Stadt', 'wp-smart-crm-invoices-pro') ?> ( <span style="color:red"> * </span> )</label><br />
-					<input type="text" id="crm_business_town" name="CRM_business_settings[business_town]" value="<?php echo isset($options['business_town']) ? $options['business_town'] : "" ?>" required data-parsley-required-message="<?php _e('Stadt ist erforderlich','cpsmartcrm')?>" class="form-control _m"/>
-				</div>
-				<div class="item xml_mandatory">
-					<label><?php _e('PLZ', 'wp-smart-crm-invoices-pro') ?> ( <span style="color:red"> * </span> )</label><br />
-					<input type="text" id="crm_business_zip" name="CRM_business_settings[business_zip]" value="<?php echo isset($options['business_zip']) ? $options['business_zip'] : "" ?>" required data-parsley-required-message="<?php _e('Postleitzahl ist erforderlich','cpsmartcrm')?>" class="form-control _m"/>
-				</div>
-				<div class="item xml_mandatory">
-					<label><?php _e('Staat/Provinz', 'wp-smart-crm-invoices-pro') ?> ( <span style="color:red"> * </span> )</label><br />
-					<input type="text" id="crm_business_provincia" name="CRM_business_settings[crm_business_provincia]" value="<?php echo isset($options['crm_business_provincia']) ? $options['crm_business_provincia'] : "" ?>" required data-parsley-required-message="<?php _e('Staat/Provinz ist erforderlich','cpsmartcrm')?>" class="form-control _m" />
-				</div>
-                <div class="item xml_mandatory">
-                    <label><?php _e('Land', 'wp-smart-crm-invoices-pro') ?> ( <span style="color:red"> * </span> )</label><br />
-                    <select data-nazione="<?php if (isset($options['business_country'])) echo $options['business_country'] ?>" id="nazione" name="CRM_business_settings[business_country]" size="20" maxlength='50'><?php
-                        if (isset($options['business_country']))
-                          echo stripslashes(WPsCRM_get_countries($options['business_country']));
-                        else
-                          echo stripslashes(WPsCRM_get_countries('0'))
-                          ?></select>                         
-                </div>
-				<div class="item">
-					<label><?php _e('Steuernummer', 'wp-smart-crm-invoices-pro') ?></label><br />
-					<input type="text" id="crm_business_taxid" name="CRM_business_settings[business_taxid]" value="<?php echo isset($options['business_taxid']) ? esc_attr($options['business_taxid']) : '' ?>" class="form-control _m"/>
-				</div>
-				<div class="item xml_mandatory">
-					<label>
-						<input type="checkbox" id="crm_kleinunternehmer" name="CRM_business_settings[crm_kleinunternehmer]" value="1" <?php checked(isset($options['crm_kleinunternehmer']) && $options['crm_kleinunternehmer'] == 1); ?> />
-						<?php _e('Kleinunternehmer nach §19 UStG (keine Umsatzsteuer-ID)', 'wp-smart-crm-invoices-pro'); ?>
-					</label>
-					<br />
-					<label for="crm_business_ustid">
-						<?php _e('Umsatzsteuer-ID', 'wp-smart-crm-invoices-pro') ?>
-						<?php if (empty($options['crm_kleinunternehmer'])) : ?>
-						<span id="iva_star" style="color:red"> *</span>
-						<?php endif; ?>
-					</label>
-					<br />
-					<input type="text" id="crm_business_ustid" name="CRM_business_settings[business_ustid]" value="<?php echo isset($options['business_ustid']) ? esc_attr($options['business_ustid']) : '' ?>" 
-						class="form-control _m"
-						<?php if (empty($options['crm_kleinunternehmer'])): ?>
-							required data-parsley-required-message="<?php _e('Umsatzsteuer-ID ist erforderlich','cpsmartcrm')?>"
-						<?php endif; ?>
-					/>
-				</div>
-                <div class="item">
-                    <label><?php _e('Telefon', 'wp-smart-crm-invoices-pro') ?></label><br />
-                    <input type="text" id="crm_business_phone" name="CRM_business_settings[business_phone]" value="<?php echo isset($options['business_phone']) ? $options['business_phone'] :"" ?>"  class="form-control _m" /><label class="toRight"><?php _e('Im Dokumentkopf anzeigen', 'wp-smart-crm-invoices-pro') ?>?<input type="checkbox" value="1" name="CRM_business_settings[show_phone]" <?php echo (isset($options['show_phone']) && $options['show_phone'] == "1" ? 'checked' : null) ?>/></label><br />
-                </div>
-                <div class="item">
-                    <label><?php _e('Fax', 'wp-smart-crm-invoices-pro') ?></label><br />
-                    <input type="text" id="crm_business_fax" name="CRM_business_settings[business_fax]" value="<?php echo isset($options['business_fax']) ? $options['business_fax'] :"" ?>"  class="form-control _m" /><label class="toRight"><?php _e('Im Dokumentkopf anzeigen', 'wp-smart-crm-invoices-pro') ?>?<input type="checkbox" value="1" name="CRM_business_settings[show_fax]" <?php echo (isset($options['show_fax']) && $options['show_fax'] == "1" ? 'checked' : null) ?>/></label><br />
-                </div>
-				<div class="item">
-					<label><?php _e('Email', 'wp-smart-crm-invoices-pro') ?> ( <span style="color:red"> * </span> )</label><br />
-					<input type="email" id="crm_business_email" name="CRM_business_settings[business_email]"
-						value="<?php echo isset($options['business_email'] ) ? $options['business_email'] : "" ?>"
-						required
-						data-parsley-required-message="<?php _e('E-Mail ist erforderlich','cpsmartcrm')?>"
-						data-parsley-type="email"
-						class="form-control _m" />
-					<label class="toRight">
-						<?php _e('Im Dokumentkopf anzeigen', 'wp-smart-crm-invoices-pro') ?>?
-						<input type="checkbox" value="1" name="CRM_business_settings[show_email]" <?php echo (isset($options['show_email']) && $options['show_email'] == "1" ? 'checked' : null) ?>/>
-					</label><br />
-				</div>
-                <div class="item">
-                    <label><?php _e('Webseite', 'wp-smart-crm-invoices-pro') ?></label><br />
-                    <input type="text" id="crm_business_web" name="CRM_business_settings[business_web]" value="<?php echo isset( $options['business_web']) ? $options['business_web'] : "" ?>"  class="form-control _m"><label class="toRight"><?php _e('Im Dokumentkopf anzeigen', 'wp-smart-crm-invoices-pro') ?>?<input type="checkbox" value="1" name="CRM_business_settings[show_web]" <?php echo (isset($options['show_web']) && $options['show_web'] == "1" ? 'checked' : null) ?>/></label><br />
-                </div>
-                <div class="item">
-                    <label><?php _e('Bankkontonummer (IBAN)', 'wp-smart-crm-invoices-pro') ?></label><br />
-                    <input type="text" id="crm_business_iban" name="CRM_business_settings[business_iban]"  value="<?php echo isset( $options['business_iban']) ? $options['business_iban'] : "" ?>"  class="form-control _m"/><label class="toRight"><?php _e('Im Dokumentkopf anzeigen', 'wp-smart-crm-invoices-pro') ?>?<input type="checkbox" value="1" name="CRM_business_settings[show_iban]" <?php echo (isset($options['show_iban']) && $options['show_iban'] == "1" ? 'checked' : null) ?>/></label><br />
-                </div>
-                <div class="item">
-                    <label><?php _e('Int. Kontocode (SWIFT)', 'wp-smart-crm-invoices-pro') ?></label><br />
-                    <input type="text" id="crm_business_swift" name="CRM_business_settings[business_swift]" value="<?php echo isset( $options['business_swift']) ? $options['business_swift'] : "" ?>" class="form-control _m" /><label class="toRight"><?php _e('Im Dokumentkopf anzeigen', 'wp-smart-crm-invoices-pro') ?>?<input type="checkbox" value="1" name="CRM_business_settings[show_swift]" <?php echo (isset($options['show_swift']) && $options['show_swift'] == "1" ? 'checked' : null) ?> /></label><br />
-                </div>
-                <input type="hidden" id="CRM_required_settings" name="CRM_business_settings[CRM_required_settings]" value="<?php echo isset( $options['CRM_required_settings']) ? $options['CRM_required_settings'] : "" ?>" />
+		<div class="item xml_mandatory">
+			<label><?php _e('Firmenname', 'wp-smart-crm-invoices-pro') ?> ( <span style="color:red"> * </span> )</label><br />
+			<input type="text" id="crm_business_name" name="CRM_business_settings[business_name]" value="<?php echo isset($options['business_name']) ? esc_attr($options['business_name']) : "" ?>" required data-parsley-required-message="<?php _e('Firmenname ist erforderlich','cpsmartcrm')?>" class="form-control _m" />
+		</div>
+		<?php do_action("business_extra_field"); ?>
+		<div class="item xml_mandatory">
+			<label><?php _e('Adresse (Straße)', 'wp-smart-crm-invoices-pro') ?> ( <span style="color:red"> * </span> )</label><br />
+			<input type="text" id="crm_business_address" name="CRM_business_settings[business_address]" value="<?php echo isset($options['business_address']) ? esc_attr($options['business_address']) : "" ?>" required data-parsley-required-message="<?php _e('Adresse ist erforderlich','cpsmartcrm')?>" class="form-control _m"/>
+		</div>
+		<div class="item">
+			<label><?php _e('Adresse (Nummer)', 'wp-smart-crm-invoices-pro') ?> </label><br />
+			<input type="text" id="crm_business_number" name="CRM_business_settings[business_number]" value="<?php echo isset($options['business_number']) ? esc_attr($options['business_number']) : "" ?>" class="form-control _m" />
+		</div>
+		<div class="item xml_mandatory">
+			<label><?php _e('Stadt', 'wp-smart-crm-invoices-pro') ?> ( <span style="color:red"> * </span> )</label><br />
+			<input type="text" id="crm_business_town" name="CRM_business_settings[business_town]" value="<?php echo isset($options['business_town']) ? esc_attr($options['business_town']) : "" ?>" required data-parsley-required-message="<?php _e('Stadt ist erforderlich','cpsmartcrm')?>" class="form-control _m"/>
+		</div>
+		<div class="item xml_mandatory">
+			<label><?php _e('PLZ', 'wp-smart-crm-invoices-pro') ?> ( <span style="color:red"> * </span> )</label><br />
+			<input type="text" id="crm_business_zip" name="CRM_business_settings[business_zip]" value="<?php echo isset($options['business_zip']) ? esc_attr($options['business_zip']) : "" ?>" required data-parsley-required-message="<?php _e('Postleitzahl ist erforderlich','cpsmartcrm')?>" class="form-control _m"/>
+		</div>
+		<div class="item xml_mandatory">
+			<label><?php _e('Staat/Provinz', 'wp-smart-crm-invoices-pro') ?> ( <span style="color:red"> * </span> )</label><br />
+			<input type="text" id="crm_business_provincia" name="CRM_business_settings[crm_business_provincia]" value="<?php echo isset($options['crm_business_provincia']) ? esc_attr($options['crm_business_provincia']) : "" ?>" required data-parsley-required-message="<?php _e('Staat/Provinz ist erforderlich','cpsmartcrm')?>" class="form-control _m" />
+		</div>
+		<div class="item xml_mandatory">
+			<label><?php _e('Land', 'wp-smart-crm-invoices-pro') ?> ( <span style="color:red"> * </span> )</label><br />
+			<select data-nazione="<?php if (isset($options['business_country'])) echo esc_attr($options['business_country']) ?>" id="nazione" name="CRM_business_settings[business_country]" size="20" maxlength='50'>
+				<?php
+				if (isset($options['business_country']))
+					echo stripslashes(WPsCRM_get_countries(esc_attr($options['business_country'])));
+				else
+					echo stripslashes(WPsCRM_get_countries('0'))
+				?>
+			</select>
+		</div>
+		<div class="item">
+			<label><?php _e('Steuernummer', 'wp-smart-crm-invoices-pro') ?></label><br />
+			<input type="text" id="crm_business_taxid" name="CRM_business_settings[business_taxid]" value="<?php echo isset($options['business_taxid']) ? esc_attr($options['business_taxid']) : '' ?>" class="form-control _m"/>
+		</div>
+		<div class="item xml_mandatory">
+			<label>
+				<input type="checkbox" id="crm_kleinunternehmer" name="CRM_business_settings[crm_kleinunternehmer]" value="1" <?php checked(isset($options['crm_kleinunternehmer']) && $options['crm_kleinunternehmer'] == 1); ?> />
+				<?php _e('Kleinunternehmer nach §19 UStG (keine Umsatzsteuer-ID)', 'wp-smart-crm-invoices-pro'); ?>
+			</label>
+			<br />
+			<label for="crm_business_ustid">
+				<?php _e('Umsatzsteuer-ID', 'wp-smart-crm-invoices-pro') ?>
+				<?php if (empty($options['crm_kleinunternehmer'])) : ?>
+				<span id="iva_star" style="color:red"> *</span>
+				<?php endif; ?>
+			</label>
+			<br />
+			<input type="text" id="crm_business_ustid" name="CRM_business_settings[business_ustid]" value="<?php echo isset($options['business_ustid']) ? esc_attr($options['business_ustid']) : '' ?>" 
+				class="form-control _m"
+				<?php if (empty($options['crm_kleinunternehmer'])): ?>
+					required data-parsley-required-message="<?php _e('Umsatzsteuer-ID ist erforderlich','cpsmartcrm')?>"
+				<?php endif; ?>
+			/>
+		</div>
+		<div class="item">
+			<label><?php _e('Telefon', 'wp-smart-crm-invoices-pro') ?></label><br />
+			<input type="text" id="crm_business_phone" name="CRM_business_settings[business_phone]" value="<?php echo isset($options['business_phone']) ? esc_attr($options['business_phone']) :"" ?>"  class="form-control _m" />
+			<label class="toRight"><?php _e('Im Dokumentkopf anzeigen', 'wp-smart-crm-invoices-pro') ?>?<input type="checkbox" value="1" name="CRM_business_settings[show_phone]" <?php echo (isset($options['show_phone']) && $options['show_phone'] == "1" ? 'checked' : null) ?>/></label><br />
+		</div>
+		<div class="item">
+			<label><?php _e('Fax', 'wp-smart-crm-invoices-pro') ?></label><br />
+			<input type="text" id="crm_business_fax" name="CRM_business_settings[business_fax]" value="<?php echo isset($options['business_fax']) ? esc_attr($options['business_fax']) :"" ?>"  class="form-control _m" />
+			<label class="toRight"><?php _e('Im Dokumentkopf anzeigen', 'wp-smart-crm-invoices-pro') ?>?<input type="checkbox" value="1" name="CRM_business_settings[show_fax]" <?php echo (isset($options['show_fax']) && $options['show_fax'] == "1" ? 'checked' : null) ?>/></label><br />
+		</div>
+		<div class="item">
+			<label><?php _e('Email', 'wp-smart-crm-invoices-pro') ?> ( <span style="color:red"> * </span> )</label><br />
+			<input type="email" id="crm_business_email" name="CRM_business_settings[business_email]"
+				value="<?php echo isset($options['business_email'] ) ? esc_attr($options['business_email']) : "" ?>"
+				required
+				data-parsley-required-message="<?php _e('E-Mail ist erforderlich','cpsmartcrm')?>"
+				data-parsley-type="email"
+				class="form-control _m" />
+			<label class="toRight">
+				<?php _e('Im Dokumentkopf anzeigen', 'wp-smart-crm-invoices-pro') ?>?
+				<input type="checkbox" value="1" name="CRM_business_settings[show_email]" <?php echo (isset($options['show_email']) && $options['show_email'] == "1" ? 'checked' : null) ?>/>
+			</label><br />
+		</div>
+		<div class="item">
+			<label><?php _e('Webseite', 'wp-smart-crm-invoices-pro') ?></label><br />
+			<input type="text" id="crm_business_web" name="CRM_business_settings[business_web]" value="<?php echo isset($options['business_web']) ? esc_attr($options['business_web']) : "" ?>"  class="form-control _m">
+			<label class="toRight"><?php _e('Im Dokumentkopf anzeigen', 'wp-smart-crm-invoices-pro') ?>?<input type="checkbox" value="1" name="CRM_business_settings[show_web]" <?php echo (isset($options['show_web']) && $options['show_web'] == "1" ? 'checked' : null) ?>/></label><br />
+		</div>
+		<div class="item">
+			<label><?php _e('Bankkontonummer (IBAN)', 'wp-smart-crm-invoices-pro') ?></label><br />
+			<input type="text" id="crm_business_iban" name="CRM_business_settings[business_iban]"  value="<?php echo isset($options['business_iban']) ? esc_attr($options['business_iban']) : "" ?>"  class="form-control _m"/>
+			<label class="toRight"><?php _e('Im Dokumentkopf anzeigen', 'wp-smart-crm-invoices-pro') ?>?<input type="checkbox" value="1" name="CRM_business_settings[show_iban]" <?php echo (isset($options['show_iban']) && $options['show_iban'] == "1" ? 'checked' : null) ?>/></label><br />
+		</div>
+		<div class="item">
+			<label><?php _e('Int. Kontocode (SWIFT)', 'wp-smart-crm-invoices-pro') ?></label><br />
+			<input type="text" id="crm_business_swift" name="CRM_business_settings[business_swift]" value="<?php echo isset($options['business_swift']) ? esc_attr($options['business_swift']) : "" ?>" class="form-control _m" />
+			<label class="toRight"><?php _e('Im Dokumentkopf anzeigen', 'wp-smart-crm-invoices-pro') ?>?<input type="checkbox" value="1" name="CRM_business_settings[show_swift]" <?php echo (isset($options['show_swift']) && $options['show_swift'] == "1" ? 'checked' : null) ?> /></label><br />
+		</div>
+		<input type="hidden" id="CRM_required_settings" name="CRM_business_settings[CRM_required_settings]" value="<?php echo isset($options['CRM_required_settings']) ? esc_attr($options['CRM_required_settings']) : "" ?>" />
 
-                <span  class="_flat btn btn-success" value="Save" style="margin: 30px;" onclick="saveBusiness()"><?php _e('Speichern', 'wp-smart-crm-invoices-pro') ?></span> 
-            </div>
+		<span  class="_flat btn btn-success" value="Save" style="margin: 30px;" onclick="saveBusiness()"><?php _e('Speichern', 'wp-smart-crm-invoices-pro') ?></span> 
+	</div>
+		</div>
 			<style>
 			#sortable-handlers label:not(.toRight){float:left;line-height:2em}
 			#sortable-handlers input[type=text],

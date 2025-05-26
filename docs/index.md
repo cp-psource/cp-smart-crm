@@ -1,9 +1,9 @@
 ---
 layout: psource-theme
-title: "CP Smart CRM"
+title: "PS Smart CRM"
 ---
 
-<h2 align="center" style="color:#38c2bb;">📚 CP Smart CRM</h2>
+<h2 align="center" style="color:#38c2bb;">📚 PS Smart CRM</h2>
 
 <div class="menu">
   <a href="https://github.com/cp-psource/cp-smart-crm/discussions" style="color:#38c2bb;">💬 Forum</a>
@@ -13,7 +13,7 @@ title: "CP Smart CRM"
 
 ![banner-772x250.png](assets/images/banner-772x250.png)
 
-CP Smart CRM deckt eine Vielzahl von "Büroverwaltungsfunktionen" ab. 
+PS Smart CRM deckt eine Vielzahl von "Büroverwaltungsfunktionen" ab. 
 
 CRM-Verwaltung: 
 
